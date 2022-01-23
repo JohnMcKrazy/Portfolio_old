@@ -360,42 +360,59 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^OBSERVER SECTION TITLES-- OVER
     //^ ***************************************************************************** *//
     //^^SKILLS CONTAINER ANIMATION--START
-    const skillsContainer = document.querySelector('.skills_containers');
+    const swipeContainers = document.querySelectorAll('.swipe_animation_container');
     //*console.log(skillsContainer);
+    swipeContainers.forEach((container) => {
+        const watchSwipeContainer = ([entry]) => {
+            const animationLeftContainers = document.querySelectorAll('.animation_left');
+            const animationRightContainers = document.querySelectorAll('.animation_right');
+            if (entry.isIntersecting) {
+                animationLeftContainers.forEach((container) => {
+                    animateItem(container, '1', 'translateX(0)');
+                });
+                animationRightContainers.forEach((container) => {
+                    animateItem(container, '1', 'translateX(0)');
+                });
+            } else if (!entry.isIntersecting) {
+                animationLeftContainers.forEach((container) => {
+                    animateItem(container, '0', 'translateX(-50%)');
+                });
+                animationRightContainers.forEach((container) => {
+                    animateItem(container, '0', 'translateX(50%)');
+                });
+            }
+        };
+        const optionsIO_skills = {
+            threshold: '1',
+        };
 
-    const watchSkillsContainers = ([entry]) => {
-        const animationLeft = document.querySelector('.animation_left');
-        const animationRight = document.querySelector('.animation_right');
-        if (entry.isIntersecting) {
-            animateItem(animationLeft, '1', 'translateX(0)');
-            animateItem(animationRight, '1', 'translateX(0)');
-        } else if (!entry.isIntersecting) {
-            animateItem(animationLeft, '0', 'translateX(-50%)');
-            animateItem(animationRight, '0', 'translateX(50%)');
-        }
-    };
-    const optionsIO_skills = {
-        threshold: '1',
-    };
+        const skillsContainersObserver = new IntersectionObserver(watchSwipeContainer, optionsIO_skills);
+        skillsContainersObserver.observe(container);
+    });
 
-    const skillsContainersObserver = new IntersectionObserver(watchSkillsContainers, optionsIO_skills);
-    skillsContainersObserver.observe(skillsContainer);
     //^^SKILLS CONTAINER ANIMATION--OVER
     //^^ **************************************************************************** *//
     //^ NAV RESIZE OBSERVER PARA MENU RESPONSIVE-- START --/CHANGE MENU NAV BY SCREEN SIZE
 
     const watchNavResize = ([entry]) => {
         const navWidth = entry.contentRect.width;
+        const skillsContainer = document.querySelector('.skills_containers');
         //*console.log(navWidth);
         if (navWidth <= 1000) {
             btnsNavContainer.style.display = 'none';
             btnMenuContainer.style.display = 'flex';
             menuSocialContainer.style.display = 'none';
+            skillsContainer.style.flexDirection = 'column';
+            skillsContainer.style.justifyContent = 'flex-start';
+            skillsContainer.style.alignItems = 'center';
             closeMenuSocial();
         } else if (navWidth > 1000) {
             btnMenuContainer.style.display = 'none';
             btnsNavContainer.style.display = 'flex';
             menuSocialContainer.style.display = 'flex';
+            skillsContainer.style.flexDirection = 'row';
+            skillsContainer.style.justifyContent = 'center';
+            skillsContainer.style.alignItems = 'flex-start';
             closeMenu();
         }
     };
