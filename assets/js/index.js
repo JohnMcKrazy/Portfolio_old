@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
             menuSocialContainer.style.bottom = 'inherit';
             menuSocialContainer.style.top = '2rem';
             menuSocialContainer.style.flexDirection = 'column';
-
+            btnLogo.style.padding = '2.5rem';
             closeMenu();
             closeMenuSocial();
             setTimeout(() => {
@@ -250,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
             menuSocialContainer.style.top = 'inherit';
             menuSocialContainer.style.bottom = '2rem';
             menuSocialContainer.style.flexDirection = 'column-reverse';
+            btnLogo.style.padding = '1.5rem';
 
             closeMenu();
             closeMenuSocial();

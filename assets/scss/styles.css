@@ -819,6 +819,7 @@ BUTTON {
 }
 
 #menu_social_container #contact_menu_btn .social_icon_svg {
+  pointer-events: none;
   -webkit-transition: var(--transitionBtn);
   transition: var(--transitionBtn);
 }
@@ -1102,14 +1103,15 @@ BUTTON {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 6rem;
+  width: auto;
   height: 100%;
+  padding: 2.5rem;
   cursor: pointer;
 }
 
 .nav .nav_content #logo_nav_btn #johnK_icon_svg {
-  width: 100%;
-  width: 4rem;
+  width: auto;
+  height: 100%;
   cursor: pointer;
 }
 

@@ -759,6 +759,7 @@ BUTTON {
         height: auto;
         cursor: pointer;
         .social_icon_svg {
+            pointer-events: none;
             transition: var(--transitionBtn);
         }
     }
@@ -936,15 +937,16 @@ BUTTON {
         @include flexDirection(row, space-between, center);
         #logo_nav_btn {
             @include flex(center, center);
-            width: 6rem;
+            width: auto;
             height: 100%;
+            padding: 2.5rem;
             cursor: pointer;
 
             //*LOGO COLORS START
             #johnK_icon_svg {
-                width: 100%;
+                width: auto;
 
-                width: 4rem;
+                height: 100%;
                 cursor: pointer;
                 .cls-1 {
                     fill: var(--secondColor);
