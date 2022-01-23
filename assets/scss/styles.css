@@ -1355,13 +1355,13 @@ BUTTON {
   font-weight: 200;
 }
 
-.quote_section .right {
+.quote_section .position_right {
   position: absolute;
   bottom: -3rem;
   right: -3rem;
 }
 
-.quote_section .left {
+.quote_section .position_left {
   position: absolute;
   top: -3rem;
   left: -3rem;
@@ -1633,16 +1633,20 @@ BUTTON {
   width: 8rem;
 }
 
-#skills_section .left {
-  -webkit-transform: translateY(50%);
-          transform: translateY(50%);
+#skills_section .animation_left {
   opacity: 0;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: all 1000ms ease;
+  transition: all 1000ms ease;
 }
 
-#skills_section .right {
-  -webkit-transform: translateY(50%);
-          transform: translateY(50%);
+#skills_section .animation_right {
   opacity: 0;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+  -webkit-transition: all 1000ms ease;
+  transition: all 1000ms ease;
 }
 
 #skills_section .skills_containers > * {
@@ -1669,16 +1673,51 @@ BUTTON {
 #services_section .services_container {
   width: var(--widthClamp);
   height: auto;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (50%)[2];
-      grid-template-columns: repeat(2, 50%);
-  gap: 2rem;
 }
 
 #services_section .services_container .service_container {
-  background: var(--navbarColor);
   padding: 2rem;
+}
+
+#services_section .services_container .service_container .service_card .service_card_info {
+  padding: 2rem;
+}
+
+#services_section .services_container .service_container .service_card > * {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+#services_section .services_container .service_container .left_animation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+#services_section .services_container .service_container .right_animation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 #portfolio_section {

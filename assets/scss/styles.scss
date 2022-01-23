@@ -1095,12 +1095,12 @@ BUTTON {
             }
         }
     }
-    .right {
+    .position_right {
         position: absolute;
         bottom: -3rem;
         right: -3rem;
     }
-    .left {
+    .position_left {
         position: absolute;
         top: -3rem;
         left: -3rem;
@@ -1246,13 +1246,15 @@ BUTTON {
             width: 8rem;
         }
     }
-    .left {
-        transform: translateY(50%);
+    .animation_left {
         opacity: 0;
+        transform: translateX(-50%);
+        transition: all 1000ms ease;
     }
-    .right {
-        transform: translateY(50%);
+    .animation_right {
         opacity: 0;
+        transform: translateX(50%);
+        transition: all 1000ms ease;
     }
     .skills_containers > * {
         flex-basis: 100%;
@@ -1267,12 +1269,23 @@ BUTTON {
     .services_container {
         width: var(--widthClamp);
         height: auto;
-        display: grid;
-        grid-template-columns: repeat(2, 50%);
-        gap: 2rem;
         .service_container {
-            background: var(--navbarColor);
             padding: 2rem;
+            .service_card {
+                .service_card_info {
+                    padding: 2rem;
+                }
+            }
+
+            .service_card > * {
+                flex-basis: 100%;
+            }
+            .left_animation {
+                @include flexDirection(row, space-between, flex-start);
+            }
+            .right_animation {
+                @include flexDirection(row-reverse, space-between, flex-start);
+            }
         }
     }
 }

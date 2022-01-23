@@ -117,6 +117,16 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     //^ ACTIONS BTN MENU SOCIAL--OVER
     //^ ***************************************************************************** *//
+    //^SOCIAL MENU CLOSE EN BODY CLICK--START
+    const closeByBodyClick = (e) => {
+        if (menuSocialStatus === 'open' && e.target.id !== 'contact_menu_btn') {
+            console.log(e.target.id);
+            closeMenuSocial();
+        }
+    };
+    //^SOCIAL MENU CLOSE EN BODY CLICK--OVER
+    //^^ ******************************************************************************* *//
+
     //^ OPEN MENU-- START
     const btnNavMenu = () => {
         if (menuStatus === 'close') {
@@ -210,18 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ ************************************************************************** *//
     //^ CHECK MENU POSITION WINDOW-- START && **/SCALE THE NAVBAR AND CHANGE THE MENU POSITION BY THE PAGE POSITION
 
-    /* const menuAnimation = (cont, tp, btm) => {
-        cont.style.opacity = 0;
-        const changeMenuPosition = () => {
-            cont.style.top = tp;
-            cont.style.bottom = btm;
-            setTimeout(() => {
-                cont.style.opacity = 1;
-            }, 500);
-        };
-        setTimeout(changeMenuPosition, 1500);
-    };
-    menuAnimation(menuSocialContainer, '2rem', 'inherit'); */
     const checkWindow = () => {
         const navTop = nav.getBoundingClientRect().top;
         const windowHeight = window.innerHeight / 2;
@@ -290,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //! ***********************************************************************************************//
 
     //!FUNCTIONS --START
-    //^CHECK MENU SECTION POSITION-- START && **/HIGHLIGHT IN THE MENU THE SECTION WE IN
+    //^CHECK MENU SECTION POSITION-- START && **/HIGHLIGHT IN THE MENU THE SECTION TARGET
     sections.forEach((section) => {
         const watchPage = ([entry]) => {
             const entryName = entry.target.attributes[1].value;
@@ -362,22 +360,26 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^OBSERVER SECTION TITLES-- OVER
     //^ ***************************************************************************** *//
     //^^SKILLS CONTAINER ANIMATION--START
-    const skillsContainers = document.querySelectorAll('.skills_container');
+    const skillsContainer = document.querySelector('.skills_containers');
+    //*console.log(skillsContainer);
 
-    skillsContainers.forEach((container) => {
-        const watchSkillsContainer = ([entry]) => {
-            const currentContainer = entry.target.id;
-            const eachContainer = document.querySelector(`#${currentContainer}`);
-            console.log(eachContainer);
-        };
+    const watchSkillsContainers = ([entry]) => {
+        const animationLeft = document.querySelector('.animation_left');
+        const animationRight = document.querySelector('.animation_right');
+        if (entry.isIntersecting) {
+            animateItem(animationLeft, '1', 'translateX(0)');
+            animateItem(animationRight, '1', 'translateX(0)');
+        } else if (!entry.isIntersecting) {
+            animateItem(animationLeft, '0', 'translateX(-50%)');
+            animateItem(animationRight, '0', 'translateX(50%)');
+        }
+    };
+    const optionsIO_skills = {
+        threshold: '1',
+    };
 
-        const optionsIO_skillsContainer = {
-            threshold: 1,
-        };
-
-        const skillsContainerObserver = new IntersectionObserver(watchSkillsContainer, optionsIO_skillsContainer);
-        skillsContainerObserver.observe(container);
-    });
+    const skillsContainersObserver = new IntersectionObserver(watchSkillsContainers, optionsIO_skills);
+    skillsContainersObserver.observe(skillsContainer);
     //^^SKILLS CONTAINER ANIMATION--OVER
     //^^ **************************************************************************** *//
     //^ NAV RESIZE OBSERVER PARA MENU RESPONSIVE-- START --/CHANGE MENU NAV BY SCREEN SIZE
@@ -411,19 +413,14 @@ document.addEventListener('DOMContentLoaded', () => {
     //& ***********************************************************************************  *//
 
     //TODO OBSERVER PARA CLICK FUERA DE MENU
-    const closeByBodyClick = (e) => {
-        if (menuSocialStatus === 'open' && e.target.id !== 'contact_menu_btn') {
-            console.log(e.target.id);
-            closeMenuSocial();
-        }
-    };
-    body.addEventListener('click', closeByBodyClick);
 
     //TODO ***********************************************************************************  *//
     //!FUNCTIONS --OVER
     //! ******************************************************************************//
     //! ADD EVENT LISTENERS
     window.addEventListener('scroll', scrollBody);
+
+    body.addEventListener('click', closeByBodyClick);
     btnLogo.addEventListener('click', toTheTop);
     btnMenuContainer.addEventListener('click', btnNavMenu);
     closeMenuBtn.addEventListener('click', closeMenu);
