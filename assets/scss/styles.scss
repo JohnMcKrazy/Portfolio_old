@@ -579,13 +579,14 @@ ul {
     font-weight: 400;
     font-size: clamp(1.5rem, calc(1.5rem + 0.5vw), 2.2rem);
 }
-
-.animation_left {
+#service_card_diferente,
+#design_skills_container {
     opacity: 0;
     transform: translateX(-50%);
     transition: all 1000ms ease;
 }
-.animation_right {
+#service_card_Personalizado,
+#dev_skills_container {
     opacity: 0;
     transform: translateX(50%);
     transition: all 1000ms ease;

@@ -360,27 +360,64 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^OBSERVER SECTION TITLES-- OVER
     //^ ***************************************************************************** *//
     //^^SKILLS CONTAINER ANIMATION--START
+    //TODO ARREGLAR ANIMACIONES DE SWIPE DE SECTION
     const swipeContainers = document.querySelectorAll('.swipe_animation_container');
     //*console.log(skillsContainer);
     swipeContainers.forEach((container) => {
         const watchSwipeContainer = ([entry]) => {
-            const animationLeftContainers = document.querySelectorAll('.animation_left');
-            const animationRightContainers = document.querySelectorAll('.animation_right');
+            const animationLeftContainers = entry.target.querySelectorAll('.animation_left');
+            const animationRightContainers = entry.target.querySelectorAll('.animation_right');
             if (entry.isIntersecting) {
                 animationLeftContainers.forEach((container) => {
-                    animateItem(container, '1', 'translateX(0)');
+                    console.log(container.id);
+                    const currentItem = document.querySelector(`#${container.id}`);
+                    animateItem(currentItem, '1', 'translateX(0)');
                 });
                 animationRightContainers.forEach((container) => {
-                    animateItem(container, '1', 'translateX(0)');
+                    console.log(container.id);
+                    const currentItem = document.querySelector(`#${container.id}`);
+                    animateItem(currentItem, '1', 'translateX(0)');
                 });
-            } else if (!entry.isIntersecting) {
+            } else {
                 animationLeftContainers.forEach((container) => {
-                    animateItem(container, '0', 'translateX(-50%)');
+                    console.log(container.id);
+                    const currentItem = document.querySelector(`#${container.id}`);
+                    animateItem(currentItem, '0', 'translateX(-50%)');
                 });
                 animationRightContainers.forEach((container) => {
-                    animateItem(container, '0', 'translateX(50%)');
+                    console.log(container.id);
+                    const currentItem = document.querySelector(`#${container.id}`);
+                    animateItem(currentItem, '0', 'translateX(50%)');
                 });
             }
+            /* if (entry.isIntersecting) {
+                animationLeftContainers.forEach((container) => {
+                    const containerId = container.id;
+                    //*console.log(containerId);
+                    const currentContainer = document.querySelector(`#${containerId}`);
+                    animateItem(currentContainer, '1', 'translateX(0)');
+                });
+                animationRightContainers.forEach((container) => {
+                    const containerId = container.id;
+                    //*console.log(containerId);
+                    const currentContainer = document.querySelector(`#${containerId}`);
+
+                    animateItem(currentContainer, '1', 'translateX(0)');
+                });
+            } else {
+                animationLeftContainers.forEach((container) => {
+                    const containerId = container.id;
+                    //*console.log(containerId);
+                    const currentContainer = document.querySelector(`#${containerId}`);
+                    animateItem(currentContainer, '0', 'translateX(-50%)');
+                });
+                animationRightContainers.forEach((container) => {
+                    const containerId = container.id;
+                    //*console.log(containerId);
+                    const currentContainer = document.querySelector(`#${containerId}`);
+                    animateItem(currentContainer, '0', 'translateX(50%)');
+                });
+            } */
         };
         const optionsIO_skills = {
             threshold: '1',
@@ -389,7 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const skillsContainersObserver = new IntersectionObserver(watchSwipeContainer, optionsIO_skills);
         skillsContainersObserver.observe(container);
     });
-
+    //TODO *************************************************************************** *//
     //^^SKILLS CONTAINER ANIMATION--OVER
     //^^ **************************************************************************** *//
     //^ NAV RESIZE OBSERVER PARA MENU RESPONSIVE-- START --/CHANGE MENU NAV BY SCREEN SIZE
@@ -429,9 +466,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //&CHANGE LANG BY CLICK --OVER
     //& ***********************************************************************************  *//
 
-    //TODO OBSERVER PARA CLICK FUERA DE MENU
-
-    //TODO ***********************************************************************************  *//
     //!FUNCTIONS --OVER
     //! ******************************************************************************//
     //! ADD EVENT LISTENERS
