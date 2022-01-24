@@ -581,7 +581,8 @@ ul {
   font-size: clamp(1.5rem, calc(1.5rem + 0.5vw), 2.2rem);
 }
 
-.animation_left {
+#service_card_diferente,
+#design_skills_container {
   opacity: 0;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -589,7 +590,8 @@ ul {
   transition: all 1000ms ease;
 }
 
-.animation_right {
+#service_card_Personalizado,
+#dev_skills_container {
   opacity: 0;
   -webkit-transform: translateX(50%);
           transform: translateX(50%);
@@ -1676,7 +1678,29 @@ BUTTON {
 }
 
 #services_section .services_container .service_container {
-  padding: 2rem;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+#services_section .services_container .service_container .service_card {
+  width: 100%;
+  height: 30rem;
+}
+
+#services_section .services_container .service_container .service_card .service_card_img {
+  width: 100%;
+  height: 100%;
+}
+
+#services_section .services_container .service_container .service_card .service_card_img IMG {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 #services_section .services_container .service_container .service_card .service_card_info {

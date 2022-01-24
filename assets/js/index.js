@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnsMenuSocial = document.querySelectorAll('.social_btn');
     const menuSocialBtn = document.querySelector('#contact_menu_btn');
     const menuSocialBtnsContainer = document.querySelector('.menu_social_btns_container');
-
+    const swipeContainers = document.querySelectorAll('.swipe_animation_container');
     //^FETCH JASON COMPANYS DATA-- START
     const portfolioData = './portfolioDB.json';
     //^FETCH JSON COMPANYS DATA-- OVER
@@ -360,9 +360,8 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^OBSERVER SECTION TITLES-- OVER
     //^ ***************************************************************************** *//
     //^^SKILLS CONTAINER ANIMATION--START
-    //TODO ARREGLAR ANIMACIONES DE SWIPE DE SECTION
-    const swipeContainers = document.querySelectorAll('.swipe_animation_container');
-    //*console.log(skillsContainer);
+    //^^ANIMATION ITEM SWIPE--START
+
     swipeContainers.forEach((container) => {
         const watchSwipeContainer = ([entry]) => {
             const animationLeftContainers = entry.target.querySelectorAll('.animation_left');
@@ -379,16 +378,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     animateItem(currentItem, '1', 'translateX(0)');
                 });
             } else {
-                animationLeftContainers.forEach((container) => {
-                    console.log(container.id);
-                    const currentItem = document.querySelector(`#${container.id}`);
-                    animateItem(currentItem, '0', 'translateX(-50%)');
-                });
-                animationRightContainers.forEach((container) => {
-                    console.log(container.id);
-                    const currentItem = document.querySelector(`#${container.id}`);
-                    animateItem(currentItem, '0', 'translateX(50%)');
-                });
+                setTimeout(() => {
+                    animationLeftContainers.forEach((container) => {
+                        console.log(container.id);
+                        const currentItem = document.querySelector(`#${container.id}`);
+                        animateItem(currentItem, '0', 'translateX(-50%)');
+                    });
+                    animationRightContainers.forEach((container) => {
+                        console.log(container.id);
+                        const currentItem = document.querySelector(`#${container.id}`);
+                        animateItem(currentItem, '0', 'translateX(50%)');
+                    });
+                }, 2000);
             }
             /* if (entry.isIntersecting) {
                 animationLeftContainers.forEach((container) => {
@@ -420,13 +421,14 @@ document.addEventListener('DOMContentLoaded', () => {
             } */
         };
         const optionsIO_skills = {
-            threshold: '1',
+            threshold: '.4',
         };
 
         const skillsContainersObserver = new IntersectionObserver(watchSwipeContainer, optionsIO_skills);
         skillsContainersObserver.observe(container);
     });
-    //TODO *************************************************************************** *//
+    //^^ANIMATION ITEM SWIPE--OVER
+    //^^ *************************************************************************** *//
     //^^SKILLS CONTAINER ANIMATION--OVER
     //^^ **************************************************************************** *//
     //^ NAV RESIZE OBSERVER PARA MENU RESPONSIVE-- START --/CHANGE MENU NAV BY SCREEN SIZE

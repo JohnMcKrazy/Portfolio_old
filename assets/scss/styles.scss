@@ -579,18 +579,24 @@ ul {
     font-weight: 400;
     font-size: clamp(1.5rem, calc(1.5rem + 0.5vw), 2.2rem);
 }
+//*SWIPER LEFT CONTAINER--START
 #service_card_diferente,
 #design_skills_container {
     opacity: 0;
     transform: translateX(-50%);
     transition: all 1000ms ease;
 }
+//*SWIPER LEFT CONTAINER--OVER
+//* ************************************************************************** *//
+//*SWIPER RIGHT CONTAINER--START
 #service_card_Personalizado,
 #dev_skills_container {
     opacity: 0;
     transform: translateX(50%);
     transition: all 1000ms ease;
 }
+//*SWIPER RIGHT CONTAINER--OVER
+//* ************************************************************************** *//
 BUTTON {
     padding: 0;
     background: none;
@@ -1272,8 +1278,22 @@ BUTTON {
         width: var(--widthClamp);
         height: auto;
         .service_container {
-            padding: 2rem;
+            width: 100%;
+            height: fit-content;
             .service_card {
+                width: 100%;
+                height: 30rem;
+                .service_card_img {
+                    width: 100%;
+                    height: 100%;
+                    IMG {
+                        width: 100%;
+                        height: 100%;
+
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
                 .service_card_info {
                     padding: 2rem;
                 }
