@@ -232,6 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkWindow = () => {
         const navTop = nav.getBoundingClientRect().top;
         const windowHeight = window.innerHeight / 2;
+        const windowWidth = window.innerWidth;
         let borderRadius = '1rem';
         if (navTop >= windowHeight) {
             nav.style.height = '10rem';
@@ -271,6 +272,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 500);
         }
+        console.log(windowWidth);
+
+        //^^ ********* //
+        if (windowWidth > 1200) {
+            lebelBtnMain.innerHTML = '<h3 class="btn_lebel">Inicio</h3>';
+            lebelBtnAbout.innerHTML = '<h3 class="btn_lebel">Acerca de</h3>';
+            lebelBtnSkills.innerHTML = '<h3 class="btn_lebel">Habilidades</h3>';
+            lebelBtnServices.innerHTML = '<h3 class="btn_lebel">Servicios</h3>';
+            lebelBtnPortfolio.innerHTML = '<h3 class="btn_lebel">Portafolio</h3>';
+            lebelBtnClient.innerHTML = '<h3 class="btn_lebel">Clientes</h3>';
+        } else if (windowWidth > 950 || (windowWidth < 1200 && windowWidth > 950)) {
+            lebelBtnMain.innerHTML =
+                '<svg class="nav_menu_icon_svg" id="home_icon_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Inicio</title><path class="cls-1" d="M19 21H5a1 1 0 0 1-1-1v-9H1l10.327-9.388a1 1 0 0 1 1.346 0L23 11h-3v9a1 1 0 0 1-1 1zM6 19h12V9.157l-6-5.454-6 5.454V19z"/></svg>';
+            lebelBtnAbout.innerHTML =
+                '<svg class="nav_menu_icon_svg" id="about_icon_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Acerca de</title><path class="cls-1" d="M20 22h-2v-2a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v2H4v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2zm-8-9a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>';
+            lebelBtnSkills.innerHTML =
+                '<svg class="nav_menu_icon_svg" id="skills_icon_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Habilidades</title><path class="cls-1" d="M12 8.5l2.116 5.088 5.492.44-4.184 3.584 1.278 5.36L12 20.1l-4.702 2.872 1.278-5.36-4.184-3.584 5.492-.44L12 8.5zm0 5.207l-.739 1.777-1.916.153 1.46 1.251-.447 1.871L12 17.756l1.641 1.003-.446-1.87 1.459-1.252-1.915-.153L12 13.707zM8 2v9H6V2h2zm10 0v9h-2V2h2zm-5 0v5h-2V2h2z"/></svg>';
+            lebelBtnServices.innerHTML =
+                '<svg class="nav_menu_icon_svg" id="services_icon_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Servicios</title><path class="cls-1" d="M19.938 8H21a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-1.062A8.001 8.001 0 0 1 12 23v-2a6 6 0 0 0 6-6V9A6 6 0 1 0 6 9v7H3a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1.062a8.001 8.001 0 0 1 15.876 0zM3 10v4h1v-4H3zm17 0v4h1v-4h-1zM7.76 15.785l1.06-1.696A5.972 5.972 0 0 0 12 15a5.972 5.972 0 0 0 3.18-.911l1.06 1.696A7.963 7.963 0 0 1 12 17a7.963 7.963 0 0 1-4.24-1.215z"/></svg>';
+            lebelBtnPortfolio.innerHTML =
+                '<svg class="nav_menu_icon_svg" id="portfolio_icon_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Portafolio</title><path class="cls-1" d="M7 5V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4zm10 2v5h3V7h-3zm-2 0H9v5h6V7zM7 7H4v5h3V7zm2-4v2h6V3H9z"/></svg>';
+            lebelBtnClient.innerHTML =
+                '<svg class="nav_menu_icon_svg" id="clients_icon_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Clientes</title><path class="cls-1" d="M12 1l8.217 1.826c.457.102.783.507.783.976v9.987c0 2.006-1.003 3.88-2.672 4.992L12 23l-6.328-4.219C4.002 17.668 3 15.795 3 13.79V3.802c0-.469.326-.874.783-.976L12 1zm0 2.049L5 4.604v9.185c0 1.337.668 2.586 1.781 3.328L12 20.597l5.219-3.48C18.332 16.375 19 15.127 19 13.79V4.604L12 3.05zm4.452 5.173l1.415 1.414L11.503 16 7.26 11.757l1.414-1.414 2.828 2.828 4.95-4.95z"/></svg>';
+            btnMenuContainer.style.display = 'none';
+            btnsNavContainer.style.display = 'flex';
+            menuSocialContainer.style.display = 'flex';
+            skillsContainer.style.flexDirection = 'row';
+            skillsContainer.style.justifyContent = 'center';
+            skillsContainer.style.alignItems = 'flex-start';
+            heroBtnsContainer.style.flexDirection = 'row';
+            closeMenu();
+        } else if (windowWidth <= 950) {
+            btnsNavContainer.style.display = 'none';
+            btnMenuContainer.style.display = 'flex';
+            menuSocialContainer.style.display = 'none';
+            skillsContainer.style.flexDirection = 'column';
+            skillsContainer.style.justifyContent = 'flex-start';
+            skillsContainer.style.alignItems = 'center';
+            heroBtnsContainer.style.flexDirection = 'column';
+
+            closeMenuSocial();
+        }
+        //^^ ********* //
     };
     checkWindow();
     //^ CHECK MENU POSITION WINDOW-- OVER
@@ -472,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heroBtnsContainer.style.flexDirection = 'row';
             closeMenu();
             //*console.log(navWidth);
-        } else if (navWidth > 500 || (navWidth < 950 && navWidth > 500)) {
+        } else if (navWidth <= 950) {
             btnsNavContainer.style.display = 'none';
             btnMenuContainer.style.display = 'flex';
             menuSocialContainer.style.display = 'none';
@@ -482,7 +526,6 @@ document.addEventListener('DOMContentLoaded', () => {
             heroBtnsContainer.style.flexDirection = 'column';
             //*console.log(navWidth);
             closeMenuSocial();
-        } else if (navWidth <= 500) {
         }
     };
     const navResizeObserve = new ResizeObserver(watchNavResize);
