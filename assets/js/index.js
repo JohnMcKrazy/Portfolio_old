@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '<svg class="theme_icon_svg" id="moon_icon_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Tema noche</title><path class="cls-1" d="M11.38 2.019a7.5 7.5 0 1 0 10.6 10.6C21.662 17.854 17.316 22 12.001 22 6.477 22 2 17.523 2 12c0-5.315 4.146-9.661 9.38-9.981z"/></svg>';
     let menuStatus = 'close';
     let menuSocialStatus = 'close';
+    let contactModalStatus = 'close';
     //!GENERAL VARIANTS--OVER
     //! ***********************************************************************************************//
     //!GENERAL START FUNCTIONS-- START
@@ -104,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 //*console.log(projectCards);
                 fragment.appendChild(projectCards);
             });
-            console.log(fragment);
+            //*console.log(fragment);
             portfolioCardsContainer.appendChild(fragment);
         } catch (error) {
             console.log(error);
@@ -174,30 +175,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //^ OPEN CONTACT MODAL-- START
     const openContactModal = () => {
-        contactModal.animate([{ opacity: '0' }, { opacity: '1' }], {
-            duration: 1000,
-            iterations: 1,
-            fill: 'forwards',
-        });
-        contactModal.style.display = 'flex';
-        contactModal.style.justifyContent = 'center';
-        contactModal.style.alignItems = 'center';
+        if (contactModalStatus === 'close') {
+            contactModal.animate([{ opacity: '0' }, { opacity: '1' }], {
+                duration: 1000,
+                iterations: 1,
+                fill: 'forwards',
+            });
+            contactModalStatus = 'open';
+            contactModal.style.display = 'flex';
+            contactModal.style.justifyContent = 'center';
+            contactModal.style.alignItems = 'center';
+        }
     };
     //^ OPEN CONTACT MODAL-- OVER
     //^ ******************************************************************** *//
     //^ CLOSE MODAL CONTACT FORM-- START
-    const closeModal = () => {
-        contactModal.animate([{ opacity: '1' }, { opacity: '0' }], {
-            duration: 1000,
-            iterations: 1,
-            fill: 'forwards',
-        });
+    const closeContactModal = () => {
+        if (contactModalStatus === 'open') {
+            contactModal.animate([{ opacity: '1' }, { opacity: '0' }], {
+                duration: 1000,
+                iterations: 1,
+                fill: 'forwards',
+            });
 
-        setTimeout(() => {
-            contactModal.style.display = 'none';
-            contactModal.style.justifyContent = 'center';
-            contactModal.style.alignItems = 'center';
-        }, 1200);
+            setTimeout(() => {
+                contactModal.style.display = 'none';
+                contactModal.style.justifyContent = 'center';
+                contactModal.style.alignItems = 'center';
+            }, 1200);
+        }
+        contactModalStatus = 'close';
     };
     //^ CLOSE MODAL CONTACT FORM-- OVER
     //^ ************************************************************************ *//
@@ -234,52 +241,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ ************************************************************************** *//
     //^ CHECK MENU POSITION WINDOW-- START && **/SCALE THE NAVBAR AND CHANGE THE MENU POSITION BY THE PAGE POSITION
 
-    const checkWindow = () => {
-        const navTop = nav.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight / 2;
+    const checkWindowWidth = () => {
         const windowWidth = window.innerWidth;
-        let borderRadius = '1rem';
-        if (navTop >= windowHeight) {
-            nav.style.height = '10rem';
 
-            menuSocialContainer.style.bottom = 'inherit';
-            menuSocialContainer.style.top = '2rem';
-            menuSocialContainer.style.flexDirection = 'column';
-            btnLogo.style.width = '7rem';
-            closeMenu();
-            closeMenuSocial();
-            setTimeout(() => {
-                menuContainer.style.top = 0;
-                menuContainer.style.bottom = 'inherit';
-                menuContainer.style.flexDirection = 'column';
-                menuContainer.style.borderRadius = `0 0 ${borderRadius} ${borderRadius}`;
-
-                if (menuStatus === 'close') {
-                    menuContainer.style.transform = 'translateY(-100%)';
-                }
-            }, 500);
-        } else if (navTop < windowHeight) {
-            nav.style.height = '6rem';
-            menuSocialContainer.style.top = 'inherit';
-            menuSocialContainer.style.bottom = '2rem';
-            menuSocialContainer.style.flexDirection = 'column-reverse';
-            btnLogo.style.width = '5rem';
-
-            closeMenu();
-            closeMenuSocial();
-            setTimeout(() => {
-                menuContainer.style.top = 'inherit';
-                menuContainer.style.bottom = 0;
-                menuContainer.style.flexDirection = 'column-reverse';
-                menuContainer.style.borderRadius = `${borderRadius} ${borderRadius} 0 0`;
-                if (menuStatus === 'close') {
-                    menuContainer.style.transform = 'translateY(100%)';
-                }
-            }, 500);
-        }
-        //*console.log(windowWidth);
-
-        //^^ ********* //
         if (windowWidth > 1200) {
             lebelBtnMain.innerHTML = '<h3 class="btn_lebel">Inicio</h3>';
             lebelBtnAbout.innerHTML = '<h3 class="btn_lebel">Acerca de</h3>';
@@ -319,14 +283,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
             closeMenuSocial();
         }
-        //^^ ********* //
     };
-    checkWindow();
+    checkWindowWidth();
+    const checkWindowHeight = () => {
+        const navTop = nav.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight / 2;
+        let borderRadius = '1rem';
+        if (navTop >= windowHeight) {
+            nav.style.height = '10rem';
+
+            menuSocialContainer.style.bottom = 'inherit';
+            menuSocialContainer.style.top = '2rem';
+            menuSocialContainer.style.flexDirection = 'column';
+            btnLogo.style.width = '7rem';
+            closeMenu();
+            closeMenuSocial();
+            setTimeout(() => {
+                menuContainer.style.top = 0;
+                menuContainer.style.bottom = 'inherit';
+                menuContainer.style.flexDirection = 'column';
+                menuContainer.style.borderRadius = `0 0 ${borderRadius} ${borderRadius}`;
+
+                if (menuStatus === 'close') {
+                    menuContainer.style.transform = 'translateY(-100%)';
+                }
+            }, 500);
+        } else if (navTop < windowHeight) {
+            nav.style.height = '6rem';
+            menuSocialContainer.style.top = 'inherit';
+            menuSocialContainer.style.bottom = '2rem';
+            menuSocialContainer.style.flexDirection = 'column-reverse';
+            btnLogo.style.width = '5rem';
+
+            closeMenu();
+            closeMenuSocial();
+            setTimeout(() => {
+                menuContainer.style.top = 'inherit';
+                menuContainer.style.bottom = 0;
+                menuContainer.style.flexDirection = 'column-reverse';
+                menuContainer.style.borderRadius = `${borderRadius} ${borderRadius} 0 0`;
+                if (menuStatus === 'close') {
+                    menuContainer.style.transform = 'translateY(100%)';
+                }
+            }, 500);
+        }
+    };
+    checkWindowHeight();
     //^ CHECK MENU POSITION WINDOW-- OVER
     //^ *********************************************************************** *//
     //^ SCROLL NAV-- START && --/USE SCROLL FUNCTION TO CHECK THE POSITION OF THE PAGE
     const scrollBody = () => {
-        checkWindow();
+        checkWindowHeight();
     };
     //^ SCROLL NAV-- OVER
     //^  *******************************************************************/
@@ -555,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnLogo.addEventListener('click', toTheTop);
     btnMenuContainer.addEventListener('click', btnNavMenu);
     closeMenuBtn.addEventListener('click', closeMenu);
-    closeModalContactForm.addEventListener('click', closeModal);
+    closeModalContactForm.addEventListener('click', closeContactModal);
     btnHeroDown.addEventListener('click', scrollOneHeight);
     //^ BTNS HERO-- START && **/POSITION THE PAGE IN SECTIONS BY THE BTNS IN THE HERO SECTION
     btnsHero.forEach((btn) => {
