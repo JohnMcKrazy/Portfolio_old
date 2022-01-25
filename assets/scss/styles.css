@@ -1598,7 +1598,6 @@ BUTTON {
 }
 
 #skills_section .skills_containers {
-  width: var(--widthClamp);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1612,9 +1611,14 @@ BUTTON {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  width: var(--widthClamp);
 }
 
-#skills_section .skills_containers .skills_icons_container {
+#skills_section .skills_containers .skills_container {
+  width: auto;
+}
+
+#skills_section .skills_containers .skills_container .skills_icons_container {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1635,7 +1639,7 @@ BUTTON {
   padding: 2rem;
 }
 
-#skills_section .skills_containers .skills_icon_container {
+#skills_section .skills_containers .skills_container .skills_icon_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1649,28 +1653,28 @@ BUTTON {
   height: 5rem;
 }
 
-#skills_section .skills_containers .skills_icon_container #html_icon_svg .cls-5 {
+#skills_section .skills_containers .skills_container .skills_icon_container #html_icon_svg .cls-5 {
   fill: var(--textColor);
 }
 
-#skills_section .skills_containers .skills_icon_container #css_icon_svg .cls-5 {
+#skills_section .skills_containers .skills_container .skills_icon_container #css_icon_svg .cls-5 {
   fill: var(--textColor);
 }
 
-#skills_section .skills_containers .skills_icon_container #gitHub_icon_svg {
+#skills_section .skills_containers .skills_container .skills_icon_container #gitHub_icon_svg {
   scale: 0.7;
 }
 
-#skills_section .skills_containers .skills_icon_container #gitHub_icon_svg .cls-1 {
+#skills_section .skills_containers .skills_container .skills_icon_container #gitHub_icon_svg .cls-1 {
   fill: var(--textColor);
 }
 
-#skills_section .skills_containers .skills_icon_container:hover {
+#skills_section .skills_containers .skills_container .skills_icon_container:hover {
   -webkit-animation: zoom 1000ms ease-out;
           animation: zoom 1000ms ease-out;
 }
 
-#skills_section .skills_containers #node_icon_container {
+#skills_section .skills_containers .skills_container #node_icon_container {
   width: 8rem;
 }
 
@@ -1697,14 +1701,10 @@ BUTTON {
 
 #services_section .services_container {
   width: var(--widthClamp);
-  height: auto;
 }
 
 #services_section .services_container .service_container {
   width: 100%;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
 }
 
 #services_section .services_container .service_container .service_card {

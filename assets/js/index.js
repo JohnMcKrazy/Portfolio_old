@@ -33,6 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuSocialBtn = document.querySelector('#contact_menu_btn');
     const menuSocialBtnsContainer = document.querySelector('.menu_social_btns_container');
     const swipeContainers = document.querySelectorAll('.swipe_animation_container');
+
+    const skillsContainer = document.querySelector('.skills_containers');
+    const lebelBtnMain = document.querySelector('#main_btn_nav');
+    const lebelBtnAbout = document.querySelector('#about_btn_nav');
+    const lebelBtnSkills = document.querySelector('#skills_btn_nav');
+    const lebelBtnServices = document.querySelector('#services_btn_nav');
+    const lebelBtnPortfolio = document.querySelector('#portfolio_btn_nav');
+    const lebelBtnClient = document.querySelector('#clients_btn_nav');
+    const heroBtnsContainer = document.querySelector('#hero_btns_container');
     //^FETCH JASON COMPANYS DATA-- START
     const portfolioData = './portfolioDB.json';
     //^FETCH JSON COMPANYS DATA-- OVER
@@ -432,14 +441,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const watchNavResize = ([entry]) => {
         const navWidth = entry.contentRect.width;
 
-        const skillsContainer = document.querySelector('.skills_containers');
-        const lebelBtnMain = document.querySelector('#main_btn_nav');
-        const lebelBtnAbout = document.querySelector('#about_btn_nav');
-        const lebelBtnSkills = document.querySelector('#skills_btn_nav');
-        const lebelBtnServices = document.querySelector('#services_btn_nav');
-        const lebelBtnPortfolio = document.querySelector('#portfolio_btn_nav');
-        const lebelBtnClient = document.querySelector('#clients_btn_nav');
-        const heroBtnsContainer = document.querySelector('#hero_btns_container');
         //*console.log(navWidth);
         if (navWidth > 1200) {
             lebelBtnMain.innerHTML = '<h3 class="btn_lebel">Inicio</h3>';
