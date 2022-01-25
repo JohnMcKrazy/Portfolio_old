@@ -1497,10 +1497,11 @@ BUTTON {
           align-items: center;
   gap: 2.5rem;
   margin-top: 2rem;
+  width: 100%;
 }
 
 #hero_section #hero_content #hero_btns_container .btn {
-  width: 20rem;
+  width: 100%;
 }
 
 #hero_section #hero_content #hero_btns_container > * {
@@ -1532,6 +1533,7 @@ BUTTON {
           animation: bounce 1s ease 0s infinite;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  color: var(--textColor);
   cursor: pointer;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
@@ -1586,9 +1588,9 @@ BUTTON {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1723,9 +1725,31 @@ BUTTON {
      object-position: center;
 }
 
+#services_section .services_container .service_container .service_card .service_card_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
 #services_section .services_container .service_container .service_card .service_card_info .service_card_title,
 #services_section .services_container .service_container .service_card .service_card_info .service_card_text {
   padding: 2rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
 }
 
 #services_section .services_container .service_container .service_card > * {
