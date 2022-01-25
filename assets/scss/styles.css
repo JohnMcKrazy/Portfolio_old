@@ -548,6 +548,7 @@ ul {
 .section {
   width: 100%;
   min-height: calc(100vh - var(--navbarHeight));
+  overflow: hidden;
 }
 
 .section_padding {
@@ -1698,7 +1699,6 @@ BUTTON {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  overflow: hidden;
 }
 
 #services_section .services_container {

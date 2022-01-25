@@ -560,6 +560,7 @@ ul {
 .section {
     width: 100%;
     min-height: calc(100vh - var(--navbarHeight));
+    overflow: hidden;
 }
 .section_padding {
     padding: 6rem 0;
@@ -1299,7 +1300,7 @@ BUTTON {
 //!SERVICES SECTION-- START
 #services_section {
     @include flexDirection(column, flex-start, center);
-    overflow: hidden;
+
     .services_container {
         width: var(--widthClamp);
         .service_container {
