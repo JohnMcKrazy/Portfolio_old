@@ -256,6 +256,11 @@ body {
             fill-rule: evenodd;
         }
     }
+    .nav_menu_icon_svg {
+        .cls-1 {
+            fill: var(--textColor);
+        }
+    }
     //^^GENERAL ICONS COLORS--OVER
     //^^CLIENTS LOGO COLORS--START
     #impulso_icon_svg {
@@ -580,7 +585,7 @@ ul {
     font-size: clamp(1.5rem, calc(1.5rem + 0.5vw), 2.2rem);
 }
 //*SWIPER LEFT CONTAINER--START
-#service_card_diferente,
+#service_card_original,
 #design_skills_container {
     opacity: 0;
     transform: translateX(-50%);
@@ -589,7 +594,7 @@ ul {
 //*SWIPER LEFT CONTAINER--OVER
 //* ************************************************************************** *//
 //*SWIPER RIGHT CONTAINER--START
-#service_card_Personalizado,
+#service_card_personalizado,
 #dev_skills_container {
     opacity: 0;
     transform: translateX(50%);
@@ -644,8 +649,10 @@ BUTTON {
     .btn_lebel {
         color: var(--textContrastColor);
     }
-    i {
-        color: var(--textColor);
+    .nav_menu_icon_svg {
+        .cls-1 {
+            fill: var(--textContrastColor);
+        }
     }
 }
 //^^BTNS SECTION ACTIVE-- OVER
@@ -1037,7 +1044,14 @@ BUTTON {
                 padding: 0 2rem;
                 border-top: solid 5px transparent;
                 color: var(--textColor);
-
+                .btn_lebel {
+                    font-size: 1.5rem;
+                }
+                .nav_menu_icon_svg {
+                    height: 100%;
+                    width: 3rem;
+                    padding: 0 0.5rem;
+                }
                 .theme_icon_svg {
                     height: 2rem;
                     width: 2rem;
@@ -1047,6 +1061,11 @@ BUTTON {
             .btn_nav:focus {
                 border-color: var(--firstColor);
                 background: var(--firstColorHover);
+                .nav_menu_icon_svg {
+                    .cls-1 {
+                        fill: var(--textContrastColor);
+                    }
+                }
                 .btn_lebel {
                     color: var(--textContrastColor);
                 }
@@ -1058,10 +1077,12 @@ BUTTON {
             }
             .btn_nav:active {
                 background: var(--firstColor);
-                .btn_lebel {
-                    color: var(--textContrastColor);
+                .nav_menu_icon_svg {
+                    .cls-1 {
+                        fill: var(--textContrastColor);
+                    }
                 }
-                i {
+                .btn_lebel {
                     color: var(--textContrastColor);
                 }
             }
@@ -1295,7 +1316,10 @@ BUTTON {
                     }
                 }
                 .service_card_info {
-                    padding: 2rem;
+                    .service_card_title,
+                    .service_card_text {
+                        padding: 2rem;
+                    }
                 }
             }
 

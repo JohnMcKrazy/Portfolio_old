@@ -229,6 +229,10 @@ body #conection_icon_svg .cls-2 {
   fill-rule: evenodd;
 }
 
+body .nav_menu_icon_svg .cls-1 {
+  fill: var(--textColor);
+}
+
 body #impulso_icon_svg .cls-1 {
   fill: #c01918;
 }
@@ -581,7 +585,7 @@ ul {
   font-size: clamp(1.5rem, calc(1.5rem + 0.5vw), 2.2rem);
 }
 
-#service_card_diferente,
+#service_card_original,
 #design_skills_container {
   opacity: 0;
   -webkit-transform: translateX(-50%);
@@ -590,7 +594,7 @@ ul {
   transition: all 1000ms ease;
 }
 
-#service_card_Personalizado,
+#service_card_personalizado,
 #dev_skills_container {
   opacity: 0;
   -webkit-transform: translateX(50%);
@@ -656,8 +660,8 @@ BUTTON {
   color: var(--textContrastColor);
 }
 
-.btn_section_active i {
-  color: var(--textColor);
+.btn_section_active .nav_menu_icon_svg .cls-1 {
+  fill: var(--textContrastColor);
 }
 
 .modal {
@@ -1256,6 +1260,16 @@ BUTTON {
   color: var(--textColor);
 }
 
+.nav .nav_content #nav_sections_btns_container .btn_nav .btn_lebel {
+  font-size: 1.5rem;
+}
+
+.nav .nav_content #nav_sections_btns_container .btn_nav .nav_menu_icon_svg {
+  height: 100%;
+  width: 3rem;
+  padding: 0 0.5rem;
+}
+
 .nav .nav_content #nav_sections_btns_container .btn_nav .theme_icon_svg {
   height: 2rem;
   width: 2rem;
@@ -1265,6 +1279,11 @@ BUTTON {
 .nav .nav_content #nav_sections_btns_container .btn_nav:focus {
   border-color: var(--firstColor);
   background: var(--firstColorHover);
+}
+
+.nav .nav_content #nav_sections_btns_container .btn_nav:hover .nav_menu_icon_svg .cls-1,
+.nav .nav_content #nav_sections_btns_container .btn_nav:focus .nav_menu_icon_svg .cls-1 {
+  fill: var(--textContrastColor);
 }
 
 .nav .nav_content #nav_sections_btns_container .btn_nav:hover .btn_lebel,
@@ -1281,11 +1300,11 @@ BUTTON {
   background: var(--firstColor);
 }
 
-.nav .nav_content #nav_sections_btns_container .btn_nav:active .btn_lebel {
-  color: var(--textContrastColor);
+.nav .nav_content #nav_sections_btns_container .btn_nav:active .nav_menu_icon_svg .cls-1 {
+  fill: var(--textContrastColor);
 }
 
-.nav .nav_content #nav_sections_btns_container .btn_nav:active i {
+.nav .nav_content #nav_sections_btns_container .btn_nav:active .btn_lebel {
   color: var(--textContrastColor);
 }
 
@@ -1703,7 +1722,8 @@ BUTTON {
      object-position: center;
 }
 
-#services_section .services_container .service_container .service_card .service_card_info {
+#services_section .services_container .service_container .service_card .service_card_info .service_card_title,
+#services_section .services_container .service_container .service_card .service_card_info .service_card_text {
   padding: 2rem;
 }
 
