@@ -1617,6 +1617,7 @@ BUTTON {
       -ms-flex-align: start;
           align-items: flex-start;
   width: var(--widthClamp);
+  margin-bottom: 3rem;
 }
 
 #skills_section .skills_containers .skills_container {

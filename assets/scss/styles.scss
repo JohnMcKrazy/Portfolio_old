@@ -1257,6 +1257,7 @@ BUTTON {
     .skills_containers {
         @include flexDirection(row, center, flex-start);
         width: var(--widthClamp);
+        margin-bottom: 3rem;
         .skills_container {
             width: auto;
             .skills_icons_container {
