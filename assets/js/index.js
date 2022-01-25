@@ -439,6 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const lebelBtnServices = document.querySelector('#services_btn_nav');
         const lebelBtnPortfolio = document.querySelector('#portfolio_btn_nav');
         const lebelBtnClient = document.querySelector('#clients_btn_nav');
+        const heroBtnsContainer = document.querySelector('#hero_btns_container');
         //*console.log(navWidth);
         if (navWidth > 1200) {
             lebelBtnMain.innerHTML = '<h3 class="btn_lebel">Inicio</h3>';
@@ -467,6 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
             skillsContainer.style.flexDirection = 'row';
             skillsContainer.style.justifyContent = 'center';
             skillsContainer.style.alignItems = 'flex-start';
+            heroBtnsContainer.style.flexDirection = 'row';
             closeMenu();
             //*console.log(navWidth);
         } else if (navWidth <= 950) {
@@ -476,6 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
             skillsContainer.style.flexDirection = 'column';
             skillsContainer.style.justifyContent = 'flex-start';
             skillsContainer.style.alignItems = 'center';
+            heroBtnsContainer.style.flexDirection = 'column';
             //*console.log(navWidth);
             closeMenuSocial();
         }

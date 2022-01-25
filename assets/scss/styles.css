@@ -1498,6 +1498,7 @@ BUTTON {
   gap: 2.5rem;
   margin-top: 2rem;
   width: 100%;
+  height: auto;
 }
 
 #hero_section #hero_content #hero_btns_container .btn {
