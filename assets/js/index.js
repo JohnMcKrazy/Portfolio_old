@@ -303,7 +303,6 @@ document.addEventListener('DOMContentLoaded', () => {
             servicesContainer.classList.add('services_container_two_columns');
             servicesContainer.classList.remove('services_container_one_columns');
             serviceContainer.forEach((container) => {
-                console.log(container);
                 container.style.width = '300px';
                 container.style.height = 'auto';
                 serviceCardsLeft.forEach((card) => {
@@ -327,7 +326,6 @@ document.addEventListener('DOMContentLoaded', () => {
             servicesContainer.classList.add('services_container_two_columns');
             servicesContainer.classList.remove('services_container_one_columns');
             serviceContainer.forEach((container) => {
-                console.log(container);
                 container.style.width = '300px';
                 container.style.height = 'auto';
                 serviceCardsLeft.forEach((card) => {
