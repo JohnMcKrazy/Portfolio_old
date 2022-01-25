@@ -42,6 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const lebelBtnPortfolio = document.querySelector('#portfolio_btn_nav');
     const lebelBtnClient = document.querySelector('#clients_btn_nav');
     const heroBtnsContainer = document.querySelector('#hero_btns_container');
+
+    const servicesContainer = document.querySelector('#services_container_id');
+    const serviceContainer = document.querySelectorAll('.service_container');
+    const serviceCardsLeft = document.querySelectorAll('.service_card_left');
+    const serviceCardsRight = document.querySelectorAll('.service_card_right');
+
     //^FETCH JASON COMPANYS DATA-- START
     const portfolioData = './portfolioDB.json';
     //^FETCH JSON COMPANYS DATA-- OVER
@@ -271,6 +277,11 @@ document.addEventListener('DOMContentLoaded', () => {
             skillsContainer.style.justifyContent = 'center';
             skillsContainer.style.alignItems = 'flex-start';
             heroBtnsContainer.style.flexDirection = 'row';
+            servicesContainer.classList.add('services_container_one_columns');
+            servicesContainer.classList.remove('services_container_two_columns');
+            serviceContainer.forEach((container) => {
+                container.style.width = '100%';
+            });
             closeMenu();
         } else if (windowWidth <= 950) {
             btnsNavContainer.style.display = 'none';
@@ -280,7 +291,11 @@ document.addEventListener('DOMContentLoaded', () => {
             skillsContainer.style.justifyContent = 'flex-start';
             skillsContainer.style.alignItems = 'center';
             heroBtnsContainer.style.flexDirection = 'column';
-
+            servicesContainer.classList.add('services_container_two_columns');
+            servicesContainer.classList.remove('services_container_one_columns');
+            serviceContainer.forEach((container) => {
+                container.style.width = '250px';
+            });
             closeMenuSocial();
         }
     };
@@ -505,6 +520,20 @@ document.addEventListener('DOMContentLoaded', () => {
             lebelBtnServices.innerHTML = '<h3 class="btn_lebel">Servicios</h3>';
             lebelBtnPortfolio.innerHTML = '<h3 class="btn_lebel">Portafolio</h3>';
             lebelBtnClient.innerHTML = '<h3 class="btn_lebel">Clientes</h3>';
+
+            servicesContainer.classList.add('services_container_one_columns');
+            servicesContainer.classList.remove('services_container_two_columns');
+            serviceContainer.forEach((container) => {
+                container.style.width = '100%';
+                serviceCardsLeft.forEach((card) => {
+                    card.style.flexDirection = 'row';
+                    card.style.height = '30rem';
+                });
+                serviceCardsRight.forEach((card) => {
+                    card.style.flexDirection = 'row-reverse';
+                    card.style.height = '30rem';
+                });
+            });
             //*console.log(navWidth);
         } else if (navWidth > 950 || (navWidth < 1200 && navWidth > 950)) {
             lebelBtnMain.innerHTML =
@@ -526,6 +555,24 @@ document.addEventListener('DOMContentLoaded', () => {
             skillsContainer.style.justifyContent = 'center';
             skillsContainer.style.alignItems = 'flex-start';
             heroBtnsContainer.style.flexDirection = 'row';
+            servicesContainer.classList.add('services_container_two_columns');
+            servicesContainer.classList.remove('services_container_one_columns');
+            serviceContainer.forEach((container) => {
+                console.log(container);
+                container.style.width = '300px';
+                container.style.height = 'auto';
+                serviceCardsLeft.forEach((card) => {
+                    console.log(card.style);
+                    card.style.flexDirection = 'column';
+                    card.style.height = 'auto';
+                });
+                serviceCardsRight.forEach((card) => {
+                    console.log(card.style);
+                    card.style.flexDirection = 'column';
+                    card.style.height = 'auto';
+                });
+            });
+
             closeMenu();
             //*console.log(navWidth);
         } else if (navWidth <= 950) {
@@ -536,7 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
             skillsContainer.style.justifyContent = 'flex-start';
             skillsContainer.style.alignItems = 'center';
             heroBtnsContainer.style.flexDirection = 'column';
-            //*console.log(navWidth);
+
             closeMenuSocial();
         }
     };
