@@ -476,7 +476,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 animationUpContainers.forEach((container) => {
                     //*console.log(container.id);
                     const currentItem = document.querySelector(`#${container.id}`);
-                    animateItem(currentItem, '1', 'translateY(50%)');
+                    animateItem(currentItem, '0', 'translateY(50%)');
                 });
             }
             /* if (entry.isIntersecting) {
@@ -520,9 +520,13 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^SKILLS CONTAINER ANIMATION--OVER
     //^^ **************************************************************************** *//
     //^ NAV RESIZE OBSERVER PARA MENU RESPONSIVE-- START --/CHANGE MENU NAV BY SCREEN SIZE
+
     const watchNavResize = ([entry]) => {
         const navWidth = entry.contentRect.width;
-
+        const chengeCardStyle = (container, fx, he) => {
+            container.style.flexDirection = fx;
+            container.style.height = he;
+        };
         //*console.log(navWidth);
         if (navWidth > 1200) {
             lebelBtnMain.innerHTML = '<h3 class="btn_lebel">Inicio</h3>';
@@ -537,12 +541,14 @@ document.addEventListener('DOMContentLoaded', () => {
             serviceContainer.forEach((container) => {
                 container.style.width = '100%';
                 serviceCardsLeft.forEach((card) => {
-                    card.style.flexDirection = 'row';
-                    card.style.height = '30rem';
+                    //*card.style.flexDirection = 'row';
+                    //*card.style.height = '30rem';
+                    chengeCardStyle(card, 'row', '30rem');
                 });
                 serviceCardsRight.forEach((card) => {
-                    card.style.flexDirection = 'row-reverse';
-                    card.style.height = '30rem';
+                    //*card.style.flexDirection = 'row-reverse';
+                    //*card.style.height = '30rem';
+                    chengeCardStyle(card, 'row-reverse', '30rem');
                 });
             });
             //*console.log(navWidth);
@@ -573,14 +579,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.style.width = '300px';
                 container.style.height = 'auto';
                 serviceCardsLeft.forEach((card) => {
-                    console.log(card.style);
-                    card.style.flexDirection = 'column';
-                    card.style.height = 'auto';
+                    //*card.style.flexDirection = 'column';
+                    //*card.style.height = 'auto';
+                    chengeCardStyle(card, 'column', 'auto');
                 });
                 serviceCardsRight.forEach((card) => {
-                    console.log(card.style);
-                    card.style.flexDirection = 'column';
-                    card.style.height = 'auto';
+                    //*card.style.flexDirection = 'column';
+                    //*card.style.height = 'auto';
+                    chengeCardStyle(card, 'column', 'auto');
                 });
             });
 

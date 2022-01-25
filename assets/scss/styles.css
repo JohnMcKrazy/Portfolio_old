@@ -572,9 +572,6 @@ ul {
   -webkit-text-stroke: 1px var(--firstColor);
   color: transparent;
   font-size: clamp(2.5rem, calc(1.5rem + 1.5vw), 4rem);
-  /* 
-    opacity: 0;
-    transform: translateY(50%); */
 }
 
 .section_subtitle {
@@ -584,7 +581,8 @@ ul {
   font-size: clamp(1.5rem, calc(1.5rem + 0.5vw), 2.2rem);
 }
 
-.animation_left {
+#service_card_original,
+#service_2_card_original {
   opacity: 0;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -592,7 +590,8 @@ ul {
   transition: all 1000ms ease;
 }
 
-.animation_right {
+#service_card_personalizado,
+#service_2_card_personalizado {
   opacity: 0;
   -webkit-transform: translateX(50%);
           transform: translateX(50%);
@@ -600,7 +599,9 @@ ul {
   transition: all 1000ms ease;
 }
 
-.animation_up {
+#design_skills_container,
+#dev_skills_container,
+.title_section {
   opacity: 0;
   -webkit-transform: translateY(50%);
           transform: translateY(50%);
