@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
             menuSocialContainer.style.bottom = 'inherit';
             menuSocialContainer.style.top = '2rem';
             menuSocialContainer.style.flexDirection = 'column';
-            btnLogo.style.padding = '2.5rem';
+            btnLogo.style.width = '7rem';
             closeMenu();
             closeMenuSocial();
             setTimeout(() => {
@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
             menuSocialContainer.style.top = 'inherit';
             menuSocialContainer.style.bottom = '2rem';
             menuSocialContainer.style.flexDirection = 'column-reverse';
-            btnLogo.style.padding = '1.5rem';
+            btnLogo.style.width = '5rem';
 
             closeMenu();
             closeMenuSocial();
@@ -472,7 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heroBtnsContainer.style.flexDirection = 'row';
             closeMenu();
             //*console.log(navWidth);
-        } else if (navWidth <= 950) {
+        } else if (navWidth > 500 || (navWidth < 950 && navWidth > 500)) {
             btnsNavContainer.style.display = 'none';
             btnMenuContainer.style.display = 'flex';
             menuSocialContainer.style.display = 'none';
@@ -482,6 +482,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heroBtnsContainer.style.flexDirection = 'column';
             //*console.log(navWidth);
             closeMenuSocial();
+        } else if (navWidth <= 500) {
         }
     };
     const navResizeObserve = new ResizeObserver(watchNavResize);
