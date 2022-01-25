@@ -1299,7 +1299,7 @@ BUTTON {
 //!SERVICES SECTION-- START
 #services_section {
     @include flexDirection(column, flex-start, center);
-
+    overflow: hidden;
     .services_container {
         width: var(--widthClamp);
         .service_container {

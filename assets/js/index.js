@@ -93,13 +93,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const rawData = await fetch(portfolioData);
             const data = await rawData.json();
             //*console.log(data);
+            const dataLength = data.length;
+            //*console.log(dataLength);
+
             data.forEach((item) => {
                 //*console.log(item);
                 const cloneCard = cardTemplate.cloneNode(true);
                 const projectCards = cloneCard.querySelector('.project_card');
+
                 //*console.log(projectCards);
                 fragment.appendChild(projectCards);
             });
+            console.log(fragment);
             portfolioCardsContainer.appendChild(fragment);
         } catch (error) {
             console.log(error);
@@ -272,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 500);
         }
-        console.log(windowWidth);
+        //*console.log(windowWidth);
 
         //^^ ********* //
         if (windowWidth > 1200) {
