@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnsMenu = document.querySelectorAll('.btn_menu');
     const btnsNav = document.querySelectorAll('.btn_nav');
     const btnsSection = document.querySelectorAll('.btn_section');
-    const sectionTitles = document.querySelectorAll('.title_section');
+    //*const sectionTitles = document.querySelectorAll('.animation_up');
     const formEnviarBtn = document.querySelector('#contact_form_send_btn');
     const btnContact = document.querySelectorAll('.contact_btn');
     const contactModal = document.querySelector('#contact_modal');
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnsMenuSocial = document.querySelectorAll('.social_btn');
     const menuSocialBtn = document.querySelector('#contact_menu_btn');
     const menuSocialBtnsContainer = document.querySelector('.menu_social_btns_container');
-    const swipeContainers = document.querySelectorAll('.swipe_animation_container');
+    const swipeAnimationContainers = document.querySelectorAll('.swipe_animation_container');
 
     const skillsContainer = document.querySelector('.skills_containers');
     const lebelBtnMain = document.querySelector('#main_btn_nav');
@@ -394,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //^CHECK MENU SECTION POSITION-- OVER
     //^ ************************************************************************* *//
     //^OBSERVER EXTRA SECTIONS--START
-    quoteSections.forEach((quote) => {
+    /* quoteSections.forEach((quote) => {
         //*console.log(blockquoteExtraSection);
         const watchExtraSections = ([entry]) => {
             const name = entry.target.attributes[2].value;
@@ -412,12 +412,12 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         const extraSectionsObserver = new IntersectionObserver(watchExtraSections, optionsIO_extra_sections);
         extraSectionsObserver.observe(quote);
-    });
+    }); */
     //^OBSERVER EXTRA SECTIONS--OVER
     //^ ***************************************************************************** *//
     //^^OBSERVER SECTION TITLES-- START
 
-    sectionTitles.forEach((title) => {
+    /*  sectionTitles.forEach((title) => {
         const watchTitles = ([entry]) => {
             const currentTitle = entry.target.id;
             const eachTitle = document.querySelector(`#${currentTitle}`);
@@ -436,15 +436,16 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         const titlesObserver = new IntersectionObserver(watchTitles, optionsIO_titles);
         titlesObserver.observe(title);
-    });
+    }); */
     //^^OBSERVER SECTION TITLES-- OVER
     //^ ***************************************************************************** *//
     //^^SKILLS CONTAINER ANIMATION--START
     //^^ANIMATION ITEM SWIPE--START
-    swipeContainers.forEach((container) => {
-        const watchSwipeContainer = ([entry]) => {
+    swipeAnimationContainers.forEach((container) => {
+        const watchSwipeAnimationContainer = ([entry]) => {
             const animationLeftContainers = entry.target.querySelectorAll('.animation_left');
             const animationRightContainers = entry.target.querySelectorAll('.animation_right');
+            const animationUpContainers = entry.target.querySelectorAll('.animation_up');
             if (entry.isIntersecting) {
                 animationLeftContainers.forEach((container) => {
                     //*console.log(container.id);
@@ -456,6 +457,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     const currentItem = document.querySelector(`#${container.id}`);
                     animateItem(currentItem, '1', 'translateX(0)');
                 });
+                animationUpContainers.forEach((container) => {
+                    //*console.log(container.id);
+                    const currentItem = document.querySelector(`#${container.id}`);
+                    animateItem(currentItem, '1', 'translateY(0)');
+                });
             } else {
                 animationLeftContainers.forEach((container) => {
                     //*console.log(container.id);
@@ -466,6 +472,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     //*console.log(container.id);
                     const currentItem = document.querySelector(`#${container.id}`);
                     animateItem(currentItem, '0', 'translateX(50%)');
+                });
+                animationUpContainers.forEach((container) => {
+                    //*console.log(container.id);
+                    const currentItem = document.querySelector(`#${container.id}`);
+                    animateItem(currentItem, '1', 'translateY(50%)');
                 });
             }
             /* if (entry.isIntersecting) {
@@ -501,7 +512,7 @@ document.addEventListener('DOMContentLoaded', () => {
             threshold: '.4',
         };
 
-        const skillsContainersObserver = new IntersectionObserver(watchSwipeContainer, optionsIO_skills);
+        const skillsContainersObserver = new IntersectionObserver(watchSwipeAnimationContainer, optionsIO_skills);
         skillsContainersObserver.observe(container);
     });
     //^^ANIMATION ITEM SWIPE--OVER

@@ -575,9 +575,9 @@ ul {
     color: transparent;
     font-size: clamp(2.5rem, calc(1.5rem + 1.5vw), 4rem);
     //*font-size: 4rem;
+    /* 
     opacity: 0;
-    transform: translateY(50%);
-    transition: all 1000ms ease;
+    transform: translateY(50%); */
 }
 .section_subtitle {
     color: var(--textColor);
@@ -586,9 +586,7 @@ ul {
     font-size: clamp(1.5rem, calc(1.5rem + 0.5vw), 2.2rem);
 }
 //*SWIPER LEFT CONTAINER--START
-#service_card_original,
-#service_2_card_original,
-#design_skills_container {
+.animation_left {
     opacity: 0;
     transform: translateX(-50%);
     transition: all 1000ms ease;
@@ -596,15 +594,18 @@ ul {
 //*SWIPER LEFT CONTAINER--OVER
 //* ************************************************************************** *//
 //*SWIPER RIGHT CONTAINER--START
-#service_card_personalizado,
-#service_2_card_personalizado,
-#dev_skills_container {
+.animation_right {
     opacity: 0;
     transform: translateX(50%);
     transition: all 1000ms ease;
 }
 //*SWIPER RIGHT CONTAINER--OVER
 //* ************************************************************************** *//
+.animation_up {
+    opacity: 0;
+    transform: translateY(50%);
+    transition: all 2000ms ease;
+}
 BUTTON {
     padding: 0;
     background: none;
@@ -1106,8 +1107,6 @@ BUTTON {
     }
     .blockquote_container {
         position: relative;
-        opacity: 0;
-        transform: translateY(50%);
         transition: all 1s ease;
         .quote_icon_container {
             @include flex(center, center);
