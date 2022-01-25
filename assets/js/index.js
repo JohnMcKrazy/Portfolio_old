@@ -256,7 +256,9 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         //~~SET CARD CHANGES--OVER
         //~~ ************************************************************************************************** *//
-        if (widConf > 1200) {
+        const firstBreak = 1300;
+        const secondBreak = 950;
+        if (widConf > firstBreak) {
             lebelBtnMain.innerHTML = '<h3 class="btn_lebel">Inicio</h3>';
             lebelBtnAbout.innerHTML = '<h3 class="btn_lebel">Acerca de</h3>';
             lebelBtnSkills.innerHTML = '<h3 class="btn_lebel">Habilidades</h3>';
@@ -280,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
             //*console.log(navWidth);
-        } else if (widConf > 950 || (widConf < 1200 && widConf > 950)) {
+        } else if (widConf > secondBreak || (widConf < firstBreak && widConf > secondBreak)) {
             lebelBtnMain.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="home_icon_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Inicio</title><path class="cls-1" d="M19 21H5a1 1 0 0 1-1-1v-9H1l10.327-9.388a1 1 0 0 1 1.346 0L23 11h-3v9a1 1 0 0 1-1 1zM6 19h12V9.157l-6-5.454-6 5.454V19z"/></svg>';
             lebelBtnAbout.innerHTML =
@@ -315,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             closeMenu();
             //*console.log(navWidth);
-        } else if (widConf <= 950) {
+        } else if (widConf <= secondBreak) {
             btnsNavContainer.style.display = 'none';
             btnMenuContainer.style.display = 'flex';
             menuSocialContainer.style.display = 'none';
@@ -329,13 +331,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.style.width = '300px';
                 container.style.height = 'auto';
                 serviceCardsLeft.forEach((card) => {
-                    //*card.style.flexDirection = 'column';
-                    //*card.style.height = 'auto';
                     changeCardStyle(card, 'column', 'auto');
                 });
                 serviceCardsRight.forEach((card) => {
-                    //*card.style.flexDirection = 'column';
-                    //*card.style.height = 'auto';
                     changeCardStyle(card, 'column', 'auto');
                 });
             });
@@ -442,53 +440,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     //^CHECK MENU SECTION POSITION-- OVER
     //^ ************************************************************************* *//
-    //^OBSERVER EXTRA SECTIONS--START
-    /* quoteSections.forEach((quote) => {
-        //*console.log(blockquoteExtraSection);
-        const watchExtraSections = ([entry]) => {
-            const name = entry.target.attributes[2].value;
-            const sectionIsIntersecting = entry.isIntersecting;
-            const target = entry.target;
-            const bq = target.querySelector('.blockquote_container');
-            const dataname = entry.target.dataset.name;
-            if (sectionIsIntersecting && dataname === 'quote') {
-                //*console.log(dataname);
-                animateItem(bq, '1', 'translateY(0)');
-            }
-        };
-        const optionsIO_extra_sections = {
-            threshold: 0.7,
-        };
-        const extraSectionsObserver = new IntersectionObserver(watchExtraSections, optionsIO_extra_sections);
-        extraSectionsObserver.observe(quote);
-    }); */
-    //^OBSERVER EXTRA SECTIONS--OVER
-    //^ ***************************************************************************** *//
-    //^^OBSERVER SECTION TITLES-- START
-
-    /*  sectionTitles.forEach((title) => {
-        const watchTitles = ([entry]) => {
-            const currentTitle = entry.target.id;
-            const eachTitle = document.querySelector(`#${currentTitle}`);
-            if (entry.isIntersecting) {
-                //*console.log(eachTitle);
-                animateItem(eachTitle, '1', 'translateY(0)');
-            } else {
-                const otherTitles = entry.target.id;
-                const titlesOut = document.querySelector(`#${otherTitles}`);
-
-                animateItem(titlesOut, '0', 'translateY(50%)');
-            }
-        };
-        const optionsIO_titles = {
-            threshold: '1',
-        };
-        const titlesObserver = new IntersectionObserver(watchTitles, optionsIO_titles);
-        titlesObserver.observe(title);
-    }); */
-    //^^OBSERVER SECTION TITLES-- OVER
-    //^ ***************************************************************************** *//
-    //^^SKILLS CONTAINER ANIMATION--START
     //^^ANIMATION ITEM SWIPE--START
 
     swipeAnimationContainersFull.forEach((container) => {
@@ -621,7 +572,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const watchNavResize = ([entry]) => {
         const navWidth = entry.contentRect.width;
         configSize(navWidth);
-        //*console.log(navWidth);
     };
     const navResizeObserve = new ResizeObserver(watchNavResize);
     navResizeObserve.observe(nav);
