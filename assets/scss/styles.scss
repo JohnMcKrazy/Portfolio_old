@@ -1046,6 +1046,7 @@ BUTTON {
                 color: var(--textColor);
                 .btn_lebel {
                     font-size: 1.5rem;
+                    font-weight: 600;
                 }
                 .nav_menu_icon_svg {
                     height: 100%;
@@ -1402,7 +1403,7 @@ BUTTON {
 //!CLIENTS SECTION-- START
 
 #clients_section {
-    @include flexDirection(column, flex-start, center);
+    @include flexDirection(column, center, center);
     .clients_container {
         @include flexDirection(row, center, center);
         flex-wrap: wrap;

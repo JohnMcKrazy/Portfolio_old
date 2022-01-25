@@ -1262,6 +1262,7 @@ BUTTON {
 
 .nav .nav_content #nav_sections_btns_container .btn_nav .btn_lebel {
   font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .nav .nav_content #nav_sections_btns_container .btn_nav .nav_menu_icon_svg {
@@ -1875,9 +1876,9 @@ BUTTON {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
