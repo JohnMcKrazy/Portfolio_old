@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
             servicesContainer.classList.add('services_container_two_columns');
             servicesContainer.classList.remove('services_container_one_columns');
             serviceContainer.forEach((container) => {
-                container.style.width = '300px';
+                container.style.width = '280px';
                 container.style.height = 'auto';
                 serviceCardsLeft.forEach((card) => {
                     changeCardStyle(card, 'column', 'auto');

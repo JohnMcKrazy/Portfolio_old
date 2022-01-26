@@ -20,10 +20,10 @@
 }
 @keyframes zoom {
     50% {
-        scale: 1.2;
+        transform: scale(1.2);
     }
     100% {
-        scale: 1;
+        transform: scale(1);
     }
 }
 //! ANIMATIONS OVER
@@ -73,7 +73,7 @@
     --zIndexFull: 4;
     //!Z INDEX COUNT-- OVER
     //!GENERAL START
-    --pushTRansition: transform 0.2seg ease;
+    --pushTtansition: transform 1000ms ease;
     --border: solid 0.2rem;
     --borderMenu: solid 0.3rem;
     --borderRadius: 0.25rem;
@@ -444,7 +444,7 @@ body {
         }
     }
     #js_icon_svg {
-        scale: 0.7;
+        transform: scale(0.7);
         .cls-1 {
             fill: #f7df1e;
         }
@@ -512,7 +512,6 @@ body {
 scrollbar-button,
 ::-webkit-scrollbar-button {
     border: solid 0.1rem var(--firstColor);
-    display: solid;
 }
 //^ width
 ::-webkit-scrollbar {
@@ -734,6 +733,20 @@ BUTTON {
 //! MODAL OVER
 //! *********************************************************************************************** *//
 //! LOADER START
+@keyframes beat {
+    10% {
+        transform: translate(-50%, -50%) scale(1.3);
+    }
+    25% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    35% {
+        transform: translate(-50%, -50%) scale(1.4);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
 .loader {
     position: fixed;
     top: 0;
@@ -743,20 +756,7 @@ BUTTON {
     background: var(--navbarColor);
     z-index: var(--zIndexFull);
     visibility: visible;
-    @keyframes beat {
-        10% {
-            transform: translate(-50%, -50%) scale(1.3);
-        }
-        25% {
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-        35% {
-            transform: translate(-50%, -50%) scale(1.4);
-        }
-        100% {
-            transform: translate(-50%, -50%) scale(1);
-        }
-    }
+
     .spinner {
         position: absolute;
         top: 50%;
@@ -798,7 +798,7 @@ BUTTON {
     #contact_menu_btn:hover,
     #contact_menu_btn:focus {
         .social_icon_svg {
-            scale: 1.2;
+            transform: scale(1.2);
         }
     }
     #contact_menu_btn:active {
@@ -840,7 +840,7 @@ BUTTON {
     }
     .btn_menu_social:hover,
     .btn_menu_social:focus {
-        scale: 1.2;
+        transform: scale(1.2);
     }
     .btn_menu_social:active {
         background: var(--firstColor);
@@ -1034,7 +1034,7 @@ BUTTON {
         }
         #btn_menu_container:active {
             #menu_btn {
-                transition: var(--pushTRansition);
+                transition: var(--pushTransition);
                 transform: scale(0.9);
             }
         }
@@ -1065,7 +1065,8 @@ BUTTON {
                 }
             }
             .btn_nav:hover,
-            .btn_nav:focus {
+            .btn_nav:focus,
+            .btn_nav:active {
                 border-color: var(--firstColor);
                 background: var(--firstColorHover);
                 .nav_menu_icon_svg {
@@ -1080,17 +1081,6 @@ BUTTON {
                     .cls-1 {
                         fill: var(--textContrastColor);
                     }
-                }
-            }
-            .btn_nav:active {
-                background: var(--firstColor);
-                .nav_menu_icon_svg {
-                    .cls-1 {
-                        fill: var(--textContrastColor);
-                    }
-                }
-                .btn_lebel {
-                    color: var(--textContrastColor);
                 }
             }
         }
@@ -1282,13 +1272,15 @@ BUTTON {
                     }
                 }
                 #gitHub_icon_svg {
-                    scale: 0.7;
+                    transform: scale(0.7);
                     .cls-1 {
                         fill: var(--textColor);
                     }
                 }
             }
-            .skills_icon_container:hover {
+            .skills_icon_container:hover,
+            .skills_icon_container:active,
+            .skills_icon_container:focus {
                 animation: zoom 1000ms ease-out;
             }
             #node_icon_container {
@@ -1452,7 +1444,7 @@ BUTTON {
         .client_logo_container:active {
             position: relative;
             filter: grayscale(0);
-            //*animation: zoom 1000ms ease-out;
+            animation: zoom 1000ms ease-out;
         }
     }
 }
@@ -1487,7 +1479,7 @@ FOOTER {
             cursor: pointer;
 
             #coffee_mug_icon_svg {
-                scale: 0.8;
+                transform: scale(0.8);
             }
         }
         .plus_sign {
@@ -1496,10 +1488,10 @@ FOOTER {
             text-align: center;
             color: var(--textContrastColor);
         }
-        .tech_logo_container:hover {
-            .client_icon_svg {
-                scale: 1.2;
-            }
+        .tech_logo_container:hover,
+        .tech_logo_container:focus,
+        .tech_logo_container:active {
+            animation: zoom 1000ms ease-out;
         }
     }
 }
