@@ -8,11 +8,11 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- Etiqueta title & meta descripción -->
-        <title>John.K - Diseñador Gráfico y Desarrollo Web</title>
-        <meta name="description" content="Diseñador Gráfico y programador Front-end" />
+        <title>John.K - Diseño Gráfico y Desarrollo Web, Front-end</title>
+        <meta name="description" content="Diseño Gráfico y Desarrollo Web, Front-end" />
         <meta
             name="keywords"
-            content="css, sass, scss, html5, html, javascript, ECMAScript, design,showcase, tools, design, wordpress, webdesign, graphic design, illustrator, photoshop, premier, responsive, web,development, web development, art, adobe, logo, branding, business card, social network, banner, portfolio"
+            content="CSS, css, SASS, sass,  SCSS, scss,  HTML5, html5, HTML, html, JavaScript, javascript, ECMAScript, Design, design, diseño, Diseño, Wordpress, wordpress, Web Design, web design, diseño web, Diseño WEB, Graphic Design, graphic design, diseño gráfico, Diseño Gráfico, illustrator, photoshop, premier, responsive, WEB, web, Development, development, Desarrollo, desarrollo,  WEB Development, web development, desarrollo web, Desarrollo WEB, art, Art, Arte, arte, adobe, logo, Logo, Branding, branding, business card, Business Card, social network, Social Network, social media, Social Media, Redes Sociales, redes sociales, banner, Banner, Portfolio, portfolio"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -2110,35 +2110,27 @@
         <!--~~ ******************************************************-->
         <!--~~MODALS START -->
         <!--&CARD TEMPLATE START-->
-        <template id="card_template">
+        <template id="card_project_template">
             <div class="swipe_animation_container_half">
-                <div class="project_card" id="">
+                <div class="project_card" id="" tabindex="0">
                     <div class="project_img"></div>
                     <div class="project_info">
                         <div class="info_project_container">
-                            <h2 class="title">Titulo Provisional</h2>
-                            <h3>Informacion basica de la empresa</h3>
-                            <p>
-                                tipo de proyecto Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero vel ex magni atque possimus nostrum
-                                obcaecati in debitis quibusdam deleniti odit, ad enim laboriosam error vero numquam provident, harum saepe!
-                            </p>
+                            <h2 class="title">Empresa</h2>
+                            <h3>Tipo de trabajo</h3>
                         </div>
                         <div class="flags_project_container">
-                            <div class="btns_flag_project_container">
-                                <h3>Tecnologias utilizadas</h3>
-                                <button class="flag_project_btn tecnology_btn btn">Illustrator</button>
-                            </div>
-                            <div class="btns_flag_project_container">
-                                <h3>Alcanze del proyecto</h3>
-                                <button class="flag_project_btn issue_btn btn">Diseño gráfico</button>
-                                <button class="flag_project_btn issue_btn btn">Logotipo</button>
-                                <button class="flag_project_btn issue_btn btn">Identridad corporativa</button>
-                                <button class="flag_project_btn issue_btn btn">Papeleria corporativa</button>
-                            </div>
+                            <fieldset class="btns_flag_project_container margin_bottom">
+                                <legend class="flags_title">Tecnologias utilizadas</legend>
+                            </fieldset>
+                            <button type="button" class="flag_project_btn btn more_btn" tabindex="-1">Ver mas</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </template>
+        <template id="btn_project_template">
+            <button class="flag_project_btn btn" tabindex="-1">Boton prueba</button>
         </template>
         <!--&CARD TEMPLATE START-->
         <!--& ******************************************************-->

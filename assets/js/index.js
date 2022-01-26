@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     //!GENERAL CONSTANTS --START
     const fragment = document.createDocumentFragment();
-    const cardTemplate = document.querySelector('#card_template').content;
+    const cardProjectTemplate = document.querySelector('#card_project_template').content;
+    const btnProjectTemplate = document.querySelector('#btn_project_template').content;
+
     const body = document.querySelector('BODY');
     const nav = document.querySelector('.nav');
     const btnLogo = document.querySelector('#logo_nav_btn');
@@ -23,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.section');
     const btnMenuContainer = document.querySelector('#btn_menu_container');
     const btnsNavContainer = document.querySelector('#nav_sections_btns_container');
-    const quoteSections = document.querySelectorAll('.quote_section');
     const portfolioCardsContainer = document.querySelector('#portfolio_cards_container');
     const htmlLebel = document.documentElement;
     const loader = document.querySelector('.loader');
@@ -105,10 +106,25 @@ document.addEventListener('DOMContentLoaded', () => {
             //*console.log(dataLength);
 
             data.forEach((item) => {
-                //*console.log(item);
-                const cloneCard = cardTemplate.cloneNode(true);
-                const projectCards = cloneCard.querySelector('.project_card');
+                const cloneCard = cardProjectTemplate.cloneNode(true);
 
+                const projectCards = cloneCard.querySelector('.project_card');
+                const fieldsetCard = cloneCard.querySelector('.btns_flag_project_container');
+                const cardTitle = cloneCard.querySelector('.title');
+                //* ******************************************************************************** *//
+                const clientName = item['client_name'];
+                const clientTechnologiesInProjects = item['projects'].technologies;
+                console.log(clientTechnologiesInProjects);
+                clientTechnologiesInProjects.forEach((project) => {
+                    const cloneBtn = btnProjectTemplate.cloneNode(true);
+                    const flagBtn = cloneBtn.querySelector('.flag_project_btn');
+                    console.log(project);
+                    flagBtn.textContent = project;
+                    fieldsetCard.appendChild(flagBtn);
+                });
+                //*console.log(item);
+                cardTitle.textContent = clientName;
+                //*console.log(clientName);
                 //*console.log(projectCards);
                 fragment.appendChild(projectCards);
             });
@@ -658,4 +674,15 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ ************************************************************************* *//
 
     menuSocialBtn.addEventListener('click', socialMenuBtnActions);
+
+    /* const checkMark = () => {
+        const checkBtn = document.querySelector('.complete-button');
+
+        const lessonBtn = document.querySelector('.lesson-button-group__item');
+        checkBtn.click();
+        setTimeout(() => {
+            lessonBtn.click();
+        }, 2000);
+    };
+    checkMark(); */
 });

@@ -1841,8 +1841,8 @@ BUTTON {
   position: relative;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
   width: clamp(12rem, 35rem, 80%);
   height: auto;
   overflow: hidden;
@@ -1870,23 +1870,110 @@ BUTTON {
 
 .project_card .project_info {
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: auto;
-  background: var(--navbarColor);
+  height: 100%;
+  background: var(--navbarColor) 70%;
   padding: 2rem 2.5rem;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  -webkit-transform: translateY(105%);
-          transform: translateY(105%);
-  -webkit-transition: -webkit-transform 0.5s ease;
-  transition: -webkit-transform 0.5s ease;
-  transition: transform 0.5s ease;
-  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 
-.project_card .project_info .title {
+.project_card .project_info .info_project_container {
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.project_card .project_info .info_project_container .title {
+  padding-bottom: 1rem;
+}
+
+.project_card .project_info .flags_project_container {
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.project_card .project_info .flags_project_container .btns_flag_project_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: flex-start;
+  -webkit-column-gap: 0.3rem;
+          column-gap: 0.3rem;
+  row-gap: 0.5rem;
+  margin: 0;
+  padding: 1rem 0;
+  border: solid 3px var(--textColor);
+  border-radius: var(--borderRadius);
+  width: 100%;
+  text-align: center;
+}
+
+.project_card .project_info .flags_project_container .btns_flag_project_container legend {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.project_card .project_info .flags_project_container .btns_flag_project_container .btn {
+  border-color: var(--textColor);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.project_card .project_info .flags_project_container .btns_flag_project_container .btn:hover,
+.project_card .project_info .flags_project_container .btns_flag_project_container .bt:active,
+.project_card .project_info .flags_project_container .btns_flag_project_container .btn:focus {
+  background: var(--textColor);
+  color: var(--textContrastColor);
+}
+
+.project_card .project_info .flags_project_container .more_btn {
+  width: 100%;
+  background: var(--firstColorHover);
+  color: var(--textContrastColor);
+  border-color: var(--firstColorHover);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.project_card .project_info .flags_project_container .more_btn:hover,
+.project_card .project_info .flags_project_container .more_btn:focus,
+.project_card .project_info .flags_project_container .more_btn:active {
+  border-color: var(--firstColor);
+  background: var(--firstColor);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.project_card .project_info .flags_project_container .flags_title {
+  margin-bottom: 0.5rem;
+}
+
+.project_card .project_info .flags_project_container .margin_bottom {
   margin-bottom: 1rem;
 }
 
@@ -1900,8 +1987,7 @@ BUTTON {
 .project_card:hover .project_info,
 .project_card:active .project_info,
 .project_card:focus .project_info {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
+  opacity: 0.8;
 }
 
 #clients_section {

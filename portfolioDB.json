@@ -2,134 +2,31 @@
     {
         "client_name": "Creaciones Hermed",
         "client_logo": "",
-        "projects": [
-            {
-                "project_number": 1,
-                "type": "Packaging",
-                "description": "",
-                "reach": ["Caja", "Booklet", "Disco", "Packaging"],
-                "technologies": ["Adobe Illustrator"],
-                "images": {
-                    "avatar": "assets/img/impulso/logo_avatar.jpg",
-                    "hero": {
-                        "small": "",
-                        "big": "assets/img/impulso/poster_hero.jpg"
-                    },
-                    "1": {
-                        "small": "",
-                        "big": ""
-                    },
-                    "2": {
-                        "small": "",
-                        "big": ""
-                    },
-                    "3": {
-                        "small": "",
-                        "big": ""
-                    }
+        "projects": {
+            "type": ["Branding", "Tarjeta de presentacion", "Promocionales", "Edicion de imagen", "Redes Sociales"],
+            "description": "",
+            "reach": ["Tarjeta de presentacion", "Promocionales", "Edicion de imagen", "Redes Sociales"],
+            "technologies": ["Illustrator", "Photoshop"],
+            "images": {
+                "avatar": "assets/img/impulso/logo_avatar.jpg",
+                "hero": {
+                    "small": "",
+                    "big": "assets/img/impulso/poster_hero.jpg"
+                },
+                "1": {
+                    "small": "",
+                    "big": ""
+                },
+                "2": {
+                    "small": "",
+                    "big": ""
+                },
+                "3": {
+                    "small": "",
+                    "big": ""
                 }
             }
-        ],
+        },
         "votes": 2
-    },
-    {
-        "client_name": "Impulso",
-        "client_logo": "",
-        "projects": [
-            {
-                "project_number": 1,
-                "type": "Packaging",
-                "description": "",
-                "reach": ["Caja", "Booklet", "Disco", "Packaging"],
-                "technologies": ["Adobe Illustrator"],
-                "images": {
-                    "avatar": "assets/img/impulso/logo_avatar.jpg",
-                    "hero": {
-                        "small": "",
-                        "big": "assets/img/impulso/poster_hero.jpg"
-                    },
-                    "1": {
-                        "small": "",
-                        "big": ""
-                    },
-                    "2": {
-                        "small": "",
-                        "big": ""
-                    },
-                    "3": {
-                        "small": "",
-                        "big": ""
-                    }
-                }
-            }
-        ],
-        "votes": 5
-    },
-    {
-        "client_name": "Leiru",
-        "client_logo": "",
-        "projects": [
-            {
-                "project_number": 1,
-                "type": "Identidad Corporativa",
-                "description": "",
-                "reach": ["Logo", "Tarjeta de presentacion", "Flayer", "Firmas electronicas"],
-                "technologies": ["Adobe Illustrator"],
-                "images": {
-                    "avatar": "assets/img/leiru/logo_avatar.jpg",
-                    "hero": {
-                        "small": "",
-                        "big": "assets/img/leiru/poster_hero.jpg"
-                    },
-                    "1": {
-                        "small": "",
-                        "big": ""
-                    },
-                    "2": {
-                        "small": "",
-                        "big": ""
-                    },
-                    "3": {
-                        "small": "",
-                        "big": ""
-                    }
-                }
-            }
-        ],
-
-        "votes": 1
-    },
-    {
-        "client_name": "Verona",
-        "client_logo": "",
-        "projects": [
-            {
-                "project_number": 1,
-                "type": "Packaging",
-                "description": "",
-                "reach": ["Caja", "Booklet", "Disco", "Packaging"],
-                "technologies": ["Adobe Illustrator"],
-                "images": {
-                    "avatar": "assets/img/impulso/logo_avatar.jpg",
-                    "hero": {
-                        "small": "",
-                        "big": "assets/img/impulso/poster_hero.jpg"
-                    },
-                    "1": {
-                        "small": "",
-                        "big": ""
-                    },
-                    "2": {
-                        "small": "",
-                        "big": ""
-                    },
-                    "3": {
-                        "small": "",
-                        "big": ""
-                    }
-                }
-            }
-        ],
-        "votes": 15
     }
 ]
