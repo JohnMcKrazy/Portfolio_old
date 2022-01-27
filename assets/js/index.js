@@ -15,9 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnsMenu = document.querySelectorAll('.btn_menu');
     const btnsNav = document.querySelectorAll('.btn_nav');
     const btnsSection = document.querySelectorAll('.btn_section');
-    //*const sectionTitles = document.querySelectorAll('.animation_up');
     const formEnviarBtn = document.querySelector('#contact_form_send_btn');
     const btnContact = document.querySelectorAll('.contact_btn');
+    const storageAlertModal = document.querySelector('#first_msg_modal');
+    const acceptStorageWarningBtn = document.querySelector('#first_msg_modal_accept_btn');
     const contactModal = document.querySelector('#contact_modal');
     const closeModalContactForm = document.querySelector('#modal_form_close_btn');
     const btnHeroDown = document.querySelector('#hero_btn_down');
@@ -64,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let menuStatus = 'close';
     let menuSocialStatus = 'close';
     let contactModalStatus = 'close';
+    let storageWarningModalStatus = 'open';
     //!GENERAL VARIANTS--OVER
     //! ***********************************************************************************************//
     //!GENERAL START FUNCTIONS-- START
@@ -140,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ ************************************************************************* *//
     //^ CLOSE MENU SOCIAL-- START
     const closeMenuSocial = () => {
-        menuSocialBtnsContainer.style.height = 0;
+        menuSocialBtnsContainer.style.opacity = 0;
         menuSocialStatus = 'close';
     };
     //^ CLOSE MENU SOCIAL-- OVER
@@ -148,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ ACTIONS BTN MENU SOCIAL--START
     const socialMenuBtnActions = () => {
         if (menuSocialStatus === 'close') {
-            menuSocialBtnsContainer.style.height = 'auto';
+            menuSocialBtnsContainer.style.opacity = 1;
             menuSocialStatus = 'open';
         } else if (menuSocialStatus === 'open') {
             closeMenuSocial();
@@ -196,19 +198,34 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     //^ CLOSE MENU--OVER
     //^  **************************************************************/
+    //~GENERAL MODAL ACTIONS--START
+    const openModal = () => {
+        contactModal.style.display = 'flex';
+        contactModal.animate([{ opacity: '0' }, { opacity: '1' }], {
+            duration: 1000,
+            iterations: 1,
+            fill: 'forwards',
+        });
+    };
 
+    const closeModal = (cont) => {
+        cont.animate([{ opacity: '1' }, { opacity: '0' }], {
+            duration: 1000,
+            iterations: 1,
+            fill: 'forwards',
+        });
+        setTimeout(() => {
+            cont.style.display = 'none';
+        }, 1200);
+    };
+    //~GENERAL MODAL ACTIONS--OVER
+    //~ ******************************************************************************* *//
     //^ OPEN CONTACT MODAL-- START
+
     const openContactModal = () => {
         if (contactModalStatus === 'close') {
-            contactModal.animate([{ opacity: '0' }, { opacity: '1' }], {
-                duration: 1000,
-                iterations: 1,
-                fill: 'forwards',
-            });
+            openModal(contactModal);
             contactModalStatus = 'open';
-            contactModal.style.display = 'flex';
-            contactModal.style.justifyContent = 'center';
-            contactModal.style.alignItems = 'center';
         }
     };
     //^ OPEN CONTACT MODAL-- OVER
@@ -216,22 +233,21 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ CLOSE MODAL CONTACT FORM-- START
     const closeContactModal = () => {
         if (contactModalStatus === 'open') {
-            contactModal.animate([{ opacity: '1' }, { opacity: '0' }], {
-                duration: 1000,
-                iterations: 1,
-                fill: 'forwards',
-            });
-
-            setTimeout(() => {
-                contactModal.style.display = 'none';
-                contactModal.style.justifyContent = 'center';
-                contactModal.style.alignItems = 'center';
-            }, 1200);
+            closeModal(contactModal);
+            contactModalStatus = 'close';
         }
-        contactModalStatus = 'close';
     };
     //^ CLOSE MODAL CONTACT FORM-- OVER
     //^ ************************************************************************ *//
+    //^^STORAGE WARNING CLOSE--START
+    const closeStorageWarningModal = () => {
+        if (storageWarningModalStatus === 'open') {
+            closeModal(storageAlertModal);
+            storageWarningModalStatus = 'close';
+        }
+    };
+    //^^STORAGE WARNING CLOSE--OVER
+    //^^ *********************************************************************************** *//
     //^TO THE TOP-- START && **/RETURN THE PAGE TO THE PAGE TOP
     const toTheTop = () => {
         const currentPosition = body.getBoundingClientRect().top;
@@ -613,6 +629,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeMenuBtn.addEventListener('click', closeMenu);
     closeModalContactForm.addEventListener('click', closeContactModal);
     btnHeroDown.addEventListener('click', scrollOneHeight);
+    acceptStorageWarningBtn.addEventListener('click', closeStorageWarningModal);
     //^ BTNS HERO-- START && **/POSITION THE PAGE IN SECTIONS BY THE BTNS IN THE HERO SECTION
     btnsHero.forEach((btn) => {
         btn.addEventListener('click', () => {

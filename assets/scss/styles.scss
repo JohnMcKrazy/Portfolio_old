@@ -638,6 +638,21 @@ BUTTON {
     color: var(--textContrastColor);
     background: var(--firstColor);
 }
+
+.more_btn {
+    width: 100%;
+    background: var(--firstColorHover);
+    color: var(--textContrastColor);
+    border-color: var(--firstColorHover);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.more_btn:hover,
+.more_btn:focus,
+.more_btn:active {
+    border-color: var(--firstColor);
+    background: var(--firstColor);
+}
 //^^ BASIC BUTTON OVER
 //^^CLOSE BTN OVER
 .btn_theme,
@@ -668,71 +683,83 @@ BUTTON {
 //! ***************************************************************************************************/
 //!MODAL START
 .modal {
+    @include flexDirection(column, flex-start, center);
     position: fixed;
-    display: none;
-    opacity: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: var(--backgroundModal);
+    top: 2rem;
+    left: 50%;
+    height: fit-content;
     z-index: var(--zIndexFull);
-    .window_modal {
-        background: var(--navbarColor);
-        width: clamp(300px, 800px, 90%);
+    background: var(--navbarColor);
+    width: clamp(300px, 800px, 90%);
+    transform: translateX(-50%);
+    opacity: 0;
+    padding: 2rem 1.5rem;
+    box-shadow: 3px 3px 0.5rem rgba(126, 126, 126, 0.5), -3px -3px 0.5rem rgba(126, 126, 126, 0.5);
+    transition: all 2000ms ease;
+    .close_btn {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 0.5rem;
+    }
+    .close_btn:hover,
+    .close_btn:focus,
+    .close_btn:active {
+        background: var(--firstColor);
 
-        .close_btn {
-            float: right;
-            padding: 0.5rem;
-        }
-        .close_btn:hover,
-        .close_btn:focus,
-        .close_btn:active {
-            background: var(--firstColor);
-
-            .close_icon_svg {
-                .cls-1 {
-                    fill: var(--textContrastColor);
-                }
+        .close_icon_svg {
+            .cls-1 {
+                fill: var(--textContrastColor);
             }
         }
-        .modal_info {
+    }
+    .modal_info {
+        width: 100%;
+        height: fit-content;
+        margin-bottom: 1rem;
+    }
+    .modal_form {
+        width: 100%;
+        height: auto;
+        LABEL {
+            @include flex(flex-start, center);
+            display: block;
             width: 100%;
-            height: auto;
-            padding: 2rem 2rem 1rem;
+            padding: 0.5rem 0;
+            font-weight: 600;
+            font-size: 1rem;
         }
-        .modal_form {
+        INPUT {
+            display: block;
             width: 100%;
-            height: auto;
-            padding: 1rem 2rem 3rem;
-            LABEL {
-                @include flex(flex-start, center);
-                display: block;
-                width: 100%;
-                padding: 0.5rem 0;
-                font-weight: 600;
-                font-size: 1rem;
-            }
-            INPUT {
-                display: block;
-                width: 100%;
-                border: none;
-                padding: 0.5rem 1rem;
-                margin-bottom: 1rem;
-                background: var(--backgroundColor);
-            }
-            INPUT:focus {
-                outline: none;
-                background: var(--backgroundOff);
-            }
-            BUTTON {
-                width: 100%;
-            }
+            border: none;
+            padding: 0.5rem 1rem;
+            margin-bottom: 1rem;
+            background: var(--backgroundColor);
+        }
+        INPUT:focus {
+            outline: none;
+            background: var(--backgroundOff);
+        }
+        BUTTON {
+            width: 100%;
         }
     }
 }
 //! MODAL OVER
 //! *********************************************************************************************** *//
+//*#first_msg_modal,
+#contact_modal {
+    display: none;
+    opacity: 0;
+}
+//! FIRST MESSAGE MODAL--START
+#first_msg_modal {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+//! FIRST MESSAGE MODAL--OVER
+//! ************************************************************************************************ *//
 //! LOADER START
 @keyframes beat {
     10% {
@@ -815,13 +842,13 @@ BUTTON {
     }
 
     .menu_social_btns_container {
-        height: 0;
+        height: fit-content;
         width: 4rem;
         background: var(--navbarColor);
         border-radius: var(--borderRadius);
         overflow: hidden;
-
-        transition: all 1s ease;
+        opacity: 0;
+        transition: all 500ms ease;
     }
     A {
         height: 100%;
@@ -1414,21 +1441,6 @@ BUTTON {
                     font-size: 1.5rem;
                     font-weight: 600;
                 }
-            }
-            .more_btn {
-                width: 100%;
-                background: var(--firstColorHover);
-                color: var(--textContrastColor);
-                border-color: var(--firstColorHover);
-                font-weight: 600;
-                font-size: 1.2rem;
-            }
-            .more_btn:hover,
-            .more_btn:focus,
-            .more_btn:active {
-                border-color: var(--firstColor);
-                background: var(--firstColor);
-                transform: scale(1.1);
             }
             .flags_title {
                 margin-bottom: 0.5rem;

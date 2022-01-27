@@ -56,6 +56,16 @@
                 You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.
             </p>
         <![endif]-->
+
+        <!--!FIRST MESSAGE MODAL--START -->
+        <div class="modal" id="first_msg_modal">
+            <div class="modal_info" id="modal_info_first_msg">
+                <h1 class="title_modal">Aviso de uso de datos</h1>
+                <p class="description_modal">Esta pagina no utiliza cookies ni ninguno de sus datos</p>
+            </div>
+            <button type="button" class="btn more_btn" id="first_msg_modal_accept_btn">Aceptar</button>
+        </div>
+        <!--!FIRST MESSAGE MODAL-- OVER -->
         <!--!MENUS STATIC STICKY--START -->
         <!--~~SOCIAL MENU CONTAINER-- START-->
         <div id="menu_social_container">
@@ -2132,34 +2142,32 @@
         <!--& ******************************************************-->
         <!--^^CONTACT MODAL-- START-->
         <div class="modal" id="contact_modal">
-            <div class="window_modal">
-                <button class="close_btn close_modal_btn" id="modal_form_close_btn">
-                    <svg class="close_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 25 25">
-                        <title>Close</title>
-                        <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(12.5 -5.18) rotate(45)" />
-                        <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(30.18 12.5) rotate(135)" />
-                    </svg>
-                </button>
-                <div class="modal_info" id="modal_info_contact_form">
-                    <h1 class="title_modal">¿Quieres contactarme?</h1>
-                    <p class="description_modal">
-                        Si quisieras contactarte conmigo para hablar sobre alguna idea para trabajar juntos, con el siguiente formulario puedes
-                        mandarme tu propuesta
-                    </p>
-                </div>
-                <form class="modal_form" id="modal_contact_form">
-                    <label for="name_input">Nombre </label>
-                    <input type="text" placeholder="Coloca tu nombre" name="name_input" required />
-
-                    <label for="issue_input">Asunto </label>
-                    <input type="text" placeholder="Coloca el asunto" name="issue_input" required />
-
-                    <label for="email_input">Correo </label>
-                    <input type="email" placeholder="Coloca tu Correo" name="email_input" required />
-
-                    <button type="submit" class="btn send_btn" id="contact_form_send_btn">Enviar</button>
-                </form>
+            <button class="close_btn close_modal_btn" id="modal_form_close_btn">
+                <svg class="close_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 25 25">
+                    <title>Close</title>
+                    <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(12.5 -5.18) rotate(45)" />
+                    <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(30.18 12.5) rotate(135)" />
+                </svg>
+            </button>
+            <div class="modal_info" id="modal_info_contact_form">
+                <h1 class="title_modal">¿Quieres contactarme?</h1>
+                <p class="description_modal">
+                    Si quisieras contactarte conmigo para hablar sobre alguna idea para trabajar juntos, con el siguiente formulario puedes mandarme
+                    tu propuesta
+                </p>
             </div>
+            <form class="modal_form" id="modal_contact_form">
+                <label for="name_input">Nombre </label>
+                <input type="text" placeholder="Coloca tu nombre" name="name_input" required />
+
+                <label for="issue_input">Asunto </label>
+                <input type="text" placeholder="Coloca el asunto" name="issue_input" required />
+
+                <label for="email_input">Correo </label>
+                <input type="email" placeholder="Coloca tu Correo" name="email_input" required />
+
+                <button type="submit" class="btn send_btn" id="contact_form_send_btn">Enviar</button>
+            </form>
         </div>
         <!--^^CONTACT MODAL-- OVER-->
         <!--^^ ******************************************************-->

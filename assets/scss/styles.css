@@ -645,6 +645,22 @@ BUTTON {
   background: var(--firstColor);
 }
 
+.more_btn {
+  width: 100%;
+  background: var(--firstColorHover);
+  color: var(--textContrastColor);
+  border-color: var(--firstColorHover);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.more_btn:hover,
+.more_btn:focus,
+.more_btn:active {
+  border-color: var(--firstColor);
+  background: var(--firstColor);
+}
+
 .btn_theme,
 .close_btn {
   display: -webkit-box;
@@ -677,52 +693,71 @@ BUTTON {
 }
 
 .modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: fixed;
-  display: none;
-  opacity: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: var(--backgroundModal);
+  top: 2rem;
+  left: 50%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   z-index: var(--zIndexFull);
-}
-
-.modal .window_modal {
   background: var(--navbarColor);
   width: clamp(300px, 800px, 90%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  opacity: 0;
+  padding: 2rem 1.5rem;
+  -webkit-box-shadow: 3px 3px 0.5rem rgba(126, 126, 126, 0.5), -3px -3px 0.5rem rgba(126, 126, 126, 0.5);
+          box-shadow: 3px 3px 0.5rem rgba(126, 126, 126, 0.5), -3px -3px 0.5rem rgba(126, 126, 126, 0.5);
+  -webkit-transition: all 2000ms ease;
+  transition: all 2000ms ease;
 }
 
-.modal .window_modal .close_btn {
-  float: right;
+.modal .close_btn {
+  position: absolute;
+  right: 0;
+  top: 0;
   padding: 0.5rem;
 }
 
-.modal .window_modal .close_btn:hover,
-.modal .window_modal .close_btn:focus,
-.modal .window_modal .close_btn:active {
+.modal .close_btn:hover,
+.modal .close_btn:focus,
+.modal .close_btn:active {
   background: var(--firstColor);
 }
 
-.modal .window_modal .close_btn:hover .close_icon_svg .cls-1,
-.modal .window_modal .close_btn:focus .close_icon_svg .cls-1,
-.modal .window_modal .close_btn:active .close_icon_svg .cls-1 {
+.modal .close_btn:hover .close_icon_svg .cls-1,
+.modal .close_btn:focus .close_icon_svg .cls-1,
+.modal .close_btn:active .close_icon_svg .cls-1 {
   fill: var(--textContrastColor);
 }
 
-.modal .window_modal .modal_info {
+.modal .modal_info {
   width: 100%;
-  height: auto;
-  padding: 2rem 2rem 1rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-bottom: 1rem;
 }
 
-.modal .window_modal .modal_form {
+.modal .modal_form {
   width: 100%;
   height: auto;
-  padding: 1rem 2rem 3rem;
 }
 
-.modal .window_modal .modal_form LABEL {
+.modal .modal_form LABEL {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -739,7 +774,7 @@ BUTTON {
   font-size: 1rem;
 }
 
-.modal .window_modal .modal_form INPUT {
+.modal .modal_form INPUT {
   display: block;
   width: 100%;
   border: none;
@@ -748,13 +783,24 @@ BUTTON {
   background: var(--backgroundColor);
 }
 
-.modal .window_modal .modal_form INPUT:focus {
+.modal .modal_form INPUT:focus {
   outline: none;
   background: var(--backgroundOff);
 }
 
-.modal .window_modal .modal_form BUTTON {
+.modal .modal_form BUTTON {
   width: 100%;
+}
+
+#contact_modal {
+  display: none;
+  opacity: 0;
+}
+
+#first_msg_modal {
+  opacity: 1;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
 }
 
 @-webkit-keyframes beat {
@@ -877,13 +923,16 @@ BUTTON {
 }
 
 #menu_social_container .menu_social_btns_container {
-  height: 0;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   width: 4rem;
   background: var(--navbarColor);
   border-radius: var(--borderRadius);
   overflow: hidden;
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
+  opacity: 0;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
 }
 
 #menu_social_container A {
@@ -1922,24 +1971,6 @@ BUTTON {
 .project_card .project_info .info_project_container .btns_flag_project_container legend {
   font-size: 1.5rem;
   font-weight: 600;
-}
-
-.project_card .project_info .info_project_container .more_btn {
-  width: 100%;
-  background: var(--firstColorHover);
-  color: var(--textContrastColor);
-  border-color: var(--firstColorHover);
-  font-weight: 600;
-  font-size: 1.2rem;
-}
-
-.project_card .project_info .info_project_container .more_btn:hover,
-.project_card .project_info .info_project_container .more_btn:focus,
-.project_card .project_info .info_project_container .more_btn:active {
-  border-color: var(--firstColor);
-  background: var(--firstColor);
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
 }
 
 .project_card .project_info .info_project_container .flags_title {
