@@ -582,33 +582,6 @@ ul {
     font-weight: 400;
     font-size: clamp(1.5rem, calc(1.5rem + 0.5vw), 2.2rem);
 }
-//*SWIPER LEFT CONTAINER--START
-#service_card_original,
-#service_2_card_original {
-    opacity: 0;
-    transform: translateX(-50%);
-    transition: all 1000ms ease;
-}
-//*SWIPER LEFT CONTAINER--OVER
-//* ************************************************************************** *//
-//*SWIPER RIGHT CONTAINER--START
-#service_card_personalizado,
-#service_2_card_personalizado {
-    opacity: 0;
-    transform: translateX(50%);
-    transition: all 1000ms ease;
-}
-//*SWIPER RIGHT CONTAINER--OVER
-//* ************************************************************************** *//
-
-#design_skills_container,
-#dev_skills_container,
-.title_footer,
-.title_section {
-    opacity: 0;
-    transform: translateY(50%);
-    transition: all 2000ms ease;
-}
 BUTTON {
     padding: 0;
     background: none;
@@ -692,10 +665,9 @@ BUTTON {
     background: var(--navbarColor);
     width: clamp(300px, 800px, 90%);
     transform: translateX(-50%);
-    opacity: 0;
     padding: 2rem 1.5rem;
     box-shadow: 3px 3px 0.5rem rgba(126, 126, 126, 0.5), -3px -3px 0.5rem rgba(126, 126, 126, 0.5);
-    transition: all 2000ms ease;
+    transition: all 1000ms ease;
     .close_btn {
         position: absolute;
         right: 0;
@@ -755,7 +727,6 @@ BUTTON {
 }
 //! FIRST MESSAGE MODAL--START
 #first_msg_modal {
-    opacity: 1;
     transform: translate(-50%, 0);
 }
 //! FIRST MESSAGE MODAL--OVER
@@ -1543,6 +1514,46 @@ FOOTER {
 }
 //!FOOTER-- OVER
 //! ******************************************************************** *//
+
+//*SWIPER LEFT CONTAINER--START
+#service_card_original,
+#service_2_card_original {
+    opacity: 0;
+    transform: translateX(-50%);
+    transition: all 1000ms ease;
+}
+//*SWIPER LEFT CONTAINER--OVER
+//* ************************************************************************** *//
+//*SWIPER RIGHT CONTAINER--START
+#service_card_personalizado,
+#service_2_card_personalizado {
+    opacity: 0;
+    transform: translateX(50%);
+    transition: all 1000ms ease;
+}
+//*SWIPER RIGHT CONTAINER--OVER
+//* ************************************************************************** *//
+//*SWIPER UP CONTAINER--START
+#design_skills_container,
+#dev_skills_container,
+.title_footer,
+.title_section {
+    opacity: 0;
+    transform: translateY(50%);
+    transition: all 2000ms ease;
+}
+
+//*SWIPER UP CONTAINER--OVER
+//* ************************************************************************** *//
+
+//*SWIPER DOWN CONTAINER--START
+
+#contact_modal {
+    transform: translate(-50%, -50%);
+    transition: all 1000ms ease;
+}
+//*SWIPER DOWN CONTAINER--OVER
+//* ************************************************************************** *//
 /* @media only screen and (max-width: 600px) {
     html {
         font-size: 10px;

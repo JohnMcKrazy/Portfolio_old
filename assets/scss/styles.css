@@ -586,35 +586,6 @@ ul {
   font-size: clamp(1.5rem, calc(1.5rem + 0.5vw), 2.2rem);
 }
 
-#service_card_original,
-#service_2_card_original {
-  opacity: 0;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  -webkit-transition: all 1000ms ease;
-  transition: all 1000ms ease;
-}
-
-#service_card_personalizado,
-#service_2_card_personalizado {
-  opacity: 0;
-  -webkit-transform: translateX(50%);
-          transform: translateX(50%);
-  -webkit-transition: all 1000ms ease;
-  transition: all 1000ms ease;
-}
-
-#design_skills_container,
-#dev_skills_container,
-.title_footer,
-.title_section {
-  opacity: 0;
-  -webkit-transform: translateY(50%);
-          transform: translateY(50%);
-  -webkit-transition: all 2000ms ease;
-  transition: all 2000ms ease;
-}
-
 BUTTON {
   padding: 0;
   background: none;
@@ -717,12 +688,11 @@ BUTTON {
   width: clamp(300px, 800px, 90%);
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  opacity: 0;
   padding: 2rem 1.5rem;
   -webkit-box-shadow: 3px 3px 0.5rem rgba(126, 126, 126, 0.5), -3px -3px 0.5rem rgba(126, 126, 126, 0.5);
           box-shadow: 3px 3px 0.5rem rgba(126, 126, 126, 0.5), -3px -3px 0.5rem rgba(126, 126, 126, 0.5);
-  -webkit-transition: all 2000ms ease;
-  transition: all 2000ms ease;
+  -webkit-transition: all 1000ms ease;
+  transition: all 1000ms ease;
 }
 
 .modal .close_btn {
@@ -798,7 +768,6 @@ BUTTON {
 }
 
 #first_msg_modal {
-  opacity: 1;
   -webkit-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
 }
@@ -2146,6 +2115,42 @@ FOOTER .logos_container .tech_logo_container:focus,
 FOOTER .logos_container .tech_logo_container:active {
   -webkit-animation: zoom 1000ms ease-out;
           animation: zoom 1000ms ease-out;
+}
+
+#service_card_original,
+#service_2_card_original {
+  opacity: 0;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: all 1000ms ease;
+  transition: all 1000ms ease;
+}
+
+#service_card_personalizado,
+#service_2_card_personalizado {
+  opacity: 0;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+  -webkit-transition: all 1000ms ease;
+  transition: all 1000ms ease;
+}
+
+#design_skills_container,
+#dev_skills_container,
+.title_footer,
+.title_section {
+  opacity: 0;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  -webkit-transition: all 2000ms ease;
+  transition: all 2000ms ease;
+}
+
+#contact_modal {
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: all 1000ms ease;
+  transition: all 1000ms ease;
 }
 
 /* @media only screen and (max-width: 600px) {

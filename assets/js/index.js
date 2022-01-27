@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.opacity = opacity;
         container.style.transform = transform;
     };
+
     //^^BASICK FUNCTION ANIMATION-- OVER
     //^ ************************************************************************* *//
     //^ CREATE TEMPLATE CARD --START
@@ -199,21 +200,15 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ CLOSE MENU--OVER
     //^  **************************************************************/
     //~GENERAL MODAL ACTIONS--START
-    const openModal = () => {
-        contactModal.style.display = 'flex';
-        contactModal.animate([{ opacity: '0' }, { opacity: '1' }], {
-            duration: 1000,
-            iterations: 1,
-            fill: 'forwards',
-        });
+    const openModal = (cont) => {
+        cont.style.display = 'flex';
+        setTimeout(() => {
+            animateItem(cont, '1', 'translate(-50%, 0)');
+        }, 500);
     };
 
     const closeModal = (cont) => {
-        cont.animate([{ opacity: '1' }, { opacity: '0' }], {
-            duration: 1000,
-            iterations: 1,
-            fill: 'forwards',
-        });
+        animateItem(cont, '0', 'translate(-50%, -50%)');
         setTimeout(() => {
             cont.style.display = 'none';
         }, 1200);
