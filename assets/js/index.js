@@ -113,12 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cardTitle = cloneCard.querySelector('.title');
                 //* ******************************************************************************** *//
                 const clientName = item['client_name'];
+                const cardImg = item['projects']['images']['hero']['small'];
+                projectCards.style.backgroundImage = `url("${cardImg}")`;
                 const clientTechnologiesInProjects = item['projects'].technologies;
-                console.log(clientTechnologiesInProjects);
                 clientTechnologiesInProjects.forEach((project) => {
                     const cloneBtn = btnProjectTemplate.cloneNode(true);
                     const flagBtn = cloneBtn.querySelector('.flag_project_btn');
-                    console.log(project);
+                    //*console.log(project);
                     flagBtn.textContent = project;
                     fieldsetCard.appendChild(flagBtn);
                 });
@@ -344,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
             servicesContainer.classList.add('services_container_two_columns');
             servicesContainer.classList.remove('services_container_one_columns');
             serviceContainer.forEach((container) => {
-                container.style.width = '300px';
+                container.style.width = '280px';
                 container.style.height = 'auto';
                 serviceCardsLeft.forEach((card) => {
                     changeCardStyle(card, 'column', 'auto');

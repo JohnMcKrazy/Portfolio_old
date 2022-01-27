@@ -8,10 +8,41 @@
             "reach": ["Tarjeta de presentacion", "Promocionales", "Edicion de imagen", "Redes Sociales"],
             "technologies": ["Illustrator", "Photoshop"],
             "images": {
-                "avatar": "assets/img/impulso/logo_avatar.jpg",
+                "avatar": "assets/img/hermed/avatar.png",
                 "hero": {
+                    "small": "assets/img/hermed/hero.png",
+                    "big": "assets/img/hermed/hero.png"
+                },
+                "1": {
                     "small": "",
-                    "big": "assets/img/impulso/poster_hero.jpg"
+                    "big": ""
+                },
+                "2": {
+                    "small": "",
+                    "big": ""
+                },
+                "3": {
+                    "small": "",
+                    "big": ""
+                }
+            }
+        },
+        "votes": 2
+    },
+
+    {
+        "client_name": "Leiru",
+        "client_logo": "",
+        "projects": {
+            "type": ["Branding", "Tarjeta de presentacion", "Firmas Electronicas", "Flayer", "Logotipo"],
+            "description": "",
+            "reach": ["Tarjeta de presentacion", "Promocionales", "Edicion de imagen", "Redes Sociales"],
+            "technologies": ["Illustrator", "Photoshop"],
+            "images": {
+                "avatar": "assets/img/leiru/avatar.png",
+                "hero": {
+                    "small": "assets/img/leiru/hero.png",
+                    "big": "assets/img/leiru/hero.png"
                 },
                 "1": {
                     "small": "",

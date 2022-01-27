@@ -79,6 +79,7 @@
   --borderRadius: 0.25rem;
   --navbarHeight: 10rem;
   --widthClamp: clamp(200px, 1500px, 90%);
+  --cardWidth: clamp(280px, 30rem, 80%);
   --transitionBtn: all 0.3s ease;
   --fontSize: 14px;
   --opacityBtn: 0.5;
@@ -1838,38 +1839,21 @@ BUTTON {
 }
 
 .project_card {
-  position: relative;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  width: clamp(12rem, 35rem, 80%);
-  height: auto;
-  overflow: hidden;
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
-}
-
-.project_card .project_img {
-  position: relative;
-  top: 0;
-  left: 0;
-  -webkit-filter: brightness(0.5);
-          filter: brightness(0.5);
+  width: var(--cardWidth);
+  height: 30rem;
   background: var(--firstColor);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  width: 35rem;
-  height: 35rem;
   -webkit-transition: -webkit-filter 0.5s ease;
   transition: -webkit-filter 0.5s ease;
   transition: filter 0.5s ease;
   transition: filter 0.5s ease, -webkit-filter 0.5s ease;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
 }
 
 .project_card .project_info {
-  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1884,8 +1868,6 @@ BUTTON {
       -ms-flex-align: center;
           align-items: center;
   opacity: 0;
-  bottom: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   background: var(--navbarColor) 70%;
@@ -1895,20 +1877,16 @@ BUTTON {
 }
 
 .project_card .project_info .info_project_container {
-  padding-bottom: 1rem;
-  text-align: center;
-}
-
-.project_card .project_info .info_project_container .title {
-  padding-bottom: 1rem;
-}
-
-.project_card .project_info .flags_project_container {
-  margin-bottom: 0.5rem;
   width: 100%;
 }
 
-.project_card .project_info .flags_project_container .btns_flag_project_container {
+.project_card .project_info .info_project_container .title {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.project_card .project_info .info_project_container .btns_flag_project_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1933,25 +1911,12 @@ BUTTON {
   text-align: center;
 }
 
-.project_card .project_info .flags_project_container .btns_flag_project_container legend {
+.project_card .project_info .info_project_container .btns_flag_project_container legend {
   font-size: 1.5rem;
   font-weight: 600;
 }
 
-.project_card .project_info .flags_project_container .btns_flag_project_container .btn {
-  border-color: var(--textColor);
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.project_card .project_info .flags_project_container .btns_flag_project_container .btn:hover,
-.project_card .project_info .flags_project_container .btns_flag_project_container .bt:active,
-.project_card .project_info .flags_project_container .btns_flag_project_container .btn:focus {
-  background: var(--textColor);
-  color: var(--textContrastColor);
-}
-
-.project_card .project_info .flags_project_container .more_btn {
+.project_card .project_info .info_project_container .more_btn {
   width: 100%;
   background: var(--firstColorHover);
   color: var(--textContrastColor);
@@ -1960,28 +1925,21 @@ BUTTON {
   font-size: 1.2rem;
 }
 
-.project_card .project_info .flags_project_container .more_btn:hover,
-.project_card .project_info .flags_project_container .more_btn:focus,
-.project_card .project_info .flags_project_container .more_btn:active {
+.project_card .project_info .info_project_container .more_btn:hover,
+.project_card .project_info .info_project_container .more_btn:focus,
+.project_card .project_info .info_project_container .more_btn:active {
   border-color: var(--firstColor);
   background: var(--firstColor);
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
-.project_card .project_info .flags_project_container .flags_title {
+.project_card .project_info .info_project_container .flags_title {
   margin-bottom: 0.5rem;
 }
 
-.project_card .project_info .flags_project_container .margin_bottom {
+.project_card .project_info .info_project_container .margin_bottom {
   margin-bottom: 1rem;
-}
-
-.project_card:hover .project_img,
-.project_card:active .project_img,
-.project_card:focus .project_img {
-  -webkit-filter: brightness(0.9);
-          filter: brightness(0.9);
 }
 
 .project_card:hover .project_info,

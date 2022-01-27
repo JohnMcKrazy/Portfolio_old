@@ -79,6 +79,7 @@
     --borderRadius: 0.25rem;
     --navbarHeight: 10rem;
     --widthClamp: clamp(200px, 1500px, 90%);
+    --cardWidth: clamp(280px, 30rem, 80%);
     --transitionBtn: all 0.3s ease;
     --fontSize: 14px;
     --opacityBtn: 0.5;
@@ -1367,32 +1368,18 @@ BUTTON {
 }
 //&TEMPLATE STYLE
 .project_card {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: clamp(12rem, 35rem, 80%);
-    height: auto;
-    overflow: hidden;
+    width: var(--cardWidth);
+    height: 30rem;
+    background: var(--firstColor);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: filter 0.5s ease;
     transition: all 1s ease;
-    .project_img {
-        position: relative;
-        top: 0;
-        left: 0;
-        filter: brightness(0.5);
-        background: var(--firstColor);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        width: 35rem;
-        height: 35rem;
-        transition: filter 0.5s ease;
-    }
+
     .project_info {
-        position: absolute;
         @include flexDirection(column, center, center);
         opacity: 0;
-        bottom: 0;
-        left: 0;
         width: 100%;
         height: 100%;
         background: var(--navbarColor) 70%;
@@ -1400,15 +1387,13 @@ BUTTON {
         transition: opacity 0.5s ease;
 
         .info_project_container {
-            padding-bottom: 1rem;
-            text-align: center;
+            width: 100%;
             .title {
+                width: 100%;
+                text-align: center;
                 padding-bottom: 1rem;
             }
-        }
-        .flags_project_container {
-            margin-bottom: 0.5rem;
-            width: 100%;
+
             .btns_flag_project_container {
                 display: flex;
                 flex-direction: row;
@@ -1426,18 +1411,6 @@ BUTTON {
                 legend {
                     font-size: 1.5rem;
                     font-weight: 600;
-                }
-                .btn {
-                    border-color: var(--textColor);
-                    font-weight: 600;
-                    font-size: 1rem;
-                }
-
-                .btn:hover,
-                .bt:active,
-                .btn:focus {
-                    background: var(--textColor);
-                    color: var(--textContrastColor);
                 }
             }
             .more_btn {
@@ -1468,13 +1441,11 @@ BUTTON {
 .project_card:hover,
 .project_card:active,
 .project_card:focus {
-    .project_img {
-        filter: brightness(0.9);
-    }
     .project_info {
         opacity: 0.8;
     }
 }
+
 //&TEMPLATE STYLE
 //!PORTFOLIO SECTION-- OVER
 //! ******************************************************************** *//
