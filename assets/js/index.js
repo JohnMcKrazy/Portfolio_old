@@ -282,7 +282,6 @@ document.addEventListener('DOMContentLoaded', () => {
             lebelBtnServices.innerHTML = '<h3 class="btn_lebel">Servicios</h3>';
             lebelBtnPortfolio.innerHTML = '<h3 class="btn_lebel">Portafolio</h3>';
             lebelBtnClient.innerHTML = '<h3 class="btn_lebel">Clientes</h3>';
-
             servicesContainer.classList.add('services_container_one_columns');
             servicesContainer.classList.remove('services_container_two_columns');
             serviceContainer.forEach((container) => {
@@ -435,11 +434,11 @@ document.addEventListener('DOMContentLoaded', () => {
     //^CHECK MENU SECTION POSITION-- START && **/HIGHLIGHT IN THE MENU THE SECTION TARGET
     sections.forEach((section) => {
         const watchPage = ([entry]) => {
-            const entryName = entry.target.attributes[1].value;
             if (entry.isIntersecting) {
+                const entryName = entry.target.attributes.id.value;
                 //*console.log(entryName);
                 btnsSection.forEach((btn) => {
-                    //*console.log(btn);
+                    //*console.log(btn.name);
                     const btnName = btn.name;
                     if (btnName === entryName) {
                         btn.classList.add('btn_section_active');
@@ -450,7 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
         const optionsIO_sections = {
-            threshold: 0.5,
+            threshold: 0.2,
         };
         const pageObserver = new IntersectionObserver(watchPage, optionsIO_sections);
         pageObserver.observe(section);

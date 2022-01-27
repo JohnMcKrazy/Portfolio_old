@@ -1302,6 +1302,7 @@ BUTTON {
     .services_container {
         display: grid;
         width: var(--widthClamp);
+        height: fit-content;
         .service_container {
             .service_card {
                 display: flex;
@@ -1347,11 +1348,12 @@ BUTTON {
     }
     .services_container_one_column {
         grid-template-columns: 1fr;
+        height: fit-content;
     }
     .services_container_two_columns {
-        grid-template-columns: repeat(auto-fill, 300px);
-        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, 280px);
         justify-content: center;
+        height: fit-content;
     }
 }
 //!SERVICES SECTION-- OVER

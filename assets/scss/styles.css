@@ -1711,6 +1711,9 @@ BUTTON {
   display: -ms-grid;
   display: grid;
   width: var(--widthClamp);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 #services_section .services_container .service_container .service_card {
@@ -1791,15 +1794,20 @@ BUTTON {
 #services_section .services_container_one_column {
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 #services_section .services_container_two_columns {
-  -ms-grid-columns: (300px)[auto-fill];
-      grid-template-columns: repeat(auto-fill, 300px);
-  gap: 1rem;
+  -ms-grid-columns: (280px)[auto-fill];
+      grid-template-columns: repeat(auto-fill, 280px);
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 #portfolio_section {
