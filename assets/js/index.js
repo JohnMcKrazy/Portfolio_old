@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const cardProjectTemplate = document.querySelector('#card_project_template').content;
     const btnProjectTemplate = document.querySelector('#btn_project_template').content;
-    const tootTipTemplate = document.querySelector('#tooltip_template').content;
+    const tooltipTemplate = document.querySelector('#tooltip_template').content;
 
     const body = document.querySelector('BODY');
     const nav = document.querySelector('.nav');
@@ -54,7 +54,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const serviceCardsRight = document.querySelectorAll('.service_card_right');
 
     const flagBtns = document.querySelectorAll('.flag_project_btn');
+    //*console.log(flagBtns);
+    const watchChanges = (entries) => {
+        const newNodes = entries[0]['addedNodes'];
+        newNodes.forEach((node) => {
+            const eachItem = node['children'][0]['children'][0]['childNodes'];
+            eachItem.forEach((item) => {
+                //*const currentId = document.querySelector(`#${item.id}`);
+                if (item['outerHTML']) {
+                    const classNames = item.classList;
 
+                    classNames.forEach((name) => {
+                        //* console.log(name);
+                        if (name === 'btns_flag_project_container') {
+                            //*console.log(item);
+                            const currentItemsChildren = item['childNodes'];
+                            //*console.log(currentItemsChildren);
+                            currentItemsChildren.forEach((item) => {
+                                const currentItemClassName = item.className;
+                                //*console.log(currentItemClassList);
+                                if (currentItemClassName === 'btn flag_project_btn') {
+                                    console.log(item['innerHTML']);
+                                    const putTooltop = () => {
+                                        const cloneTooltip = tooltipTemplate.cloneNode(true);
+                                        const tooltip = cloneTooltip.querySelector('.tooltip');
+                                        //*console.log(tooltip);
+                                        animateItem(tooltip, '1', 'translateY(0)');
+                                        item.appendChild(tooltip);
+                                    };
+                                    item.addEventListener('mouseenter', putTooltop);
+                                    const delateTooltip = () => {
+                                        const tooltip = document.querySelector('.tooltip');
+                                        item.removeChild(tooltip);
+                                        //*console.log('prueba de mouse leave');
+                                    };
+                                    item.addEventListener('mouseleave', delateTooltip);
+                                }
+                                /* currentItemClassList.forEach((list) => {
+                                    console.log(list);
+                                }); */
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    };
+    const changeObserver = new MutationObserver(watchChanges);
+    changeObserver.observe(portfolioCardsContainer, { childList: true });
     const legalBtns = document.querySelectorAll('.btn_link_legal');
     const legalModal = document.querySelector('#legal_modal');
     const legalAccept = document.querySelector('#legal_modal_accept_btn');
@@ -667,7 +714,19 @@ document.addEventListener('DOMContentLoaded', () => {
     //& ***********************************************************************************  *//
 
     //!FUNCTIONS --OVER
-    //^^PRUEBAS--START
+    //! ******************************************************************************//
+    //! ADD EVENT LISTENERS
+    window.addEventListener('scroll', scrollBody);
+    body.addEventListener('click', closeByBodyClick);
+    btnLogo.addEventListener('click', toTheTop);
+    btnMenuContainer.addEventListener('click', btnNavMenu);
+    closeMenuBtn.addEventListener('click', closeMenu);
+    closeModalContactForm.addEventListener('click', closeContactModal);
+    btnHeroDown.addEventListener('click', scrollOneHeight);
+    acceptStorageWarningBtn.addEventListener('click', closeStorageWarningModal);
+    legalAccept.addEventListener('click', closeLegalModal);
+
+    //^^LEGAL BTNS--START
     legalBtns.forEach((btn) => {
         const openLegalModal = () => {
             if (warningModalStatus === 'open') {
@@ -680,19 +739,8 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         btn.addEventListener('click', openLegalModal);
     });
-    //^^PRUEBAS--OVER
+    //^^LEGAL BTNS--OVER
     //^^ ************************************************************************** *//
-    //! ******************************************************************************//
-    //! ADD EVENT LISTENERS
-    window.addEventListener('scroll', scrollBody);
-    body.addEventListener('click', closeByBodyClick);
-    btnLogo.addEventListener('click', toTheTop);
-    btnMenuContainer.addEventListener('click', btnNavMenu);
-    closeMenuBtn.addEventListener('click', closeMenu);
-    closeModalContactForm.addEventListener('click', closeContactModal);
-    btnHeroDown.addEventListener('click', scrollOneHeight);
-    acceptStorageWarningBtn.addEventListener('click', closeStorageWarningModal);
-    legalAccept.addEventListener('click', closeLegalModal);
     //^ BTNS HERO-- START && **/POSITION THE PAGE IN SECTIONS BY THE BTNS IN THE HERO SECTION
     btnsHero.forEach((btn) => {
         btn.addEventListener('click', () => {

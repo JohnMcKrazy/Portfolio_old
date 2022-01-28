@@ -73,6 +73,7 @@
   --zIndexNav: 2;
   --zIndexMenu: 3;
   --zIndexFull: 4;
+  --zIndexTooltip: 10;
   --pushTtansition: transform 1000ms ease;
   --border: solid 0.2rem;
   --borderMenu: solid 0.3rem;
@@ -554,8 +555,23 @@ ul {
   opacity: 0;
   -webkit-transition: translateY(50%);
   transition: translateY(50%);
-  top: -150%;
-  right: 0;
+  top: 50%;
+  right: 110%;
+  background: var(--navbarColor);
+  padding: 2rem;
+  border-radius: var(--borderRadius);
+  z-index: var(--zIndexTooltip);
+  -webkit-transition: all 1000ms ease;
+  transition: all 1000ms ease;
+  width: clamp(200px, 300px, 80%);
+}
+
+.tooltip h1 {
+  color: var(--firstColor);
+}
+
+.tooltip p {
+  color: var(--textColor);
 }
 
 .extra_section,
@@ -2066,6 +2082,10 @@ BUTTON {
 
 .project_card .project_info .info_project_container .margin_bottom {
   margin-bottom: 1rem;
+}
+
+.flag_project_btn {
+  position: relative;
 }
 
 .project_card:hover .project_info,

@@ -71,6 +71,7 @@
     --zIndexNav: 2;
     --zIndexMenu: 3;
     --zIndexFull: 4;
+    --zIndexTooltip: 10;
     //!Z INDEX COUNT-- OVER
     //!GENERAL START
     --pushTtansition: transform 1000ms ease;
@@ -560,8 +561,20 @@ ul {
     position: absolute;
     opacity: 0;
     transition: translateY(50%);
-    top: -150%;
-    right: 0;
+    top: 50%;
+    right: 110%;
+    background: var(--navbarColor);
+    padding: 2rem;
+    border-radius: var(--borderRadius);
+    z-index: var(--zIndexTooltip);
+    transition: all 1000ms ease;
+    width: clamp(200px, 300px, 80%);
+    h1 {
+        color: var(--firstColor);
+    }
+    p {
+        color: var(--textColor);
+    }
 }
 .extra_section,
 .section {
@@ -1496,6 +1509,9 @@ BUTTON {
             }
         }
     }
+}
+.flag_project_btn {
+    position: relative;
 }
 .project_card:hover,
 .project_card:active,
