@@ -559,10 +559,8 @@ ul {
 }
 .tooltip {
     position: absolute;
-    opacity: 0;
-    transition: translateY(50%);
-    top: 50%;
-    right: 110%;
+    top: 2rem;
+    left: 50%;
     background: var(--navbarColor);
     padding: 2rem;
     border-radius: var(--borderRadius);
@@ -575,6 +573,10 @@ ul {
     p {
         color: var(--textColor);
     }
+}
+.tooltip_hidden {
+    opacity: 0;
+    transition: translateY(50%);
 }
 .extra_section,
 .section {
@@ -749,6 +751,7 @@ BUTTON {
 #storage_alert_modal {
     transform: translate(-50%, -50%);
     opacity: 0;
+    z-index: var(--zIndexFull);
     .btn_container {
         @include flex(center, center);
         width: 100%;

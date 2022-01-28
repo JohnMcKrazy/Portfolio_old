@@ -54,7 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const serviceCardsRight = document.querySelectorAll('.service_card_right');
 
     const flagBtns = document.querySelectorAll('.flag_project_btn');
-    //*console.log(flagBtns);
+
+    const legalBtns = document.querySelectorAll('.btn_link_legal');
+    const legalModal = document.querySelector('#legal_modal');
+    const legalAccept = document.querySelector('#legal_modal_accept_btn');
+    //^FETCH JASON COMPANYS DATA-- START
+    const portfolioData = './portfolioDB.json';
+    //^FETCH JSON COMPANYS DATA-- OVER
+    //^ ***********************************************************************************************//
+
+    //!MUTATION OBSERVER --START
     const watchChanges = (entries) => {
         const newNodes = entries[0]['addedNodes'];
         newNodes.forEach((node) => {
@@ -74,18 +83,22 @@ document.addEventListener('DOMContentLoaded', () => {
                                 const currentItemClassName = item.className;
                                 //*console.log(currentItemClassList);
                                 if (currentItemClassName === 'btn flag_project_btn') {
-                                    console.log(item['innerHTML']);
-                                    const putTooltop = () => {
+                                    console.log(item);
+                                    const addTooltop = () => {
                                         const cloneTooltip = tooltipTemplate.cloneNode(true);
                                         const tooltip = cloneTooltip.querySelector('.tooltip');
-                                        //*console.log(tooltip);
-                                        animateItem(tooltip, '1', 'translateY(0)');
                                         item.appendChild(tooltip);
+                                        setTimeout(() => {
+                                            tooltip.classList.remove('tooltip_hidden');
+                                        }, 100);
                                     };
-                                    item.addEventListener('mouseenter', putTooltop);
+                                    item.addEventListener('mouseenter', addTooltop);
                                     const delateTooltip = () => {
                                         const tooltip = document.querySelector('.tooltip');
-                                        item.removeChild(tooltip);
+                                        tooltip.classList.add('tooltip_hidden');
+                                        setTimeout(() => {
+                                            item.removeChild(tooltip);
+                                        }, 1500);
                                         //*console.log('prueba de mouse leave');
                                     };
                                     item.addEventListener('mouseleave', delateTooltip);
@@ -102,13 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const changeObserver = new MutationObserver(watchChanges);
     changeObserver.observe(portfolioCardsContainer, { childList: true });
-    const legalBtns = document.querySelectorAll('.btn_link_legal');
-    const legalModal = document.querySelector('#legal_modal');
-    const legalAccept = document.querySelector('#legal_modal_accept_btn');
-    //^FETCH JASON COMPANYS DATA-- START
-    const portfolioData = './portfolioDB.json';
-    //^FETCH JSON COMPANYS DATA-- OVER
-    //^ ***********************************************************************************************//
+
+    //!MUTATION OBSERVER --OVER
+    //! ************************************************************************************************** *//
+
     //!GENERAL CONSTANTS --OVER
     //! ***********************************************************************************************//
     //!GENERAL VARIANTS--START
@@ -147,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ ***********************************************************************************************//
     //!SESSION STORAGE--START
 
-    let localStorageResponse = localStorage;
+    /* let localStorageResponse = localStorage;
     //*console.log(localStorageResponse['mylocalStorage']);
     if (!localStorageResponse['warning_status']) {
         //*console.log(localStorageResponse);
@@ -160,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //*console.log(localStorageMyStorage);
     } else if (localStorageResponse['warning_status'] === 'open') {
         //*console.log(localStorageResponse);
-    }
+    } */
     //!SESSION STORAGE--OVER
     //! ******************************************************************************** /** */
     //^^BASICK FUNCTION ANIMATION-- START
@@ -328,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ CLOSE MODAL CONTACT FORM-- OVER
     //^ ************************************************************************ *//
     //^^STORAGE WARNING CLOSE--START
-    const checkAlerStorage = () => {
+    /*  const checkAlerStorage = () => {
         const storageContent = JSON.parse(localStorage['mylocalStorage'])['warning_status'];
         if (storageContent === 'open') {
             storageAlertModal.style.opacity = '0';
@@ -357,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             //*console.log(`My session storage alert is ${storageContent}`);
         }
-    };
+    }; */
     //^^STORAGE WARNING CLOSE--OVER
     //^^ *********************************************************************************** *//
     //^^LEAGL MODAL CLOSE--START
