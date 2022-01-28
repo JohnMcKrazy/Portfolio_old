@@ -683,9 +683,9 @@ BUTTON {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   position: fixed;
   top: 2rem;
   left: 50%;
@@ -697,7 +697,7 @@ BUTTON {
   width: clamp(300px, 800px, 90%);
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  padding: 2rem 1.5rem;
+  padding: 2rem 2.5rem;
   -webkit-box-shadow: 3px 3px 0.5rem rgba(126, 126, 126, 0.5), -3px -3px 0.5rem rgba(126, 126, 126, 0.5);
           box-shadow: 3px 3px 0.5rem rgba(126, 126, 126, 0.5), -3px -3px 0.5rem rgba(126, 126, 126, 0.5);
   -webkit-transition: all 1000ms ease;
@@ -815,13 +815,35 @@ BUTTON {
 
 #legal_modal {
   max-height: 90vh;
-  overflow-y: scroll;
   display: none;
   opacity: 0;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   -webkit-transition: all 1000ms ease;
   transition: all 1000ms ease;
+}
+
+#legal_modal .modal_info {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+#legal_modal .modal_info .btn_container {
+  margin-top: 2rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#legal_modal .modal_info .more_btn {
+  width: var(--widthClamp);
 }
 
 @-webkit-keyframes beat {

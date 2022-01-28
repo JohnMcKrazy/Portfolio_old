@@ -314,8 +314,13 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^STORAGE WARNING CLOSE--OVER
     //^^ *********************************************************************************** *//
     //^^LEAGL MODAL CLOSE--START
+    const modalInfoLegal = document.querySelector('#modal_info_legal');
     const closeLegalModal = () => {
-        closeModal(legalModal);
+        const currentPosition = modalInfoLegal.getBoundingClientRect().top;
+        modalInfoLegal.scrollTo(currentPosition, 0);
+        setTimeout(() => {
+            closeModal(legalModal);
+        }, 500);
     };
     //^^LEAGL MODAL CLOSE--OVER
     //^^ *********************************************************************************** *//

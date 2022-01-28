@@ -663,7 +663,7 @@ BUTTON {
 //! ***************************************************************************************************/
 //!MODAL START
 .modal {
-    @include flexDirection(column, flex-start, center);
+    @include flexDirection(column, flex-start, flex-start);
     position: fixed;
     top: 2rem;
     left: 50%;
@@ -672,7 +672,7 @@ BUTTON {
     background: var(--navbarColor);
     width: clamp(300px, 800px, 90%);
     transform: translateX(-50%);
-    padding: 2rem 1.5rem;
+    padding: 2rem 2.5rem;
     box-shadow: 3px 3px 0.5rem rgba(126, 126, 126, 0.5), -3px -3px 0.5rem rgba(126, 126, 126, 0.5);
     transition: all 1000ms ease;
     .close_btn {
@@ -761,11 +761,22 @@ BUTTON {
 //! LEGAL MODAL--START
 #legal_modal {
     max-height: 90vh;
-    overflow-y: scroll;
     display: none;
     opacity: 0;
     transform: translate(-50%, -50%);
     transition: all 1000ms ease;
+    .modal_info {
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        .btn_container {
+            margin-top: 2rem;
+            width: 100%;
+            @include flex(center, center);
+        }
+        .more_btn {
+            width: var(--widthClamp);
+        }
+    }
 }
 //! LEGAL MODAL--OVER
 //! ************************************************************************************************ *//
