@@ -57,15 +57,6 @@
             </p>
         <![endif]-->
 
-        <!--!FIRST MESSAGE MODAL--START -->
-        <div class="modal" id="first_msg_modal">
-            <div class="modal_info" id="modal_info_first_msg">
-                <h1 class="title_modal">Aviso de uso de datos</h1>
-                <p class="description_modal">Esta pagina no utiliza cookies ni ninguno de sus datos</p>
-            </div>
-            <button type="button" class="btn more_btn" id="first_msg_modal_accept_btn">Aceptar</button>
-        </div>
-        <!--!FIRST MESSAGE MODAL-- OVER -->
         <!--!MENUS STATIC STICKY--START -->
         <!--~~SOCIAL MENU CONTAINER-- START-->
         <div id="menu_social_container">
@@ -268,7 +259,7 @@
                     <h3 class="btn_lebel">Inicio</h3>
                 </button>
                 <button class="btn_menu btn_menu_section btn_section" id="about_btn_menu" name="about_section" data-active="false">
-                    <h3 class="btn_lebel">Quien soy</h3>
+                    <h3 class="btn_lebel">Acerca de</h3>
                 </button>
                 <button class="btn_menu btn_menu_section btn_section" id="skills_btn_menu" name="skills_section" data-active="false">
                     <h3 class="btn_lebel">Habilidades</h3>
@@ -402,9 +393,9 @@
                         id="about_btn_nav"
                         name="about_section"
                         data-active="false"
-                        data-lebel="Quien soy"
+                        data-lebel="Acerca de"
                     >
-                        <h3>Quien soy</h3>
+                        <h3>Acerca de</h3>
                     </button>
                     <button
                         class="btn_nav btn_nav_section btn_section"
@@ -495,7 +486,7 @@
         <!--^^ABOUT SECTION-- START-->
         <section class="section" id="about_section">
             <div class="swipe_animation_container_full">
-                <h1 class="title_section animation_up" id="title_about">Quien soy</h1>
+                <h1 class="title_section animation_up" id="title_about">Acerca de</h1>
             </div>
         </section>
         <!--^^ABOUT SECTION-- OVER-->
@@ -978,7 +969,7 @@
             <div class="services_container" id="services_container_id">
                 <div class="service_container swipe_animation_container_half">
                     <div class="service_card service_card_left animation_left" id="service_card_original">
-                        <div class="service_card_img"><img src="./assets/img/pagina/background-thinking-100.jpg" /></div>
+                        <div class="service_card_img"><img src="./assets/img/pagina/background-thinking-100.jpg" loading="lazy" /></div>
                         <div class="service_card_info">
                             <h2 class="service_card_title">Originalidad</h2>
                             <p class="service_card_text">
@@ -990,7 +981,7 @@
                 </div>
                 <div class="service_container swipe_animation_container_half">
                     <div class="service_card service_card_right animation_right" id="service_card_personalizado">
-                        <div class="service_card_img"><img src="./assets/img/impulso/mockup_completo.jpg" /></div>
+                        <div class="service_card_img"><img src="./assets/img/impulso/mockup_completo.jpg" loading="lazy" /></div>
                         <div class="service_card_info">
                             <h2 class="service_card_title">Perzonalizado</h2>
                             <p class="service_card_text">
@@ -1002,7 +993,7 @@
                 </div>
                 <div class="service_container swipe_animation_container_half">
                     <div class="service_card service_card_left animation_left" id="service_2_card_original">
-                        <div class="service_card_img"><img src="./assets/img/pagina/background-thinking-100.jpg" /></div>
+                        <div class="service_card_img"><img src="./assets/img/pagina/background-thinking-100.jpg" loading="lazy" /></div>
                         <div class="service_card_info">
                             <h2 class="service_card_title">Originalidad</h2>
                             <p class="service_card_text">
@@ -1014,7 +1005,7 @@
                 </div>
                 <div class="service_container swipe_animation_container_half">
                     <div class="service_card service_card_right animation_right" id="service_2_card_personalizado">
-                        <div class="service_card_img"><img src="./assets/img/impulso/mockup_completo.jpg" /></div>
+                        <div class="service_card_img"><img src="./assets/img/impulso/mockup_completo.jpg" loading="lazy" /></div>
                         <div class="service_card_info">
                             <h2 class="service_card_title">Perzonalizado</h2>
                             <p class="service_card_text">
@@ -1035,6 +1026,8 @@
                 <h1 class="title_section animation_up" id="title_portfolio">Proyectos destacados</h1>
             </div>
             <div class="cards_container" id="portfolio_cards_container"></div>
+
+            <div class="spinner_container" data-name="portfolio_cards_container" id="loader_portfolio"><div class="spinner"></div></div>
         </section>
         <!--^^PORTFOLIO SECTION-- OVER-->
         <!--^^ ******************************************************-->
@@ -2100,6 +2093,9 @@
                     </svg>
                 </div>
             </div>
+            <div class="btns_container">
+                <button type="button" class="btn_link btn_link_legal">Avisos legales</button>
+            </div>
         </footer>
         <!--^^FOOTER-- OVER-->
         <!--^^ ******************************************************-->
@@ -2120,8 +2116,8 @@
         <!--~~MODALS START -->
         <!--&CARD TEMPLATE START-->
         <template id="card_project_template">
-            <div class="swipe_animation_container_half">
-                <div class="project_card" id="" tabindex="0">
+            <div class="project_card_container swipe_animation_container_half">
+                <div class="project_card animation_up" id="" tabindex="0">
                     <div class="project_info">
                         <div class="info_project_container">
                             <h2 class="title">Empresa</h2>
@@ -2140,6 +2136,68 @@
         </template>
         <!--&CARD TEMPLATE START-->
         <!--& ******************************************************-->
+        <!--&TOOLTIP TEMPLATE--START-->
+        <template id="tooltip_template">
+            <!--^^INFO TOOLTIP--START-->
+            <div class="tooltip">
+                <div class="tooltip_icon"></div>
+                <div class="tooltip_info_container">
+                    <h1 class="tooltip_title">Title Prob</h1>
+                    <p class="tooltip_info">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis, harum obcaecati consectetur voluptatem commodi sit impedit
+                        perspiciatis consequuntur provident odio, enim iure ex aspernatur. Nesciunt enim a laborum asperiores expedita!
+                    </p>
+                </div>
+            </div>
+            <!--^^INFO TOOLTIP--OVER-->
+        </template>
+        <!--&TOOLTIP TEMPLATE--OVER-->
+        <!--~~MODALS START -->
+        <!--^^FIRST MESSAGE MODAL--START -->
+        <div class="modal" id="storage_alert_modal">
+            <div class="modal_info">
+                <h1 class="title_modal">Aviso de uso de datos</h1>
+                <p class="description_modal">Esta pagina no utiliza cookies ni ninguno de sus datos</p>
+                <div class="btn_container">
+                    <button type="button" class="btn_link btn_link_legal">Avisos legales</button>
+                </div>
+            </div>
+            <button type="button" class="btn more_btn" id="storage_alert_modal_accept_btn">Aceptar</button>
+        </div>
+        <!--^^FIRST MESSAGE MODAL-- OVER -->
+        <!--^^LEGAL MODAL--START-->
+        <div class="modal" id="legal_modal">
+            <div class="modal_info">
+                <h1 class="title_modal">Aviso Legal</h1>
+                <p class="description_modal">
+                    Avisos legales y articulos que mas aderlante incluire:<br /><br />
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sequi, magnam corrupti sed delectus odit tempore saepe nam
+                    asperiores enim, porro quod placeat qui sunt omnis deserunt nemo cupiditate. Soluta! Omnis illum voluptatibus veniam officiis
+                    commodi quisquam odio dolorum similique eum incidunt? Dolores vel perspiciatis veritatis, similique quis soluta, tempora ab maxime
+                    sit dolore minus ullam sunt aliquam, voluptatum numquam? Iure velit saepe perspiciatis incidunt optio facere quasi, repudiandae
+                    aspernatur? Quibusdam dolore tenetur distinctio ullam dicta dolores provident inventore cum repudiandae cupiditate, rerum rem
+                    magni alias assumenda corrupti, odit molestiae. Ab quis dicta delectus, natus voluptatum illum ex itaque assumenda animi officia
+                    dolorem quisquam sapiente molestias ipsa minima cumque, culpa molestiae magnam consequuntur possimus. Magnam illo nisi
+                    reprehenderit id voluptas! Ratione aliquid quo odio, dignissimos alias consequatur consequuntur neque ullam amet! Ad asperiores
+                    dolorem nostrum vitae dolore autem laudantium iusto unde totam voluptatem ipsam repellendus, perspiciatis, sequi obcaecati quia
+                    aperiam. Neque, qui atque nesciunt voluptas ad tempore velit asperiores harum temporibus repellat enim doloremque, fugiat
+                    similique inventore exercitationem minima consequuntur numquam culpa voluptatem ut eius? Sequi quo doloribus dolores cum. Quis
+                    sequi laborum cupiditate fugiat, repudiandae veniam maxime debitis, repellat repellendus praesentium similique corrupti modi. Ea
+                    ipsam tempora consequatur odit! Blanditiis autem et odio in excepturi officiis, cum inventore perspiciatis! Eligendi rem vero
+                    suscipit, dignissimos ullam consequuntur, laborum et non aspernatur doloribus voluptatum hic obcaecati. Eum magnam a soluta
+                    doloribus nam quae voluptate, velit quisquam doloremque odit rerum, ad totam? Sequi quidem doloremque quia voluptate adipisci
+                    eaque pariatur minus, eligendi, facere similique, provident ad soluta fugiat. Voluptatem hic pariatur, delectus enim distinctio
+                    eos! Fuga quos facilis recusandae fugit reprehenderit delectus. Animi eos eveniet atque libero quo quisquam officia, ducimus neque
+                    suscipit similique aliquid velit enim, recusandae voluptatibus laborum obcaecati. Maiores aut quae architecto molestiae quisquam
+                    nemo odio est soluta ut!
+                </p>
+                <div class="btn_container">
+                    <button type="button" class="btn_link btn_link_legal">Avisos legales</button>
+                </div>
+            </div>
+            <button type="button" class="btn more_btn" id="legal_modal_accept_btn">Aceptar</button>
+        </div>
+        <!--^^LEGAL MODAL--OVER-->
         <!--^^CONTACT MODAL-- START-->
         <div class="modal" id="contact_modal">
             <button class="close_btn close_modal_btn" id="modal_form_close_btn">

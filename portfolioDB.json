@@ -1,6 +1,8 @@
 [
     {
         "client_name": "Creaciones Hermed",
+
+        "db_name": "creaciones_hermed",
         "client_logo": "",
         "projects": {
             "type": ["Branding", "Tarjeta de presentacion", "Promocionales", "Edicion de imagen", "Redes Sociales"],
@@ -32,6 +34,7 @@
 
     {
         "client_name": "Leiru",
+        "db_name": "leiru",
         "client_logo": "",
         "projects": {
             "type": ["Branding", "Tarjeta de presentacion", "Firmas Electronicas", "Flayer", "Logotipo"],

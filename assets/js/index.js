@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     //!GENERAL CONSTANTS --START
-    const fragment = document.createDocumentFragment();
+    const fragmentProjects = document.createDocumentFragment();
+
     const cardProjectTemplate = document.querySelector('#card_project_template').content;
     const btnProjectTemplate = document.querySelector('#btn_project_template').content;
+    const tootTipTemplate = document.querySelector('#tooltip_template').content;
 
     const body = document.querySelector('BODY');
     const nav = document.querySelector('.nav');
@@ -17,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnsSection = document.querySelectorAll('.btn_section');
     const formEnviarBtn = document.querySelector('#contact_form_send_btn');
     const btnContact = document.querySelectorAll('.contact_btn');
-    const storageAlertModal = document.querySelector('#first_msg_modal');
-    const acceptStorageWarningBtn = document.querySelector('#first_msg_modal_accept_btn');
+    const storageAlertModal = document.querySelector('#storage_alert_modal');
+    const acceptStorageWarningBtn = document.querySelector('#storage_alert_modal_accept_btn');
     const contactModal = document.querySelector('#contact_modal');
     const closeModalContactForm = document.querySelector('#modal_form_close_btn');
     const btnHeroDown = document.querySelector('#hero_btn_down');
@@ -51,6 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const serviceCardsLeft = document.querySelectorAll('.service_card_left');
     const serviceCardsRight = document.querySelectorAll('.service_card_right');
 
+    const flagBtns = document.querySelectorAll('.flag_project_btn');
+
+    const legalBtns = document.querySelectorAll('.btn_link_legal');
+    const legalModal = document.querySelector('#legal_modal');
+    const legalAccept = document.querySelector('#legal_modal_accept_btn');
     //^FETCH JASON COMPANYS DATA-- START
     const portfolioData = './portfolioDB.json';
     //^FETCH JSON COMPANYS DATA-- OVER
@@ -65,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let menuStatus = 'close';
     let menuSocialStatus = 'close';
     let contactModalStatus = 'close';
-    let storageWarningModalStatus = 'open';
+    let warningModalStatus = 'open';
     //!GENERAL VARIANTS--OVER
     //! ***********************************************************************************************//
     //!GENERAL START FUNCTIONS-- START
@@ -91,6 +98,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //^CHANGE THEME BY HOUR-- OVER
     //^ ***********************************************************************************************//
+    //!SESSION STORAGE--START
+
+    let localStorageResponse = localStorage;
+    //*console.log(localStorageResponse['mylocalStorage']);
+    if (!localStorageResponse['warning_status']) {
+        //*console.log(localStorageResponse);
+
+        let mySession = {
+            warning_status: 'open',
+        };
+        localStorage.setItem('mylocalStorage', JSON.stringify(mySession));
+        const localStorageMyStorage = JSON.parse(localStorage.getItem('mylocalStorage'));
+        //*console.log(localStorageMyStorage);
+    } else if (localStorageResponse['warning_status'] === 'open') {
+        //*console.log(localStorageResponse);
+    }
+    //!SESSION STORAGE--OVER
+    //! ******************************************************************************** /** */
     //^^BASICK FUNCTION ANIMATION-- START
     const animateItem = (container, opacity, transform) => {
         container.style.opacity = opacity;
@@ -99,8 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //^^BASICK FUNCTION ANIMATION-- OVER
     //^ ************************************************************************* *//
-    //^ CREATE TEMPLATE CARD --START
-    const fetchData = async () => {
+
+    //^ CREATE TEMPLATE PROJECT CARD --START
+    const createProjectCard = async () => {
         try {
             const rawData = await fetch(portfolioData);
             const data = await rawData.json();
@@ -109,15 +135,18 @@ document.addEventListener('DOMContentLoaded', () => {
             //*console.log(dataLength);
 
             data.forEach((item) => {
-                const cloneCard = cardProjectTemplate.cloneNode(true);
-
-                const projectCards = cloneCard.querySelector('.project_card');
-                const fieldsetCard = cloneCard.querySelector('.btns_flag_project_container');
-                const cardTitle = cloneCard.querySelector('.title');
+                const cloneProjectCard = cardProjectTemplate.cloneNode(true);
+                const projectCard = cloneProjectCard.querySelector('.project_card');
+                const fieldsetCard = cloneProjectCard.querySelector('.btns_flag_project_container');
+                const cardTitle = cloneProjectCard.querySelector('.title');
                 //* ******************************************************************************** *//
+
                 const clientName = item['client_name'];
+
+                const bdName = item['db_name'];
+                projectCard.setAttribute('id', `${bdName}_project_card`);
                 const cardImg = item['projects']['images']['hero']['small'];
-                projectCards.style.backgroundImage = `url("${cardImg}")`;
+                projectCard.style.backgroundImage = `url("${cardImg}")`;
                 const clientTechnologiesInProjects = item['projects'].technologies;
                 clientTechnologiesInProjects.forEach((project) => {
                     const cloneBtn = btnProjectTemplate.cloneNode(true);
@@ -126,20 +155,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     flagBtn.textContent = project;
                     fieldsetCard.appendChild(flagBtn);
                 });
-                //*console.log(item);
                 cardTitle.textContent = clientName;
-                //*console.log(clientName);
-                //*console.log(projectCards);
-                fragment.appendChild(projectCards);
+                fragmentProjects.appendChild(projectCard);
             });
             //*console.log(fragment);
-            portfolioCardsContainer.appendChild(fragment);
+            portfolioCardsContainer.appendChild(fragmentProjects);
         } catch (error) {
             console.log(error);
         }
     };
-    fetchData();
-    //^ CREATE TEMPLATE CARD --OVER
+    const spinnersLoadersContainers = document.querySelectorAll('.spinner_container');
+    spinnersLoadersContainers.forEach((spinnerLoader) => {
+        const watchPortfolioContainer = ([entry]) => {
+            const dataNameContainer = entry.target.attributes['data-name'].value;
+            if (entry.isIntersecting && dataNameContainer === 'portfolio_cards_container') {
+                const loaderPortfolio = document.querySelector('#loader_portfolio');
+                animateItem(loaderPortfolio, '0', 'translateY(-50%)');
+                portfolioObserver.unobserve(loaderPortfolio);
+                setTimeout(() => {
+                    createProjectCard();
+                    loaderPortfolio.style.display = 'none';
+                }, 1500);
+            }
+        };
+        const optionsIO_portfolio = {
+            threshold: '.7',
+        };
+        const portfolioObserver = new IntersectionObserver(watchPortfolioContainer, optionsIO_portfolio);
+        portfolioObserver.observe(spinnerLoader);
+    });
+
+    //^ CREATE TEMPLATE PROJECT CARD --OVER
     //^ ************************************************************************* *//
     //^ CLOSE MENU SOCIAL-- START
     const closeMenuSocial = () => {
@@ -235,13 +281,43 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ CLOSE MODAL CONTACT FORM-- OVER
     //^ ************************************************************************ *//
     //^^STORAGE WARNING CLOSE--START
+    const checkAlerStorage = () => {
+        const storageContent = JSON.parse(localStorage['mylocalStorage'])['warning_status'];
+        if (storageContent === 'open') {
+            storageAlertModal.style.opacity = '0';
+            //*console.log(`My session storage alert is ${storageContent}`);
+            setTimeout(() => {
+                animateItem(storageAlertModal, '1', 'translate(-50%, 0)');
+            }, 2000);
+        } else if (storageContent === 'close') {
+            //*console.log(`My session storage alert is ${storageContent}`);
+            storageAlertModal.style.display = 'none';
+        }
+        //*console.log(storageContent);
+    };
+    checkAlerStorage();
+
     const closeStorageWarningModal = () => {
-        if (storageWarningModalStatus === 'open') {
+        let storageContent = JSON.parse(localStorage['mylocalStorage'])['warning_status'];
+        if (storageContent === 'open') {
             closeModal(storageAlertModal);
-            storageWarningModalStatus = 'close';
+            warningModalStatus = 'close';
+
+            storageContent = 'close';
+
+            //*console.log(storageContent);
+            //*console.log(`My session storage alert is ${storageContent}`);
+        } else {
+            //*console.log(`My session storage alert is ${storageContent}`);
         }
     };
     //^^STORAGE WARNING CLOSE--OVER
+    //^^ *********************************************************************************** *//
+    //^^LEAGL MODAL CLOSE--START
+    const closeLegalModal = () => {
+        closeModal(legalModal);
+    };
+    //^^LEAGL MODAL CLOSE--OVER
     //^^ *********************************************************************************** *//
     //^TO THE TOP-- START && **/RETURN THE PAGE TO THE PAGE TOP
     const toTheTop = () => {
@@ -468,132 +544,104 @@ document.addEventListener('DOMContentLoaded', () => {
     //^CHECK MENU SECTION POSITION-- OVER
     //^ ************************************************************************* *//
     //^^ANIMATION ITEM SWIPE--START
+    const swipingAnimation = () => {
+        swipeAnimationContainersFull.forEach((container) => {
+            const watchSwipeAnimationContainer = ([entry]) => {
+                const animationLeftContainers = entry.target.querySelectorAll('.animation_left');
+                const animationRightContainers = entry.target.querySelectorAll('.animation_right');
+                const animationUpContainers = entry.target.querySelectorAll('.animation_up');
+                if (entry.isIntersecting) {
+                    animationLeftContainers.forEach((container) => {
+                        //*console.log(container.id);
+                        const currentItem = document.querySelector(`#${container.id}`);
+                        animateItem(currentItem, '1', 'translateX(0)');
+                    });
+                    animationRightContainers.forEach((container) => {
+                        //*console.log(container.id);
+                        const currentItem = document.querySelector(`#${container.id}`);
+                        animateItem(currentItem, '1', 'translateX(0)');
+                    });
+                    animationUpContainers.forEach((container) => {
+                        //*console.log(container.id);
+                        const currentItem = document.querySelector(`#${container.id}`);
+                        animateItem(currentItem, '1', 'translateY(0)');
+                    });
+                } else {
+                    animationLeftContainers.forEach((container) => {
+                        //*console.log(container.id);
+                        const currentItem = document.querySelector(`#${container.id}`);
+                        animateItem(currentItem, '0', 'translateX(-50%)');
+                    });
+                    animationRightContainers.forEach((container) => {
+                        //*console.log(container.id);
+                        const currentItem = document.querySelector(`#${container.id}`);
+                        animateItem(currentItem, '0', 'translateX(50%)');
+                    });
+                    animationUpContainers.forEach((container) => {
+                        //*console.log(container.id);
+                        const currentItem = document.querySelector(`#${container.id}`);
+                        animateItem(currentItem, '0', 'translateY(50%)');
+                    });
+                }
+            };
+            const optionsIO_skills = {
+                threshold: '1',
+            };
 
-    swipeAnimationContainersFull.forEach((container) => {
-        const watchSwipeAnimationContainer = ([entry]) => {
-            const animationLeftContainers = entry.target.querySelectorAll('.animation_left');
-            const animationRightContainers = entry.target.querySelectorAll('.animation_right');
-            const animationUpContainers = entry.target.querySelectorAll('.animation_up');
-            if (entry.isIntersecting) {
-                animationLeftContainers.forEach((container) => {
-                    //*console.log(container.id);
-                    const currentItem = document.querySelector(`#${container.id}`);
-                    animateItem(currentItem, '1', 'translateX(0)');
-                });
-                animationRightContainers.forEach((container) => {
-                    //*console.log(container.id);
-                    const currentItem = document.querySelector(`#${container.id}`);
-                    animateItem(currentItem, '1', 'translateX(0)');
-                });
-                animationUpContainers.forEach((container) => {
-                    //*console.log(container.id);
-                    const currentItem = document.querySelector(`#${container.id}`);
-                    animateItem(currentItem, '1', 'translateY(0)');
-                });
-            } else {
-                animationLeftContainers.forEach((container) => {
-                    //*console.log(container.id);
-                    const currentItem = document.querySelector(`#${container.id}`);
-                    animateItem(currentItem, '0', 'translateX(-50%)');
-                });
-                animationRightContainers.forEach((container) => {
-                    //*console.log(container.id);
-                    const currentItem = document.querySelector(`#${container.id}`);
-                    animateItem(currentItem, '0', 'translateX(50%)');
-                });
-                animationUpContainers.forEach((container) => {
-                    //*console.log(container.id);
-                    const currentItem = document.querySelector(`#${container.id}`);
-                    animateItem(currentItem, '0', 'translateY(50%)');
-                });
-            }
-        };
-        const optionsIO_skills = {
-            threshold: '1',
-        };
+            const skillsContainersObserver = new IntersectionObserver(watchSwipeAnimationContainer, optionsIO_skills);
+            skillsContainersObserver.observe(container);
+        });
 
-        const skillsContainersObserver = new IntersectionObserver(watchSwipeAnimationContainer, optionsIO_skills);
-        skillsContainersObserver.observe(container);
-    });
+        swipeAnimationContainersHalf.forEach((container) => {
+            const watchSwipeAnimationContainer = ([entry]) => {
+                const animationLeftContainers = entry.target.querySelectorAll('.animation_left');
+                const animationRightContainers = entry.target.querySelectorAll('.animation_right');
+                const animationUpContainers = entry.target.querySelectorAll('.animation_up');
+                if (entry.isIntersecting) {
+                    animationLeftContainers.forEach((container) => {
+                        //*console.log(container.id);
+                        const currentItem = document.querySelector(`#${container.id}`);
+                        animateItem(currentItem, '1', 'translateX(0)');
+                    });
+                    animationRightContainers.forEach((container) => {
+                        //*console.log(container.id);
+                        const currentItem = document.querySelector(`#${container.id}`);
+                        animateItem(currentItem, '1', 'translateX(0)');
+                    });
+                    animationUpContainers.forEach((container) => {
+                        //*console.log(container.id);
+                        const currentItem = document.querySelector(`#${container.id}`);
+                        animateItem(currentItem, '1', 'translateY(0)');
+                    });
+                } else {
+                    animationLeftContainers.forEach((container) => {
+                        //*console.log(container.id);
+                        const currentItem = document.querySelector(`#${container.id}`);
+                        animateItem(currentItem, '0', 'translateX(-50%)');
+                    });
+                    animationRightContainers.forEach((container) => {
+                        //*console.log(container.id);
+                        const currentItem = document.querySelector(`#${container.id}`);
+                        animateItem(currentItem, '0', 'translateX(50%)');
+                    });
+                    animationUpContainers.forEach((container) => {
+                        //*console.log(container.id);
+                        const currentItem = document.querySelector(`#${container.id}`);
+                        animateItem(currentItem, '0', 'translateY(50%)');
+                    });
+                }
+            };
+            const optionsIO_skills = {
+                threshold: '.4',
+            };
 
-    swipeAnimationContainersHalf.forEach((container) => {
-        const watchSwipeAnimationContainer = ([entry]) => {
-            const animationLeftContainers = entry.target.querySelectorAll('.animation_left');
-            const animationRightContainers = entry.target.querySelectorAll('.animation_right');
-            const animationUpContainers = entry.target.querySelectorAll('.animation_up');
-            if (entry.isIntersecting) {
-                animationLeftContainers.forEach((container) => {
-                    //*console.log(container.id);
-                    const currentItem = document.querySelector(`#${container.id}`);
-                    animateItem(currentItem, '1', 'translateX(0)');
-                });
-                animationRightContainers.forEach((container) => {
-                    //*console.log(container.id);
-                    const currentItem = document.querySelector(`#${container.id}`);
-                    animateItem(currentItem, '1', 'translateX(0)');
-                });
-                animationUpContainers.forEach((container) => {
-                    //*console.log(container.id);
-                    const currentItem = document.querySelector(`#${container.id}`);
-                    animateItem(currentItem, '1', 'translateY(0)');
-                });
-            } else {
-                animationLeftContainers.forEach((container) => {
-                    //*console.log(container.id);
-                    const currentItem = document.querySelector(`#${container.id}`);
-                    animateItem(currentItem, '0', 'translateX(-50%)');
-                });
-                animationRightContainers.forEach((container) => {
-                    //*console.log(container.id);
-                    const currentItem = document.querySelector(`#${container.id}`);
-                    animateItem(currentItem, '0', 'translateX(50%)');
-                });
-                animationUpContainers.forEach((container) => {
-                    //*console.log(container.id);
-                    const currentItem = document.querySelector(`#${container.id}`);
-                    animateItem(currentItem, '0', 'translateY(50%)');
-                });
-            }
-            /* if (entry.isIntersecting) {
-                animationLeftContainers.forEach((container) => {
-                    const containerId = container.id;
-                    //*console.log(containerId);
-                    const currentContainer = document.querySelector(`#${containerId}`);
-                    animateItem(currentContainer, '1', 'translateX(0)');
-                });
-                animationRightContainers.forEach((container) => {
-                    const containerId = container.id;
-                    //*console.log(containerId);
-                    const currentContainer = document.querySelector(`#${containerId}`);
-
-                    animateItem(currentContainer, '1', 'translateX(0)');
-                });
-            } else {
-                animationLeftContainers.forEach((container) => {
-                    const containerId = container.id;
-                    //*console.log(containerId);
-                    const currentContainer = document.querySelector(`#${containerId}`);
-                    animateItem(currentContainer, '0', 'translateX(-50%)');
-                });
-                animationRightContainers.forEach((container) => {
-                    const containerId = container.id;
-                    //*console.log(containerId);
-                    const currentContainer = document.querySelector(`#${containerId}`);
-                    animateItem(currentContainer, '0', 'translateX(50%)');
-                });
-            } */
-        };
-        const optionsIO_skills = {
-            threshold: '.4',
-        };
-
-        const skillsContainersObserver = new IntersectionObserver(watchSwipeAnimationContainer, optionsIO_skills);
-        skillsContainersObserver.observe(container);
-    });
+            const skillsContainersObserver = new IntersectionObserver(watchSwipeAnimationContainer, optionsIO_skills);
+            skillsContainersObserver.observe(container);
+        });
+    };
+    swipingAnimation();
     //^^ANIMATION ITEM SWIPE--OVER
     //^^ *************************************************************************** *//
-    //^^SKILLS CONTAINER ANIMATION--OVER
-    //^^ **************************************************************************** *//
     //^ NAV RESIZE OBSERVER PARA MENU RESPONSIVE-- START --/CHANGE MENU NAV BY SCREEN SIZE
 
     const watchNavResize = ([entry]) => {
@@ -614,10 +662,24 @@ document.addEventListener('DOMContentLoaded', () => {
     //& ***********************************************************************************  *//
 
     //!FUNCTIONS --OVER
+    //^^PRUEBAS--START
+    legalBtns.forEach((btn) => {
+        const openLegalModal = () => {
+            if (warningModalStatus === 'open') {
+                closeModal(storageAlertModal);
+                openModal(legalModal);
+                warningModalStatus = 'close';
+            } else if (warningModalStatus === 'close') {
+                openModal(legalModal);
+            }
+        };
+        btn.addEventListener('click', openLegalModal);
+    });
+    //^^PRUEBAS--OVER
+    //^^ ************************************************************************** *//
     //! ******************************************************************************//
     //! ADD EVENT LISTENERS
     window.addEventListener('scroll', scrollBody);
-
     body.addEventListener('click', closeByBodyClick);
     btnLogo.addEventListener('click', toTheTop);
     btnMenuContainer.addEventListener('click', btnNavMenu);
@@ -625,6 +687,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModalContactForm.addEventListener('click', closeContactModal);
     btnHeroDown.addEventListener('click', scrollOneHeight);
     acceptStorageWarningBtn.addEventListener('click', closeStorageWarningModal);
+    legalAccept.addEventListener('click', closeLegalModal);
     //^ BTNS HERO-- START && **/POSITION THE PAGE IN SECTIONS BY THE BTNS IN THE HERO SECTION
     btnsHero.forEach((btn) => {
         btn.addEventListener('click', () => {

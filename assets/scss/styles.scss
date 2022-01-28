@@ -556,6 +556,13 @@ p {
 ul {
     list-style: none;
 }
+.tooltip {
+    position: absolute;
+    opacity: 0;
+    transition: translateY(50%);
+    top: -150%;
+    right: 0;
+}
 .extra_section,
 .section {
     width: 100%;
@@ -720,16 +727,47 @@ BUTTON {
 }
 //! MODAL OVER
 //! *********************************************************************************************** *//
-//*#first_msg_modal,
+//*#storage_alert_modal,
 #contact_modal {
     display: none;
     opacity: 0;
 }
-//! FIRST MESSAGE MODAL--START
-#first_msg_modal {
-    transform: translate(-50%, 0);
+//! STORAGE MODAL--START
+#storage_alert_modal {
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    .btn_container {
+        @include flex(center, center);
+        width: 100%;
+        padding: 0.5rem 0;
+        .btn_link {
+            width: fit-content;
+            padding: 1rem;
+            color: var(--secondColor);
+            font-size: 1.2rem;
+            font-weight: 400;
+            text-decoration: underline;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn_link:focus {
+            border: dotted 1px white;
+        }
+    }
 }
-//! FIRST MESSAGE MODAL--OVER
+//! STORAGE MODAL--OVER
+//! ************************************************************************************************ *//
+//! LEGAL MODAL--START
+#legal_modal {
+    max-height: 90vh;
+    overflow-y: scroll;
+    display: none;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: all 1000ms ease;
+}
+//! LEGAL MODAL--OVER
 //! ************************************************************************************************ *//
 //! LOADER START
 @keyframes beat {
@@ -745,7 +783,7 @@ BUTTON {
     100% {
         transform: translate(-50%, -50%) scale(1);
     }
-}
+} /* 
 .loader {
     position: fixed;
     top: 0;
@@ -766,6 +804,30 @@ BUTTON {
         background: var(--backgroundColor);
         border-radius: 50%;
         animation: beat 2s ease 2s infinite;
+    }
+} */
+@keyframes spin {
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.spinner_container {
+    @include flex(center, center);
+    width: 100%;
+    height: 30rem;
+    transition: all 1000ms ease;
+    transform: translateY(0);
+    .spinner {
+        border-style: dotted;
+        border-color: var(--firstColor);
+        border-width: 7px 0 0 0;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        animation: spin 1000ms linear infinite;
     }
 }
 //! LOADER OVER
@@ -1357,6 +1419,7 @@ BUTTON {
 //!SERVICES SECTION-- OVER
 //! ******************************************************************** *//
 //!PORTFOLIO SECTION-- START
+
 #portfolio_section {
     @include flexDirection(column, flex-start, center);
     .cards_container {
@@ -1368,15 +1431,15 @@ BUTTON {
 }
 //&TEMPLATE STYLE
 .project_card {
-    width: var(--cardWidth);
+    width: 30rem;
     height: 30rem;
     background: var(--firstColor);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    transition: filter 0.5s ease;
     transition: all 1s ease;
-
+    //* transition: transformY(50%);
+    //*opacity: 0;
     .project_info {
         @include flexDirection(column, center, center);
         opacity: 0;
@@ -1511,6 +1574,26 @@ FOOTER {
             animation: zoom 1000ms ease-out;
         }
     }
+    .btns_container {
+        @include flexDirection(row, center, center);
+        gap: 2rem;
+        width: var(--widthClamp);
+        padding: 0.5rem 0;
+        .btn_link {
+            width: fit-content;
+            padding: 1rem;
+            color: var(--secondColor);
+            font-size: 1.2rem;
+            font-weight: 400;
+            text-decoration: underline;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn_link:focus {
+            border: dotted 1px white;
+        }
+    }
 }
 //!FOOTER-- OVER
 //! ******************************************************************** *//
@@ -1542,7 +1625,6 @@ FOOTER {
     transform: translateY(50%);
     transition: all 2000ms ease;
 }
-
 //*SWIPER UP CONTAINER--OVER
 //* ************************************************************************** *//
 
