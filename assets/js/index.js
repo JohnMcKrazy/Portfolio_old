@@ -338,11 +338,8 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ CLOSE MODAL CONTACT FORM-- OVER
     //^ ************************************************************************ *//
     //^^STORAGE WARNING CLOSE--START
-    /*  const checkAlerStorage = () => {
-        const storageContent = JSON.parse(localStorage['mylocalStorage'])['warning_status'];
-        if (storageContent === 'open') {
-            storageAlertModal.style.opacity = '0';
-            //*console.log(`My session storage alert is ${storageContent}`);
+    const checkAlerStorage = () => {
+        if (warningModalStatus === 'open') {
             setTimeout(() => {
                 animateItem(storageAlertModal, '1', 'translate(-50%, 0)');
             }, 2000);
@@ -355,19 +352,11 @@ document.addEventListener('DOMContentLoaded', () => {
     checkAlerStorage();
 
     const closeStorageWarningModal = () => {
-        let storageContent = JSON.parse(localStorage['mylocalStorage'])['warning_status'];
-        if (storageContent === 'open') {
+        if (warningModalStatus === 'open') {
             closeModal(storageAlertModal);
             warningModalStatus = 'close';
-
-            storageContent = 'close';
-
-            //*console.log(storageContent);
-            //*console.log(`My session storage alert is ${storageContent}`);
-        } else {
-            //*console.log(`My session storage alert is ${storageContent}`);
         }
-    }; */
+    };
     //^^STORAGE WARNING CLOSE--OVER
     //^^ *********************************************************************************** *//
     //^^LEAGL MODAL CLOSE--START
