@@ -68,10 +68,12 @@
     //!FONTS OVER
     //! ******************************************************************************************************************************/
     //!Z INDEX COUNT--START
-    --zIndexNav: 2;
-    --zIndexMenu: 3;
-    --zIndexFull: 4;
-    --zIndexTooltip: 10;
+    --zIndexStart: 1;
+    --zIndexHover: 5;
+    --zIndexNav: 10;
+    --zIndexMenu: 15;
+    --zIndexTooltip: 20;
+    --zIndexFull: 25;
     //!Z INDEX COUNT-- OVER
     //!GENERAL START
     --pushTtansition: transform 1000ms ease;
@@ -102,6 +104,7 @@
     --textColor: hsl(0, 0%, 10%);
     --textContrastColor: hsl(0, 0%, 90%);
     --navbarColor: hsl(0, 0%, 95%);
+    --tooltipColor: hsl(0, 0%, 5%);
     --backgroundColor: hsl(0, 0%, 90%);
     --backgroundOff: hsl(0, 0%, 80%);
     --backgroundModal: hsla(0, 0%, 90%, 0.75);
@@ -163,6 +166,7 @@
     --textColor: hsl(0, 0%, 90%);
     --textContrastColor: hsl(0, 0%, 10%);
     --navbarColor: hsl(0, 0%, 5%);
+    --tooltipColor: hsl(0, 0%, 95%);
     --backgroundColor: hsl(0, 0%, 10%);
     --backgroundOff: hsl(0, 0%, 20%);
     --backgroundModal: hsla(0, 0%, 10%, 0.75);
@@ -561,19 +565,20 @@ ul {
     position: absolute;
     top: 2rem;
     left: 50%;
-    background: var(--navbarColor);
-    padding: 2rem;
+    background: var(--tooltipColor);
+    padding: 1rem;
+    padding-bottom: 2rem;
     border-radius: var(--borderRadius);
     z-index: var(--zIndexTooltip);
     transition: all 1000ms ease;
     width: clamp(200px, 300px, 80%);
-    border: solid 2px var(--firstColor);
+    //*border: solid 2px var(--firstColor);
     h1 {
         font-size: 1.4rem;
-        color: var(--firstColor);
+        color: var(--midGray);
     }
     p {
-        color: var(--textColor);
+        color: var(--textContrastColor);
         font-size: 1.2rem;
     }
 }
@@ -691,7 +696,6 @@ BUTTON {
     width: clamp(300px, 800px, 90%);
     transform: translateX(-50%);
     padding: 2rem 2.5rem;
-    box-shadow: 3px 3px 0.5rem rgba(126, 126, 126, 0.5), -3px -3px 0.5rem rgba(126, 126, 126, 0.5);
     transition: all 1000ms ease;
     .close_btn {
         position: absolute;
@@ -737,6 +741,9 @@ BUTTON {
         INPUT:focus {
             outline: none;
             background: var(--backgroundOff);
+        }
+        INPUT::placeholder {
+            color: VAR(--textColor);
         }
         BUTTON {
             width: 100%;
@@ -961,7 +968,7 @@ BUTTON {
     z-index: var(--zIndexMenu);
     transform: translateY(-100%);
     opacity: 0;
-    transition: all 0.5s ease;
+    transition: all 1000ms ease;
     .btn_menu {
         @include flex(center, center);
         width: 100%;
@@ -1472,9 +1479,8 @@ BUTTON {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    transition: all 1s ease;
-    //* transition: transformY(50%);
-    //*opacity: 0;
+    transition: all 100ms ease;
+    z-index: var(--zIndexStart);
     .project_info {
         @include flexDirection(column, center, center);
         opacity: 0;
@@ -1523,12 +1529,15 @@ BUTTON {
 }
 .flag_project_btn {
     position: relative;
+    color: var(--textColor);
+    font-weight: 600;
 }
 .project_card:hover,
 .project_card:active,
 .project_card:focus {
+    z-index: var(--zIndexHover);
     .project_info {
-        opacity: 0.8;
+        opacity: 0.9;
     }
 }
 
@@ -1655,13 +1664,14 @@ FOOTER {
 //*SWIPER RIGHT CONTAINER--OVER
 //* ************************************************************************** *//
 //*SWIPER UP CONTAINER--START
+.cards_up,
 #design_skills_container,
 #dev_skills_container,
 .title_footer,
 .title_section {
     opacity: 0;
-    transform: translateY(50%);
-    transition: all 2000ms ease;
+    transform: translateY(4rem);
+    transition: all 1000ms ease;
 }
 //*SWIPER UP CONTAINER--OVER
 //* ************************************************************************** *//

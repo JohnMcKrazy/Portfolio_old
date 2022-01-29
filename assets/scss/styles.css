@@ -70,10 +70,12 @@
   --boxShadowB: 0 -5px 1rem hsla(0, 0%, 80%, 0.25);
   --boxShadowT: 0 5px 1rem hsla(0, 0%, 80%, 0.25);
   --titanimFont: 'Titillium Web', sans-serif;
-  --zIndexNav: 2;
-  --zIndexMenu: 3;
-  --zIndexFull: 4;
-  --zIndexTooltip: 10;
+  --zIndexStart: 1;
+  --zIndexHover: 5;
+  --zIndexNav: 10;
+  --zIndexMenu: 15;
+  --zIndexTooltip: 20;
+  --zIndexFull: 25;
   --pushTtansition: transform 1000ms ease;
   --border: solid 0.2rem;
   --borderMenu: solid 0.3rem;
@@ -98,6 +100,7 @@
   --textColor: hsl(0, 0%, 10%);
   --textContrastColor: hsl(0, 0%, 90%);
   --navbarColor: hsl(0, 0%, 95%);
+  --tooltipColor: hsl(0, 0%, 5%);
   --backgroundColor: hsl(0, 0%, 90%);
   --backgroundOff: hsl(0, 0%, 80%);
   --backgroundModal: hsla(0, 0%, 90%, 0.75);
@@ -149,6 +152,7 @@
   --textColor: hsl(0, 0%, 90%);
   --textContrastColor: hsl(0, 0%, 10%);
   --navbarColor: hsl(0, 0%, 5%);
+  --tooltipColor: hsl(0, 0%, 95%);
   --backgroundColor: hsl(0, 0%, 10%);
   --backgroundOff: hsl(0, 0%, 20%);
   --backgroundModal: hsla(0, 0%, 10%, 0.75);
@@ -554,23 +558,23 @@ ul {
   position: absolute;
   top: 2rem;
   left: 50%;
-  background: var(--navbarColor);
-  padding: 2rem;
+  background: var(--tooltipColor);
+  padding: 1rem;
+  padding-bottom: 2rem;
   border-radius: var(--borderRadius);
   z-index: var(--zIndexTooltip);
   -webkit-transition: all 1000ms ease;
   transition: all 1000ms ease;
   width: clamp(200px, 300px, 80%);
-  border: solid 2px var(--firstColor);
 }
 
 .tooltip h1 {
   font-size: 1.4rem;
-  color: var(--firstColor);
+  color: var(--midGray);
 }
 
 .tooltip p {
-  color: var(--textColor);
+  color: var(--textContrastColor);
   font-size: 1.2rem;
 }
 
@@ -720,8 +724,6 @@ BUTTON {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   padding: 2rem 2.5rem;
-  -webkit-box-shadow: 3px 3px 0.5rem rgba(126, 126, 126, 0.5), -3px -3px 0.5rem rgba(126, 126, 126, 0.5);
-          box-shadow: 3px 3px 0.5rem rgba(126, 126, 126, 0.5), -3px -3px 0.5rem rgba(126, 126, 126, 0.5);
   -webkit-transition: all 1000ms ease;
   transition: all 1000ms ease;
 }
@@ -787,6 +789,22 @@ BUTTON {
 .modal .modal_form INPUT:focus {
   outline: none;
   background: var(--backgroundOff);
+}
+
+.modal .modal_form INPUT::-webkit-input-placeholder {
+  color: VAR(--textColor);
+}
+
+.modal .modal_form INPUT:-ms-input-placeholder {
+  color: VAR(--textColor);
+}
+
+.modal .modal_form INPUT::-ms-input-placeholder {
+  color: VAR(--textColor);
+}
+
+.modal .modal_form INPUT::placeholder {
+  color: VAR(--textColor);
 }
 
 .modal .modal_form BUTTON {
@@ -1112,8 +1130,8 @@ BUTTON {
   -webkit-transform: translateY(-100%);
           transform: translateY(-100%);
   opacity: 0;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 1000ms ease;
+  transition: all 1000ms ease;
 }
 
 #menu_container .btn_menu {
@@ -2022,8 +2040,9 @@ BUTTON {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
+  -webkit-transition: all 100ms ease;
+  transition: all 100ms ease;
+  z-index: var(--zIndexStart);
 }
 
 .project_card .project_info {
@@ -2099,12 +2118,20 @@ BUTTON {
 
 .flag_project_btn {
   position: relative;
+  color: var(--textColor);
+  font-weight: 600;
+}
+
+.project_card:hover,
+.project_card:active,
+.project_card:focus {
+  z-index: var(--zIndexHover);
 }
 
 .project_card:hover .project_info,
 .project_card:active .project_info,
 .project_card:focus .project_info {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 #clients_section {
@@ -2322,15 +2349,16 @@ FOOTER .btns_container .btn_link:focus {
   transition: all 1000ms ease;
 }
 
+.cards_up,
 #design_skills_container,
 #dev_skills_container,
 .title_footer,
 .title_section {
   opacity: 0;
-  -webkit-transform: translateY(50%);
-          transform: translateY(50%);
-  -webkit-transition: all 2000ms ease;
-  transition: all 2000ms ease;
+  -webkit-transform: translateY(4rem);
+          transform: translateY(4rem);
+  -webkit-transition: all 1000ms ease;
+  transition: all 1000ms ease;
 }
 
 #contact_modal {

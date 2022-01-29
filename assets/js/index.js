@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 if (currentItemClassName === 'btn flag_project_btn') {
                                     //*console.log(item);
                                     const itemData = item['childNodes'][0].data;
-                                    console.log();
+
                                     const addTooltop = () => {
                                         const funFacts = [
                                             {
@@ -253,6 +253,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             //*console.log(fragment);
             portfolioCardsContainer.appendChild(fragmentProjects);
+            const projectCards = document.querySelectorAll('.project_card');
+            projectCards.forEach((card) => {
+                setTimeout(() => {
+                    animateItem(card, '1', 'translateY(0)');
+                }, 500);
+            });
         } catch (error) {
             console.log(error);
         }
