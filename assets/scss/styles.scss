@@ -567,11 +567,14 @@ ul {
     z-index: var(--zIndexTooltip);
     transition: all 1000ms ease;
     width: clamp(200px, 300px, 80%);
+    border: solid 2px var(--firstColor);
     h1 {
+        font-size: 1.4rem;
         color: var(--firstColor);
     }
     p {
         color: var(--textColor);
+        font-size: 1.2rem;
     }
 }
 .tooltip_hidden {
@@ -752,6 +755,8 @@ BUTTON {
     transform: translate(-50%, -50%);
     opacity: 0;
     z-index: var(--zIndexFull);
+    width: clamp(200px, 550px, 90%);
+    padding: 1rem 1.5rem 2rem;
     .btn_container {
         @include flex(center, center);
         width: 100%;
@@ -770,6 +775,9 @@ BUTTON {
         .btn_link:focus {
             border: dotted 1px white;
         }
+    }
+    .description_modal {
+        font-size: 1.2rem;
     }
 }
 //! STORAGE MODAL--OVER

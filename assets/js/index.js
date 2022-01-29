@@ -62,63 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const portfolioData = './portfolioDB.json';
     //^FETCH JSON COMPANYS DATA-- OVER
     //^ ***********************************************************************************************//
-
-    //!MUTATION OBSERVER --START
-    const watchChanges = (entries) => {
-        const newNodes = entries[0]['addedNodes'];
-        newNodes.forEach((node) => {
-            const eachItem = node['children'][0]['children'][0]['childNodes'];
-            eachItem.forEach((item) => {
-                //*const currentId = document.querySelector(`#${item.id}`);
-                if (item['outerHTML']) {
-                    const classNames = item.classList;
-
-                    classNames.forEach((name) => {
-                        //* console.log(name);
-                        if (name === 'btns_flag_project_container') {
-                            //*console.log(item);
-                            const currentItemsChildren = item['childNodes'];
-                            //*console.log(currentItemsChildren);
-                            currentItemsChildren.forEach((item) => {
-                                const currentItemClassName = item.className;
-                                //*console.log(currentItemClassList);
-                                if (currentItemClassName === 'btn flag_project_btn') {
-                                    console.log(item);
-                                    const addTooltop = () => {
-                                        const cloneTooltip = tooltipTemplate.cloneNode(true);
-                                        const tooltip = cloneTooltip.querySelector('.tooltip');
-                                        item.appendChild(tooltip);
-                                        setTimeout(() => {
-                                            tooltip.classList.remove('tooltip_hidden');
-                                        }, 100);
-                                    };
-                                    item.addEventListener('mouseenter', addTooltop);
-                                    const delateTooltip = () => {
-                                        const tooltip = document.querySelector('.tooltip');
-                                        tooltip.classList.add('tooltip_hidden');
-                                        setTimeout(() => {
-                                            item.removeChild(tooltip);
-                                        }, 1500);
-                                        //*console.log('prueba de mouse leave');
-                                    };
-                                    item.addEventListener('mouseleave', delateTooltip);
-                                }
-                                /* currentItemClassList.forEach((list) => {
-                                    console.log(list);
-                                }); */
-                            });
-                        }
-                    });
-                }
-            });
-        });
-    };
-    const changeObserver = new MutationObserver(watchChanges);
-    changeObserver.observe(portfolioCardsContainer, { childList: true });
-
-    //!MUTATION OBSERVER --OVER
-    //! ************************************************************************************************** *//
-
     //!GENERAL CONSTANTS --OVER
     //! ***********************************************************************************************//
     //!GENERAL VARIANTS--START
@@ -155,6 +98,99 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //^CHANGE THEME BY HOUR-- OVER
     //^ ***********************************************************************************************//
+    //^^ADD OBJECT WITH TOOLTIPS INFO--START
+
+    //!MUTATION OBSERVER --START
+    const watchChanges = (entries) => {
+        const newNodes = entries[0]['addedNodes'];
+        newNodes.forEach((node) => {
+            const eachItem = node['children'][0]['children'][0]['childNodes'];
+            eachItem.forEach((item) => {
+                //*const currentId = document.querySelector(`#${item.id}`);
+                if (item['outerHTML']) {
+                    const classNames = item.classList;
+
+                    classNames.forEach((name) => {
+                        //* console.log(name);
+                        if (name === 'btns_flag_project_container') {
+                            //*console.log(item);
+                            const currentItemsChildren = item['childNodes'];
+                            //*console.log(currentItemsChildren);
+                            currentItemsChildren.forEach((item) => {
+                                const currentItemClassName = item.className;
+                                //*console.log(currentItemClassName);
+                                if (currentItemClassName === 'btn flag_project_btn') {
+                                    //*console.log(item);
+                                    const itemData = item['childNodes'][0].data;
+                                    console.log();
+                                    const addTooltop = () => {
+                                        const funFacts = [
+                                            {
+                                                tech_name: 'Illustrator',
+                                                tech_complete_name: 'Adobe Illustrator',
+                                                tech_info:
+                                                    'Editor de gráficos vectoriales en forma de taller de arte que trabaja sobre un tablero de dibujo, conocido como «mesa de trabajo» y está destinado a la creación artística de dibujo y pintura para ilustración, para crear y diseñar imágenes, sirve para editar entre otras cosas.',
+                                            },
+                                            {
+                                                tech_name: 'Photoshop',
+                                                tech_complete_name: 'Adobe Photoshop',
+                                                tech_info:
+                                                    'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+                                            },
+                                        ];
+                                        //^^ADD OBJECT WITH TOOLTIPS INFO--OVER
+                                        //^^ ************************************************************************************* *//
+
+                                        const cloneTooltip = tooltipTemplate.cloneNode(true);
+                                        const tooltip = cloneTooltip.querySelector('.tooltip');
+                                        const tooltipTitle = cloneTooltip.querySelector('.tooltip_title');
+                                        const tooltipInfo = cloneTooltip.querySelector('.tooltip_info');
+
+                                        funFacts.forEach((fact) => {
+                                            const techName = fact['tech_name'];
+                                            const techCompleteName = fact['tech_complete_name'];
+                                            const techInfo = fact['tech_info'];
+                                            if (itemData === techName) {
+                                                tooltipTitle.textContent = techCompleteName;
+                                                tooltipInfo.textContent = techInfo;
+                                            }
+                                        });
+
+                                        item.appendChild(tooltip);
+                                        setTimeout(() => {
+                                            tooltip.classList.remove('tooltip_hidden');
+                                        }, 100);
+                                    };
+                                    item.addEventListener('mouseenter', addTooltop);
+                                    const delateTooltip = () => {
+                                        const tooltips = document.querySelectorAll('.tooltip');
+
+                                        tooltips.forEach((tooltip) => {
+                                            if (item.hasChildNodes()) {
+                                                tooltip.classList.add('tooltip_hidden');
+                                                item.removeChild(tooltip);
+                                            }
+                                        });
+
+                                        //*console.log('prueba de mouse leave');
+                                    };
+                                    item.addEventListener('mouseleave', delateTooltip);
+                                }
+                                /* currentItemClassList.forEach((list) => {
+                                    console.log(list);
+                                }); */
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    };
+    const changeObserver = new MutationObserver(watchChanges);
+    changeObserver.observe(portfolioCardsContainer, { childList: true });
+
+    //!MUTATION OBSERVER --OVER
+    //! ************************************************************************************************** *//
     //!SESSION STORAGE--START
 
     /* let localStorageResponse = localStorage;

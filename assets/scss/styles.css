@@ -561,14 +561,17 @@ ul {
   -webkit-transition: all 1000ms ease;
   transition: all 1000ms ease;
   width: clamp(200px, 300px, 80%);
+  border: solid 2px var(--firstColor);
 }
 
 .tooltip h1 {
+  font-size: 1.4rem;
   color: var(--firstColor);
 }
 
 .tooltip p {
   color: var(--textColor);
+  font-size: 1.2rem;
 }
 
 .tooltip_hidden {
@@ -800,6 +803,8 @@ BUTTON {
           transform: translate(-50%, -50%);
   opacity: 0;
   z-index: var(--zIndexFull);
+  width: clamp(200px, 550px, 90%);
+  padding: 1rem 1.5rem 2rem;
 }
 
 #storage_alert_modal .btn_container {
@@ -831,6 +836,10 @@ BUTTON {
 
 #storage_alert_modal .btn_container .btn_link:focus {
   border: dotted 1px white;
+}
+
+#storage_alert_modal .description_modal {
+  font-size: 1.2rem;
 }
 
 #legal_modal {
