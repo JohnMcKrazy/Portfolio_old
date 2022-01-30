@@ -80,6 +80,7 @@
   --border: solid 0.2rem;
   --borderMenu: solid 0.3rem;
   --borderRadius: 0.25rem;
+  --navbarHeightFixed: 6rem;
   --navbarHeight: 10rem;
   --widthClamp: clamp(200px, 1500px, 90%);
   --cardWidth: clamp(280px, 30rem, 80%);
@@ -563,8 +564,8 @@ ul {
   padding-bottom: 2rem;
   border-radius: var(--borderRadius);
   z-index: var(--zIndexTooltip);
-  -webkit-transition: all 1000ms ease;
-  transition: all 1000ms ease;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
   width: clamp(200px, 300px, 80%);
 }
 
@@ -584,11 +585,16 @@ ul {
   transition: translateY(50%);
 }
 
-.extra_section,
-.section {
+.header {
   width: 100%;
   min-height: calc(100vh - var(--navbarHeight));
+}
+
+.section {
+  width: 100%;
+  min-height: calc(100vh - var(--navbarHeightFixed));
   overflow: hidden;
+  margin-bottom: 6rem;
 }
 
 .section_padding {
@@ -721,11 +727,7 @@ BUTTON {
   z-index: var(--zIndexFull);
   background: var(--navbarColor);
   width: clamp(300px, 800px, 90%);
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  padding: 2rem 2.5rem;
-  -webkit-transition: all 1000ms ease;
-  transition: all 1000ms ease;
+  padding: 1rem 1.5rem 2rem;
 }
 
 .modal .close_btn {
@@ -813,16 +815,11 @@ BUTTON {
 
 #contact_modal {
   display: none;
-  opacity: 0;
 }
 
 #storage_alert_modal {
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  opacity: 0;
   z-index: var(--zIndexFull);
   width: clamp(200px, 550px, 90%);
-  padding: 1rem 1.5rem 2rem;
 }
 
 #storage_alert_modal .btn_container {
@@ -863,11 +860,6 @@ BUTTON {
 #legal_modal {
   max-height: 90vh;
   display: none;
-  opacity: 0;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  -webkit-transition: all 1000ms ease;
-  transition: all 1000ms ease;
 }
 
 #legal_modal .modal_info {
@@ -1609,8 +1601,6 @@ BUTTON {
   position: relative;
   background: var(--backgroundHero);
   background-size: cover;
-  height: calc(100vh - var(--navbarHeight));
-  padding: 0;
 }
 
 #hero_section #hero_content {
@@ -1772,6 +1762,11 @@ BUTTON {
           align-items: center;
 }
 
+#about_section .contenido {
+  width: 100%;
+  background: var(--secondColor);
+}
+
 #skills_section {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1780,9 +1775,9 @@ BUTTON {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1843,6 +1838,7 @@ BUTTON {
           align-items: center;
   width: 5rem;
   height: 5rem;
+  cursor: pointer;
 }
 
 #skills_section .skills_containers .skills_container .skills_icon_container #html_icon_svg .cls-5 {
@@ -1916,6 +1912,15 @@ BUTTON {
   width: 100%;
   height: 30rem;
   background: var(--navbarColor);
+}
+
+#services_section .services_container .service_container .service_card svg {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 #services_section .services_container .service_container .service_card .service_card_img {
@@ -2135,6 +2140,7 @@ BUTTON {
 }
 
 #clients_section {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2142,15 +2148,20 @@ BUTTON {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
 #clients_section .clients_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, calc(-50% - 3rem));
+          transform: translate(-50%, calc(-50% - 3rem));
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2167,8 +2178,9 @@ BUTTON {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
-  height: auto;
-  padding-bottom: 4rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 #clients_section .clients_container .client_logo_container {
@@ -2331,8 +2343,7 @@ FOOTER .btns_container .btn_link:focus {
   border: dotted 1px white;
 }
 
-#service_card_original,
-#service_2_card_original {
+.animation_right {
   opacity: 0;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -2340,8 +2351,7 @@ FOOTER .btns_container .btn_link:focus {
   transition: all 1000ms ease;
 }
 
-#service_card_personalizado,
-#service_2_card_personalizado {
+.animation_left {
   opacity: 0;
   -webkit-transform: translateX(50%);
           transform: translateX(50%);
@@ -2349,9 +2359,8 @@ FOOTER .btns_container .btn_link:focus {
   transition: all 1000ms ease;
 }
 
-.cards_up,
-#design_skills_container,
-#dev_skills_container,
+.animation_up,
+.card_up,
 .title_footer,
 .title_section {
   opacity: 0;
@@ -2361,9 +2370,12 @@ FOOTER .btns_container .btn_link:focus {
   transition: all 1000ms ease;
 }
 
+#legal_modal,
+#storage_alert_modal,
 #contact_modal {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  opacity: 0;
   -webkit-transition: all 1000ms ease;
   transition: all 1000ms ease;
 }

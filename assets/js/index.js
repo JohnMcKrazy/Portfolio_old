@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const flagBtns = document.querySelectorAll('.flag_project_btn');
 
     const legalBtns = document.querySelectorAll('.btn_link_legal');
+    const modalInfoLegal = document.querySelector('#modal_info_legal');
     const legalModal = document.querySelector('#legal_modal');
     const legalAccept = document.querySelector('#legal_modal_accept_btn');
     //^FETCH JASON COMPANYS DATA-- START
@@ -73,13 +74,64 @@ document.addEventListener('DOMContentLoaded', () => {
     let menuSocialStatus = 'close';
     let contactModalStatus = 'close';
     let warningModalStatus = 'open';
+    //!OBJECTS--START
+
+    const infoSoftware = [
+        {
+            tech_name: 'Illustrator',
+            tech_complete_name: 'Adobe Illustrator',
+            tech_info:
+                'Editor de gráficos vectoriales en forma de taller de arte que trabaja sobre un tablero de dibujo, conocido como «mesa de trabajo» y está destinado a la creación artística de dibujo y pintura para ilustración, para crear y diseñar imágenes, sirve para editar entre otras cosas.',
+        },
+        {
+            tech_name: 'Photoshop',
+            tech_complete_name: 'Adobe Photoshop',
+            tech_info:
+                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+        },
+    ];
+    //!OBJECTS--OVER
+    //&PRUEBAS
+    const addTooltip = (parent, itemData) => {
+        //^^ADD OBJECT WITH TOOLTIPS INFO--OVER
+        //^^ ************************************************************************************* *//
+
+        const cloneTooltip = tooltipTemplate.cloneNode(true);
+        const tooltip = cloneTooltip.querySelector('.tooltip');
+        const tooltipTitle = cloneTooltip.querySelector('.tooltip_title');
+        const tooltipInfo = cloneTooltip.querySelector('.tooltip_info');
+        infoSoftware.forEach((infoItem) => {
+            const techName = infoItem['tech_name'];
+            const techCompleteName = infoItem['tech_complete_name'];
+            const techInfo = infoItem['tech_info'];
+            if (itemData === techName) {
+                tooltipTitle.textContent = techCompleteName;
+                tooltipInfo.textContent = techInfo;
+            }
+        });
+        parent.appendChild(tooltip);
+        setTimeout(() => {
+            animateItem(tooltip, '1', 'translateY(0)');
+        }, 100);
+    };
+    const delateTooltip = (parent) => {
+        const tooltips = document.querySelectorAll('.tooltip');
+        tooltips.forEach((tooltip) => {
+            if (parent.hasChildNodes()) {
+                animateItem(tooltip, '0', 'var(--translateUp)');
+                parent.removeChild(tooltip);
+            }
+        });
+    };
+    //&PRUEBAS
+    //& ***************************************************************************************** *//
+    //! ************************************************************************************************** *//
     //!GENERAL VARIANTS--OVER
     //! ***********************************************************************************************//
     //!GENERAL START FUNCTIONS-- START
     //^CHANGE THEME BY HOUR-- START
     let todayHour = new Date().getHours();
     //*let todayHour = 9;
-    //*console.log(todayHour);
     if (todayHour <= 7 || todayHour >= 19) {
         body.classList.remove(`light_theme`);
 
@@ -87,14 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         btnThemeMenu.innerHTML = sunIcon;
         btnThemeNav.innerHTML = sunIcon;
-        //*console.log(`Theme dark by time`);
     } else {
         body.classList.remove(`dark_theme`);
 
         body.classList.add(`light_theme`);
         btnThemeMenu.innerHTML = moonIcon;
         btnThemeNav.innerHTML = moonIcon;
-        //*console.log(`Theme light by time`);
     }
     //^CHANGE THEME BY HOUR-- OVER
     //^ ***********************************************************************************************//
@@ -106,50 +156,28 @@ document.addEventListener('DOMContentLoaded', () => {
         newNodes.forEach((node) => {
             const eachItem = node['children'][0]['children'][0]['childNodes'];
             eachItem.forEach((item) => {
-                //*const currentId = document.querySelector(`#${item.id}`);
                 if (item['outerHTML']) {
                     const classNames = item.classList;
-
                     classNames.forEach((name) => {
-                        //* console.log(name);
                         if (name === 'btns_flag_project_container') {
-                            //*console.log(item);
                             const currentItemsChildren = item['childNodes'];
-                            //*console.log(currentItemsChildren);
                             currentItemsChildren.forEach((item) => {
                                 const currentItemClassName = item.className;
-                                //*console.log(currentItemClassName);
                                 if (currentItemClassName === 'btn flag_project_btn') {
-                                    //*console.log(item);
                                     const itemData = item['childNodes'][0].data;
-
-                                    const addTooltop = () => {
-                                        const funFacts = [
-                                            {
-                                                tech_name: 'Illustrator',
-                                                tech_complete_name: 'Adobe Illustrator',
-                                                tech_info:
-                                                    'Editor de gráficos vectoriales en forma de taller de arte que trabaja sobre un tablero de dibujo, conocido como «mesa de trabajo» y está destinado a la creación artística de dibujo y pintura para ilustración, para crear y diseñar imágenes, sirve para editar entre otras cosas.',
-                                            },
-                                            {
-                                                tech_name: 'Photoshop',
-                                                tech_complete_name: 'Adobe Photoshop',
-                                                tech_info:
-                                                    'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
-                                            },
-                                        ];
+                                    const addTooltipProjectCard = () => {
                                         //^^ADD OBJECT WITH TOOLTIPS INFO--OVER
-                                        //^^ ************************************************************************************* *//
+                                        //^^ ************************************************************************************* * //
 
                                         const cloneTooltip = tooltipTemplate.cloneNode(true);
                                         const tooltip = cloneTooltip.querySelector('.tooltip');
                                         const tooltipTitle = cloneTooltip.querySelector('.tooltip_title');
                                         const tooltipInfo = cloneTooltip.querySelector('.tooltip_info');
 
-                                        funFacts.forEach((fact) => {
-                                            const techName = fact['tech_name'];
-                                            const techCompleteName = fact['tech_complete_name'];
-                                            const techInfo = fact['tech_info'];
+                                        infoSoftware.forEach((infoItem) => {
+                                            const techName = infoItem['tech_name'];
+                                            const techCompleteName = infoItem['tech_complete_name'];
+                                            const techInfo = infoItem['tech_info'];
                                             if (itemData === techName) {
                                                 tooltipTitle.textContent = techCompleteName;
                                                 tooltipInfo.textContent = techInfo;
@@ -161,8 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                             tooltip.classList.remove('tooltip_hidden');
                                         }, 100);
                                     };
-                                    item.addEventListener('mouseenter', addTooltop);
-                                    const delateTooltip = () => {
+                                    item.addEventListener('mouseenter', addTooltipProjectCard);
+                                    const delateTooltipProjectCard = () => {
                                         const tooltips = document.querySelectorAll('.tooltip');
 
                                         tooltips.forEach((tooltip) => {
@@ -171,14 +199,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                                 item.removeChild(tooltip);
                                             }
                                         });
-
-                                        //*console.log('prueba de mouse leave');
                                     };
-                                    item.addEventListener('mouseleave', delateTooltip);
+
+                                    item.addEventListener('mouseleave', delateTooltipProjectCard);
                                 }
-                                /* currentItemClassList.forEach((list) => {
-                                    console.log(list);
-                                }); */
                             });
                         }
                     });
@@ -193,20 +217,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //! ************************************************************************************************** *//
     //!SESSION STORAGE--START
 
-    /* let localStorageResponse = localStorage;
-    //*console.log(localStorageResponse['mylocalStorage']);
-    if (!localStorageResponse['warning_status']) {
-        //*console.log(localStorageResponse);
-
-        let mySession = {
-            warning_status: 'open',
-        };
-        localStorage.setItem('mylocalStorage', JSON.stringify(mySession));
-        const localStorageMyStorage = JSON.parse(localStorage.getItem('mylocalStorage'));
-        //*console.log(localStorageMyStorage);
-    } else if (localStorageResponse['warning_status'] === 'open') {
-        //*console.log(localStorageResponse);
-    } */
     //!SESSION STORAGE--OVER
     //! ******************************************************************************** /** */
     //^^BASICK FUNCTION ANIMATION-- START
@@ -223,9 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const rawData = await fetch(portfolioData);
             const data = await rawData.json();
-            //*console.log(data);
             const dataLength = data.length;
-            //*console.log(dataLength);
 
             data.forEach((item) => {
                 const cloneProjectCard = cardProjectTemplate.cloneNode(true);
@@ -244,14 +252,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 clientTechnologiesInProjects.forEach((project) => {
                     const cloneBtn = btnProjectTemplate.cloneNode(true);
                     const flagBtn = cloneBtn.querySelector('.flag_project_btn');
-                    //*console.log(project);
                     flagBtn.textContent = project;
                     fieldsetCard.appendChild(flagBtn);
                 });
                 cardTitle.textContent = clientName;
                 fragmentProjects.appendChild(projectCard);
             });
-            //*console.log(fragment);
             portfolioCardsContainer.appendChild(fragmentProjects);
             const projectCards = document.querySelectorAll('.project_card');
             projectCards.forEach((card) => {
@@ -307,7 +313,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //^SOCIAL MENU CLOSE EN BODY CLICK--START
     const closeByBodyClick = (e) => {
         if (menuSocialStatus === 'open' && e.target.id !== 'contact_menu_btn') {
-            //*console.log(e.target.id);
             closeMenuSocial();
         }
     };
@@ -331,7 +336,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeMenu = () => {
         let menuTop = menuContainer.style.top;
 
-        //*console.log(menuTop);
         if (menuTop === '0px' || menuTop === 0 || menuTop === '') {
             menuStatus = 'close';
             menuContainer.style.transform = 'translateY(-100%)';
@@ -351,7 +355,6 @@ document.addEventListener('DOMContentLoaded', () => {
             animateItem(cont, '1', 'translate(-50%, 0)');
         }, 500);
     };
-
     const closeModal = (cont) => {
         animateItem(cont, '0', 'translate(-50%, -50%)');
         setTimeout(() => {
@@ -361,7 +364,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //~GENERAL MODAL ACTIONS--OVER
     //~ ******************************************************************************* *//
     //^ OPEN CONTACT MODAL-- START
-
     const openContactModal = () => {
         if (contactModalStatus === 'close') {
             openModal(contactModal);
@@ -386,13 +388,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 animateItem(storageAlertModal, '1', 'translate(-50%, 0)');
             }, 2000);
         } else if (storageContent === 'close') {
-            //*console.log(`My session storage alert is ${storageContent}`);
             storageAlertModal.style.display = 'none';
         }
-        //*console.log(storageContent);
     };
     checkAlerStorage();
-
     const closeStorageWarningModal = () => {
         if (warningModalStatus === 'open') {
             closeModal(storageAlertModal);
@@ -402,7 +401,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^STORAGE WARNING CLOSE--OVER
     //^^ *********************************************************************************** *//
     //^^LEAGL MODAL CLOSE--START
-    const modalInfoLegal = document.querySelector('#modal_info_legal');
     const closeLegalModal = () => {
         const currentPosition = modalInfoLegal.getBoundingClientRect().top;
         modalInfoLegal.scrollTo(currentPosition, 0);
@@ -415,24 +413,19 @@ document.addEventListener('DOMContentLoaded', () => {
     //^TO THE TOP-- START && **/RETURN THE PAGE TO THE PAGE TOP
     const toTheTop = () => {
         const currentPosition = body.getBoundingClientRect().top;
-        //*console.log(currentPosition);
         window.scrollTo(currentPosition, 0);
     };
     //^ TO THE TOP-- OVER
     //^ ************************************************************************* *//
-
     //^SCROLL T0-- START
     const scrollToSection = (btn) => {
         const section = document.querySelector(`#${btn.name}`);
-        //*console.log(section);
         const windowTop = window.top;
         const windowHeight = window.innerHeight / 2;
         const sectionTop = section.getBoundingClientRect().top;
         const navHeight = nav.getBoundingClientRect().height;
         const navTop = nav.getBoundingClientRect().top;
 
-        //*console.log(navHeight);
-        //*console.log(sectionTop);
         if (navTop >= windowHeight) {
             let fixTop = sectionTop - navHeight;
             window.scrollBy(windowTop, fixTop);
@@ -467,17 +460,12 @@ document.addEventListener('DOMContentLoaded', () => {
             serviceContainer.forEach((container) => {
                 container.style.width = '100%';
                 serviceCardsLeft.forEach((card) => {
-                    //*card.style.flexDirection = 'row';
-                    //*card.style.height = '30rem';
                     changeCardStyle(card, 'row', '30rem');
                 });
                 serviceCardsRight.forEach((card) => {
-                    //*card.style.flexDirection = 'row-reverse';
-                    //*card.style.height = '30rem';
                     changeCardStyle(card, 'row-reverse', '30rem');
                 });
             });
-            //*console.log(navWidth);
         } else if (widConf > secondBreak || (widConf < firstBreak && widConf > secondBreak)) {
             lebelBtnMain.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="home_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Inicio</title><path class="cls-1" d="M19 21H5a1 1 0 0 1-1-1v-9H1l10.327-9.388a1 1 0 0 1 1.346 0L23 11h-3v9a1 1 0 0 1-1 1zM6 19h12V9.157l-6-5.454-6 5.454V19z"/></svg>';
@@ -512,7 +500,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             closeMenu();
-            //*console.log(navWidth);
         } else if (widConf <= secondBreak) {
             btnsNavContainer.style.display = 'none';
             btnMenuContainer.style.display = 'flex';
@@ -598,27 +585,21 @@ document.addEventListener('DOMContentLoaded', () => {
     //^SCROLL HEIGHT --START && --/SCROLL TO FIRST PART OF PAGE (NO HERO)
     const scrollOneHeight = () => {
         const windowHeight = window.innerHeight;
-        //*console.log(windowHeight);
         const navHeight = nav.getBoundingClientRect().height;
         const fixHeight = windowHeight - navHeight;
-        //*console.log(navHeight);
         window.scrollTo(0, fixHeight);
     };
     //^SCROLL HEIGHT --OVER
     //^ ***************************************************************************** *// //^
-
     //!GENERAL START FUNCTIONS-- OVER
     //! ***********************************************************************************************//
-
     //!FUNCTIONS --START
     //^CHECK MENU SECTION POSITION-- START && **/HIGHLIGHT IN THE MENU THE SECTION TARGET
     sections.forEach((section) => {
         const watchPage = ([entry]) => {
             if (entry.isIntersecting) {
                 const entryName = entry.target.attributes.id.value;
-                //*console.log(entryName);
                 btnsSection.forEach((btn) => {
-                    //*console.log(btn.name);
                     const btnName = btn.name;
                     if (btnName === entryName) {
                         btn.classList.add('btn_section_active');
@@ -645,33 +626,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 const animationUpContainers = entry.target.querySelectorAll('.animation_up');
                 if (entry.isIntersecting) {
                     animationLeftContainers.forEach((container) => {
-                        //*console.log(container.id);
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, '1', 'translateX(0)');
                     });
                     animationRightContainers.forEach((container) => {
-                        //*console.log(container.id);
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, '1', 'translateX(0)');
                     });
                     animationUpContainers.forEach((container) => {
-                        //*console.log(container.id);
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, '1', 'translateY(0)');
                     });
                 } else {
                     animationLeftContainers.forEach((container) => {
-                        //*console.log(container.id);
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, '0', 'translateX(-50%)');
                     });
                     animationRightContainers.forEach((container) => {
-                        //*console.log(container.id);
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, '0', 'translateX(50%)');
                     });
                     animationUpContainers.forEach((container) => {
-                        //*console.log(container.id);
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, '0', 'translateY(50%)');
                     });
@@ -692,33 +667,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 const animationUpContainers = entry.target.querySelectorAll('.animation_up');
                 if (entry.isIntersecting) {
                     animationLeftContainers.forEach((container) => {
-                        //*console.log(container.id);
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, '1', 'translateX(0)');
                     });
                     animationRightContainers.forEach((container) => {
-                        //*console.log(container.id);
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, '1', 'translateX(0)');
                     });
                     animationUpContainers.forEach((container) => {
-                        //*console.log(container.id);
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, '1', 'translateY(0)');
                     });
                 } else {
                     animationLeftContainers.forEach((container) => {
-                        //*console.log(container.id);
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, '0', 'translateX(-50%)');
                     });
                     animationRightContainers.forEach((container) => {
-                        //*console.log(container.id);
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, '0', 'translateX(50%)');
                     });
                     animationUpContainers.forEach((container) => {
-                        //*console.log(container.id);
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, '0', 'translateY(50%)');
                     });
@@ -736,7 +705,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^ANIMATION ITEM SWIPE--OVER
     //^^ *************************************************************************** *//
     //^ NAV RESIZE OBSERVER PARA MENU RESPONSIVE-- START --/CHANGE MENU NAV BY SCREEN SIZE
-
     const watchNavResize = ([entry]) => {
         const navWidth = entry.contentRect.width;
         configSize(navWidth);
@@ -745,15 +713,12 @@ document.addEventListener('DOMContentLoaded', () => {
     navResizeObserve.observe(nav);
     //^ NAV RESIZE OBSERVER PARA MENU RESPONSIVE-- OVER
     //^ ***********************************************************************************  *//
-
     //&CHANGE LANG BY CLICK--START
     const changeLang = (lang) => {
         document.documentElement.setAttribute('lang', lang);
     };
-    //*console.log(htmlLebel.lang);
     //&CHANGE LANG BY CLICK --OVER
     //& ***********************************************************************************  *//
-
     //!FUNCTIONS --OVER
     //! ******************************************************************************//
     //! ADD EVENT LISTENERS
@@ -766,7 +731,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnHeroDown.addEventListener('click', scrollOneHeight);
     acceptStorageWarningBtn.addEventListener('click', closeStorageWarningModal);
     legalAccept.addEventListener('click', closeLegalModal);
-
+    menuSocialBtn.addEventListener('click', socialMenuBtnActions);
     //^^LEGAL BTNS--START
     legalBtns.forEach((btn) => {
         const openLegalModal = () => {
@@ -795,12 +760,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const changeThemeBtn = () => {
             if (body.className === 'light_theme') {
                 body.className = 'dark_theme';
-                //*console.log('Theme light by click');
                 btnThemeNav.innerHTML = sunIcon;
                 btnThemeMenu.innerHTML = sunIcon;
             } else if (body.className === 'dark_theme') {
                 body.className = 'light_theme';
-                //*console.log('Theme dark by click');
                 btnThemeNav.innerHTML = moonIcon;
                 btnThemeMenu.innerHTML = moonIcon;
             }
@@ -836,13 +799,10 @@ document.addEventListener('DOMContentLoaded', () => {
     //! *************************************************************************/
     //^ SEND FORM-- START
     formEnviarBtn.addEventListener('click', (e) => {
-        //*console.log(e.target);
         e.preventDefault();
     });
     //^ SEND FORM-- OVER
     //^ ************************************************************************* *//
-
-    menuSocialBtn.addEventListener('click', socialMenuBtnActions);
 
     /* const checkMark = () => {
         const checkBtn = document.querySelector('.complete-button');

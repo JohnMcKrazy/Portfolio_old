@@ -80,6 +80,7 @@
     --border: solid 0.2rem;
     --borderMenu: solid 0.3rem;
     --borderRadius: 0.25rem;
+    --navbarHeightFixed: 6rem;
     --navbarHeight: 10rem;
     --widthClamp: clamp(200px, 1500px, 90%);
     --cardWidth: clamp(280px, 30rem, 80%);
@@ -499,6 +500,7 @@ body {
             fill-rule: evenodd;
         }
     }
+
     //^^TECH ICONS COLORS--OVER
     //^^SOCIAL ICONS COLORS-- START
     #fb_icon_svg,
@@ -570,7 +572,7 @@ ul {
     padding-bottom: 2rem;
     border-radius: var(--borderRadius);
     z-index: var(--zIndexTooltip);
-    transition: all 1000ms ease;
+    transition: all 500ms ease;
     width: clamp(200px, 300px, 80%);
     //*border: solid 2px var(--firstColor);
     h1 {
@@ -586,11 +588,15 @@ ul {
     opacity: 0;
     transition: translateY(50%);
 }
-.extra_section,
-.section {
+.header {
     width: 100%;
     min-height: calc(100vh - var(--navbarHeight));
+}
+.section {
+    width: 100%;
+    min-height: calc(100vh - var(--navbarHeightFixed));
     overflow: hidden;
+    margin-bottom: 6rem;
 }
 .section_padding {
     padding: 6rem 0;
@@ -694,9 +700,7 @@ BUTTON {
     z-index: var(--zIndexFull);
     background: var(--navbarColor);
     width: clamp(300px, 800px, 90%);
-    transform: translateX(-50%);
-    padding: 2rem 2.5rem;
-    transition: all 1000ms ease;
+    padding: 1rem 1.5rem 2rem;
     .close_btn {
         position: absolute;
         right: 0;
@@ -755,15 +759,11 @@ BUTTON {
 //*#storage_alert_modal,
 #contact_modal {
     display: none;
-    opacity: 0;
 }
 //! STORAGE MODAL--START
 #storage_alert_modal {
-    transform: translate(-50%, -50%);
-    opacity: 0;
     z-index: var(--zIndexFull);
     width: clamp(200px, 550px, 90%);
-    padding: 1rem 1.5rem 2rem;
     .btn_container {
         @include flex(center, center);
         width: 100%;
@@ -793,9 +793,6 @@ BUTTON {
 #legal_modal {
     max-height: 90vh;
     display: none;
-    opacity: 0;
-    transform: translate(-50%, -50%);
-    transition: all 1000ms ease;
     .modal_info {
         overflow-y: scroll;
         scroll-behavior: smooth;
@@ -1247,13 +1244,12 @@ BUTTON {
 //~QUOTE EXTRA SECTION--OVER
 //~ *******************************************************************************************/
 //! HERO SECTION-- START
+
 #hero_section {
     @include flex(center, center);
     position: relative;
     background: var(--backgroundHero);
     background-size: cover;
-    height: calc(100vh - var(--navbarHeight));
-    padding: 0;
     #hero_content {
         @include flexDirection(column, center, center);
         user-select: none;
@@ -1340,13 +1336,17 @@ BUTTON {
 //!ABOUT SECTION-- START
 #about_section {
     @include flexDirection(column, flex-start, center);
+    .contenido {
+        width: 100%;
+        background: var(--secondColor);
+    }
 }
 //!ABOUT SECTION-- OVER
 //! ******************************************************************** *//
 
 //!SKILLS SECTION-- START
 #skills_section {
-    @include flexDirection(column, center, center);
+    @include flexDirection(column, flex-start, center);
     .skills_containers {
         @include flexDirection(row, center, flex-start);
         width: var(--widthClamp);
@@ -1364,6 +1364,7 @@ BUTTON {
                 @include flex(center, center);
                 width: 5rem;
                 height: 5rem;
+                cursor: pointer;
                 #html_icon_svg {
                     .cls-5 {
                         fill: var(--textColor);
@@ -1413,6 +1414,12 @@ BUTTON {
                 width: 100%;
                 height: 30rem;
                 background: var(--navbarColor);
+                svg {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
                 .service_card_img {
                     width: 100%;
                     height: 100%;
@@ -1547,13 +1554,18 @@ BUTTON {
 //!CLIENTS SECTION-- START
 
 #clients_section {
-    @include flexDirection(column, center, center);
+    position: relative;
+    @include flexDirection(column, flex-start, center);
     .clients_container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, calc(-50% - 3rem));
         @include flexDirection(row, center, center);
         flex-wrap: wrap;
         width: 100%;
-        height: auto;
-        padding-bottom: 4rem;
+        height: fit-content;
+        //*padding-bottom: 4rem;
         .client_logo_container {
             @include flex(center, center);
             padding: 1rem 1.5rem;
@@ -1646,8 +1658,7 @@ FOOTER {
 //! ******************************************************************** *//
 
 //*SWIPER LEFT CONTAINER--START
-#service_card_original,
-#service_2_card_original {
+.animation_right {
     opacity: 0;
     transform: translateX(-50%);
     transition: all 1000ms ease;
@@ -1655,8 +1666,7 @@ FOOTER {
 //*SWIPER LEFT CONTAINER--OVER
 //* ************************************************************************** *//
 //*SWIPER RIGHT CONTAINER--START
-#service_card_personalizado,
-#service_2_card_personalizado {
+.animation_left {
     opacity: 0;
     transform: translateX(50%);
     transition: all 1000ms ease;
@@ -1664,9 +1674,8 @@ FOOTER {
 //*SWIPER RIGHT CONTAINER--OVER
 //* ************************************************************************** *//
 //*SWIPER UP CONTAINER--START
-.cards_up,
-#design_skills_container,
-#dev_skills_container,
+.animation_up,
+.card_up,
 .title_footer,
 .title_section {
     opacity: 0;
@@ -1677,9 +1686,11 @@ FOOTER {
 //* ************************************************************************** *//
 
 //*SWIPER DOWN CONTAINER--START
-
+#legal_modal,
+#storage_alert_modal,
 #contact_modal {
     transform: translate(-50%, -50%);
+    opacity: 0;
     transition: all 1000ms ease;
 }
 //*SWIPER DOWN CONTAINER--OVER
