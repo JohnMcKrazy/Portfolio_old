@@ -40,7 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const swipeAnimationContainersFull = document.querySelectorAll('.swipe_animation_container_full');
     const swipeAnimationContainersHalf = document.querySelectorAll('.swipe_animation_container_half');
 
+    const spinnersLoadersContainers = document.querySelectorAll('.spinner_container');
     const skillsContainer = document.querySelector('.skills_containers');
+    const skillsIconsContainer = document.querySelectorAll('.skills_icon_container');
     const lebelBtnMain = document.querySelector('#main_btn_nav');
     const lebelBtnAbout = document.querySelector('#about_btn_nav');
     const lebelBtnSkills = document.querySelector('#skills_btn_nav');
@@ -97,6 +99,90 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             tech_name: 'Photoshop',
             tech_complete_name: 'Adobe Photoshop',
+            tech_info:
+                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+        },
+
+        {
+            tech_name: 'InDesign',
+            tech_complete_name: 'Adobe InDesign',
+            tech_info:
+                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+        },
+
+        {
+            tech_name: 'Premier',
+            tech_complete_name: 'Adobe Premier',
+            tech_info:
+                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+        },
+
+        {
+            tech_name: 'Xd',
+            tech_complete_name: 'Adobe Xd',
+            tech_info:
+                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+        },
+
+        {
+            tech_name: 'Figma',
+            tech_complete_name: 'Figma',
+            tech_info:
+                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+        },
+
+        {
+            tech_name: 'HTML',
+            tech_complete_name: 'HTML',
+            tech_info:
+                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+        },
+
+        {
+            tech_name: 'CSS',
+            tech_complete_name: 'CSS',
+            tech_info:
+                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+        },
+
+        {
+            tech_name: 'SASS',
+            tech_complete_name: 'SASS',
+            tech_info:
+                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+        },
+
+        {
+            tech_name: 'GitHub',
+            tech_complete_name: 'GitHub',
+            tech_info:
+                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+        },
+
+        {
+            tech_name: 'JavaScript',
+            tech_complete_name: 'JavaScript',
+            tech_info:
+                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+        },
+
+        {
+            tech_name: 'Node.js',
+            tech_complete_name: 'Node.js',
+            tech_info:
+                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+        },
+
+        {
+            tech_name: 'Python',
+            tech_complete_name: 'Python',
+            tech_info:
+                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+        },
+
+        {
+            tech_name: 'Vue.js',
+            tech_complete_name: 'Vue.js',
             tech_info:
                 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
         },
@@ -280,7 +366,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(error);
         }
     };
-    const spinnersLoadersContainers = document.querySelectorAll('.spinner_container');
     spinnersLoadersContainers.forEach((spinnerLoader) => {
         const watchPortfolioContainer = ([entry]) => {
             const dataNameContainer = entry.target.attributes['data-name'].value;
@@ -300,7 +385,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const portfolioObserver = new IntersectionObserver(watchPortfolioContainer, optionsIO_portfolio);
         portfolioObserver.observe(spinnerLoader);
     });
+    skillsIconsContainer.forEach((icon) => {
+        const dataInfo = icon.getAttribute('data-info');
+        console.log(dataInfo);
 
+        icon.addEventListener('mouseenter', () => {
+            addTooltip(icon, dataInfo);
+        });
+        icon.addEventListener('mouseleave', () => {
+            delateTooltip(icon);
+        });
+    });
     //^ CREATE TEMPLATE PROJECT CARD --OVER
     //^ ************************************************************************* *//
     //^ CLOSE MENU SOCIAL-- START
@@ -411,7 +506,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (storageContent && storageContent['page_alert_status'] === 'close') {
             storageForJohnKPage['page_alert_status'] = 'close';
             storageForJohnKPage['page_view_count'] = storageContent['page_view_count'] + 1;
-            console.log(storageForJohnKPage);
             localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
             storageAlertModal.style.display = 'none';
             console.log(`local storage item answer= ${storageContent['page_alert_status']}, page views= ${storageContent['page_view_count']}`);
