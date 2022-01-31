@@ -17,12 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnsMenu = document.querySelectorAll('.btn_menu');
     const btnsNav = document.querySelectorAll('.btn_nav');
     const btnsSection = document.querySelectorAll('.btn_section');
-    const formEnviarBtn = document.querySelector('#contact_form_send_btn');
+    const sendBtnFormModal = document.querySelector('#contact_form_send_btn');
     const btnContact = document.querySelectorAll('.contact_btn');
     const storageAlertModal = document.querySelector('#storage_alert_modal');
-    const acceptStorageWarningBtn = document.querySelector('#storage_alert_modal_accept_btn');
+    const acceptBtnStorageWarningBtn = document.querySelector('#storage_alert_modal_accept_btn');
     const contactModal = document.querySelector('#contact_modal');
-    const closeModalContactForm = document.querySelector('#modal_form_close_btn');
+    const closeBtnModalContactForm = document.querySelector('#modal_form_close_btn');
+    const closeBtnLegalModal = document.querySelector('#modal_legal_close_btn');
     const btnHeroDown = document.querySelector('#hero_btn_down');
     const btnsHero = document.querySelectorAll('.btn_hero');
     const sections = document.querySelectorAll('.section');
@@ -428,10 +429,14 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^LEAGL MODAL CLOSE--START
     const closeLegalModal = () => {
         const currentPosition = modalInfoLegal.getBoundingClientRect().top;
-        modalInfoLegal.scrollTo(currentPosition, 0);
-        setTimeout(() => {
+        if (currentPosition !== 0) {
+            modalInfoLegal.scrollTo(currentPosition, 0);
+            setTimeout(() => {
+                closeModal(legalModal);
+            }, 500);
+        } else {
             closeModal(legalModal);
-        }, 500);
+        }
     };
     //^^LEAGL MODAL CLOSE--OVER
     //^^ *********************************************************************************** *//
@@ -752,11 +757,12 @@ document.addEventListener('DOMContentLoaded', () => {
     btnLogo.addEventListener('click', toTheTop);
     btnMenuContainer.addEventListener('click', btnNavMenu);
     closeMenuBtn.addEventListener('click', closeMenu);
-    closeModalContactForm.addEventListener('click', closeContactModal);
+    closeBtnModalContactForm.addEventListener('click', closeContactModal);
     btnHeroDown.addEventListener('click', scrollOneHeight);
-    acceptStorageWarningBtn.addEventListener('click', closeAlertStorageModal);
+    acceptBtnStorageWarningBtn.addEventListener('click', closeAlertStorageModal);
     legalAccept.addEventListener('click', closeLegalModal);
     menuSocialBtn.addEventListener('click', socialMenuBtnActions);
+    closeBtnLegalModal.addEventListener('click', closeLegalModal);
     //^^LEGAL BTNS--START
     legalBtns.forEach((btn) => {
         const openLegalModal = () => {
@@ -823,7 +829,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^ ***************************************************************************** *//
     //! *************************************************************************/
     //^ SEND FORM-- START
-    formEnviarBtn.addEventListener('click', (e) => {
+    sendBtnFormModal.addEventListener('click', (e) => {
         e.preventDefault();
     });
     //^ SEND FORM-- OVER
