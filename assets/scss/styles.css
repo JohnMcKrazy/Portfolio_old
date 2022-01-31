@@ -585,20 +585,32 @@ ul {
   transition: translateY(50%);
 }
 
-.header {
-  width: 100%;
-  min-height: calc(100vh - var(--navbarHeight));
+HEADER {
+  height: calc(100vh - var(--navbarHeight));
+}
+
+SECTION {
+  min-height: calc(100vh - var(--navbarHeightFixed));
+  margin-bottom: 6rem;
 }
 
 .section {
   width: 100%;
-  min-height: calc(100vh - var(--navbarHeightFixed));
   overflow: hidden;
-  margin-bottom: 6rem;
 }
 
 .section_padding {
   padding: 6rem 0;
+}
+
+.why_container {
+  height: calc(100vh - 12rem);
+  width: 100%;
+}
+
+.why_container .why_header {
+  height: 100%;
+  width: 100%;
 }
 
 .title_section {
@@ -614,7 +626,7 @@ ul {
   text-align: center;
   width: 100%;
   height: auto;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
   -webkit-text-stroke: 1px var(--firstColor);
   color: transparent;
   font-size: clamp(2.5rem, calc(1.5rem + 1.5vw), 4rem);
@@ -1495,99 +1507,6 @@ BUTTON {
   fill: var(--textContrastColor);
 }
 
-.quote_section {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.quote_section .extra_section_content {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: calc(var(--widthClamp) - 10rem);
-  height: auto;
-}
-
-.quote_section .blockquote_container {
-  position: relative;
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
-}
-
-.quote_section .blockquote_container .quote_icon_container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 3rem;
-  height: 3rem;
-}
-
-.quote_section .blockquote_container .quote_icon_container #quote_svg_right,
-.quote_section .blockquote_container .quote_icon_container #quote_svg_left {
-  width: 100%;
-  height: auto;
-}
-
-.quote_section .blockquote_container .quote_icon_container #quote_svg_right .cls-1,
-.quote_section .blockquote_container .quote_icon_container #quote_svg_left .cls-1 {
-  fill: var(--firstColor);
-}
-
-.quote_section .blockquote_container .bq {
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-}
-
-.quote_section .blockquote_container .bq p {
-  font-size: clamp(1.5rem, 2.5rem, 4rem);
-}
-
-.quote_section .blockquote_container .bq h3 {
-  font-size: clamp(1rem, 1.3rem, 1.5rem);
-  font-weight: 200;
-}
-
-.quote_section .position_right {
-  position: absolute;
-  bottom: -3rem;
-  right: -3rem;
-}
-
-.quote_section .position_left {
-  position: absolute;
-  top: -3rem;
-  left: -3rem;
-}
-
 #hero_section {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1762,9 +1681,141 @@ BUTTON {
           align-items: center;
 }
 
-#about_section .contenido {
+#about_section #why_about_container #why_header_about {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(90%, var(--backgroundColor))), url("../img/pagina/graffiti-background-1554703550MY5.jpg") center no-repeat fixed;
+  background: linear-gradient(transparent, var(--backgroundColor) 90%), url("../img/pagina/graffiti-background-1554703550MY5.jpg") center no-repeat fixed;
+}
+
+#services_section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#services_section #why_services_container #why_header_services {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(90%, var(--backgroundColor))), url("../img/pagina/marketing.jpg") center no-repeat fixed;
+  background: linear-gradient(transparent, var(--backgroundColor) 90%), url("../img/pagina/marketing.jpg") center no-repeat fixed;
+}
+
+#services_section .services_container {
+  display: -ms-grid;
+  display: grid;
+  width: var(--widthClamp);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+#services_section .services_container .service_container .service_card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
-  background: var(--secondColor);
+  height: 30rem;
+}
+
+#services_section .services_container .service_container .service_card svg {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+#services_section .services_container .service_container .service_card .service_card_img {
+  width: 100%;
+  height: 100%;
+}
+
+#services_section .services_container .service_container .service_card .service_card_img IMG {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+#services_section .services_container .service_container .service_card .service_card_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+#services_section .services_container .service_container .service_card .service_card_info .service_card_title,
+#services_section .services_container .service_container .service_card .service_card_info .service_card_text {
+  padding: 2rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+}
+
+#services_section .services_container .service_container .service_card > * {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+#services_section .services_container .service_container .service_card_left {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+#services_section .services_container .service_container .service_card_right {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+#services_section .services_container_one_column {
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+#services_section .services_container_two_columns {
+  -ms-grid-columns: (280px)[auto-fill];
+      grid-template-columns: repeat(auto-fill, 280px);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 #skills_section {
@@ -1781,6 +1832,11 @@ BUTTON {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+#skills_section #why_skills_container #why_header_skills {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(90%, var(--backgroundColor))), url("../img/pagina/marketing.jpg") center no-repeat fixed;
+  background: linear-gradient(transparent, var(--backgroundColor) 90%), url("../img/pagina/marketing.jpg") center no-repeat fixed;
 }
 
 #skills_section .skills_containers {
@@ -1874,134 +1930,6 @@ BUTTON {
       flex-basis: 100%;
 }
 
-#services_section {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-#services_section .services_container {
-  display: -ms-grid;
-  display: grid;
-  width: var(--widthClamp);
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
-#services_section .services_container .service_container .service_card {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  height: 30rem;
-  background: var(--navbarColor);
-}
-
-#services_section .services_container .service_container .service_card svg {
-  width: 100%;
-  height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
-}
-
-#services_section .services_container .service_container .service_card .service_card_img {
-  width: 100%;
-  height: 100%;
-}
-
-#services_section .services_container .service_container .service_card .service_card_img IMG {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
-}
-
-#services_section .services_container .service_container .service_card .service_card_info {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-#services_section .services_container .service_container .service_card .service_card_info .service_card_title,
-#services_section .services_container .service_container .service_card .service_card_info .service_card_text {
-  padding: 2rem;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
-}
-
-#services_section .services_container .service_container .service_card > * {
-  -ms-flex-preferred-size: 100%;
-      flex-basis: 100%;
-}
-
-#services_section .services_container .service_container .service_card_left {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-
-#services_section .services_container .service_container .service_card_right {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-}
-
-#services_section .services_container_one_column {
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
-#services_section .services_container_two_columns {
-  -ms-grid-columns: (280px)[auto-fill];
-      grid-template-columns: repeat(auto-fill, 280px);
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
 #portfolio_section {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2016,6 +1944,11 @@ BUTTON {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+#portfolio_section #why_portfolio_container #why_header_portfolio {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(90%, var(--backgroundColor))), url("../img/pagina/marketing.jpg") center no-repeat fixed;
+  background: linear-gradient(transparent, var(--backgroundColor) 90%), url("../img/pagina/marketing.jpg") center no-repeat fixed;
 }
 
 #portfolio_section .cards_container {

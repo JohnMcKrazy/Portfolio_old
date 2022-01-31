@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.section');
     const btnMenuContainer = document.querySelector('#btn_menu_container');
     const btnsNavContainer = document.querySelector('#nav_sections_btns_container');
-    const portfolioCardsContainer = document.querySelector('#portfolio_cards_container');
+    const portfolioHotCardsContainer = document.querySelector('#portfolio_hot_cards_container');
     const htmlLebel = document.documentElement;
     const loader = document.querySelector('.loader');
     const openMenuSound = document.querySelector('#menu_open_sound');
@@ -73,7 +73,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let menuStatus = 'close';
     let menuSocialStatus = 'close';
     let contactModalStatus = 'close';
-    let warningModalStatus = 'open';
+    let alertStorageModalStatus = 'open';
+    //! ************************************************************************************************************ *//
+
+    //! SEARCH LOCAL STORAGE--START
+    const localStorageName = 'JohnK_page_storage';
+    let storageForJohnKPage = {
+        page_view_count: 1,
+        page_alert_status: 'open',
+    };
+    //! SEARCH LOCAL STORAGE--OVER
+    //! ************************************************************************************************************ *//
     //!OBJECTS--START
 
     const infoSoftware = [
@@ -211,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     const changeObserver = new MutationObserver(watchChanges);
-    changeObserver.observe(portfolioCardsContainer, { childList: true });
+    changeObserver.observe(portfolioHotCardsContainer, { childList: true });
 
     //!MUTATION OBSERVER --OVER
     //! ************************************************************************************************** *//
@@ -258,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cardTitle.textContent = clientName;
                 fragmentProjects.appendChild(projectCard);
             });
-            portfolioCardsContainer.appendChild(fragmentProjects);
+            portfolioHotCardsContainer.appendChild(fragmentProjects);
             const projectCards = document.querySelectorAll('.project_card');
             projectCards.forEach((card) => {
                 setTimeout(() => {
@@ -273,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
     spinnersLoadersContainers.forEach((spinnerLoader) => {
         const watchPortfolioContainer = ([entry]) => {
             const dataNameContainer = entry.target.attributes['data-name'].value;
-            if (entry.isIntersecting && dataNameContainer === 'portfolio_cards_container') {
+            if (entry.isIntersecting && dataNameContainer === 'portfolio_hot_cards_container') {
                 const loaderPortfolio = document.querySelector('#loader_portfolio');
                 animateItem(loaderPortfolio, '0', 'translateY(-50%)');
                 portfolioObserver.unobserve(loaderPortfolio);
@@ -382,21 +392,36 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ CLOSE MODAL CONTACT FORM-- OVER
     //^ ************************************************************************ *//
     //^^STORAGE WARNING CLOSE--START
-    const checkAlerStorage = () => {
-        if (warningModalStatus === 'open') {
+    const checkAlertStorageAnswer = () => {
+        let storageContent = JSON.parse(localStorage.getItem(localStorageName));
+        if (!storageContent) {
+            localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
+            console.log('local storage item is created');
             setTimeout(() => {
                 animateItem(storageAlertModal, '1', 'translate(-50%, 0)');
             }, 2000);
-        } else if (storageContent === 'close') {
+        } else if (storageContent && storageContent['page_alert_status'] === 'open') {
+            storageForJohnKPage['page_view_count'] = storageContent['page_view_count'] + 1;
+            localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
+            console.log(`local storage item answer= ${storageContent['page_alert_status']}, page views= ${storageContent['page_view_count']}`);
+            setTimeout(() => {
+                animateItem(storageAlertModal, '1', 'translate(-50%, 0)');
+            }, 2000);
+        } else if (storageContent && storageContent['page_alert_status'] === 'close') {
+            storageForJohnKPage['page_alert_status'] = 'close';
+            storageForJohnKPage['page_view_count'] = storageContent['page_view_count'] + 1;
+            console.log(storageForJohnKPage);
+            localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
             storageAlertModal.style.display = 'none';
+            console.log(`local storage item answer= ${storageContent['page_alert_status']}, page views= ${storageContent['page_view_count']}`);
         }
     };
-    checkAlerStorage();
-    const closeStorageWarningModal = () => {
-        if (warningModalStatus === 'open') {
-            closeModal(storageAlertModal);
-            warningModalStatus = 'close';
-        }
+    checkAlertStorageAnswer();
+    const closeAlertStorageModal = () => {
+        storageForJohnKPage['page_alert_status'] = 'close';
+        closeModal(storageAlertModal);
+        localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
+        console.log(localStorage.getItem(localStorageName));
     };
     //^^STORAGE WARNING CLOSE--OVER
     //^^ *********************************************************************************** *//
@@ -587,7 +612,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const windowHeight = window.innerHeight;
         const navHeight = nav.getBoundingClientRect().height;
         const fixHeight = windowHeight - navHeight;
-        window.scrollTo(0, fixHeight);
+        window.scrollTo(0, windowHeight);
     };
     //^SCROLL HEIGHT --OVER
     //^ ***************************************************************************** *// //^
@@ -610,7 +635,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
         const optionsIO_sections = {
-            threshold: 0.2,
+            threshold: 0.6,
         };
         const pageObserver = new IntersectionObserver(watchPage, optionsIO_sections);
         pageObserver.observe(section);
@@ -729,17 +754,17 @@ document.addEventListener('DOMContentLoaded', () => {
     closeMenuBtn.addEventListener('click', closeMenu);
     closeModalContactForm.addEventListener('click', closeContactModal);
     btnHeroDown.addEventListener('click', scrollOneHeight);
-    acceptStorageWarningBtn.addEventListener('click', closeStorageWarningModal);
+    acceptStorageWarningBtn.addEventListener('click', closeAlertStorageModal);
     legalAccept.addEventListener('click', closeLegalModal);
     menuSocialBtn.addEventListener('click', socialMenuBtnActions);
     //^^LEGAL BTNS--START
     legalBtns.forEach((btn) => {
         const openLegalModal = () => {
-            if (warningModalStatus === 'open') {
+            if (alertStorageModalStatus === 'open') {
                 closeModal(storageAlertModal);
                 openModal(legalModal);
-                warningModalStatus = 'close';
-            } else if (warningModalStatus === 'close') {
+                alertStorageModalStatus = 'close';
+            } else if (alertStorageModalStatus === 'close') {
                 openModal(legalModal);
             }
         };

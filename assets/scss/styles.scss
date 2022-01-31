@@ -588,25 +588,34 @@ ul {
     opacity: 0;
     transition: translateY(50%);
 }
-.header {
-    width: 100%;
-    min-height: calc(100vh - var(--navbarHeight));
+HEADER {
+    height: calc(100vh - var(--navbarHeight));
+}
+SECTION {
+    min-height: calc(100vh - var(--navbarHeightFixed));
+    margin-bottom: 6rem;
 }
 .section {
     width: 100%;
-    min-height: calc(100vh - var(--navbarHeightFixed));
     overflow: hidden;
-    margin-bottom: 6rem;
 }
 .section_padding {
     padding: 6rem 0;
+}
+.why_container {
+    height: calc(100vh - 12rem);
+    width: 100%;
+    .why_header {
+        height: 100%;
+        width: 100%;
+    }
 }
 .title_section {
     @include flex(center, center);
     text-align: center;
     width: 100%;
     height: auto;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
     -webkit-text-stroke: 1px var(--firstColor);
     color: transparent;
     font-size: clamp(2.5rem, calc(1.5rem + 1.5vw), 4rem);
@@ -1188,61 +1197,6 @@ BUTTON {
 }
 //! NAV-- OVER
 //! ****************************************************************************************** *//
-//~QUOTE EXTRA SECTION--START
-.quote_section {
-    @include flexDirection(column, center, center);
-
-    .extra_section_content {
-        position: relative;
-        @include flexDirection(column, flex-start, center);
-        width: calc(var(--widthClamp) - 10rem);
-        height: auto;
-    }
-    .blockquote_container {
-        position: relative;
-        transition: all 1s ease;
-        .quote_icon_container {
-            @include flex(center, center);
-            width: 3rem;
-            height: 3rem;
-            #quote_svg_right,
-            #quote_svg_left {
-                width: 100%;
-                height: auto;
-
-                .cls-1 {
-                    fill: var(--firstColor);
-                }
-            }
-        }
-
-        .bq {
-            width: 100%;
-            height: auto;
-            overflow: hidden;
-            p {
-                font-size: clamp(1.5rem, 2.5rem, 4rem);
-            }
-            h3 {
-                font-size: clamp(1rem, 1.3rem, 1.5rem);
-                font-weight: 200;
-            }
-        }
-    }
-    .position_right {
-        position: absolute;
-        bottom: -3rem;
-        right: -3rem;
-    }
-    .position_left {
-        position: absolute;
-        top: -3rem;
-        left: -3rem;
-    }
-}
-
-//~QUOTE EXTRA SECTION--OVER
-//~ *******************************************************************************************/
 //! HERO SECTION-- START
 
 #hero_section {
@@ -1336,76 +1290,27 @@ BUTTON {
 //!ABOUT SECTION-- START
 #about_section {
     @include flexDirection(column, flex-start, center);
-    .contenido {
-        width: 100%;
-        background: var(--secondColor);
-    }
-}
-//!ABOUT SECTION-- OVER
-//! ******************************************************************** *//
-
-//!SKILLS SECTION-- START
-#skills_section {
-    @include flexDirection(column, flex-start, center);
-    .skills_containers {
-        @include flexDirection(row, center, flex-start);
-        width: var(--widthClamp);
-        margin-bottom: 3rem;
-        .skills_container {
-            width: auto;
-            .skills_icons_container {
-                position: relative;
-                @include flexDirection(row, center, flex-start);
-                flex-wrap: wrap;
-                gap: 1rem;
-                padding: 2rem;
-            }
-            .skills_icon_container {
-                @include flex(center, center);
-                width: 5rem;
-                height: 5rem;
-                cursor: pointer;
-                #html_icon_svg {
-                    .cls-5 {
-                        fill: var(--textColor);
-                    }
-                }
-                #css_icon_svg {
-                    .cls-5 {
-                        fill: var(--textColor);
-                    }
-                }
-                #gitHub_icon_svg {
-                    transform: scale(0.7);
-                    .cls-1 {
-                        fill: var(--textColor);
-                    }
-                }
-            }
-            .skills_icon_container:hover,
-            .skills_icon_container:active,
-            .skills_icon_container:focus {
-                animation: zoom 1000ms ease-out;
-            }
-            #node_icon_container {
-                width: 8rem;
-            }
+    #why_about_container {
+        #why_header_about {
+            background: linear-gradient(transparent, var(--backgroundColor) 90%),
+                url('../img/pagina/graffiti-background-1554703550MY5.jpg') center no-repeat fixed;
         }
     }
-    .skills_containers > * {
-        flex-basis: 100%;
-    }
 }
 //!ABOUT SECTION-- OVER
 //! ******************************************************************** *//
-//!SERVICES SECTION-- START
 #services_section {
     @include flexDirection(column, flex-start, center);
-
+    #why_services_container {
+        #why_header_services {
+            background: linear-gradient(transparent, var(--backgroundColor) 90%), url('../img/pagina/marketing.jpg') center no-repeat fixed;
+        }
+    }
     .services_container {
         display: grid;
         width: var(--widthClamp);
         height: fit-content;
+
         .service_container {
             .service_card {
                 display: flex;
@@ -1413,7 +1318,6 @@ BUTTON {
                 align-items: center;
                 width: 100%;
                 height: 30rem;
-                background: var(--navbarColor);
                 svg {
                     width: 100%;
                     height: auto;
@@ -1467,10 +1371,76 @@ BUTTON {
 }
 //!SERVICES SECTION-- OVER
 //! ******************************************************************** *//
+
+//!SKILLS SECTION-- START
+#skills_section {
+    @include flexDirection(column, flex-start, center);
+    #why_skills_container {
+        #why_header_skills {
+            background: linear-gradient(transparent, var(--backgroundColor) 90%), url('../img/pagina/marketing.jpg') center no-repeat fixed;
+        }
+    }
+    .skills_containers {
+        @include flexDirection(row, center, flex-start);
+        width: var(--widthClamp);
+        margin-bottom: 3rem;
+        .skills_container {
+            width: auto;
+            .skills_icons_container {
+                position: relative;
+                @include flexDirection(row, center, flex-start);
+                flex-wrap: wrap;
+                gap: 1rem;
+                padding: 2rem;
+            }
+            .skills_icon_container {
+                @include flex(center, center);
+                width: 5rem;
+                height: 5rem;
+                cursor: pointer;
+                #html_icon_svg {
+                    .cls-5 {
+                        fill: var(--textColor);
+                    }
+                }
+                #css_icon_svg {
+                    .cls-5 {
+                        fill: var(--textColor);
+                    }
+                }
+                #gitHub_icon_svg {
+                    transform: scale(0.7);
+                    .cls-1 {
+                        fill: var(--textColor);
+                    }
+                }
+            }
+            .skills_icon_container:hover,
+            .skills_icon_container:active,
+            .skills_icon_container:focus {
+                animation: zoom 1000ms ease-out;
+            }
+            #node_icon_container {
+                width: 8rem;
+            }
+        }
+    }
+    .skills_containers > * {
+        flex-basis: 100%;
+    }
+}
+//!ABOUT SECTION-- OVER
+//! ******************************************************************** *//
+//!SERVICES SECTION-- START
 //!PORTFOLIO SECTION-- START
 
 #portfolio_section {
     @include flexDirection(column, flex-start, center);
+    #why_portfolio_container {
+        #why_header_portfolio {
+            background: linear-gradient(transparent, var(--backgroundColor) 90%), url('../img/pagina/marketing.jpg') center no-repeat fixed;
+        }
+    }
     .cards_container {
         @include flexDirection(row, center, center);
         flex-wrap: wrap;
