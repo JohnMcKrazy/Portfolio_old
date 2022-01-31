@@ -26,6 +26,28 @@
         transform: scale(1);
     }
 }
+@keyframes beat {
+    10% {
+        transform: translate(-50%, -50%) scale(1.3);
+    }
+    25% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    35% {
+        transform: translate(-50%, -50%) scale(1.4);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+@keyframes spin {
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 //! ANIMATIONS OVER
 //! ******************************************************************************************************************************/
 //! MIXINS START
@@ -42,6 +64,9 @@
 }
 @mixin shadow($color) {
     text-shadow: 53px 5px 0.5rem $color, -5px -5px 0.5rem $color;
+}
+@mixin backgroundSectionHeader($link) {
+    background: linear-gradient(var(--backgroundColor) 5%, transparent, var(--backgroundColor) 90%), url($link) center no-repeat fixed;
 }
 //!MIXINS OVER
 //! ******************************************************************************************************************************/
@@ -75,6 +100,15 @@
     --zIndexTooltip: 20;
     --zIndexFull: 25;
     //!Z INDEX COUNT-- OVER
+    //! FONT SIZES--START
+    --fontSizeS: 1.2rem;
+    --fontSizeM: 1.5rem;
+    --fontSizeX: 1.8rem;
+
+    --fontSizeXXL: 2rem;
+
+    //! FONT SIZES--OVER
+    //! *********************************************************************************************************************** *//
     //!GENERAL START
     --pushTtansition: transform 1000ms ease;
     --border: solid 0.2rem;
@@ -95,6 +129,8 @@
     //!GENERAL OVER
     //! ******************************************************************************************************************************/
 }
+//! ******************************************************************************************************************************/
+
 //!THEMES START
 //^^ LIGHT THEME START
 .light_theme {
@@ -114,11 +150,14 @@
     --vueIconText: hsl(0, 0%, 20%);
     --shadow: hsla(0, 0%, 75%, 50%);
     //!THEME COLORS OVER
+    //! ************************************************************************************************************************ *//
 
     //!THEME GENERALS START
     color: var(--textColor);
     --backgroundHero: linear-gradient(transparent, var(--backgroundColor) 75%), url('../img/backgrounds/day.jpg') center no-repeat fixed;
     //!THEME GENERALS OVER
+    //! ************************************************************************************************************************ *//
+
     //!LOGOS SPECIFIC COLOR START
 
     #charly_y_sebas_icon_svg {
@@ -154,6 +193,24 @@
         }
     }
     //!LOGOS SPECIFIC COLOR OVER
+    //! ************************************************************************************************************************ *//
+
+    //!SECTION BACKGROUNDS--START
+    #header_section_about {
+        @include backgroundSectionHeader('../img/pagina/pedestrians-400811_1920.jpg');
+    }
+    #header_section_services {
+        @include backgroundSectionHeader('../img/pagina/ux-788002_1920.jpg');
+    }
+    #header_section_portfolio {
+        @include backgroundSectionHeader('../img/pagina/desk-2325627_1920.jpg');
+    }
+    #header_section_skills {
+        @include backgroundSectionHeader('../img/pagina/tool-1957451_1920.jpg');
+    }
+
+    //!SECTION BACKGROUNDS--OVER
+    //! ************************************************************************************************************************ *//
 }
 //^^ LIGHT THEME OVER
 //^^ *****************************************************************************************************************************/
@@ -214,6 +271,24 @@
     }
 
     //!LOGOS SPECIFIC COLOR OVER
+    //! ************************************************************************************************************************ *//
+
+    //!SECTION BACKGROUNDS--START
+    #header_section_about {
+        @include backgroundSectionHeader('../img/pagina/graffiti-background-1554703550MY5.jpg');
+    }
+    #header_section_services {
+        @include backgroundSectionHeader('../img/pagina/business-5475661_1920.jpg');
+    }
+    #header_section_portfolio {
+        @include backgroundSectionHeader('../img/pagina/workspace-1280538_1920.jpg');
+    }
+    #header_section_skills {
+        @include backgroundSectionHeader('../img/pagina/tools-1083796_1920.jpg');
+    }
+
+    //!SECTION BACKGROUNDS--OVER
+    //! ************************************************************************************************************************ *//
 }
 //^^DARK THEME OVER
 //^^ *****************************************************************************************************************************/
@@ -576,12 +651,12 @@ ul {
     width: clamp(200px, 300px, 80%);
     //*border: solid 2px var(--firstColor);
     h1 {
-        font-size: 1.4rem;
+        font-size: var(--fontSizeM);
         color: var(--midGray);
     }
     p {
         color: var(--textContrastColor);
-        font-size: 1.2rem;
+        font-size: var(--fontSizeS);
     }
 }
 .tooltip_hidden {
@@ -602,12 +677,13 @@ SECTION {
 .section_padding {
     padding: 6rem 0;
 }
-.why_container {
-    height: calc(100vh - 12rem);
+.section_content {
+    height: calc(100vh - var(--navbarHeightFixed));
     width: 100%;
-    .why_header {
+    .header_section {
         height: 100%;
         width: 100%;
+        background-size: contain;
     }
 }
 .title_section {
@@ -619,7 +695,6 @@ SECTION {
     -webkit-text-stroke: 1px var(--firstColor);
     color: transparent;
     font-size: clamp(2.5rem, calc(1.5rem + 1.5vw), 4rem);
-    //*font-size: 4rem;
 }
 .section_subtitle {
     color: var(--textColor);
@@ -643,7 +718,7 @@ BUTTON {
     border-radius: var(--borderRadius);
     text-align: center;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: var(--fontSizeS);
     cursor: pointer;
     transition: var(--transitionBtn);
 }
@@ -656,14 +731,13 @@ BUTTON {
     color: var(--textContrastColor);
     background: var(--firstColor);
 }
-
 .more_btn {
     width: 100%;
     background: var(--firstColorHover);
     color: var(--textContrastColor);
     border-color: var(--firstColorHover);
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: var(--fontSizeS);
 }
 .more_btn:hover,
 .more_btn:focus,
@@ -741,7 +815,7 @@ BUTTON {
             width: 100%;
             padding: 0.5rem 0;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: var(--fontSizeS);
         }
         INPUT {
             display: block;
@@ -781,7 +855,7 @@ BUTTON {
             width: fit-content;
             padding: 1rem;
             color: var(--secondColor);
-            font-size: 1.2rem;
+            font-size: var(--fontSizeS);
             font-weight: 400;
             text-decoration: underline;
             text-align: center;
@@ -793,7 +867,7 @@ BUTTON {
         }
     }
     .description_modal {
-        font-size: 1.2rem;
+        font-size: var(--fontSizeS);
     }
 }
 //! STORAGE MODAL--OVER
@@ -817,69 +891,6 @@ BUTTON {
 }
 //! LEGAL MODAL--OVER
 //! ************************************************************************************************ *//
-//! LOADER START
-@keyframes beat {
-    10% {
-        transform: translate(-50%, -50%) scale(1.3);
-    }
-    25% {
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-    35% {
-        transform: translate(-50%, -50%) scale(1.4);
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-} /* 
-.loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: var(--navbarColor);
-    z-index: var(--zIndexFull);
-    visibility: visible;
-
-    .spinner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 260px;
-        height: 260px;
-        background: var(--backgroundColor);
-        border-radius: 50%;
-        animation: beat 2s ease 2s infinite;
-    }
-} */
-@keyframes spin {
-    50% {
-        transform: rotate(180deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-.spinner_container {
-    @include flex(center, center);
-    width: 100%;
-    height: 30rem;
-    transition: all 1000ms ease;
-    transform: translateY(0);
-    .spinner {
-        border-style: dotted;
-        border-color: var(--firstColor);
-        border-width: 7px 0 0 0;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        animation: spin 1000ms linear infinite;
-    }
-}
-//! LOADER OVER
-//! *********************************************************************************************** *//
 
 //! MENU SOCIAL--START
 #menu_social_container {
@@ -979,7 +990,7 @@ BUTTON {
         @include flex(center, center);
         width: 100%;
         height: auto;
-        font-size: 1rem;
+        font-size: var(--fontSizeS);
         color: var(--textColor);
         padding: 0 2rem;
         transition: var(--transitionBtn);
@@ -1160,7 +1171,7 @@ BUTTON {
                 border-top: solid 5px transparent;
                 color: var(--textColor);
                 .btn_lebel {
-                    font-size: 1.5rem;
+                    font-size: var(--fontSizeM);
                     font-weight: 600;
                 }
                 .nav_menu_icon_svg {
@@ -1290,22 +1301,12 @@ BUTTON {
 //!ABOUT SECTION-- START
 #about_section {
     @include flexDirection(column, flex-start, center);
-    #why_about_container {
-        #why_header_about {
-            background: linear-gradient(transparent, var(--backgroundColor) 90%),
-                url('../img/pagina/graffiti-background-1554703550MY5.jpg') center no-repeat fixed;
-        }
-    }
 }
 //!ABOUT SECTION-- OVER
 //! ******************************************************************** *//
 #services_section {
     @include flexDirection(column, flex-start, center);
-    #why_services_container {
-        #why_header_services {
-            background: linear-gradient(transparent, var(--backgroundColor) 90%), url('../img/pagina/marketing.jpg') center no-repeat fixed;
-        }
-    }
+
     .services_container {
         display: grid;
         width: var(--widthClamp);
@@ -1375,11 +1376,7 @@ BUTTON {
 //!SKILLS SECTION-- START
 #skills_section {
     @include flexDirection(column, flex-start, center);
-    #why_skills_container {
-        #why_header_skills {
-            background: linear-gradient(transparent, var(--backgroundColor) 90%), url('../img/pagina/marketing.jpg') center no-repeat fixed;
-        }
-    }
+
     .skills_containers {
         @include flexDirection(row, center, flex-start);
         width: var(--widthClamp);
@@ -1436,16 +1433,26 @@ BUTTON {
 
 #portfolio_section {
     @include flexDirection(column, flex-start, center);
-    #why_portfolio_container {
-        #why_header_portfolio {
-            background: linear-gradient(transparent, var(--backgroundColor) 90%), url('../img/pagina/marketing.jpg') center no-repeat fixed;
-        }
-    }
+
     .cards_container {
         @include flexDirection(row, center, center);
         flex-wrap: wrap;
         width: 100%;
         height: auto;
+    }
+    .search_list_container {
+        @include flexDirection(column, flex-start, center);
+        gap: 1rem;
+        LABEL {
+            color: var(--secondColor);
+            font-size: var(--fontSizeS);
+        }
+        #project_list {
+            width: 8rem;
+            height: 4rem;
+            text-align: center;
+            font-size: var(--fontSizeM);
+        }
     }
 }
 //&TEMPLATE STYLE
@@ -1490,7 +1497,7 @@ BUTTON {
                 width: 100%;
                 text-align: center;
                 legend {
-                    font-size: 1.5rem;
+                    font-size: var(--fontSizeM);
                     font-weight: 600;
                 }
             }
@@ -1612,7 +1619,7 @@ FOOTER {
             width: fit-content;
             padding: 1rem;
             color: var(--secondColor);
-            font-size: 1.2rem;
+            font-size: var(--fontSizeS);
             font-weight: 400;
             text-decoration: underline;
             text-align: center;
@@ -1664,9 +1671,3 @@ FOOTER {
     transition: all 1000ms ease;
 }
 //*SWIPER DOWN CONTAINER--OVER
-//* ************************************************************************** *//
-/* @media only screen and (max-width: 600px) {
-    html {
-        font-size: 10px;
-    }
-} */

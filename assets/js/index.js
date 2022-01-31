@@ -617,7 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const windowHeight = window.innerHeight;
         const navHeight = nav.getBoundingClientRect().height;
         const fixHeight = windowHeight - navHeight;
-        window.scrollTo(0, windowHeight);
+        window.scrollTo(0, fixHeight);
     };
     //^SCROLL HEIGHT --OVER
     //^ ***************************************************************************** *// //^
