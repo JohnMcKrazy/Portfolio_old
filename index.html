@@ -431,7 +431,7 @@
                     </div>
                 </div>
             </div>
-            <div class="services_container" id="services_container_id">
+            <div class="services_container" id="services_container">
                 <div class="service_container swipe_animation_container_half">
                     <div class="service_card service_card_left animation_left" id="service_card_original">
                         <div class="service_card_img"><img src="./assets/img/pagina/background-thinking-100.jpg" loading="lazy" /></div>
@@ -496,21 +496,22 @@
             </div>
             <div class="cards_container" id="portfolio_hot_cards_container"></div>
 
-            <div class="spinner_container" data-name="portfolio_hot_cards_container" id="loader_portfolio"><div class="spinner"></div></div>
+            <div class="spinner_container" data-name="portfolio_hot_cards_container" id="loader_portfolio_hot">
+                <div class="load"></div>
+                <h1 class="loading_text">Loading</h1>
+            </div>
 
             <div class="swipe_animation_container_full">
                 <h1 class="title_section animation_up" id="title_portfolio_search">Busqueda por tipo de proyecto</h1>
             </div>
-            <div class="search_list_container">
-                <label for="project_list">Elige un Tema:</label>
-                <select id="project_list" name="project_list">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="fiat">Fiat</option>
-                    <option value="audi">Audi</option>
-                </select>
+            <div class="list_container" id="search_project_list_container">
+                <label for="search_project_list">Elige un Tema:</label>
             </div>
             <div class="cards_container" id="portfolio_search_cards_container"></div>
+            <div class="spinner_container" data-name="portfolio_search_cards_container" id="loader_portfolio_search">
+                <div class="load"></div>
+                <h1 class="loading_text">Loading</h1>
+            </div>
         </section>
         <!--^^PORTFOLIO SECTION-- OVER-->
         <!--^^ ******************************************************-->
@@ -2090,8 +2091,8 @@
         </audio> -->
         <!--~~SOUDS OVER-->
         <!--~~ ******************************************************-->
-        <!--~~MODALS START -->
-        <!--&CARD TEMPLATE START-->
+        <!--~~TEAMPLATES START -->
+        <!--^^CARD TEMPLATE START-->
         <template id="card_project_template">
             <div class="project_card card_up" id="" tabindex="0">
                 <div class="project_info">
@@ -2109,9 +2110,9 @@
         <template id="btn_project_template">
             <button class="btn flag_project_btn" tabindex="-1">Boton prueba</button>
         </template>
-        <!--&CARD TEMPLATE START-->
-        <!--& ******************************************************-->
-        <!--&TOOLTIP TEMPLATE--START-->
+        <!--^^CARD TEMPLATE START-->
+        <!--^^ ******************************************************-->
+        <!--^^TOOLTIP TEMPLATE--START-->
         <template id="tooltip_template">
             <!--^^INFO TOOLTIP--START-->
             <div class="tooltip tooltip_hidden">
@@ -2123,7 +2124,23 @@
             </div>
             <!--^^INFO TOOLTIP--OVER-->
         </template>
-        <!--&TOOLTIP TEMPLATE--OVER-->
+        <!--^^TOOLTIP TEMPLATE--OVER-->
+        <!--^^TEMPLATE SELECTION LIST-->
+        <!--&LIST SELECTOR TEMPLATE-->
+        <template id="selection_list_template">
+            <select class="selection_list" name="" id="">
+                <option value="start">Selecciona un tema</option>
+            </select>
+        </template>
+        <!--&LIST SELECTOR TEMPLATE-->
+        <!--&LIST OPTION TEMPLATE-->
+        <template id="option_list_template">
+            <option class="option_list" value="" id=""></option>
+        </template>
+        <!--&LIST OPTION TEMPLATE-->
+        <!--^^TEMPLATE SELECTION LIST-->
+        <!--~~TEAMPLATES over -->
+        <!--~~ ******************************************************-->
         <!--~~MODALS START -->
         <!--^^FIRST MESSAGE MODAL--START -->
         <div class="modal" id="storage_alert_modal">

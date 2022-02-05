@@ -5,7 +5,8 @@
         "db_name": "creaciones_hermed",
         "client_logo": "",
         "projects": {
-            "type": ["Branding", "Tarjeta de presentacion", "Promocionales", "Edicion de imagen", "Redes Sociales"],
+            "type": ["Branding", "Tarjeta de presentacion"],
+            "type_data": ["branding", "tarjeta_de_presentacion"],
             "description": "",
             "reach": ["Tarjeta de presentacion", "Promocionales", "Edicion de imagen", "Redes Sociales"],
             "technologies": ["Illustrator", "Photoshop"],
@@ -37,7 +38,8 @@
         "db_name": "leiru",
         "client_logo": "",
         "projects": {
-            "type": ["Branding", "Tarjeta de presentacion", "Firmas Electronicas", "Flayer", "Logotipo"],
+            "type": ["Promocionales", "Edicion de imagen", "Firmas electronicas", "Branding", "Tarjeta de presentacion"],
+            "type_data": ["promocionales", "edicion_de_imagen", "firmas_electronicas", "branding", "tarjeta_de_presentacion"],
             "description": "",
             "reach": ["Tarjeta de presentacion", "Promocionales", "Edicion de imagen", "Redes Sociales"],
             "technologies": ["Illustrator", "Photoshop"],

@@ -1,11 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
-    //!GENERAL CONSTANTS --START
+    //!TEMPLATE CONSTANTS
+    //^^PROJECT CARD TEMPLATE CONSTANTS
     const fragmentProjects = document.createDocumentFragment();
-
     const cardProjectTemplate = document.querySelector('#card_project_template').content;
     const btnProjectTemplate = document.querySelector('#btn_project_template').content;
+    //^^PROJECT CARD TEMPLATE CONSTANTS
+    //^^TOOLTIP TEMPLATE CONSTANT
     const tooltipTemplate = document.querySelector('#tooltip_template').content;
+    //^^TOOLTIP TEMPLATE CONSTANT
+    //^^SELECTION LIST TEMPLATE CONSTANTS
+    const fragmentListProjects = document.createDocumentFragment();
+    const selectionListTemplate = document.querySelector('#selection_list_template').content;
+    const optionListTemplate = document.querySelector('#option_list_template').content;
+    //^^SELECTION LIST TEMPLATE CONSTANTS
+    //!TEMPLATE CONSTANTS
+    //! *********************************************************************************************************** *//
+    //!GENERAL CONSTANTS --START
 
+    const htmlLebel = document.documentElement;
     const body = document.querySelector('BODY');
     const nav = document.querySelector('.nav');
     const btnLogo = document.querySelector('#logo_nav_btn');
@@ -29,18 +41,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.section');
     const btnMenuContainer = document.querySelector('#btn_menu_container');
     const btnsNavContainer = document.querySelector('#nav_sections_btns_container');
-    const portfolioHotCardsContainer = document.querySelector('#portfolio_hot_cards_container');
-    const htmlLebel = document.documentElement;
+
     const loader = document.querySelector('.loader');
     const openMenuSound = document.querySelector('#menu_open_sound');
     const menuSocialContainer = document.querySelector('#menu_social_container');
     const btnsMenuSocial = document.querySelectorAll('.social_btn');
     const menuSocialBtn = document.querySelector('#contact_menu_btn');
     const menuSocialBtnsContainer = document.querySelector('.menu_social_btns_container');
+
+    //* ******************************************************************************************************* *//
+    //*CONTAINERS WHERE TEMPLATES APPEND--START
+    const portfolioHotCardsContainer = document.querySelector('#portfolio_hot_cards_container');
+    const searchProjectListContainer = document.querySelector('#search_project_list_container');
+    const porfolioSearchCardsContainer = document.querySelector('#portfolio_search_cards_container');
+    //*CONTAINERS WHERE TEMPLATES APPEND--OVER
+    //* ******************************************************************************************************* *//
+    //*CONTAINERS WITH ANIMATION FUNCTIONS--START
     const swipeAnimationContainersFull = document.querySelectorAll('.swipe_animation_container_full');
     const swipeAnimationContainersHalf = document.querySelectorAll('.swipe_animation_container_half');
-
+    //*CONTAINERS WITH ANIMATION FUNCTIONS--OVER
+    //* ******************************************************************************************************* *//
     const spinnersLoadersContainers = document.querySelectorAll('.spinner_container');
+    //* ******************************************************************************************************* *//
+
     const skillsContainer = document.querySelector('.skills_containers');
     const skillsIconsContainer = document.querySelectorAll('.skills_icon_container');
     const lebelBtnMain = document.querySelector('#main_btn_nav');
@@ -51,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const lebelBtnClient = document.querySelector('#clients_btn_nav');
     const heroBtnsContainer = document.querySelector('#hero_btns_container');
 
-    const servicesContainer = document.querySelector('#services_container_id');
+    const servicesContainer = document.querySelector('#services_container');
     const serviceContainer = document.querySelectorAll('.service_container');
     const serviceCardsLeft = document.querySelectorAll('.service_card_left');
     const serviceCardsRight = document.querySelectorAll('.service_card_right');
@@ -189,37 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
     //!OBJECTS--OVER
     //&PRUEBAS
-    const addTooltip = (parent, itemData) => {
-        //^^ADD OBJECT WITH TOOLTIPS INFO--OVER
-        //^^ ************************************************************************************* *//
 
-        const cloneTooltip = tooltipTemplate.cloneNode(true);
-        const tooltip = cloneTooltip.querySelector('.tooltip');
-        const tooltipTitle = cloneTooltip.querySelector('.tooltip_title');
-        const tooltipInfo = cloneTooltip.querySelector('.tooltip_info');
-        infoSoftware.forEach((infoItem) => {
-            const techName = infoItem['tech_name'];
-            const techCompleteName = infoItem['tech_complete_name'];
-            const techInfo = infoItem['tech_info'];
-            if (itemData === techName) {
-                tooltipTitle.textContent = techCompleteName;
-                tooltipInfo.textContent = techInfo;
-            }
-        });
-        parent.appendChild(tooltip);
-        setTimeout(() => {
-            animateItem(tooltip, '1', 'translateY(0)');
-        }, 100);
-    };
-    const delateTooltip = (parent) => {
-        const tooltips = document.querySelectorAll('.tooltip');
-        tooltips.forEach((tooltip) => {
-            if (parent.hasChildNodes()) {
-                animateItem(tooltip, '0', 'var(--translateUp)');
-                parent.removeChild(tooltip);
-            }
-        });
-    };
     //&PRUEBAS
     //& ***************************************************************************************** *//
     //! ************************************************************************************************** *//
@@ -293,7 +286,16 @@ document.addEventListener('DOMContentLoaded', () => {
                                         tooltips.forEach((tooltip) => {
                                             if (item.hasChildNodes()) {
                                                 tooltip.classList.add('tooltip_hidden');
-                                                item.removeChild(tooltip);
+                                                setTimeout(() => {
+                                                    const deleteChildElements = (parentElement) => {
+                                                        let child = parentElement.lastElementChild;
+                                                        while (child) {
+                                                            parentElement.removeChild(child);
+                                                            child = parentElement.lastElementChild;
+                                                        }
+                                                    };
+                                                    deleteChildElements(item);
+                                                }, 500);
                                             }
                                         });
                                     };
@@ -316,16 +318,103 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //!SESSION STORAGE--OVER
     //! ******************************************************************************** /** */
-    //^^BASICK FUNCTION ANIMATION-- START
+    //^^GENERATE RANDOM ITEM--START
+    const randomDataSelector = (arr) => {
+        const arrayLenght = arr.length;
+        const randomItem = Math.floor(Math.random() * arrayLenght);
+        return arr[randomItem];
+    };
+    //^^GENERATE RANDOM ITEM--OVER
+    //^^ ************************************************************************** *//
+    //^^DELATE CHILDREN--START
+    const deleteChildElements = (parentElement) => {
+        let child = parentElement.lastElementChild;
+        while (child) {
+            parentElement.removeChild(child);
+            child = parentElement.lastElementChild;
+        }
+    };
+    //^^DELATE CHILDREN--OVER
+    //^^ ************************************************************************** *//
+    //^^INSERT FLEX--START
+    const insertFlex = (cont, dir, jc, ai) => {
+        cont.style.display = 'flex';
+        cont.style.flexDirection = dir;
+        cont.style.justifyContent = jc;
+        cont.style.alignItems = ai;
+    };
+    //^^INSERT FLEX--OVER
+    //^^ ************************************************************************** *//
+    //^^BASIC FUNCTION ANIMATION-- START
     const animateItem = (container, opacity, transform) => {
         container.style.opacity = opacity;
         container.style.transform = transform;
     };
-
-    //^^BASICK FUNCTION ANIMATION-- OVER
+    const animateItemTranslate = (container, opacity, transform, time, as) => {
+        container.style.opacity = opacity;
+        container.style.transform = transform;
+        container.style.translate = `all ${time} ${as}`;
+    };
+    //^^BASIC FUNCTION ANIMATION-- OVER
     //^ ************************************************************************* *//
+    //^^ADD TOOLTIP--START
+    const addTooltip = (parent, itemData) => {
+        //^^ADD OBJECT WITH TOOLTIPS INFO--OVER
+        //^^ ************************************************************************************* *//
+
+        const cloneTooltip = tooltipTemplate.cloneNode(true);
+        const tooltip = cloneTooltip.querySelector('.tooltip');
+        const tooltipTitle = cloneTooltip.querySelector('.tooltip_title');
+        const tooltipInfo = cloneTooltip.querySelector('.tooltip_info');
+        infoSoftware.forEach((infoItem) => {
+            const techName = infoItem['tech_name'];
+            const techCompleteName = infoItem['tech_complete_name'];
+            const techInfo = infoItem['tech_info'];
+            if (itemData === techName) {
+                tooltipTitle.textContent = techCompleteName;
+                tooltipInfo.textContent = techInfo;
+            }
+        });
+        parent.appendChild(tooltip);
+        setTimeout(() => {
+            animateItem(tooltip, '1', 'translateY(0)');
+        }, 100);
+    };
+    //^^ADD TOOLTIP--OVER
+    //^^ ******************************************************************************* *//
+    //^^DELATE TOOLTIP--START
+    const delateTooltip = (parent) => {
+        const tooltips = document.querySelectorAll('.tooltip');
+        tooltips.forEach((tooltip) => {
+            animateItem(tooltip, '0', 'translateY(0)');
+            setTimeout(() => {
+                parent.removeChild(tooltip);
+            }, 500);
+        });
+    };
+    //^^DELATE TOOLTIP--OVER
+    //^^ ******************************************************************************* *//
 
     //^ CREATE TEMPLATE PROJECT CARD --START
+    const createCard = (item, frac) => {
+        const cloneProjectCard = cardProjectTemplate.cloneNode(true);
+        const projectCard = cloneProjectCard.querySelector('.project_card');
+        const fieldsetCard = cloneProjectCard.querySelector('.btns_flag_project_container');
+        const cardTitle = cloneProjectCard.querySelector('.title');
+        //* ******************************************************************************** *//
+        const clientName = item['client_name'];
+        const cardImg = item['projects']['images']['hero']['small'];
+        projectCard.style.backgroundImage = `url("${cardImg}")`;
+        const clientTechnologiesInProjects = item['projects']['technologies'];
+        clientTechnologiesInProjects.forEach((project) => {
+            const cloneBtn = btnProjectTemplate.cloneNode(true);
+            const flagBtn = cloneBtn.querySelector('.flag_project_btn');
+            flagBtn.textContent = project;
+            fieldsetCard.appendChild(flagBtn);
+        });
+        cardTitle.textContent = clientName;
+        frac.appendChild(projectCard);
+    };
     const createProjectCard = async () => {
         try {
             const rawData = await fetch(portfolioData);
@@ -333,27 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const dataLength = data.length;
 
             data.forEach((item) => {
-                const cloneProjectCard = cardProjectTemplate.cloneNode(true);
-                const projectCard = cloneProjectCard.querySelector('.project_card');
-                const fieldsetCard = cloneProjectCard.querySelector('.btns_flag_project_container');
-                const cardTitle = cloneProjectCard.querySelector('.title');
-                //* ******************************************************************************** *//
-
-                const clientName = item['client_name'];
-
-                const bdName = item['db_name'];
-                projectCard.setAttribute('id', `${bdName}_project_card`);
-                const cardImg = item['projects']['images']['hero']['small'];
-                projectCard.style.backgroundImage = `url("${cardImg}")`;
-                const clientTechnologiesInProjects = item['projects'].technologies;
-                clientTechnologiesInProjects.forEach((project) => {
-                    const cloneBtn = btnProjectTemplate.cloneNode(true);
-                    const flagBtn = cloneBtn.querySelector('.flag_project_btn');
-                    flagBtn.textContent = project;
-                    fieldsetCard.appendChild(flagBtn);
-                });
-                cardTitle.textContent = clientName;
-                fragmentProjects.appendChild(projectCard);
+                createCard(item, fragmentProjects);
             });
             portfolioHotCardsContainer.appendChild(fragmentProjects);
             const projectCards = document.querySelectorAll('.project_card');
@@ -366,28 +435,143 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(error);
         }
     };
+    //^^FETCH SEARCH SELECTION DATA--START //-fetch selection option data for search projects
+    let typesOfProjects = [];
+    let newProjectsListData = [];
+    const fetchSearchSelectionData = async () => {
+        try {
+            const rawData = await fetch(portfolioData);
+            const data = await rawData.json();
+            let newID;
+            //*console.log(data);
+            class ProjectTypeData {
+                constructor(value, id) {
+                    this.value = value;
+                    this.id = id;
+                }
+            }
+            data.forEach((item) => {
+                const projectTypes = item['projects']['type'];
+
+                projectTypes.forEach((type) => {
+                    if (!typesOfProjects.includes(type)) {
+                        typesOfProjects.push(type);
+                    }
+                });
+            });
+            //*console.log(typesOfProjects);
+            typesOfProjects.forEach((type) => {
+                const createID = type.toLowerCase().split(' ').join('_');
+                newID = createID;
+                let newProjectTypeData = new ProjectTypeData(type, newID);
+                newProjectsListData.push(newProjectTypeData);
+            });
+            //*console.log(newProjectsListData);
+
+            const selectionListTemplateClone = selectionListTemplate.cloneNode(true);
+            const newList = selectionListTemplateClone.querySelector('.selection_list');
+            newList.name = 'types_of_projects';
+            newList.id = `selection_list_type_of_projects`;
+            newProjectsListData.forEach((option) => {
+                const optionValue = option['value'];
+                const optionId = option['id'];
+                //*console.log(optionValue, optionProject);
+
+                //* console.log(projects);
+                const optionListTemplateClone = optionListTemplate.cloneNode(true);
+                const newOption = optionListTemplateClone.querySelector('.option_list');
+                newOption.id = `option_list_${optionId}`;
+                newOption.setAttribute('value', optionValue);
+                newOption.setAttribute('data', optionId);
+                newOption.innerHTML = optionValue;
+                newList.appendChild(newOption);
+            });
+            fragmentListProjects.appendChild(newList);
+            searchProjectListContainer.appendChild(fragmentListProjects);
+            const typesOfProjectOptionList = document.querySelectorAll('.option_list');
+            //*console.log(typesOfProjectOptionList);
+            typesOfProjectOptionList.forEach((optionType) => {
+                //* console.log(optionType);
+                const createSearchedCards = (e) => {
+                    deleteChildElements(porfolioSearchCardsContainer);
+                    const currentNameData = e.target.getAttribute('value');
+                    //*console.log(currentNameData);
+                    data.forEach((item) => {
+                        const dataIncludedResponse = item['projects']['type'].includes(currentNameData);
+                        if (dataIncludedResponse) {
+                            //todo CREAR TARJETAS ESPECIFICAS DE BUSQUEDA
+                            //*console.log(item);
+                            createCard(item, fragmentProjects);
+                            porfolioSearchCardsContainer.appendChild(fragmentProjects);
+                            const projectCards = document.querySelectorAll('.project_card');
+                            projectCards.forEach((card) => {
+                                setTimeout(() => {
+                                    animateItem(card, '1', 'translateY(0)');
+                                }, 500);
+                            });
+                        }
+                    });
+                };
+
+                optionType.addEventListener('click', createSearchedCards);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    fetchSearchSelectionData();
+    //^^FETCH SEARCH SELECTION DATA--OVER
+
+    //^^FETCH RANDOM--START
+    const fetchRandom = async () => {
+        try {
+            const loaderPortfolioSearch = document.querySelector('#loader_portfolio_search');
+            loaderPortfolioSearch.style.display = 'none';
+            setTimeout(() => {
+                animateItem(loaderPortfolioSearch, '1', 'translateY(0)');
+            }, 1000);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    //^^FETCH RANDOM--OVER
+
+    //^^SPINNERS LOADER ANIMATION--START
     spinnersLoadersContainers.forEach((spinnerLoader) => {
         const watchPortfolioContainer = ([entry]) => {
             const dataNameContainer = entry.target.attributes['data-name'].value;
             if (entry.isIntersecting && dataNameContainer === 'portfolio_hot_cards_container') {
-                const loaderPortfolio = document.querySelector('#loader_portfolio');
-                animateItem(loaderPortfolio, '0', 'translateY(-50%)');
-                portfolioObserver.unobserve(loaderPortfolio);
+                const loaderPortfolioHot = document.querySelector('#loader_portfolio_hot');
+                animateItem(loaderPortfolioHot, '0', 'translateY(-4rem)');
+                setTimeout(() => {
+                    loaderPortfolioHot.style.display = 'none';
+                }, 1000);
+                //*portfolioObserver.unobserve(loaderPortfolio);
                 setTimeout(() => {
                     createProjectCard();
-                    loaderPortfolio.style.display = 'none';
                 }, 1500);
+            } else if (entry.isIntersecting && dataNameContainer === 'portfolio_search_cards_container') {
+                const loaderPortfolioSearch = document.querySelector('#loader_portfolio_search');
+                animateItem(loaderPortfolioSearch, '0', 'translateY(-4rem)');
+                setTimeout(() => {
+                    loaderPortfolioSearch.style.display = 'none';
+                }, 1000);
+                //*portfolioObserver.unobserve(loaderPortfolio);
+                setTimeout(() => {}, 1500);
             }
         };
         const optionsIO_portfolio = {
-            threshold: '.7',
+            threshold: '.8',
         };
         const portfolioObserver = new IntersectionObserver(watchPortfolioContainer, optionsIO_portfolio);
         portfolioObserver.observe(spinnerLoader);
     });
+    //^^SPINNERS LOADER ANIMATION--OVER
+    //^ ************************************************************************* *//
+    //^^SKILLS ICONS TOOLTIP--START
     skillsIconsContainer.forEach((icon) => {
         const dataInfo = icon.getAttribute('data-info');
-        console.log(dataInfo);
+        //*console.log(dataInfo);
 
         icon.addEventListener('mouseenter', () => {
             addTooltip(icon, dataInfo);
@@ -396,6 +580,9 @@ document.addEventListener('DOMContentLoaded', () => {
             delateTooltip(icon);
         });
     });
+    //^^SKILLS ICONS TOOLTIP--OVER
+    //^ ************************************************************************* *//
+
     //^ CREATE TEMPLATE PROJECT CARD --OVER
     //^ ************************************************************************* *//
     //^ CLOSE MENU SOCIAL-- START
@@ -606,9 +793,8 @@ document.addEventListener('DOMContentLoaded', () => {
             btnMenuContainer.style.display = 'none';
             btnsNavContainer.style.display = 'flex';
             menuSocialContainer.style.display = 'flex';
-            skillsContainer.style.flexDirection = 'row';
-            skillsContainer.style.justifyContent = 'center';
-            skillsContainer.style.alignItems = 'flex-start';
+
+            insertFlex(skillsContainer, 'row', 'center', 'flex-start');
             heroBtnsContainer.style.flexDirection = 'row';
             servicesContainer.classList.add('services_container_two_columns');
             servicesContainer.classList.remove('services_container_one_columns');
@@ -628,9 +814,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btnsNavContainer.style.display = 'none';
             btnMenuContainer.style.display = 'flex';
             menuSocialContainer.style.display = 'none';
-            skillsContainer.style.flexDirection = 'column';
-            skillsContainer.style.justifyContent = 'flex-start';
-            skillsContainer.style.alignItems = 'center';
+            insertFlex(skillsContainer, 'column', 'flex-start', 'center');
             heroBtnsContainer.style.flexDirection = 'column';
             servicesContainer.classList.add('services_container_two_columns');
             servicesContainer.classList.remove('services_container_one_columns');
@@ -714,7 +898,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo(0, fixHeight);
     };
     //^SCROLL HEIGHT --OVER
-    //^ ***************************************************************************** *// //^
+    //^ ***************************************************************************** *//
     //!GENERAL START FUNCTIONS-- OVER
     //! ***********************************************************************************************//
     //!FUNCTIONS --START
@@ -734,7 +918,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
         const optionsIO_sections = {
-            threshold: 0.6,
+            threshold: 0.2,
         };
         const pageObserver = new IntersectionObserver(watchPage, optionsIO_sections);
         pageObserver.observe(section);

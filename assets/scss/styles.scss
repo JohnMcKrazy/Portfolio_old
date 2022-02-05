@@ -149,15 +149,15 @@
     //!THEME COLORS OVER
     //! ************************************************************************************************************************ *//
     //!SECTION BACKGROUNDS--START
-    --bgHeaderSectionAbout: linear-gradient(var(--backgroundColor) 5%, transparent, var(--backgroundColor) 90%),
-        url('../img/pagina/pedestrians-400811_1920.jpg') center no-repeat fixed;
-    --bgHeaderSectionServices: linear-gradient(var(--backgroundColor) 5%, transparent, var(--backgroundColor) 90%),
-        url('../img/pagina/concept-1868728_1920.jpg') center no-repeat fixed;
-    --bgHeaderSectionPortfolio: linear-gradient(var(--backgroundColor) 5%, transparent, var(--backgroundColor) 90%),
-        url('../img/pagina/desk-2325627_1920.jpg') center no-repeat fixed;
+    --bgHeaderSectionAbout: linear-gradient(var(--backgroundColor), transparent, var(--backgroundColor) 85%),
+        url('../img/pagina/pexels-artem-beliaikin-1051747.jpg') center no-repeat fixed;
+    --bgHeaderSectionServices: linear-gradient(var(--backgroundColor), transparent, var(--backgroundColor) 85%),
+        url('../img/pagina/office-932926_1920.jpg') center no-repeat fixed;
+    --bgHeaderSectionPortfolio: linear-gradient(var(--backgroundColor), transparent, var(--backgroundColor) 85%),
+        url('../img/pagina/sunglasses-1284392_1920.jpg') center no-repeat fixed;
 
-    --bgHeaderSectionSkills: linear-gradient(var(--backgroundColor) 5%, hsla(0, 0%, 100%, 0.5), var(--backgroundColor) 90%),
-        url('../img/pagina/tool-1957451_1920.jpg') center no-repeat fixed;
+    --bgHeaderSectionSkills: linear-gradient(var(--backgroundColor), hsla(0, 0%, 100%, 0.5), var(--backgroundColor)),
+        url('../img/pagina/pexels-julia-m-cameron-4144097.jpg') center no-repeat fixed;
 
     //!SECTION BACKGROUNDS--OVER
     //! ************************************************************************************************************************ *//
@@ -233,14 +233,14 @@
     //!THEME GENERALS OVER
     //! *********************************************************************************************************/
     //!SECTION BACKGROUNDS--START
-    --bgHeaderSectionAbout: linear-gradient(var(--backgroundColor) 5%, transparent, var(--backgroundColor) 90%),
+    --bgHeaderSectionAbout: linear-gradient(var(--backgroundColor) 10%, transparent, var(--backgroundColor) 90%),
         url('../img/pagina/graffiti-background-1554703550MY5.jpg') center no-repeat fixed;
-    --bgHeaderSectionServices: linear-gradient(var(--backgroundColor) 5%, transparent, var(--backgroundColor) 90%),
-        url('../img/pagina/business-5475661_1920.jpg') center no-repeat fixed;
-    --bgHeaderSectionPortfolio: linear-gradient(var(--backgroundColor) 5%, transparent, var(--backgroundColor) 90%),
+    --bgHeaderSectionServices: linear-gradient(var(--backgroundColor) 10%, transparent, var(--backgroundColor) 90%),
+        url('../img/pagina/pexels-ovan-57690.jpg') center no-repeat fixed;
+    --bgHeaderSectionPortfolio: linear-gradient(var(--backgroundColor) 10%, transparent, var(--backgroundColor) 90%),
         url('../img/pagina/workspace-1280538_1920.jpg') center no-repeat fixed;
 
-    --bgHeaderSectionSkills: linear-gradient(var(--backgroundColor) 5%, hsla(0, 0%, 0%, 0.5), var(--backgroundColor) 90%),
+    --bgHeaderSectionSkills: linear-gradient(var(--backgroundColor) 10%, hsla(0, 0%, 0%, 0.5), var(--backgroundColor) 90%),
         url('../img/pagina/tools-1083796_1920.jpg') center no-repeat fixed;
     //!SECTION BACKGROUNDS--OVER
     //! ************************************************************************************************************************ *//
@@ -650,6 +650,33 @@ ul {
 .tooltip_hidden {
     opacity: 0;
     transition: translateY(50%);
+    z-index: var(--zIndexTooltip);
+    transition: all 500ms ease;
+}
+.spinner_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20rem;
+    width: 100%;
+    transition: all 1000ms ease;
+    .load {
+        display: inline-block;
+        border-radius: 50%;
+        border-bottom: dotted 0.5rem var(--firstColor);
+        width: 5rem;
+        height: 5rem;
+        animation: spin 2s ease infinite forwards;
+    }
+    .loading_text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-weight: 400;
+        font-size: 1.5rem;
+    }
 }
 HEADER {
     height: calc(100vh - var(--navbarHeight));
@@ -671,7 +698,7 @@ SECTION {
     .header_section {
         height: 100%;
         width: 100%;
-        background-size: cover;
+        background-size: cover !important;
     }
 }
 .title_section {
@@ -1196,6 +1223,17 @@ BUTTON {
 }
 //! NAV-- OVER
 //! ****************************************************************************************** *//
+//!LIST CONTAINER--START
+.list_container {
+    @include flexDirection(column, flex-start, center);
+    gap: 1rem;
+    LABEL {
+        color: var(--secondColor);
+        font-size: var(--fontSizeS);
+    }
+}
+//!LIST CONTAINER--OVER
+//! ******************************************************************************************** *//
 //! HERO SECTION-- START
 
 #hero_section {
@@ -1423,7 +1461,6 @@ BUTTON {
             .skills_icon_container:active,
             .skills_icon_container:focus {
                 animation: zoom 1000ms ease-out;
-                z-index: var(--zIndexNav);
             }
             #node_icon_container {
                 width: 8rem;
@@ -1451,20 +1488,7 @@ BUTTON {
         flex-wrap: wrap;
         width: 100%;
         height: auto;
-    }
-    .search_list_container {
-        @include flexDirection(column, flex-start, center);
-        gap: 1rem;
-        LABEL {
-            color: var(--secondColor);
-            font-size: var(--fontSizeS);
-        }
-        #project_list {
-            width: 8rem;
-            height: 4rem;
-            text-align: center;
-            font-size: var(--fontSizeM);
-        }
+        margin-top: 2rem;
     }
 }
 //&TEMPLATE STYLE
@@ -1537,6 +1561,14 @@ BUTTON {
     }
 }
 
+.selection_list {
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    font-size: var(--fontSizeM);
+    color: var(--blackOff);
+    //* padding: 0.5rem 1rem;
+}
 //&TEMPLATE STYLE
 //!PORTFOLIO SECTION-- OVER
 //! ******************************************************************** *//
@@ -1647,7 +1679,7 @@ FOOTER {
 //! ******************************************************************** *//
 
 //*SWIPER LEFT CONTAINER--START
-.animation_right {
+.animation_left {
     opacity: 0;
     transform: translateX(-50%);
     transition: all 1000ms ease;
@@ -1655,7 +1687,7 @@ FOOTER {
 //*SWIPER LEFT CONTAINER--OVER
 //* ************************************************************************** *//
 //*SWIPER RIGHT CONTAINER--START
-.animation_left {
+.animation_right {
     opacity: 0;
     transform: translateX(50%);
     transition: all 1000ms ease;

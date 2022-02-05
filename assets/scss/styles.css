@@ -173,14 +173,14 @@
   --secondShadowColor: hsla(195, 85%, 80%, 0.75);
   --vueIconText: hsl(0, 0%, 20%);
   --shadow: hsla(0, 0%, 75%, 50%);
-  --bgHeaderSectionAbout: linear-gradient(var(--backgroundColor) 5%, transparent, var(--backgroundColor) 90%),
-        url('../img/pagina/pedestrians-400811_1920.jpg') center no-repeat fixed;
-  --bgHeaderSectionServices: linear-gradient(var(--backgroundColor) 5%, transparent, var(--backgroundColor) 90%),
-        url('../img/pagina/concept-1868728_1920.jpg') center no-repeat fixed;
-  --bgHeaderSectionPortfolio: linear-gradient(var(--backgroundColor) 5%, transparent, var(--backgroundColor) 90%),
-        url('../img/pagina/desk-2325627_1920.jpg') center no-repeat fixed;
-  --bgHeaderSectionSkills: linear-gradient(var(--backgroundColor) 5%, hsla(0, 0%, 100%, 0.5), var(--backgroundColor) 90%),
-        url('../img/pagina/tool-1957451_1920.jpg') center no-repeat fixed;
+  --bgHeaderSectionAbout: linear-gradient(var(--backgroundColor), transparent, var(--backgroundColor) 85%),
+        url('../img/pagina/pexels-artem-beliaikin-1051747.jpg') center no-repeat fixed;
+  --bgHeaderSectionServices: linear-gradient(var(--backgroundColor), transparent, var(--backgroundColor) 85%),
+        url('../img/pagina/office-932926_1920.jpg') center no-repeat fixed;
+  --bgHeaderSectionPortfolio: linear-gradient(var(--backgroundColor), transparent, var(--backgroundColor) 85%),
+        url('../img/pagina/sunglasses-1284392_1920.jpg') center no-repeat fixed;
+  --bgHeaderSectionSkills: linear-gradient(var(--backgroundColor), hsla(0, 0%, 100%, 0.5), var(--backgroundColor)),
+        url('../img/pagina/pexels-julia-m-cameron-4144097.jpg') center no-repeat fixed;
   color: var(--textColor);
   --backgroundHero: linear-gradient(transparent, var(--backgroundColor) 75%), url('../img/backgrounds/day.jpg') center no-repeat fixed;
 }
@@ -235,13 +235,13 @@
   --vueIconText: hsl(0, 0%, 80%);
   color: var(--textColor);
   --backgroundHero: linear-gradient(transparent, var(--backgroundColor) 90%), url('../img/backgrounds/night.jpg') center no-repeat fixed;
-  --bgHeaderSectionAbout: linear-gradient(var(--backgroundColor) 5%, transparent, var(--backgroundColor) 90%),
+  --bgHeaderSectionAbout: linear-gradient(var(--backgroundColor) 10%, transparent, var(--backgroundColor) 90%),
         url('../img/pagina/graffiti-background-1554703550MY5.jpg') center no-repeat fixed;
-  --bgHeaderSectionServices: linear-gradient(var(--backgroundColor) 5%, transparent, var(--backgroundColor) 90%),
-        url('../img/pagina/business-5475661_1920.jpg') center no-repeat fixed;
-  --bgHeaderSectionPortfolio: linear-gradient(var(--backgroundColor) 5%, transparent, var(--backgroundColor) 90%),
+  --bgHeaderSectionServices: linear-gradient(var(--backgroundColor) 10%, transparent, var(--backgroundColor) 90%),
+        url('../img/pagina/pexels-ovan-57690.jpg') center no-repeat fixed;
+  --bgHeaderSectionPortfolio: linear-gradient(var(--backgroundColor) 10%, transparent, var(--backgroundColor) 90%),
         url('../img/pagina/workspace-1280538_1920.jpg') center no-repeat fixed;
-  --bgHeaderSectionSkills: linear-gradient(var(--backgroundColor) 5%, hsla(0, 0%, 0%, 0.5), var(--backgroundColor) 90%),
+  --bgHeaderSectionSkills: linear-gradient(var(--backgroundColor) 10%, hsla(0, 0%, 0%, 0.5), var(--backgroundColor) 90%),
         url('../img/pagina/tools-1083796_1920.jpg') center no-repeat fixed;
 }
 
@@ -663,6 +663,54 @@ ul {
   opacity: 0;
   -webkit-transition: translateY(50%);
   transition: translateY(50%);
+  z-index: var(--zIndexTooltip);
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+
+.spinner_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 20rem;
+  width: 100%;
+  -webkit-transition: all 1000ms ease;
+  transition: all 1000ms ease;
+}
+
+.spinner_container .load {
+  display: inline-block;
+  border-radius: 50%;
+  border-bottom: dotted 0.5rem var(--firstColor);
+  width: 5rem;
+  height: 5rem;
+  -webkit-animation: spin 2s ease infinite forwards;
+          animation: spin 2s ease infinite forwards;
+}
+
+.spinner_container .loading_text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  font-weight: 400;
+  font-size: 1.5rem;
 }
 
 HEADER {
@@ -691,7 +739,7 @@ SECTION {
 .section_content .header_section {
   height: 100%;
   width: 100%;
-  background-size: cover;
+  background-size: cover !important;
 }
 
 .title_section {
@@ -1477,6 +1525,28 @@ BUTTON {
   fill: var(--textContrastColor);
 }
 
+.list_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+.list_container LABEL {
+  color: var(--secondColor);
+  font-size: var(--fontSizeS);
+}
+
 #hero_section {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1905,7 +1975,6 @@ BUTTON {
 #skills_section .skills_containers .skills_container .skills_icon_container:focus {
   -webkit-animation: zoom 1000ms ease-out;
           animation: zoom 1000ms ease-out;
-  z-index: var(--zIndexNav);
 }
 
 #skills_section .skills_containers .skills_container #node_icon_container {
@@ -1955,35 +2024,7 @@ BUTTON {
       flex-wrap: wrap;
   width: 100%;
   height: auto;
-}
-
-#portfolio_section .search_list_container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 1rem;
-}
-
-#portfolio_section .search_list_container LABEL {
-  color: var(--secondColor);
-  font-size: var(--fontSizeS);
-}
-
-#portfolio_section .search_list_container #project_list {
-  width: 8rem;
-  height: 4rem;
-  text-align: center;
-  font-size: var(--fontSizeM);
+  margin-top: 2rem;
 }
 
 .project_card {
@@ -2085,6 +2126,18 @@ BUTTON {
 .project_card:active .project_info,
 .project_card:focus .project_info {
   opacity: 0.9;
+}
+
+.selection_list {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  text-align: center;
+  font-size: var(--fontSizeM);
+  color: var(--blackOff);
 }
 
 #clients_section {
@@ -2291,7 +2344,7 @@ FOOTER .btns_container .btn_link:focus {
   border: dotted 1px white;
 }
 
-.animation_right {
+.animation_left {
   opacity: 0;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -2299,7 +2352,7 @@ FOOTER .btns_container .btn_link:focus {
   transition: all 1000ms ease;
 }
 
-.animation_left {
+.animation_right {
   opacity: 0;
   -webkit-transform: translateX(50%);
           transform: translateX(50%);
