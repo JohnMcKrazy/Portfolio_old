@@ -1573,6 +1573,7 @@ BUTTON {
     width: 100%;
 }
 .option_list_btn {
+    @include flex(center, center);
     text-align: center;
     padding: 1rem 2rem;
     color: var(--textColor);
