@@ -495,6 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const createSearchedCards = (e) => {
                     deleteChildElements(porfolioSearchCardsContainer);
                     const currentNameData = e.target.getAttribute('value');
+                    console.log(currentNameData);
                     //*console.log(currentNameData);
                     data.forEach((item) => {
                         const dataIncludedResponse = item['projects']['type'].includes(currentNameData);
