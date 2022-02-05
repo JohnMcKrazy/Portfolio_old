@@ -494,23 +494,31 @@
                     </div>
                 </div>
             </div>
-            <div class="cards_container" id="portfolio_hot_cards_container"></div>
 
-            <div class="spinner_container" data-name="portfolio_hot_cards_container" id="loader_portfolio_hot">
-                <div class="load"></div>
-                <h1 class="loading_text">Loading</h1>
+            <div class="cards_container" id="cards_hot_container">
+                <div class="loader_container" data-name="loader_cards_hot_container" id="loader_cards_hot_container">
+                    <div class="spinner_container" id="spinner_container_cards_hot">
+                        <div class="loading_spinner"></div>
+                        <h1 class="loading_text">Loading</h1>
+                    </div>
+                </div>
             </div>
 
             <div class="swipe_animation_container_full">
                 <h1 class="title_section animation_up" id="title_portfolio_search">Busqueda por tipo de proyecto</h1>
             </div>
-            <div class="list_container" id="search_project_list_container">
-                <h2>Elige un Tema:</label>
+            <div class="projects_container" id="search_projects_container">
+                <h2 class="title_project_search">Elige un Tema:</h2>
+                <div class="project_btns_container" id="search_project_btns_container"></div>
             </div>
-            <div class="cards_container" id="portfolio_search_cards_container"></div>
-            <div class="spinner_container" data-name="portfolio_search_cards_container" id="loader_portfolio_search">
-                <div class="load"></div>
-                <h1 class="loading_text">Loading</h1>
+
+            <div class="cards_container" id="cards_search_container">
+                <div class="loader_container" data-name="loader_cards_search_container" id="loader_cards_search_container">
+                    <div class="spinner_container" id="spinner_container_cards_search">
+                        <div class="loading_spinner"></div>
+                        <h1 class="loading_text">Loading</h1>
+                    </div>
+                </div>
             </div>
         </section>
         <!--^^PORTFOLIO SECTION-- OVER-->
@@ -2130,8 +2138,7 @@
         <!--^^TEMPLATE SELECTION LIST-->
         <!--^^LIST SELECTOR TEMPLATE-->
         <template id="selection_list_template">
-            <div class="selection_list" name="" id="">
-            </div>
+            <div class="selection_list" name="" id=""></div>
         </template>
         <!--^^LIST SELECTOR TEMPLATE-->
         <!--^^LIST OPTION TEMPLATE-->

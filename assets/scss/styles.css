@@ -148,6 +148,7 @@
   --navbarHeight: 10rem;
   --widthClamp: clamp(200px, 1500px, 90%);
   --cardWidth: clamp(280px, 30rem, 80%);
+  --fullscreenFixedHeight: calc(100vh - var(--navbarHeightFixed));
   --transitionBtn: all 0.3s ease;
   --fontSize: 14px;
   --opacityBtn: 0.5;
@@ -166,23 +167,23 @@
   --textContrastColor: hsl(0, 0%, 90%);
   --navbarColor: hsl(0, 0%, 95%);
   --tooltipColor: hsl(0, 0%, 5%);
-  --backgroundColor: hsl(0, 0%, 90%);
-  --backgroundOff: hsl(0, 0%, 80%);
-  --backgroundModal: hsla(0, 0%, 90%, 0.75);
+  --bgColor: hsl(0, 0%, 90%);
+  --bgOff: hsl(0, 0%, 80%);
+  --bgModal: hsla(0, 0%, 90%, 0.75);
   --firstShadowColor: hsla(260, 84%, 45%, 0.75);
   --secondShadowColor: hsla(195, 85%, 80%, 0.75);
   --vueIconText: hsl(0, 0%, 20%);
   --shadow: hsla(0, 0%, 75%, 50%);
-  --bgHeaderSectionAbout: linear-gradient(var(--backgroundColor), transparent, var(--backgroundColor) 85%),
+  --bgHeaderSectionAbout: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
         url('../img/pagina/pexels-artem-beliaikin-1051747.jpg') center no-repeat fixed;
-  --bgHeaderSectionServices: linear-gradient(var(--backgroundColor), transparent, var(--backgroundColor) 85%),
+  --bgHeaderSectionServices: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
         url('../img/pagina/office-932926_1920.jpg') center no-repeat fixed;
-  --bgHeaderSectionPortfolio: linear-gradient(var(--backgroundColor), transparent, var(--backgroundColor) 85%),
+  --bgHeaderSectionPortfolio: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
         url('../img/pagina/sunglasses-1284392_1920.jpg') center no-repeat fixed;
-  --bgHeaderSectionSkills: linear-gradient(var(--backgroundColor), hsla(0, 0%, 100%, 0.5), var(--backgroundColor)),
+  --bgHeaderSectionSkills: linear-gradient(var(--bgColor), hsla(0, 0%, 100%, 0.5), var(--bgColor)),
         url('../img/pagina/pexels-julia-m-cameron-4144097.jpg') center no-repeat fixed;
   color: var(--textColor);
-  --backgroundHero: linear-gradient(transparent, var(--backgroundColor) 75%), url('../img/backgrounds/day.jpg') center no-repeat fixed;
+  --backgroundHero: linear-gradient(transparent, var(--bgColor) 75%), url('../img/backgrounds/day.jpg') center no-repeat fixed;
 }
 
 .light_theme #charly_y_sebas_icon_svg .cls-1 {
@@ -226,22 +227,22 @@
   --textContrastColor: hsl(0, 0%, 10%);
   --navbarColor: hsl(0, 0%, 5%);
   --tooltipColor: hsl(0, 0%, 95%);
-  --backgroundColor: hsl(0, 0%, 10%);
-  --backgroundOff: hsl(0, 0%, 20%);
-  --backgroundModal: hsla(0, 0%, 10%, 0.75);
+  --bgColor: hsl(0, 0%, 10%);
+  --bgOff: hsl(0, 0%, 20%);
+  --bgModal: hsla(0, 0%, 10%, 0.75);
   --shadow: hsla(0, 0%, 75%, 50%);
   --firstShadowColor: hsla(195, 100%, 80%, 0.75);
   --secondShadowColor: hsla(60, 85%, 80%, 0.75);
   --vueIconText: hsl(0, 0%, 80%);
   color: var(--textColor);
-  --backgroundHero: linear-gradient(transparent, var(--backgroundColor) 90%), url('../img/backgrounds/night.jpg') center no-repeat fixed;
-  --bgHeaderSectionAbout: linear-gradient(var(--backgroundColor) 10%, transparent, var(--backgroundColor) 90%),
+  --backgroundHero: linear-gradient(transparent, var(--bgColor) 90%), url('../img/backgrounds/night.jpg') center no-repeat fixed;
+  --bgHeaderSectionAbout: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%),
         url('../img/pagina/graffiti-background-1554703550MY5.jpg') center no-repeat fixed;
-  --bgHeaderSectionServices: linear-gradient(var(--backgroundColor) 10%, transparent, var(--backgroundColor) 90%),
+  --bgHeaderSectionServices: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%),
         url('../img/pagina/pexels-ovan-57690.jpg') center no-repeat fixed;
-  --bgHeaderSectionPortfolio: linear-gradient(var(--backgroundColor) 10%, transparent, var(--backgroundColor) 90%),
+  --bgHeaderSectionPortfolio: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%),
         url('../img/pagina/workspace-1280538_1920.jpg') center no-repeat fixed;
-  --bgHeaderSectionSkills: linear-gradient(var(--backgroundColor) 10%, hsla(0, 0%, 0%, 0.5), var(--backgroundColor) 90%),
+  --bgHeaderSectionSkills: linear-gradient(var(--bgColor) 10%, hsla(0, 0%, 0%, 0.5), var(--bgColor) 90%),
         url('../img/pagina/tools-1083796_1920.jpg') center no-repeat fixed;
 }
 
@@ -276,7 +277,7 @@
 
 body {
   position: relative;
-  background: var(--backgroundColor);
+  background: var(--bgColor);
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
@@ -668,7 +669,10 @@ ul {
   transition: all 500ms ease;
 }
 
-.spinner_container {
+.loader_container {
+  position: absolute;
+  left: 0;
+  top: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -682,13 +686,16 @@ ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 20rem;
+  height: 100%;
   width: 100%;
+}
+
+.loader_container .spinner_container {
   -webkit-transition: all 1000ms ease;
   transition: all 1000ms ease;
 }
 
-.spinner_container .load {
+.loader_container .spinner_container .loading_spinner {
   display: inline-block;
   border-radius: 50%;
   border-bottom: dotted 0.5rem var(--firstColor);
@@ -698,7 +705,7 @@ ul {
           animation: spin 2s ease infinite forwards;
 }
 
-.spinner_container .loading_text {
+.loader_container .spinner_container .loading_text {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -718,7 +725,7 @@ HEADER {
 }
 
 SECTION {
-  min-height: calc(100vh - var(--navbarHeightFixed));
+  min-height: var(--fullscreenFixedHeight);
   margin-bottom: 6rem;
 }
 
@@ -926,28 +933,28 @@ BUTTON {
   border: none;
   padding: 0.5rem 1rem;
   margin-bottom: 1rem;
-  background: var(--backgroundColor);
+  background: var(--bgColor);
 }
 
 .modal .modal_form INPUT:focus {
   outline: none;
-  background: var(--backgroundOff);
+  background: var(--bgOff);
 }
 
 .modal .modal_form INPUT::-webkit-input-placeholder {
-  color: VAR(--textColor);
+  color: var(--textColor);
 }
 
 .modal .modal_form INPUT:-ms-input-placeholder {
-  color: VAR(--textColor);
+  color: var(--textColor);
 }
 
 .modal .modal_form INPUT::-ms-input-placeholder {
-  color: VAR(--textColor);
+  color: var(--textColor);
 }
 
 .modal .modal_form INPUT::placeholder {
-  color: VAR(--textColor);
+  color: var(--textColor);
 }
 
 .modal .modal_form BUTTON {
@@ -1676,10 +1683,8 @@ BUTTON {
 #hero_section #hero_content .btn_down:focus,
 #hero_section #hero_content .btn_down:active {
   opacity: 1;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  -webkit-filter: drop-shadow(0 0 0.5rem var(--backgroundContrast));
-          filter: drop-shadow(0 0 0.5rem var(--backgroundContrast));
+  /*   box-shadow: none;
+            filter: drop-shadow(0 0 0.5rem var(--backgroundContrast)); */
 }
 
 #about_section {
@@ -1984,6 +1989,7 @@ BUTTON {
 }
 
 #portfolio_section .cards_container {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1999,8 +2005,8 @@ BUTTON {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  min-height: 30rem;
   width: 100%;
-  height: auto;
   margin-top: 2rem;
 }
 
@@ -2105,7 +2111,7 @@ BUTTON {
   opacity: 0.9;
 }
 
-.list_container {
+.projects_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2113,23 +2119,36 @@ BUTTON {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   gap: 1rem;
-}
-
-.list_container h2 {
-  color: var(--secondColor);
-  font-size: var(--fontSizeS);
-}
-
-#search_project_list_container {
-  height: auto;
   width: 100%;
+}
+
+.projects_container .title_project_search {
+  color: var(--secondColor);
+  font-size: var(--fontSizeM);
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.projects_container .project_btns_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: var(--navbarColor);
+  width: 100%;
+  height: 5rem;
 }
 
 .selection_list {
@@ -2146,11 +2165,11 @@ BUTTON {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: var(--navbarColor);
   text-align: center;
   font-size: var(--fontSizeM);
   color: var(--blackOff);
-  width: 100%;
+  width: var(--widthClamp);
+  height: 100%;
 }
 
 .option_list_btn {
@@ -2164,7 +2183,7 @@ BUTTON {
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
-  padding: 1rem 2rem;
+  padding: 0 1rem;
   color: var(--textColor);
   height: 100%;
   width: 100%;
@@ -2174,6 +2193,10 @@ BUTTON {
 .option_list_btn:hover {
   background: var(--firstColor);
   color: var(--textContrastColor);
+}
+
+#cards_search_container {
+  background: var(--bgOff);
 }
 
 #clients_section {

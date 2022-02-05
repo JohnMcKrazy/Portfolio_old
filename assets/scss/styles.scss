@@ -115,6 +115,7 @@
     --navbarHeight: 10rem;
     --widthClamp: clamp(200px, 1500px, 90%);
     --cardWidth: clamp(280px, 30rem, 80%);
+    --fullscreenFixedHeight: calc(100vh - var(--navbarHeightFixed));
     --transitionBtn: all 0.3s ease;
     --fontSize: 14px;
     --opacityBtn: 0.5;
@@ -139,9 +140,9 @@
     --textContrastColor: hsl(0, 0%, 90%);
     --navbarColor: hsl(0, 0%, 95%);
     --tooltipColor: hsl(0, 0%, 5%);
-    --backgroundColor: hsl(0, 0%, 90%);
-    --backgroundOff: hsl(0, 0%, 80%);
-    --backgroundModal: hsla(0, 0%, 90%, 0.75);
+    --bgColor: hsl(0, 0%, 90%);
+    --bgOff: hsl(0, 0%, 80%);
+    --bgModal: hsla(0, 0%, 90%, 0.75);
     --firstShadowColor: hsla(260, 84%, 45%, 0.75);
     --secondShadowColor: hsla(195, 85%, 80%, 0.75);
     --vueIconText: hsl(0, 0%, 20%);
@@ -149,21 +150,21 @@
     //!THEME COLORS OVER
     //! ************************************************************************************************************************ *//
     //!SECTION BACKGROUNDS--START
-    --bgHeaderSectionAbout: linear-gradient(var(--backgroundColor), transparent, var(--backgroundColor) 85%),
+    --bgHeaderSectionAbout: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
         url('../img/pagina/pexels-artem-beliaikin-1051747.jpg') center no-repeat fixed;
-    --bgHeaderSectionServices: linear-gradient(var(--backgroundColor), transparent, var(--backgroundColor) 85%),
+    --bgHeaderSectionServices: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
         url('../img/pagina/office-932926_1920.jpg') center no-repeat fixed;
-    --bgHeaderSectionPortfolio: linear-gradient(var(--backgroundColor), transparent, var(--backgroundColor) 85%),
+    --bgHeaderSectionPortfolio: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
         url('../img/pagina/sunglasses-1284392_1920.jpg') center no-repeat fixed;
 
-    --bgHeaderSectionSkills: linear-gradient(var(--backgroundColor), hsla(0, 0%, 100%, 0.5), var(--backgroundColor)),
+    --bgHeaderSectionSkills: linear-gradient(var(--bgColor), hsla(0, 0%, 100%, 0.5), var(--bgColor)),
         url('../img/pagina/pexels-julia-m-cameron-4144097.jpg') center no-repeat fixed;
 
     //!SECTION BACKGROUNDS--OVER
     //! ************************************************************************************************************************ *//
     //!THEME GENERALS START
     color: var(--textColor);
-    --backgroundHero: linear-gradient(transparent, var(--backgroundColor) 75%), url('../img/backgrounds/day.jpg') center no-repeat fixed;
+    --backgroundHero: linear-gradient(transparent, var(--bgColor) 75%), url('../img/backgrounds/day.jpg') center no-repeat fixed;
     //!THEME GENERALS OVER
     //! ************************************************************************************************************************ *//
 
@@ -217,9 +218,9 @@
     --textContrastColor: hsl(0, 0%, 10%);
     --navbarColor: hsl(0, 0%, 5%);
     --tooltipColor: hsl(0, 0%, 95%);
-    --backgroundColor: hsl(0, 0%, 10%);
-    --backgroundOff: hsl(0, 0%, 20%);
-    --backgroundModal: hsla(0, 0%, 10%, 0.75);
+    --bgColor: hsl(0, 0%, 10%);
+    --bgOff: hsl(0, 0%, 20%);
+    --bgModal: hsla(0, 0%, 10%, 0.75);
     --shadow: hsla(0, 0%, 75%, 50%);
     --firstShadowColor: hsla(195, 100%, 80%, 0.75);
     --secondShadowColor: hsla(60, 85%, 80%, 0.75);
@@ -229,18 +230,18 @@
 
     //!THEME GENERALS START
     color: var(--textColor);
-    --backgroundHero: linear-gradient(transparent, var(--backgroundColor) 90%), url('../img/backgrounds/night.jpg') center no-repeat fixed;
+    --backgroundHero: linear-gradient(transparent, var(--bgColor) 90%), url('../img/backgrounds/night.jpg') center no-repeat fixed;
     //!THEME GENERALS OVER
     //! *********************************************************************************************************/
     //!SECTION BACKGROUNDS--START
-    --bgHeaderSectionAbout: linear-gradient(var(--backgroundColor) 10%, transparent, var(--backgroundColor) 90%),
+    --bgHeaderSectionAbout: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%),
         url('../img/pagina/graffiti-background-1554703550MY5.jpg') center no-repeat fixed;
-    --bgHeaderSectionServices: linear-gradient(var(--backgroundColor) 10%, transparent, var(--backgroundColor) 90%),
+    --bgHeaderSectionServices: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%),
         url('../img/pagina/pexels-ovan-57690.jpg') center no-repeat fixed;
-    --bgHeaderSectionPortfolio: linear-gradient(var(--backgroundColor) 10%, transparent, var(--backgroundColor) 90%),
+    --bgHeaderSectionPortfolio: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%),
         url('../img/pagina/workspace-1280538_1920.jpg') center no-repeat fixed;
 
-    --bgHeaderSectionSkills: linear-gradient(var(--backgroundColor) 10%, hsla(0, 0%, 0%, 0.5), var(--backgroundColor) 90%),
+    --bgHeaderSectionSkills: linear-gradient(var(--bgColor) 10%, hsla(0, 0%, 0%, 0.5), var(--bgColor) 90%),
         url('../img/pagina/tools-1083796_1920.jpg') center no-repeat fixed;
     //!SECTION BACKGROUNDS--OVER
     //! ************************************************************************************************************************ *//
@@ -285,7 +286,7 @@
 
 body {
     position: relative;
-    background: var(--backgroundColor);
+    background: var(--bgColor);
     scroll-behavior: smooth;
     overflow-x: hidden;
 
@@ -653,36 +654,38 @@ ul {
     z-index: var(--zIndexTooltip);
     transition: all 500ms ease;
 }
-.spinner_container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 20rem;
+.loader_container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    @include flexDirection(column, center, center);
+    height: 100%;
     width: 100%;
-    transition: all 1000ms ease;
-    .load {
-        display: inline-block;
-        border-radius: 50%;
-        border-bottom: dotted 0.5rem var(--firstColor);
-        width: 5rem;
-        height: 5rem;
-        animation: spin 2s ease infinite forwards;
-    }
-    .loading_text {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        font-weight: 400;
-        font-size: 1.5rem;
+    .spinner_container {
+        transition: all 1000ms ease;
+        .loading_spinner {
+            display: inline-block;
+            border-radius: 50%;
+            border-bottom: dotted 0.5rem var(--firstColor);
+            width: 5rem;
+            height: 5rem;
+            animation: spin 2s ease infinite forwards;
+        }
+        .loading_text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-weight: 400;
+            font-size: 1.5rem;
+        }
     }
 }
 HEADER {
     height: calc(100vh - var(--navbarHeight));
 }
 SECTION {
-    min-height: calc(100vh - var(--navbarHeightFixed));
+    min-height: var(--fullscreenFixedHeight);
     margin-bottom: 6rem;
 }
 .section {
@@ -838,14 +841,14 @@ BUTTON {
             border: none;
             padding: 0.5rem 1rem;
             margin-bottom: 1rem;
-            background: var(--backgroundColor);
+            background: var(--bgColor);
         }
         INPUT:focus {
             outline: none;
-            background: var(--backgroundOff);
+            background: var(--bgOff);
         }
         INPUT::placeholder {
-            color: VAR(--textColor);
+            color: var(--textColor);
         }
         BUTTON {
             width: 100%;
@@ -1305,8 +1308,8 @@ BUTTON {
         .btn_down:focus,
         .btn_down:active {
             opacity: 1;
-            box-shadow: none;
-            filter: drop-shadow(0 0 0.5rem var(--backgroundContrast));
+            /*   box-shadow: none;
+            filter: drop-shadow(0 0 0.5rem var(--backgroundContrast)); */
         }
     }
 }
@@ -1472,14 +1475,15 @@ BUTTON {
         }
     }
     .cards_container {
+        position: relative;
         @include flexDirection(row, center, center);
         flex-wrap: wrap;
+        min-height: 30rem;
         width: 100%;
-        height: auto;
         margin-top: 2rem;
     }
 }
-//&TEMPLATE STYLE
+//&TEMPLATE STYLE--START
 .project_card {
     width: 30rem;
     height: 30rem;
@@ -1548,34 +1552,41 @@ BUTTON {
         opacity: 0.9;
     }
 }
-//!LIST CONTAINER--START
-.list_container {
-    @include flexDirection(column, flex-start, center);
+//!PROJECTS CONTAINER--START
+.projects_container {
+    @include flexDirection(column, center, center);
     gap: 1rem;
-    h2 {
+    width: 100%;
+    .title_project_search {
         color: var(--secondColor);
-        font-size: var(--fontSizeS);
+        font-size: var(--fontSizeM);
+        text-align: center;
+        padding: 0.5rem 0;
+    }
+    .project_btns_container {
+        @include flex(center, center);
+        background: var(--navbarColor);
+        width: 100%;
+        height: 5rem;
     }
 }
-#search_project_list_container {
-    height: auto;
-    width: 100%;
-}
-//!LIST CONTAINER--OVER
+
+//!PROJECTS CONTAINER--OVER
 //! ******************************************************************************************** *//
+
 .selection_list {
     @include flexDirection(row, space-between, center);
 
-    background: var(--navbarColor);
     text-align: center;
     font-size: var(--fontSizeM);
     color: var(--blackOff);
-    width: 100%;
+    width: var(--widthClamp);
+    height: 100%;
 }
 .option_list_btn {
     @include flex(center, center);
     text-align: center;
-    padding: 1rem 2rem;
+    padding: 0 1rem;
     color: var(--textColor);
     height: 100%;
     width: 100%;
@@ -1585,7 +1596,17 @@ BUTTON {
         color: var(--textContrastColor);
     }
 }
-//&TEMPLATE STYLE
+
+//&TEMPLATE STYLE--OVER
+//& ******************************************************************************************** *//
+
+//^^CARDS SEARCH CONTAINER--START
+#cards_search_container {
+    background: var(--bgOff);
+}
+//^^CARDS SEARCH CONTAINER--OVER
+//^^ ******************************************************************************************** *//
+
 //!PORTFOLIO SECTION-- OVER
 //! ******************************************************************** *//
 //!CLIENTS SECTION-- START

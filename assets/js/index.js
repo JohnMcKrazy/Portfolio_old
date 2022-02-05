@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     //!TEMPLATE CONSTANTS
     //^^PROJECT CARD TEMPLATE CONSTANTS
-    const fragmentProjects = document.createDocumentFragment();
+    const fragmentHotProjects = document.createDocumentFragment();
+    const fragmentSearchProjects = document.createDocumentFragment();
+
     const cardProjectTemplate = document.querySelector('#card_project_template').content;
     const btnProjectTemplate = document.querySelector('#btn_project_template').content;
     //^^PROJECT CARD TEMPLATE CONSTANTS
@@ -51,9 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //* ******************************************************************************************************* *//
     //*CONTAINERS WHERE TEMPLATES APPEND--START
-    const portfolioHotCardsContainer = document.querySelector('#portfolio_hot_cards_container');
-    const searchProjectListContainer = document.querySelector('#search_project_list_container');
-    const porfolioSearchCardsContainer = document.querySelector('#portfolio_search_cards_container');
+    const portfolioHotCardsContainer = document.querySelector('#cards_hot_container');
+    const searchBtnsContainer = document.querySelector('#search_project_btns_container');
+    const porfolioSearchCardsContainer = document.querySelector('#cards_search_container');
     //*CONTAINERS WHERE TEMPLATES APPEND--OVER
     //* ******************************************************************************************************* *//
     //*CONTAINERS WITH ANIMATION FUNCTIONS--START
@@ -61,7 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const swipeAnimationContainersHalf = document.querySelectorAll('.swipe_animation_container_half');
     //*CONTAINERS WITH ANIMATION FUNCTIONS--OVER
     //* ******************************************************************************************************* *//
-    const spinnersLoadersContainers = document.querySelectorAll('.spinner_container');
+    const loadersContainers = document.querySelectorAll('.loader_container');
+
+    const loaderSearchCardsContainer = document.querySelector('#loader_cards_hot_container');
+    const spinnerHotCardsContainer = document.querySelector('#spinner_container_cards_hot');
+    const loaderHotCardsContainer = document.querySelector('#loader_cards_search_container');
+    const spinnerSearchCardContainer = document.querySelector('#spinner_container_cards_search');
+
     //* ******************************************************************************************************* *//
 
     const skillsContainer = document.querySelector('.skills_containers');
@@ -395,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^DELATE TOOLTIP--OVER
     //^^ ******************************************************************************* *//
 
-    //^ CREATE TEMPLATE PROJECT CARD --START
+    //^ CREATE TEMPLATE CARD --START
     const createCard = (item, frac) => {
         const cloneProjectCard = cardProjectTemplate.cloneNode(true);
         const projectCard = cloneProjectCard.querySelector('.project_card');
@@ -415,26 +423,9 @@ document.addEventListener('DOMContentLoaded', () => {
         cardTitle.textContent = clientName;
         frac.appendChild(projectCard);
     };
-    const createProjectCard = async () => {
-        try {
-            const rawData = await fetch(portfolioData);
-            const data = await rawData.json();
-            const dataLength = data.length;
 
-            data.forEach((item) => {
-                createCard(item, fragmentProjects);
-            });
-            portfolioHotCardsContainer.appendChild(fragmentProjects);
-            const projectCards = document.querySelectorAll('.project_card');
-            projectCards.forEach((card) => {
-                setTimeout(() => {
-                    animateItem(card, '1', 'translateY(0)');
-                }, 500);
-            });
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    //^ CREATE TEMPLATE CARD --OVER
+    //^ ************************************************************************* *//
     //^^FETCH SEARCH SELECTION DATA--START //-fetch selection option data for search projects
     let typesOfProjects = [];
     let newProjectsListData = [];
@@ -487,7 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 newList.appendChild(newOption);
             });
             fragmentListProjects.appendChild(newList);
-            searchProjectListContainer.appendChild(fragmentListProjects);
+            searchBtnsContainer.appendChild(fragmentListProjects);
             const typesOfProjectOptionList = document.querySelectorAll('.option_list_btn');
             //*console.log(typesOfProjectOptionList);
             typesOfProjectOptionList.forEach((optionType) => {
@@ -495,15 +486,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const createSearchedCards = (e) => {
                     deleteChildElements(porfolioSearchCardsContainer);
                     const currentNameData = e.target.getAttribute('name');
-                    console.log(currentNameData);
                     //*console.log(currentNameData);
+
                     data.forEach((item) => {
                         const dataIncludedResponse = item['projects']['type'].includes(currentNameData);
                         if (dataIncludedResponse) {
                             //todo CREAR TARJETAS ESPECIFICAS DE BUSQUEDA
                             //*console.log(item);
-                            createCard(item, fragmentProjects);
-                            porfolioSearchCardsContainer.appendChild(fragmentProjects);
+                            createCard(item, fragmentSearchProjects);
+                            porfolioSearchCardsContainer.appendChild(fragmentSearchProjects);
                             const projectCards = document.querySelectorAll('.project_card');
                             projectCards.forEach((card) => {
                                 setTimeout(() => {
@@ -522,52 +513,93 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     fetchSearchSelectionData();
     //^^FETCH SEARCH SELECTION DATA--OVER
-
-    //^^FETCH RANDOM--START
-    const fetchRandom = async () => {
+    //^ ************************************************************************* *//
+    //~~CREATE PROJECT HOT CARDS--START
+    const createProjectCardHot = async () => {
         try {
-            const loaderPortfolioSearch = document.querySelector('#loader_portfolio_search');
-            loaderPortfolioSearch.style.display = 'none';
-            setTimeout(() => {
-                animateItem(loaderPortfolioSearch, '1', 'translateY(0)');
-            }, 1000);
+            const rawData = await fetch(portfolioData);
+            const data = await rawData.json();
+            data.forEach((item) => {
+                createCard(item, fragmentHotProjects);
+            });
+            portfolioHotCardsContainer.appendChild(fragmentHotProjects);
+            const projectCards = document.querySelectorAll('.project_card');
+            projectCards.forEach((card) => {
+                setTimeout(() => {
+                    animateItem(card, '1', 'translateY(0)');
+                }, 500);
+            });
         } catch (error) {
             console.log(error);
         }
     };
-    //^^FETCH RANDOM--OVER
+    //~~CREATE PROJECT HOT CARDS--OVER
+    //~~ ************************************************************************* *//
 
-    //^^SPINNERS LOADER ANIMATION--START
-    spinnersLoadersContainers.forEach((spinnerLoader) => {
-        const watchPortfolioContainer = ([entry]) => {
+    //~~CREATE PROJECT RANDOM CARDS--START
+    const createProjectCardRandom = async () => {
+        let randomTypeSelection = randomDataSelector(typesOfProjects);
+        try {
+            const rawData = await fetch(portfolioData);
+            const data = await rawData.json();
+            let randomItems = [];
+            data.forEach((item) => {
+                const itemsTypesOfProjects = item['projects']['type'];
+                if (itemsTypesOfProjects.includes(randomTypeSelection)) {
+                    randomItems.push(item);
+                }
+            });
+            //*console.log(randomItems);
+            randomItems.forEach((item) => {
+                createCard(item, fragmentSearchProjects);
+            });
+
+            porfolioSearchCardsContainer.appendChild(fragmentSearchProjects);
+            const projectCards = document.querySelectorAll('.project_card');
+
+            projectCards.forEach((card) => {
+                setTimeout(() => {
+                    animateItem(card, '1', 'translateY(0)');
+                }, 500);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    //~~CREATE PROJECT RANDOM CARDS--OVER
+    //~~ ************************************************************************* *//
+    //^^SPINNERS LOADER OBSERVER--START
+    loadersContainers.forEach((loader) => {
+        const watchCardsContainers = ([entry]) => {
             const dataNameContainer = entry.target.attributes['data-name'].value;
-            if (entry.isIntersecting && dataNameContainer === 'portfolio_hot_cards_container') {
-                const loaderPortfolioHot = document.querySelector('#loader_portfolio_hot');
-                animateItem(loaderPortfolioHot, '0', 'translateY(-4rem)');
+            if (entry.isIntersecting && dataNameContainer === 'loader_cards_hot_container') {
+                animateItem(spinnerHotCardsContainer, '0', 'translateY(-4rem)');
                 setTimeout(() => {
-                    loaderPortfolioHot.style.display = 'none';
-                }, 1000);
-                //*portfolioObserver.unobserve(loaderPortfolio);
+                    loaderSearchCardsContainer.style.display = 'none';
+                    createProjectCardHot();
+                    setTimeout(() => {
+                        loadersObserver.unobserve(spinnerHotCardsContainer);
+                    }, 500);
+                }, 1200);
+            } else if (entry.isIntersecting && dataNameContainer === 'loader_cards_search_container') {
+                animateItem(spinnerSearchCardContainer, '0', 'translateY(-4rem)');
                 setTimeout(() => {
-                    createProjectCard();
-                }, 1500);
-            } else if (entry.isIntersecting && dataNameContainer === 'portfolio_search_cards_container') {
-                const loaderPortfolioSearch = document.querySelector('#loader_portfolio_search');
-                animateItem(loaderPortfolioSearch, '0', 'translateY(-4rem)');
-                setTimeout(() => {
-                    loaderPortfolioSearch.style.display = 'none';
-                }, 1000);
-                //*portfolioObserver.unobserve(loaderPortfolio);
-                setTimeout(() => {}, 1500);
+                    loaderHotCardsContainer.style.display = 'none';
+
+                    createProjectCardRandom();
+                    setTimeout(() => {
+                        loadersObserver.unobserve(spinnerSearchCardContainer);
+                    }, 500);
+                }, 1200);
             }
         };
-        const optionsIO_portfolio = {
+        const optionsIO_loaders = {
             threshold: '.8',
         };
-        const portfolioObserver = new IntersectionObserver(watchPortfolioContainer, optionsIO_portfolio);
-        portfolioObserver.observe(spinnerLoader);
+        const loadersObserver = new IntersectionObserver(watchCardsContainers, optionsIO_loaders);
+        loadersObserver.observe(loader);
     });
-    //^^SPINNERS LOADER ANIMATION--OVER
+    //^^SPINNERS LOADER OBSERVER--OVER
     //^ ************************************************************************* *//
     //^^SKILLS ICONS TOOLTIP--START
     skillsIconsContainer.forEach((icon) => {
@@ -584,8 +616,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^SKILLS ICONS TOOLTIP--OVER
     //^ ************************************************************************* *//
 
-    //^ CREATE TEMPLATE PROJECT CARD --OVER
-    //^ ************************************************************************* *//
     //^ CLOSE MENU SOCIAL-- START
     const closeMenuSocial = () => {
         menuSocialBtnsContainer.style.opacity = 0;
