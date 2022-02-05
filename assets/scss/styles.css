@@ -1311,7 +1311,6 @@ BUTTON {
           align-items: center;
   top: 0;
   left: 0;
-  width: 100%;
   height: var(--navbarHeight);
   width: 100%;
   background: var(--navbarColor);
@@ -1523,28 +1522,6 @@ BUTTON {
 .nav .nav_content #nav_sections_btns_container .btn_nav:focus .theme_icon_svg .cls-1,
 .nav .nav_content #nav_sections_btns_container .btn_nav:active .theme_icon_svg .cls-1 {
   fill: var(--textContrastColor);
-}
-
-.list_container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 1rem;
-}
-
-.list_container LABEL {
-  color: var(--secondColor);
-  font-size: var(--fontSizeS);
 }
 
 #hero_section {
@@ -2128,16 +2105,66 @@ BUTTON {
   opacity: 0.9;
 }
 
+.list_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+.list_container h2 {
+  color: var(--secondColor);
+  font-size: var(--fontSizeS);
+}
+
+#search_project_list_container {
+  height: auto;
+  width: 100%;
+}
+
 .selection_list {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: var(--navbarColor);
   text-align: center;
   font-size: var(--fontSizeM);
   color: var(--blackOff);
+  width: 100%;
+}
+
+.option_list_btn {
+  text-align: center;
+  padding: 1rem 2rem;
+  color: var(--textColor);
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.option_list_btn:hover {
+  background: var(--firstColor);
+  color: var(--textContrastColor);
 }
 
 #clients_section {

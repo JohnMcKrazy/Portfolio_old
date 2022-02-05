@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^SELECTION LIST TEMPLATE CONSTANTS
     const fragmentListProjects = document.createDocumentFragment();
     const selectionListTemplate = document.querySelector('#selection_list_template').content;
-    const optionListTemplate = document.querySelector('#option_list_template').content;
+    const optionListTemplate = document.querySelector('#option_list_btn_template').content;
     //^^SELECTION LIST TEMPLATE CONSTANTS
     //!TEMPLATE CONSTANTS
     //! *********************************************************************************************************** *//
@@ -479,22 +479,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 //* console.log(projects);
                 const optionListTemplateClone = optionListTemplate.cloneNode(true);
-                const newOption = optionListTemplateClone.querySelector('.option_list');
-                newOption.id = `option_list_${optionId}`;
-                newOption.setAttribute('value', optionValue);
+                const newOption = optionListTemplateClone.querySelector('.option_list_btn');
+                newOption.id = `option_list_btn_${optionId}`;
                 newOption.setAttribute('data', optionId);
+                newOption.setAttribute('name', optionValue);
                 newOption.innerHTML = optionValue;
                 newList.appendChild(newOption);
             });
             fragmentListProjects.appendChild(newList);
             searchProjectListContainer.appendChild(fragmentListProjects);
-            const typesOfProjectOptionList = document.querySelectorAll('.option_list');
+            const typesOfProjectOptionList = document.querySelectorAll('.option_list_btn');
             //*console.log(typesOfProjectOptionList);
             typesOfProjectOptionList.forEach((optionType) => {
                 //* console.log(optionType);
                 const createSearchedCards = (e) => {
                     deleteChildElements(porfolioSearchCardsContainer);
-                    const currentNameData = e.target.getAttribute('value');
+                    const currentNameData = e.target.getAttribute('name');
                     console.log(currentNameData);
                     //*console.log(currentNameData);
                     data.forEach((item) => {

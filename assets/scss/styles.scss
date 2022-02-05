@@ -1091,7 +1091,6 @@ BUTTON {
     @include flex(center, center);
     top: 0;
     left: 0;
-    width: 100%;
     height: var(--navbarHeight);
     width: 100%;
     background: var(--navbarColor);
@@ -1223,17 +1222,6 @@ BUTTON {
 }
 //! NAV-- OVER
 //! ****************************************************************************************** *//
-//!LIST CONTAINER--START
-.list_container {
-    @include flexDirection(column, flex-start, center);
-    gap: 1rem;
-    LABEL {
-        color: var(--secondColor);
-        font-size: var(--fontSizeS);
-    }
-}
-//!LIST CONTAINER--OVER
-//! ******************************************************************************************** *//
 //! HERO SECTION-- START
 
 #hero_section {
@@ -1560,14 +1548,41 @@ BUTTON {
         opacity: 0.9;
     }
 }
-
+//!LIST CONTAINER--START
+.list_container {
+    @include flexDirection(column, flex-start, center);
+    gap: 1rem;
+    h2 {
+        color: var(--secondColor);
+        font-size: var(--fontSizeS);
+    }
+}
+#search_project_list_container {
+    height: auto;
+    width: 100%;
+}
+//!LIST CONTAINER--OVER
+//! ******************************************************************************************** *//
 .selection_list {
-    width: fit-content;
-    height: fit-content;
+    @include flexDirection(row, space-between, center);
+
+    background: var(--navbarColor);
     text-align: center;
     font-size: var(--fontSizeM);
     color: var(--blackOff);
-    //* padding: 0.5rem 1rem;
+    width: 100%;
+}
+.option_list_btn {
+    text-align: center;
+    padding: 1rem 2rem;
+    color: var(--textColor);
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    &:hover {
+        background: var(--firstColor);
+        color: var(--textContrastColor);
+    }
 }
 //&TEMPLATE STYLE
 //!PORTFOLIO SECTION-- OVER
