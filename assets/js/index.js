@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //* ******************************************************************************************************* *//
 
     const skillsContainer = document.querySelector('.skills_containers');
-    const skillsIconsContainer = document.querySelectorAll('.skills_icon_container');
+    const skillsIconsContainers = document.querySelectorAll('.skills_icon_container');
     const lebelBtnMain = document.querySelector('#main_btn_nav');
     const lebelBtnAbout = document.querySelector('#about_btn_nav');
     const lebelBtnSkills = document.querySelector('#skills_btn_nav');
@@ -95,6 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalInfoLegal = document.querySelector('#modal_info_legal');
     const legalModal = document.querySelector('#legal_modal');
     const legalAccept = document.querySelector('#legal_modal_accept_btn');
+    const logoClientsContainers = document.querySelectorAll('.client_logo_container');
+
     //^FETCH JASON COMPANYS DATA-- START
     const portfolioData = './portfolioDB.json';
     //^FETCH JSON COMPANYS DATA-- OVER
@@ -398,7 +400,10 @@ document.addEventListener('DOMContentLoaded', () => {
         tooltips.forEach((tooltip) => {
             animateItem(tooltip, '0', 'translateY(0)');
             setTimeout(() => {
-                parent.removeChild(tooltip);
+                while (parent.tooltip) {
+                    parent.removeChild(tooltip);
+                    tooltip = parent.querySelector('.tooltip');
+                }
             }, 500);
         });
     };
@@ -606,7 +611,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^SPINNERS LOADER OBSERVER--OVER
     //^ ************************************************************************* *//
     //^^SKILLS ICONS TOOLTIP--START
-    skillsIconsContainer.forEach((icon) => {
+    skillsIconsContainers.forEach((icon) => {
         const dataInfo = icon.getAttribute('data-info');
         //*console.log(dataInfo);
 
@@ -838,6 +843,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     changeCardStyle(card, 'row-reverse', '30rem');
                 });
             });
+            logoClientsContainers.forEach((container) => {
+                container.style.width = '12.5rem';
+                container.style.height = '8rem';
+            });
+            skillsIconsContainers.forEach((container) => {
+                container.style.width = '5rem';
+                container.style.height = '5rem';
+            });
+            close;
             closeMenu();
         } else if (widConf <= secondBreak) {
             btnsNavContainer.style.display = 'none';
@@ -856,6 +870,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 serviceCardsRight.forEach((card) => {
                     changeCardStyle(card, 'column', 'auto');
                 });
+            });
+
+            logoClientsContainers.forEach((container) => {
+                container.style.width = '10rem';
+                container.style.height = '6rem';
+            });
+            skillsIconsContainers.forEach((container) => {
+                container.style.width = '4rem';
+                container.style.height = '4rem';
             });
             closeMenuSocial();
         }

@@ -649,11 +649,10 @@ ul {
 
 .tooltip {
   position: absolute;
-  top: 2rem;
+  top: calc(100% + 1rem);
   left: 50%;
   background: var(--tooltipColor);
-  padding: 1rem;
-  padding-bottom: 2rem;
+  padding: 1rem 0 2rem;
   border-radius: var(--borderRadius);
   z-index: var(--zIndexTooltip);
   -webkit-transition: all 500ms ease;
@@ -742,7 +741,6 @@ SECTION {
 
 .section {
   width: 100%;
-  overflow: hidden;
 }
 
 .section_padding {
@@ -751,7 +749,7 @@ SECTION {
 
 .section_content {
   height: calc(100vh - var(--navbarHeightFixed));
-  width: 100%;
+  min-width: 100%;
 }
 
 .section_content .header_section {
@@ -773,7 +771,7 @@ SECTION {
   text-align: center;
   width: 100%;
   height: auto;
-  margin: 4rem 0 2rem;
+  margin: 2rem 0 2rem;
   -webkit-text-stroke: 1px var(--firstColor);
   color: transparent;
   font-size: clamp(2.5rem, calc(1.5rem + 1.5vw), 4rem);
@@ -1948,7 +1946,6 @@ BUTTON {
       -ms-flex-align: start;
           align-items: flex-start;
   width: var(--widthClamp);
-  margin-bottom: 3rem;
 }
 
 #skills_section .skills_containers .skills_container {
@@ -1989,6 +1986,8 @@ BUTTON {
   width: 5rem;
   height: 5rem;
   cursor: pointer;
+  -webkit-transform: all 200ms ease;
+          transform: all 200ms ease;
 }
 
 #skills_section .skills_containers .skills_container .skills_icon_container #html_icon_svg .cls-5 {
@@ -2272,11 +2271,6 @@ BUTTON {
 }
 
 #clients_section .clients_container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, calc(-50% - 3rem));
-          transform: translate(-50%, calc(-50% - 3rem));
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2290,6 +2284,11 @@ BUTTON {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
@@ -2565,13 +2564,26 @@ FOOTER .logos_container .tech_logo_container:active {
 }
 
 FOOTER #footer_btns_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: absolute;
   bottom: 0;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   border-radius: 1rem 1rem 0 0;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   background: var(--bgColor);
 }
 

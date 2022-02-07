@@ -641,11 +641,10 @@ ul {
 }
 .tooltip {
     position: absolute;
-    top: 2rem;
+    top: calc(100% + 1rem);
     left: 50%;
     background: var(--tooltipColor);
-    padding: 1rem;
-    padding-bottom: 2rem;
+    padding: 1rem 0 2rem;
     border-radius: var(--borderRadius);
     z-index: var(--zIndexTooltip);
     transition: all 500ms ease;
@@ -702,14 +701,13 @@ SECTION {
 }
 .section {
     width: 100%;
-    overflow: hidden;
 }
 .section_padding {
     padding: 6rem 0;
 }
 .section_content {
     height: calc(100vh - var(--navbarHeightFixed));
-    width: 100%;
+    min-width: 100%;
     .header_section {
         height: 100%;
         width: 100%;
@@ -721,7 +719,7 @@ SECTION {
     text-align: center;
     width: 100%;
     height: auto;
-    margin: 4rem 0 2rem;
+    margin: 2rem 0 2rem;
     -webkit-text-stroke: 1px var(--firstColor);
     color: transparent;
     font-size: clamp(2.5rem, calc(1.5rem + 1.5vw), 4rem);
@@ -1459,7 +1457,6 @@ BUTTON {
         transform: translate(-50%, -50%);
         @include flexDirection(row, center, flex-start);
         width: var(--widthClamp);
-        margin-bottom: 3rem;
         .skills_container {
             width: auto;
             .skills_icons_container {
@@ -1474,6 +1471,7 @@ BUTTON {
                 width: 5rem;
                 height: 5rem;
                 cursor: pointer;
+                transform: all 200ms ease;
                 #html_icon_svg {
                     .cls-5 {
                         fill: var(--textColor);
@@ -1658,11 +1656,11 @@ BUTTON {
     position: relative;
     @include flexDirection(column, flex-start, center);
     .clients_container {
+        @include flexDirection(row, center, center);
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, calc(-50% - 3rem));
-        @include flexDirection(row, center, center);
+        transform: translate(-50%, -50%);
         flex-wrap: wrap;
         width: 100%;
         height: fit-content;
@@ -1815,12 +1813,13 @@ FOOTER {
         }
     }
     #footer_btns_container {
+        @include flexDirection(row, center, center);
         position: absolute;
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
         border-radius: 1rem 1rem 0 0;
-        padding: 1rem 2rem;
+        padding: 0.5rem 2rem;
         background: var(--bgColor);
         .btn_link {
             color: var(--textColor);
