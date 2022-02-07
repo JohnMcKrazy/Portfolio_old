@@ -709,16 +709,29 @@ SECTION {
     text-align: center;
     width: 100%;
     height: auto;
-    margin-bottom: 2rem;
+    margin: 4rem 0 2rem;
     -webkit-text-stroke: 1px var(--firstColor);
     color: transparent;
     font-size: clamp(2.5rem, calc(1.5rem + 1.5vw), 4rem);
 }
-.section_subtitle {
-    color: var(--textColor);
+.subtitle_section {
+    @include flex(center, center);
+
     text-align: center;
+    width: 100%;
+    margin: 4rem 0 2rem;
+    color: var(--firstColor);
     font-weight: 400;
-    font-size: clamp(1.5rem, calc(1.5rem + 0.5vw), 2.2rem);
+    font-size: clamp(2rem, calc(1.5rem + 0.5vw), 2.2rem);
+}
+.title_subsection {
+    @include flex(center, center);
+    text-align: center;
+    width: 100%;
+    margin: 2rem 0;
+    color: var(--textColor);
+    font-weight: 400;
+    font-size: clamp(1.2rem, calc(1.2rem + 0.5vw), 1.8rem);
 }
 BUTTON {
     padding: 0;
@@ -1480,7 +1493,6 @@ BUTTON {
         flex-wrap: wrap;
         min-height: 30rem;
         width: 100%;
-        margin-top: 2rem;
     }
 }
 //&TEMPLATE STYLE--START
@@ -1557,6 +1569,7 @@ BUTTON {
     @include flexDirection(column, center, center);
     gap: 1rem;
     width: 100%;
+
     .title_project_search {
         color: var(--secondColor);
         font-size: var(--fontSizeM);

@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.section');
     const btnMenuContainer = document.querySelector('#btn_menu_container');
     const btnsNavContainer = document.querySelector('#nav_sections_btns_container');
-
+    const titleSubsectionCardsSearch = document.querySelector('#title_subsection_search_type');
     const loader = document.querySelector('.loader');
     const openMenuSound = document.querySelector('#menu_open_sound');
     const menuSocialContainer = document.querySelector('#menu_social_container');
@@ -429,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^FETCH SEARCH SELECTION DATA--START //-fetch selection option data for search projects
     let typesOfProjects = [];
     let newProjectsListData = [];
-    const fetchSearchSelectionData = async () => {
+    const createSelectionTypeBtns = async () => {
         try {
             const rawData = await fetch(portfolioData);
             const data = await rawData.json();
@@ -494,6 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             //todo CREAR TARJETAS ESPECIFICAS DE BUSQUEDA
                             //*console.log(item);
                             createCard(item, fragmentSearchProjects);
+                            titleSubsectionCardsSearch.textContent = currentNameData;
                             porfolioSearchCardsContainer.appendChild(fragmentSearchProjects);
                             const projectCards = document.querySelectorAll('.project_card');
                             projectCards.forEach((card) => {
@@ -511,7 +512,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(error);
         }
     };
-    fetchSearchSelectionData();
+    createSelectionTypeBtns();
     //^^FETCH SEARCH SELECTION DATA--OVER
     //^ ************************************************************************* *//
     //~~CREATE PROJECT HOT CARDS--START
@@ -547,6 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const itemsTypesOfProjects = item['projects']['type'];
                 if (itemsTypesOfProjects.includes(randomTypeSelection)) {
                     randomItems.push(item);
+                    titleSubsectionCardsSearch.textContent = randomTypeSelection;
                 }
             });
             //*console.log(randomItems);
