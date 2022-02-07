@@ -2259,6 +2259,10 @@ BUTTON {
   color: var(--textContrastColor);
 }
 
+.option_list_btn h3 {
+  pointer-events: none;
+}
+
 #cards_search_container {
   background: var(--bgOff);
 }

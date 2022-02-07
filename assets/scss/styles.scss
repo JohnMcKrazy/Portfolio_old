@@ -1645,6 +1645,9 @@ BUTTON {
         background: var(--firstColor);
         color: var(--textContrastColor);
     }
+    h3 {
+        pointer-events: none;
+    }
 }
 
 //&TEMPLATE STYLE--OVER

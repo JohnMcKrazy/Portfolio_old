@@ -252,80 +252,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ ***********************************************************************************************//
     //^^ADD OBJECT WITH TOOLTIPS INFO--START
 
-    //!MUTATION OBSERVER --START
-    const watchChanges = (entries) => {
-        const newNodes = entries[0]['addedNodes'];
-        newNodes.forEach((node) => {
-            const eachItem = node['children'][0]['children'][0]['childNodes'];
-            eachItem.forEach((item) => {
-                if (item['outerHTML']) {
-                    const classNames = item.classList;
-                    classNames.forEach((name) => {
-                        if (name === 'btns_flag_project_container') {
-                            const currentItemsChildren = item['childNodes'];
-                            currentItemsChildren.forEach((item) => {
-                                const currentItemClassName = item.className;
-                                if (currentItemClassName === 'btn flag_project_btn') {
-                                    const itemData = item['childNodes'][0].data;
-                                    const addTooltipProjectCard = () => {
-                                        //^^ADD OBJECT WITH TOOLTIPS INFO--OVER
-                                        //^^ ************************************************************************************* * //
-
-                                        const cloneTooltip = tooltipTemplate.cloneNode(true);
-                                        const tooltip = cloneTooltip.querySelector('.tooltip');
-                                        const tooltipTitle = cloneTooltip.querySelector('.tooltip_title');
-                                        const tooltipInfo = cloneTooltip.querySelector('.tooltip_info');
-
-                                        infoSoftware.forEach((infoItem) => {
-                                            const techName = infoItem['tech_name'];
-                                            const techCompleteName = infoItem['tech_complete_name'];
-                                            const techInfo = infoItem['tech_info'];
-                                            if (itemData === techName) {
-                                                tooltipTitle.textContent = techCompleteName;
-                                                tooltipInfo.textContent = techInfo;
-                                            }
-                                        });
-
-                                        item.appendChild(tooltip);
-                                        setTimeout(() => {
-                                            tooltip.classList.remove('tooltip_hidden');
-                                        }, 100);
-                                    };
-                                    item.addEventListener('mouseenter', addTooltipProjectCard);
-                                    const delateTooltipProjectCard = () => {
-                                        const tooltips = document.querySelectorAll('.tooltip');
-
-                                        tooltips.forEach((tooltip) => {
-                                            if (item.hasChildNodes()) {
-                                                tooltip.classList.add('tooltip_hidden');
-                                                setTimeout(() => {
-                                                    const deleteChildElements = (parentElement) => {
-                                                        let child = parentElement.lastElementChild;
-                                                        while (child) {
-                                                            parentElement.removeChild(child);
-                                                            child = parentElement.lastElementChild;
-                                                        }
-                                                    };
-                                                    deleteChildElements(item);
-                                                }, 500);
-                                            }
-                                        });
-                                    };
-
-                                    item.addEventListener('mouseleave', delateTooltipProjectCard);
-                                }
-                            });
-                        }
-                    });
-                }
-            });
-        });
-    };
-    const changeObserver = new MutationObserver(watchChanges);
-    changeObserver.observe(portfolioHotCardsContainer, { childList: true });
-
-    //!MUTATION OBSERVER --OVER
-    //! ************************************************************************************************** *//
     //!SESSION STORAGE--START
 
     //!SESSION STORAGE--OVER
@@ -369,42 +295,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     //^^BASIC FUNCTION ANIMATION-- OVER
     //^ ************************************************************************* *//
-    //^^ADD TOOLTIP--START
-    const addTooltip = (parent, itemData) => {
-        //^^ADD OBJECT WITH TOOLTIPS INFO--OVER
-        //^^ ************************************************************************************* *//
-
-        const cloneTooltip = tooltipTemplate.cloneNode(true);
-        const tooltip = cloneTooltip.querySelector('.tooltip');
-        const tooltipTitle = cloneTooltip.querySelector('.tooltip_title');
-        const tooltipInfo = cloneTooltip.querySelector('.tooltip_info');
-        infoSoftware.forEach((infoItem) => {
-            const techName = infoItem['tech_name'];
-            const techCompleteName = infoItem['tech_complete_name'];
-            const techInfo = infoItem['tech_info'];
-            if (itemData === techName) {
-                tooltipTitle.textContent = techCompleteName;
-                tooltipInfo.textContent = techInfo;
-            }
-        });
-        parent.appendChild(tooltip);
-        setTimeout(() => {
-            animateItem(tooltip, '1', 'translateY(0)');
-        }, 100);
-    };
-    //^^ADD TOOLTIP--OVER
-    //^^ ******************************************************************************* *//
-    //^^DELATE TOOLTIP--START
-    const delateTooltip = (parent) => {
-        const tooltips = parent.querySelectorAll('.tooltip');
-        tooltips.forEach((tooltip) => {
-            animateItem(tooltip, '0', 'translateY(0)');
-
-            parent.removeChild(tooltip);
-        });
-    };
-    //^^DELATE TOOLTIP--OVER
-    //^^ ******************************************************************************* *//
 
     //^ CREATE TEMPLATE CARD --START
     const createCard = (item, frac) => {
@@ -473,12 +363,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 //* console.log(projects);
                 const optionListTemplateClone = optionListTemplate.cloneNode(true);
-                const newOption = optionListTemplateClone.querySelector('.option_list_btn');
-                newOption.id = `option_list_btn_${optionId}`;
-                newOption.setAttribute('data', optionId);
-                newOption.setAttribute('name', optionValue);
-                newOption.innerHTML = `<h3>${optionValue}</h3>`;
-                newList.appendChild(newOption);
+                const newOptionBtn = optionListTemplateClone.querySelector('.option_list_btn');
+
+                const newOptionText = optionListTemplateClone.querySelector('.option_list_text');
+                newOptionBtn.id = `option_list_btn_${optionId}`;
+                newOptionBtn.setAttribute('name', optionValue);
+                newOptionText.textContent = optionValue;
+                newList.appendChild(newOptionBtn);
             });
             fragmentListProjects.appendChild(newList);
             searchBtnsContainer.appendChild(fragmentListProjects);
@@ -606,20 +497,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     //^^SPINNERS LOADER OBSERVER--OVER
     //^ ************************************************************************* *//
-    //^^SKILLS ICONS TOOLTIP--START
-    skillsIconsContainers.forEach((icon) => {
-        const dataInfo = icon.getAttribute('data-info');
-        //*console.log(dataInfo);
-
-        icon.addEventListener('mouseenter', () => {
-            addTooltip(icon, dataInfo);
-        });
-        icon.addEventListener('mouseleave', () => {
-            delateTooltip(icon);
-        });
-    });
-    //^^SKILLS ICONS TOOLTIP--OVER
-    //^ ************************************************************************* *//
 
     //^ CLOSE MENU SOCIAL-- START
     const closeMenuSocial = () => {
@@ -647,7 +524,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     //^SOCIAL MENU CLOSE EN BODY CLICK--OVER
     //^^ ******************************************************************************* *//
-
     //^ OPEN MENU-- START
     const btnNavMenu = () => {
         if (menuStatus === 'close') {
