@@ -623,8 +623,22 @@ h4 {
   margin: 0;
 }
 
+p {
+  font-size: var(--fontSizeS);
+  font-weight: var(--fontWeightL);
+}
+
 h1 {
   color: var(--firstColor);
+  font-size: var(--fontSizeX);
+}
+
+h2 {
+  font-size: var(--fontSizeM);
+}
+
+h3 {
+  font-size: var(--fontSizeS);
 }
 
 a {
@@ -636,11 +650,6 @@ a:visited,
 a:focus,
 a:active {
   color: unset;
-}
-
-p {
-  font-size: clamp(1rem, calc(1.2rem + 0.5vw), 1.5rem);
-  font-weight: var(--fontWeightL);
 }
 
 ul {
@@ -658,6 +667,7 @@ ul {
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   width: clamp(200px, 300px, 80%);
+  pointer-events: none;
 }
 
 .tooltip h1 {
@@ -807,7 +817,7 @@ SECTION {
           align-items: center;
   text-align: center;
   width: 100%;
-  margin: 2rem 0;
+  margin: 1rem 0 0.5rem;
   color: var(--textColor);
   font-weight: var(--fontWeightN);
   font-size: clamp(1.2rem, calc(1.2rem + 0.5vw), 1.8rem);
@@ -1969,7 +1979,7 @@ BUTTON {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 1rem;
-  padding: 2rem;
+  padding: 1rem 2rem;
 }
 
 #skills_section .skills_containers .skills_container .skills_icon_container {

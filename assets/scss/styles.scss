@@ -620,8 +620,20 @@ h4 {
     padding: 0;
     margin: 0;
 }
+p {
+    font-size: var(--fontSizeS);
+
+    font-weight: var(--fontWeightL);
+}
 h1 {
     color: var(--firstColor);
+    font-size: var(--fontSizeX);
+}
+h2 {
+    font-size: var(--fontSizeM);
+}
+h3 {
+    font-size: var(--fontSizeS);
 }
 a {
     background-color: transparent;
@@ -631,10 +643,6 @@ a:visited,
 a:focus,
 a:active {
     color: unset;
-}
-p {
-    font-size: clamp(1rem, calc(1.2rem + 0.5vw), 1.5rem);
-    font-weight: var(--fontWeightL);
 }
 ul {
     list-style: none;
@@ -649,6 +657,7 @@ ul {
     z-index: var(--zIndexTooltip);
     transition: all 500ms ease;
     width: clamp(200px, 300px, 80%);
+    pointer-events: none;
     //*border: solid 2px var(--firstColor);
     h1 {
         font-size: var(--fontSizeM);
@@ -737,7 +746,7 @@ SECTION {
     @include flex(center, center);
     text-align: center;
     width: 100%;
-    margin: 2rem 0;
+    margin: 1rem 0 0.5rem;
     color: var(--textColor);
     font-weight: var(--fontWeightN);
     font-size: clamp(1.2rem, calc(1.2rem + 0.5vw), 1.8rem);
@@ -1463,7 +1472,7 @@ BUTTON {
                 @include flexDirection(row, center, flex-start);
                 flex-wrap: wrap;
                 gap: 1rem;
-                padding: 2rem;
+                padding: 1rem 2rem;
             }
             .skills_icon_container {
                 position: relative;

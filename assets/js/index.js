@@ -396,15 +396,11 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^ ******************************************************************************* *//
     //^^DELATE TOOLTIP--START
     const delateTooltip = (parent) => {
-        const tooltips = document.querySelectorAll('.tooltip');
+        const tooltips = parent.querySelectorAll('.tooltip');
         tooltips.forEach((tooltip) => {
             animateItem(tooltip, '0', 'translateY(0)');
-            setTimeout(() => {
-                while (parent.tooltip) {
-                    parent.removeChild(tooltip);
-                    tooltip = parent.querySelector('.tooltip');
-                }
-            }, 500);
+
+            parent.removeChild(tooltip);
         });
     };
     //^^DELATE TOOLTIP--OVER
@@ -481,7 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 newOption.id = `option_list_btn_${optionId}`;
                 newOption.setAttribute('data', optionId);
                 newOption.setAttribute('name', optionValue);
-                newOption.innerHTML = optionValue;
+                newOption.innerHTML = `<h3>${optionValue}</h3>`;
                 newList.appendChild(newOption);
             });
             fragmentListProjects.appendChild(newList);
