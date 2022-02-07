@@ -140,6 +140,9 @@
   --fontSizeM: 1.5rem;
   --fontSizeX: 1.8rem;
   --fontSizeXXL: 2rem;
+  --fontWeightN: 400;
+  --fontWeightB: 600;
+  --fontWeightBB: 800;
   --pushTtansition: transform 1000ms ease;
   --border: solid 0.2rem;
   --borderMenu: solid 0.3rem;
@@ -637,7 +640,7 @@ a:active {
 
 p {
   font-size: clamp(1rem, calc(1.2rem + 0.5vw), 1.5rem);
-  font-weight: 200;
+  font-weight: var(--fontWeightL);
 }
 
 ul {
@@ -724,7 +727,7 @@ ul {
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
-  font-weight: 400;
+  font-weight: var(--fontWeightN);
   font-size: 1.5rem;
 }
 
@@ -790,7 +793,7 @@ SECTION {
   width: 100%;
   margin: 4rem 0 2rem;
   color: var(--firstColor);
-  font-weight: 400;
+  font-weight: var(--fontWeightN);
   font-size: clamp(2rem, calc(1.5rem + 0.5vw), 2.2rem);
 }
 
@@ -808,7 +811,7 @@ SECTION {
   width: 100%;
   margin: 2rem 0;
   color: var(--textColor);
-  font-weight: 400;
+  font-weight: var(--fontWeightN);
   font-size: clamp(1.2rem, calc(1.2rem + 0.5vw), 1.8rem);
 }
 
@@ -824,7 +827,7 @@ BUTTON {
   border: var(--border)var(--firstColor);
   border-radius: var(--borderRadius);
   text-align: center;
-  font-weight: 400;
+  font-weight: var(--fontWeightN);
   font-size: var(--fontSizeS);
   cursor: pointer;
   -webkit-transition: var(--transitionBtn);
@@ -847,7 +850,7 @@ BUTTON {
   background: var(--firstColorHover);
   color: var(--textContrastColor);
   border-color: var(--firstColorHover);
-  font-weight: 600;
+  font-weight: var(--fontWeightB);
   font-size: var(--fontSizeS);
 }
 
@@ -887,6 +890,22 @@ BUTTON {
 
 .btn_section_active .nav_menu_icon_svg .cls-1 {
   fill: var(--textContrastColor);
+}
+
+.btn_link {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 1rem;
+  font-size: var(--fontSizeS);
+  font-weight: var(--fontWeightN);
+  text-decoration: underline;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn_link:focus {
+  border: dotted 1px white;
 }
 
 .modal {
@@ -960,7 +979,7 @@ BUTTON {
   display: block;
   width: 100%;
   padding: 0.5rem 0;
-  font-weight: 600;
+  font-weight: var(--fontWeightB);
   font-size: var(--fontSizeS);
 }
 
@@ -1028,7 +1047,7 @@ BUTTON {
   padding: 1rem;
   color: var(--secondColor);
   font-size: var(--fontSizeS);
-  font-weight: 400;
+  font-weight: var(--fontWeightN);
   text-decoration: underline;
   text-align: center;
   cursor: pointer;
@@ -1045,6 +1064,10 @@ BUTTON {
 #legal_modal {
   max-height: 90vh;
   display: none;
+}
+
+#legal_modal .modal_header {
+  padding: 2rem 0;
 }
 
 #legal_modal .modal_info {
@@ -1529,7 +1552,7 @@ BUTTON {
 
 .nav .nav_content #nav_sections_btns_container .btn_nav .btn_lebel {
   font-size: var(--fontSizeM);
-  font-weight: 600;
+  font-weight: var(--fontWeightB);
 }
 
 .nav .nav_content #nav_sections_btns_container .btn_nav .nav_menu_icon_svg {
@@ -1879,10 +1902,6 @@ BUTTON {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -2118,7 +2137,7 @@ BUTTON {
 
 .project_card .project_info .info_project_container .btns_flag_project_container legend {
   font-size: var(--fontSizeM);
-  font-weight: 600;
+  font-weight: var(--fontWeightB);
 }
 
 .project_card .project_info .info_project_container .flags_title {
@@ -2132,7 +2151,7 @@ BUTTON {
 .flag_project_btn {
   position: relative;
   color: var(--textColor);
-  font-weight: 600;
+  font-weight: var(--fontWeightB);
 }
 
 .project_card:hover,
@@ -2313,7 +2332,148 @@ BUTTON {
           animation: zoom 1000ms ease-out;
 }
 
+#contact_section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#contact_section #contact_content #header_section_contact {
+  position: relative;
+  background: var(--bgHeaderSectionSkills);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#contact_section .form_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background: var(--navbarColor);
+  width: clamp(300px, 800px, 90%);
+  padding: 1rem 1.5rem 2rem;
+}
+
+#contact_section .form_container .close_btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0.5rem;
+}
+
+#contact_section .form_container .close_btn:hover,
+#contact_section .form_container .close_btn:focus,
+#contact_section .form_container .close_btn:active {
+  background: var(--firstColor);
+}
+
+#contact_section .form_container .close_btn:hover .close_icon_svg .cls-1,
+#contact_section .form_container .close_btn:focus .close_icon_svg .cls-1,
+#contact_section .form_container .close_btn:active .close_icon_svg .cls-1 {
+  fill: var(--textContrastColor);
+}
+
+#contact_section .form_container .modal_info {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-bottom: 1rem;
+}
+
+#contact_section .form_container .modal_form {
+  width: 100%;
+  height: auto;
+}
+
+#contact_section .form_container .modal_form LABEL {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0;
+  font-weight: var(--fontWeightB);
+  font-size: var(--fontSizeS);
+}
+
+#contact_section .form_container .modal_form INPUT {
+  display: block;
+  width: 100%;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  background: var(--bgColor);
+}
+
+#contact_section .form_container .modal_form INPUT:focus {
+  outline: none;
+  background: var(--bgOff);
+}
+
+#contact_section .form_container .modal_form INPUT::-webkit-input-placeholder {
+  color: var(--textColor);
+}
+
+#contact_section .form_container .modal_form INPUT:-ms-input-placeholder {
+  color: var(--textColor);
+}
+
+#contact_section .form_container .modal_form INPUT::-ms-input-placeholder {
+  color: var(--textColor);
+}
+
+#contact_section .form_container .modal_form INPUT::placeholder {
+  color: var(--textColor);
+}
+
+#contact_section .form_container .modal_form BUTTON {
+  width: 100%;
+}
+
 FOOTER {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2359,6 +2519,7 @@ FOOTER .logos_container {
   width: var(--widthClamp);
   height: auto;
   padding: 1rem;
+  margin-bottom: 4rem;
 }
 
 FOOTER .logos_container .tech_logo_container {
@@ -2403,40 +2564,26 @@ FOOTER .logos_container .tech_logo_container:active {
           animation: zoom 1000ms ease-out;
 }
 
-FOOTER .btns_container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 2rem;
-  width: var(--widthClamp);
-  padding: 0.5rem 0;
+FOOTER #footer_btns_container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  border-radius: 1rem 1rem 0 0;
+  padding: 1rem 2rem;
+  background: var(--bgColor);
 }
 
-FOOTER .btns_container .btn_link {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 1rem;
+FOOTER #footer_btns_container .btn_link {
+  color: var(--textColor);
+  text-decoration: none;
+  -webkit-transition: color 200ms ease;
+  transition: color 200ms ease;
+}
+
+FOOTER #footer_btns_container .btn_link:hover {
   color: var(--secondColor);
-  font-size: var(--fontSizeS);
-  font-weight: 400;
-  text-decoration: underline;
-  text-align: center;
-  cursor: pointer;
-}
-
-FOOTER .btns_container .btn_link:focus {
-  border: dotted 1px white;
 }
 
 .animation_left {

@@ -273,6 +273,12 @@
                 <button class="btn_menu btn_menu_section btn_section" id="clients_btn_menu" name="clients_section">
                     <h3 class="btn_lebel">Clientes</h3>
                 </button>
+                <button class="btn_menu btn_menu_section btn_section" id="legals_btn_menu" name="legals_section">
+                    <h3 class="btn_lebel">Legales</h3>
+                </button>
+                <button class="btn_menu btn_menu_section btn_section" id="contact_btn_menu" name="contact_section">
+                    <h3 class="btn_lebel">Contactanos</h3>
+                </button>
             </div>
             <!--~NAV BTNS CONTAINER--OVER-->
             <!--~EXTRA BTNS CONTAINER--START-->
@@ -386,22 +392,28 @@
                 </button>
                 <div id="nav_sections_btns_container">
                     <button class="btn_nav btn_nav_section btn_section" id="main_btn_nav" name="hero_section" data-lebel="Inicio">
-                        <h3>Inicio</h3>
+                        <h3 class="btn_lebel">Inicio</h3>
                     </button>
                     <button class="btn_nav btn_nav_section btn_section" id="about_btn_nav" name="about_section" data-lebel="Acerca de">
-                        <h3>Acerca de</h3>
+                        <h3 class="btn_lebel">Acerca de</h3>
                     </button>
                     <button class="btn_nav btn_nav_section btn_section" id="services_btn_nav" name="services_section" data-lebel="Servicios">
-                        <h3>Servicios</h3>
+                        <h3 class="btn_lebel">Servicios</h3>
                     </button>
                     <button class="btn_nav btn_nav_section btn_section" id="portfolio_btn_nav" name="portfolio_section" data-lebel="Portafolio">
-                        <h3>Portafolio</h3>
+                        <h3 class="btn_lebel">Portafolio</h3>
                     </button>
                     <button class="btn_nav btn_nav_section btn_section" id="skills_btn_nav" name="skills_section" data-lebel="Habilidades">
-                        <h3>Habilidades</h3>
+                        <h3 class="btn_lebel">Habilidades</h3>
                     </button>
                     <button class="btn_nav btn_nav_section btn_section" id="clients_btn_nav" name="clients_section" data-lebel="Clientes">
-                        <h3>Clientes</h3>
+                        <h3 class="btn_lebel">Clientes</h3>
+                    </button>
+                    <button class="btn_nav btn_nav_section btn_section" id="legals_btn_nav" name="legals_section" data-lebel="Legales">
+                        <h3 class="btn_lebel">Legales</h3>
+                    </button>
+                    <button class="btn_nav btn_nav_section btn_section" id="contact_btn_nav" name="contact_section" data-lebel="Contactanos">
+                        <h3 class="btn_lebel">Contactanos</h3>
                     </button>
                     <button class="btn_nav btn_theme" id="change_theme_btn_nav"></button>
                 </div>
@@ -1938,8 +1950,54 @@
 
         <!--^^CLIENTS SECTION-- OVER-->
         <!--^^ ******************************************************-->
+
+        <section class="section" id="contact_section">
+            <div class="section_content" id="contact_content">
+                <div class="header_section" id="header_section_contact">
+                    <div class="swipe_animation_container_full">
+                        <h1 class="title_section animation_up" id="title_contact">Contactanos</h1>
+                    </div>
+
+                    <div class="form_container" id="form_container_contact">
+                        <button class="close_btn close_modal_btn" id="modal_form_close_btn">
+                            <svg
+                                class="close_icon_svg"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 25 25"
+                            >
+                                <title>Close</title>
+                                <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(12.5 -5.18) rotate(45)" />
+                                <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(30.18 12.5) rotate(135)" />
+                            </svg>
+                        </button>
+                        <h1 class="title_modal">¿Quieres contactarme?</h1>
+                        <div class="contact_info_container" id="modal_info_contact_form">
+                            <p class="description_modal">
+                                Si quisieras contactarte conmigo para hablar sobre alguna idea para trabajar juntos, con el siguiente formulario
+                                puedes mandarme tu propuesta
+                            </p>
+                        </div>
+                        <form class="modal_form" id="modal_contact_form">
+                            <label for="name_input">Nombre </label>
+                            <input type="text" placeholder="Coloca tu nombre" name="name_input" required />
+
+                            <label for="issue_input">Asunto </label>
+                            <input type="text" placeholder="Coloca el asunto" name="issue_input" required />
+
+                            <label for="email_input">Correo </label>
+                            <input type="email" placeholder="Coloca tu Correo" name="email_input" required />
+
+                            <button type="submit" class="btn send_btn" id="contact_form_send_btn">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--^^ ******************************************************-->
         <!--^^FOOTER-- START-->
-        <footer>
+        <footer class="section" id="legals_section">
             <div class="swipe_animation_container_full">
                 <h1 class="title_footer animation_up" id="title_footer_id">Página realizada con:</h1>
             </div>
@@ -2090,8 +2148,9 @@
                     </svg>
                 </div>
             </div>
-            <div class="btns_container">
+            <div id="footer_btns_container">
                 <button type="button" class="btn_link btn_link_legal">Avisos legales</button>
+                <button type="button" class="btn_link btn_link_data">Uso de datos</button>
             </div>
         </footer>
         <!--^^FOOTER-- OVER-->
@@ -2175,10 +2234,12 @@
                     <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(30.18 12.5) rotate(135)" />
                 </svg>
             </button>
-            <h1 class="title_modal">Aviso Legal</h1>
+            <div class="modal_header">
+                <h1 class="title_modal">Aviso Legal</h1>
+                <h2>Avisos legales y articulos que mas aderlante incluire:</h2>
+            </div>
             <div class="modal_info" id="modal_info_legal">
                 <p class="description_modal">
-                    Avisos legales y articulos que mas aderlante incluire:<br /><br />
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sequi, magnam corrupti sed delectus odit tempore saepe nam
                     asperiores enim, porro quod placeat qui sunt omnis deserunt nemo cupiditate. Soluta! Omnis illum voluptatibus veniam officiis
                     commodi quisquam odio dolorum similique eum incidunt? Dolores vel perspiciatis veritatis, similique quis soluta, tempora ab maxime

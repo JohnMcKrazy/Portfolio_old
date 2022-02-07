@@ -79,7 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const lebelBtnSkills = document.querySelector('#skills_btn_nav');
     const lebelBtnServices = document.querySelector('#services_btn_nav');
     const lebelBtnPortfolio = document.querySelector('#portfolio_btn_nav');
-    const lebelBtnClient = document.querySelector('#clients_btn_nav');
+    const lebelBtnLegals = document.querySelector('#legals_btn_nav');
+    const lebelBtnContact = document.querySelector('#contact_btn_nav');
+    const lebelBtnClients = document.querySelector('#clients_btn_nav');
     const heroBtnsContainer = document.querySelector('#hero_btns_container');
 
     const servicesContainer = document.querySelector('#services_container');
@@ -790,26 +792,17 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         //~~SET CARD CHANGES--OVER
         //~~ ************************************************************************************************** *//
-        const firstBreak = 1300;
-        const secondBreak = 950;
+        const firstBreak = 1500;
+        const secondBreak = 1050;
         if (widConf > firstBreak) {
             lebelBtnMain.innerHTML = '<h3 class="btn_lebel">Inicio</h3>';
             lebelBtnAbout.innerHTML = '<h3 class="btn_lebel">Acerca de</h3>';
             lebelBtnSkills.innerHTML = '<h3 class="btn_lebel">Habilidades</h3>';
             lebelBtnServices.innerHTML = '<h3 class="btn_lebel">Servicios</h3>';
             lebelBtnPortfolio.innerHTML = '<h3 class="btn_lebel">Portafolio</h3>';
-            lebelBtnClient.innerHTML = '<h3 class="btn_lebel">Clientes</h3>';
-            servicesContainer.classList.add('services_container_one_columns');
-            servicesContainer.classList.remove('services_container_two_columns');
-            serviceContainer.forEach((container) => {
-                container.style.width = '100%';
-                serviceCardsLeft.forEach((card) => {
-                    changeCardStyle(card, 'row', '30rem');
-                });
-                serviceCardsRight.forEach((card) => {
-                    changeCardStyle(card, 'row-reverse', '30rem');
-                });
-            });
+            lebelBtnClients.innerHTML = '<h3 class="btn_lebel">Clientes</h3>';
+            lebelBtnLegals.innerHTML = '<h3 class="btn_lebel">Legales</h3>';
+            lebelBtnContact.innerHTML = '<h3 class="btn_lebel">Contactanos</h3>';
         } else if (widConf > secondBreak || (widConf < firstBreak && widConf > secondBreak)) {
             lebelBtnMain.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="home_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Inicio</title><path class="cls-1" d="M19 21H5a1 1 0 0 1-1-1v-9H1l10.327-9.388a1 1 0 0 1 1.346 0L23 11h-3v9a1 1 0 0 1-1 1zM6 19h12V9.157l-6-5.454-6 5.454V19z"/></svg>';
@@ -821,36 +814,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 '<svg class="nav_menu_icon_svg" id="services_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Servicios</title><path class="cls-1" d="M19.938 8H21a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-1.062A8.001 8.001 0 0 1 12 23v-2a6 6 0 0 0 6-6V9A6 6 0 1 0 6 9v7H3a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1.062a8.001 8.001 0 0 1 15.876 0zM3 10v4h1v-4H3zm17 0v4h1v-4h-1zM7.76 15.785l1.06-1.696A5.972 5.972 0 0 0 12 15a5.972 5.972 0 0 0 3.18-.911l1.06 1.696A7.963 7.963 0 0 1 12 17a7.963 7.963 0 0 1-4.24-1.215z"/></svg>';
             lebelBtnPortfolio.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="portfolio_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Portafolio</title><path class="cls-1" d="M7 5V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4zm10 2v5h3V7h-3zm-2 0H9v5h6V7zM7 7H4v5h3V7zm2-4v2h6V3H9z"/></svg>';
-            lebelBtnClient.innerHTML =
+            lebelBtnClients.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="clients_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Clientes</title><path class="cls-1" d="M12 1l8.217 1.826c.457.102.783.507.783.976v9.987c0 2.006-1.003 3.88-2.672 4.992L12 23l-6.328-4.219C4.002 17.668 3 15.795 3 13.79V3.802c0-.469.326-.874.783-.976L12 1zm0 2.049L5 4.604v9.185c0 1.337.668 2.586 1.781 3.328L12 20.597l5.219-3.48C18.332 16.375 19 15.127 19 13.79V4.604L12 3.05zm4.452 5.173l1.415 1.414L11.503 16 7.26 11.757l1.414-1.414 2.828 2.828 4.95-4.95z"/></svg>';
+            lebelBtnLegals.innerHTML =
+                '<svg class="nav_menu_icon_svg" id="legals_icon_svg"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Legales</title><path class="cls-1"  d="M19 22H5a3 3 0 0 1-3-3V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v12h4v4a3 3 0 0 1-3 3zm-1-5v2a1 1 0 0 0 2 0v-2h-2zm-2 3V4H4v15a1 1 0 0 0 1 1h11zM6 7h8v2H6V7zm0 4h8v2H6v-2zm0 4h5v2H6v-2z"/></svg>';
+
+            lebelBtnContact.innerHTML =
+                '<svg class="nav_menu_icon_svg" id="legals_icon_svg"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Legales</title><path class="cls-1"  d="M19 22H5a3 3 0 0 1-3-3V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v12h4v4a3 3 0 0 1-3 3zm-1-5v2a1 1 0 0 0 2 0v-2h-2zm-2 3V4H4v15a1 1 0 0 0 1 1h11zM6 7h8v2H6V7zm0 4h8v2H6v-2zm0 4h5v2H6v-2z"/></svg>';
+
             btnMenuContainer.style.display = 'none';
             btnsNavContainer.style.display = 'flex';
             menuSocialContainer.style.display = 'flex';
 
+            servicesContainer.classList.add('services_container_one_columns');
+            servicesContainer.classList.remove('services_container_two_columns');
             insertFlex(skillsContainer, 'row', 'center', 'flex-start');
-            heroBtnsContainer.style.flexDirection = 'row';
-            servicesContainer.classList.add('services_container_two_columns');
-            servicesContainer.classList.remove('services_container_one_columns');
             serviceContainer.forEach((container) => {
-                container.style.width = '280px';
-                container.style.height = 'auto';
+                container.style.width = '100%';
                 serviceCardsLeft.forEach((card) => {
-                    changeCardStyle(card, 'column', 'auto');
+                    changeCardStyle(card, 'row', '30rem');
                 });
                 serviceCardsRight.forEach((card) => {
-                    changeCardStyle(card, 'column', 'auto');
+                    changeCardStyle(card, 'row-reverse', '30rem');
                 });
             });
-
             closeMenu();
         } else if (widConf <= secondBreak) {
             btnsNavContainer.style.display = 'none';
             btnMenuContainer.style.display = 'flex';
             menuSocialContainer.style.display = 'none';
             insertFlex(skillsContainer, 'column', 'flex-start', 'center');
-            heroBtnsContainer.style.flexDirection = 'column';
             servicesContainer.classList.add('services_container_two_columns');
             servicesContainer.classList.remove('services_container_one_columns');
+
             serviceContainer.forEach((container) => {
                 container.style.width = '280px';
                 container.style.height = 'auto';

@@ -101,10 +101,15 @@
     --fontSizeS: 1.2rem;
     --fontSizeM: 1.5rem;
     --fontSizeX: 1.8rem;
-
     --fontSizeXXL: 2rem;
-
     //! FONT SIZES--OVER
+    //! *********************************************************************************************************************** *//
+    //! FONT WEIGHT--START
+    --fontWeightN: 400;
+    --fontWeightB: 600;
+    --fontWeightBB: 800;
+
+    //! FONT WEIGHT--OVER
     //! *********************************************************************************************************************** *//
     //!GENERAL START
     --pushTtansition: transform 1000ms ease;
@@ -629,7 +634,7 @@ a:active {
 }
 p {
     font-size: clamp(1rem, calc(1.2rem + 0.5vw), 1.5rem);
-    font-weight: 200;
+    font-weight: var(--fontWeightL);
 }
 ul {
     list-style: none;
@@ -683,7 +688,7 @@ ul {
             justify-content: center;
             align-items: center;
             text-align: center;
-            font-weight: 400;
+            font-weight: var(--fontWeightN);
             font-size: 1.5rem;
         }
     }
@@ -727,7 +732,7 @@ SECTION {
     width: 100%;
     margin: 4rem 0 2rem;
     color: var(--firstColor);
-    font-weight: 400;
+    font-weight: var(--fontWeightN);
     font-size: clamp(2rem, calc(1.5rem + 0.5vw), 2.2rem);
 }
 .title_subsection {
@@ -736,7 +741,7 @@ SECTION {
     width: 100%;
     margin: 2rem 0;
     color: var(--textColor);
-    font-weight: 400;
+    font-weight: var(--fontWeightN);
     font-size: clamp(1.2rem, calc(1.2rem + 0.5vw), 1.8rem);
 }
 BUTTON {
@@ -754,7 +759,7 @@ BUTTON {
     border: var(--border) + var(--firstColor);
     border-radius: var(--borderRadius);
     text-align: center;
-    font-weight: 400;
+    font-weight: var(--fontWeightN);
     font-size: var(--fontSizeS);
     cursor: pointer;
     transition: var(--transitionBtn);
@@ -773,7 +778,7 @@ BUTTON {
     background: var(--firstColorHover);
     color: var(--textContrastColor);
     border-color: var(--firstColorHover);
-    font-weight: 600;
+    font-weight: var(--fontWeightB);
     font-size: var(--fontSizeS);
 }
 .more_btn:hover,
@@ -807,7 +812,23 @@ BUTTON {
     }
 }
 //^^BTNS SECTION ACTIVE-- OVER
-//^ ****************************************************************************************************/
+//^ *************************************************************************************************** *//
+//^^BTN LINK--START
+.btn_link {
+    width: fit-content;
+    padding: 1rem;
+    font-size: var(--fontSizeS);
+    font-weight: var(--fontWeightN);
+    text-decoration: underline;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn_link:focus {
+    border: dotted 1px white;
+}
+//^^BTN LINK--OVER
+//^^ *************************************************************************************************** *//
 //!BUTTONS OVER
 //! ***************************************************************************************************/
 //!MODAL START
@@ -851,7 +872,7 @@ BUTTON {
             display: block;
             width: 100%;
             padding: 0.5rem 0;
-            font-weight: 600;
+            font-weight: var(--fontWeightB);
             font-size: var(--fontSizeS);
         }
         INPUT {
@@ -893,7 +914,7 @@ BUTTON {
             padding: 1rem;
             color: var(--secondColor);
             font-size: var(--fontSizeS);
-            font-weight: 400;
+            font-weight: var(--fontWeightN);
             text-decoration: underline;
             text-align: center;
             cursor: pointer;
@@ -913,6 +934,9 @@ BUTTON {
 #legal_modal {
     max-height: 90vh;
     display: none;
+    .modal_header {
+        padding: 2rem 0;
+    }
     .modal_info {
         overflow-y: scroll;
         scroll-behavior: smooth;
@@ -1208,7 +1232,7 @@ BUTTON {
                 color: var(--textColor);
                 .btn_lebel {
                     font-size: var(--fontSizeM);
-                    font-weight: 600;
+                    font-weight: var(--fontWeightB);
                 }
                 .nav_menu_icon_svg {
                     height: 100%;
@@ -1420,7 +1444,7 @@ BUTTON {
 
 //!SKILLS SECTION-- START
 #skills_section {
-    @include flexDirection(column, flex-start, center);
+    @include flex(flex-start, center);
     #skills_content {
         #header_section_skills {
             position: relative;
@@ -1544,7 +1568,7 @@ BUTTON {
                 text-align: center;
                 legend {
                     font-size: var(--fontSizeM);
-                    font-weight: 600;
+                    font-weight: var(--fontWeightB);
                 }
             }
             .flags_title {
@@ -1560,7 +1584,7 @@ BUTTON {
 .flag_project_btn {
     position: relative;
     color: var(--textColor);
-    font-weight: 600;
+    font-weight: var(--fontWeightB);
 }
 .project_card:hover,
 .project_card:active,
@@ -1667,8 +1691,87 @@ BUTTON {
 
 //!CLIENTS SECTION-- OVER
 //! ******************************************************************** *//
+//!CONTACT SECTION--START
+
+#contact_section {
+    @include flex(flex-start, center);
+    #contact_content {
+        #header_section_contact {
+            position: relative;
+            background: var(--bgHeaderSectionSkills);
+            @include flexDirection(column, flex-start, center);
+        }
+    }
+    .form_container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include flexDirection(column, flex-start, flex-start);
+
+        height: fit-content;
+        background: var(--navbarColor);
+        width: clamp(300px, 800px, 90%);
+        padding: 1rem 1.5rem 2rem;
+        .close_btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 0.5rem;
+        }
+        .close_btn:hover,
+        .close_btn:focus,
+        .close_btn:active {
+            background: var(--firstColor);
+
+            .close_icon_svg {
+                .cls-1 {
+                    fill: var(--textContrastColor);
+                }
+            }
+        }
+        .modal_info {
+            width: 100%;
+            height: fit-content;
+            margin-bottom: 1rem;
+        }
+        .modal_form {
+            width: 100%;
+            height: auto;
+            LABEL {
+                @include flex(flex-start, center);
+                display: block;
+                width: 100%;
+                padding: 0.5rem 0;
+                font-weight: var(--fontWeightB);
+                font-size: var(--fontSizeS);
+            }
+            INPUT {
+                display: block;
+                width: 100%;
+                border: none;
+                padding: 0.5rem 1rem;
+                margin-bottom: 1rem;
+                background: var(--bgColor);
+            }
+            INPUT:focus {
+                outline: none;
+                background: var(--bgOff);
+            }
+            INPUT::placeholder {
+                color: var(--textColor);
+            }
+            BUTTON {
+                width: 100%;
+            }
+        }
+    }
+}
+//!CONTACT SECTION--OVER
+//! ******************************************************************** *//
 //!FOOTER-- START
 FOOTER {
+    position: relative;
     @include flexDirection(column, center, center);
     width: 100%;
     height: auto;
@@ -1688,6 +1791,7 @@ FOOTER {
         width: var(--widthClamp);
         height: auto;
         padding: 1rem;
+        margin-bottom: 4rem;
         .tech_logo_container {
             @include flex(center, center);
             width: 8rem;
@@ -1710,24 +1814,21 @@ FOOTER {
             animation: zoom 1000ms ease-out;
         }
     }
-    .btns_container {
-        @include flexDirection(row, center, center);
-        gap: 2rem;
-        width: var(--widthClamp);
-        padding: 0.5rem 0;
+    #footer_btns_container {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 1rem 1rem 0 0;
+        padding: 1rem 2rem;
+        background: var(--bgColor);
         .btn_link {
-            width: fit-content;
-            padding: 1rem;
-            color: var(--secondColor);
-            font-size: var(--fontSizeS);
-            font-weight: 400;
-            text-decoration: underline;
-            text-align: center;
-            cursor: pointer;
+            color: var(--textColor);
+            text-decoration: none;
+            transition: color 200ms ease;
         }
-
-        .btn_link:focus {
-            border: dotted 1px white;
+        .btn_link:hover {
+            color: var(--secondColor);
         }
     }
 }
