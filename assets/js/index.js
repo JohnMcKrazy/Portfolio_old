@@ -704,8 +704,8 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         //~~SET CARD CHANGES--OVER
         //~~ ************************************************************************************************** *//
-        const firstBreak = 1500;
-        const secondBreak = 1100;
+        const firstBreak = 1250;
+        const secondBreak = 1000;
         if (widConf > firstBreak) {
             lebelBtnMain.innerHTML = '<h3 class="btn_lebel">Inicio</h3>';
             lebelBtnAbout.innerHTML = '<h3 class="btn_lebel">Acerca de</h3>';
