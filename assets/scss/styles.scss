@@ -121,7 +121,10 @@
     --widthClamp: clamp(200px, 1500px, 90%);
     --cardWidth: clamp(280px, 30rem, 80%);
     --fullscreenFixedHeight: calc(100vh - var(--navbarHeightFixed));
-    --transitionBtn: all 0.3s ease;
+    --transitionBtn: all 250ms ease;
+    --transitionFast: all 500ms ease;
+    --transitionMid: all 750ms ease;
+    --transitionSlow: all 1000ms ease;
     --fontSize: 14px;
     --opacityBtn: 0.5;
     font-size: var(--fontSize);
@@ -655,7 +658,7 @@ ul {
     padding: 1rem 0 2rem;
     border-radius: var(--borderRadius);
     z-index: var(--zIndexTooltip);
-    transition: all 500ms ease;
+    transition: var(--transitionMid);
     width: clamp(200px, 300px, 80%);
     pointer-events: none;
     //*border: solid 2px var(--firstColor);
@@ -670,9 +673,9 @@ ul {
 }
 .tooltip_hidden {
     opacity: 0;
-    transition: translateY(50%);
+    transform: translateY(50%);
     z-index: var(--zIndexTooltip);
-    transition: all 500ms ease;
+    transition: var(--transitionMid);
 }
 .loader_container {
     position: absolute;
@@ -682,7 +685,7 @@ ul {
     height: 100%;
     width: 100%;
     .spinner_container {
-        transition: all 1000ms ease;
+        transition: var(--transitionSlow);
         .loading_spinner {
             display: inline-block;
             border-radius: 50%;
@@ -1008,7 +1011,7 @@ BUTTON {
         border-radius: var(--borderRadius);
         overflow: hidden;
         opacity: 0;
-        transition: all 500ms ease;
+        transition: var(--transitionMid);
     }
     A {
         height: 100%;
@@ -1053,7 +1056,7 @@ BUTTON {
     z-index: var(--zIndexMenu);
     transform: translateY(-100%);
     opacity: 0;
-    transition: all 1000ms ease;
+    transition: var(--transitionMid);
     .btn_menu {
         @include flex(center, center);
         width: 100%;
@@ -1148,7 +1151,7 @@ BUTTON {
     width: 100%;
     background: var(--navbarColor);
     z-index: var(--zIndexNav);
-    transition: all 300ms ease;
+    transition: var(--transitionSlow);
     .nav_content {
         height: 100%;
         width: var(--widthClamp);
@@ -1159,7 +1162,7 @@ BUTTON {
             height: 100%;
             padding: 0 0.5rem;
             cursor: pointer;
-            transition: var(--transitionBtn);
+            transition: var(--transitionSlow);
             //*LOGO COLORS START
             #johnK_icon_svg {
                 width: auto;
@@ -1197,7 +1200,7 @@ BUTTON {
                 .bar_btn {
                     height: 0.2rem;
                     background: var(--firstColor);
-                    transition: all 500ms ease;
+                    transition: var(--transitionSlow);
                 }
 
                 #center_bar_btn {
@@ -1221,7 +1224,7 @@ BUTTON {
         }
         #btn_menu_container:active {
             #menu_btn {
-                transition: var(--pushTransition);
+                transition: var(--transitionBtn);
                 transform: scale(0.9);
             }
         }
@@ -1340,7 +1343,7 @@ BUTTON {
             transform: translateX(-50%);
             color: var(--textColor);
             cursor: pointer;
-            transition: all 500ms ease;
+            transition: var(--transitionMid);
             #arrow_down_svg {
                 margin-top: 0.5rem;
                 width: 2rem;
@@ -1540,7 +1543,7 @@ BUTTON {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    transition: all 100ms ease;
+    transition: var(--transitionBtn);
     z-index: var(--zIndexStart);
     .project_info {
         @include flexDirection(column, center, center);
@@ -1549,7 +1552,7 @@ BUTTON {
         height: 100%;
         background: var(--navbarColor) 70%;
         padding: 2rem 2.5rem;
-        transition: opacity 0.5s ease;
+        transition: var(--transitionMid);
 
         .info_project_container {
             width: 100%;
@@ -1603,7 +1606,7 @@ BUTTON {
 }
 //!PROJECTS CONTAINER--START
 .projects_container {
-    @include flexDirection(column, center, center);
+    @include flexDirection(column, flex-start, center);
     gap: 1rem;
     width: 100%;
 
@@ -1614,10 +1617,9 @@ BUTTON {
         padding: 0.5rem 0;
     }
     .project_btns_container {
-        @include flex(center, center);
-        background: var(--navbarColor);
+        @include flexDirection(column, flex-start, center);
         width: 100%;
-        height: 5rem;
+        height: 3rem;
     }
 }
 
@@ -1625,21 +1627,67 @@ BUTTON {
 //! ******************************************************************************************** *//
 
 .selection_list {
-    @include flexDirection(row, space-between, center);
-
+    position: relative;
+    @include flexDirection(column, flex-start, center);
+    flex-wrap: wrap;
     text-align: center;
     font-size: var(--fontSizeM);
     color: var(--blackOff);
     width: var(--widthClamp);
-    height: 100%;
+    height: 3rem;
+    width: fit-content;
+    overflow: hidden;
+    user-select: none;
+    transition: var(--transitionSlow);
+    .option_list_btn_search {
+        position: relative;
+        @include flex(center, center);
+        text-align: center;
+        padding: 0.5rem 1rem;
+        margin-bottom: 0.1rem;
+        color: var(--textColor);
+        background: var(--navbarColor);
+        height: 3rem;
+        width: 100%;
+        cursor: pointer;
+        .arrow_btn {
+            @include flex(center, center);
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            height: 3rem;
+            width: 3rem;
+            padding: 0.5rem;
+            pointer-events: none;
+            .arrow_btn_svg {
+                transition: transform 500ms ease;
+                .cls-1 {
+                    fill: var(--textColor);
+                }
+            }
+        }
+        &:hover {
+            background: var(--firstColor);
+            color: var(--textContrastColor);
+            .arrow_btn_svg {
+                .cls-1 {
+                    fill: var(--textContrastColor);
+                }
+            }
+        }
+    }
 }
+
 .option_list_btn {
     @include flex(center, center);
     text-align: center;
-    padding: 0 1rem;
+    padding: 0.5rem 1rem;
     color: var(--textColor);
-    height: 100%;
+    background: var(--navbarColor);
+    height: 3rem;
     width: 100%;
+    z-index: var(--zIndexMenu);
     cursor: pointer;
     &:hover {
         background: var(--firstColor);
@@ -1649,16 +1697,21 @@ BUTTON {
         pointer-events: none;
     }
 }
-
+#search_project_btns_container {
+    position: relative;
+    z-index: var(--zIndexMenu);
+    #selection_list_type_of_projects {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        #selection_list_search_btn {
+            border: solid 2px var(--firstColor);
+        }
+    }
+}
 //&TEMPLATE STYLE--OVER
 //& ******************************************************************************************** *//
-
-//^^CARDS SEARCH CONTAINER--START
-#cards_search_container {
-    background: var(--bgOff);
-}
-//^^CARDS SEARCH CONTAINER--OVER
-//^^ ******************************************************************************************** *//
 
 //!PORTFOLIO SECTION-- OVER
 //! ******************************************************************** *//

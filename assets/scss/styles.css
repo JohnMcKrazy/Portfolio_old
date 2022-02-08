@@ -152,7 +152,10 @@
   --widthClamp: clamp(200px, 1500px, 90%);
   --cardWidth: clamp(280px, 30rem, 80%);
   --fullscreenFixedHeight: calc(100vh - var(--navbarHeightFixed));
-  --transitionBtn: all 0.3s ease;
+  --transitionBtn: all 250ms ease;
+  --transitionFast: all 500ms ease;
+  --transitionMid: all 750ms ease;
+  --transitionSlow: all 1000ms ease;
   --fontSize: 14px;
   --opacityBtn: 0.5;
   font-size: var(--fontSize);
@@ -664,8 +667,8 @@ ul {
   padding: 1rem 0 2rem;
   border-radius: var(--borderRadius);
   z-index: var(--zIndexTooltip);
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
+  -webkit-transition: var(--transitionMid);
+  transition: var(--transitionMid);
   width: clamp(200px, 300px, 80%);
   pointer-events: none;
 }
@@ -682,11 +685,11 @@ ul {
 
 .tooltip_hidden {
   opacity: 0;
-  -webkit-transition: translateY(50%);
-  transition: translateY(50%);
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
   z-index: var(--zIndexTooltip);
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
+  -webkit-transition: var(--transitionMid);
+  transition: var(--transitionMid);
 }
 
 .loader_container {
@@ -711,8 +714,8 @@ ul {
 }
 
 .loader_container .spinner_container {
-  -webkit-transition: all 1000ms ease;
-  transition: all 1000ms ease;
+  -webkit-transition: var(--transitionSlow);
+  transition: var(--transitionSlow);
 }
 
 .loader_container .spinner_container .loading_spinner {
@@ -1166,8 +1169,8 @@ BUTTON {
   border-radius: var(--borderRadius);
   overflow: hidden;
   opacity: 0;
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
+  -webkit-transition: var(--transitionMid);
+  transition: var(--transitionMid);
 }
 
 #menu_social_container A {
@@ -1227,8 +1230,8 @@ BUTTON {
   -webkit-transform: translateY(-100%);
           transform: translateY(-100%);
   opacity: 0;
-  -webkit-transition: all 1000ms ease;
-  transition: all 1000ms ease;
+  -webkit-transition: var(--transitionMid);
+  transition: var(--transitionMid);
 }
 
 #menu_container .btn_menu {
@@ -1390,8 +1393,8 @@ BUTTON {
   width: 100%;
   background: var(--navbarColor);
   z-index: var(--zIndexNav);
-  -webkit-transition: all 300ms ease;
-  transition: all 300ms ease;
+  -webkit-transition: var(--transitionSlow);
+  transition: var(--transitionSlow);
 }
 
 .nav .nav_content {
@@ -1425,8 +1428,8 @@ BUTTON {
   height: 100%;
   padding: 0 0.5rem;
   cursor: pointer;
-  -webkit-transition: var(--transitionBtn);
-  transition: var(--transitionBtn);
+  -webkit-transition: var(--transitionSlow);
+  transition: var(--transitionSlow);
 }
 
 .nav .nav_content #logo_nav_btn #johnK_icon_svg {
@@ -1492,8 +1495,8 @@ BUTTON {
 .nav .nav_content #btn_menu_container #menu_btn .bar_btn {
   height: 0.2rem;
   background: var(--firstColor);
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
+  -webkit-transition: var(--transitionSlow);
+  transition: var(--transitionSlow);
 }
 
 .nav .nav_content #btn_menu_container #menu_btn #center_bar_btn {
@@ -1515,8 +1518,8 @@ BUTTON {
 }
 
 .nav .nav_content #btn_menu_container:active #menu_btn {
-  -webkit-transition: var(--pushTransition);
-  transition: var(--pushTransition);
+  -webkit-transition: var(--transitionBtn);
+  transition: var(--transitionBtn);
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
 }
@@ -1728,8 +1731,8 @@ BUTTON {
           transform: translateX(-50%);
   color: var(--textColor);
   cursor: pointer;
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
+  -webkit-transition: var(--transitionMid);
+  transition: var(--transitionMid);
 }
 
 #hero_section #hero_content .btn_down #arrow_down_svg {
@@ -2081,8 +2084,8 @@ BUTTON {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  -webkit-transition: all 100ms ease;
-  transition: all 100ms ease;
+  -webkit-transition: var(--transitionBtn);
+  transition: var(--transitionBtn);
   z-index: var(--zIndexStart);
 }
 
@@ -2105,8 +2108,8 @@ BUTTON {
   height: 100%;
   background: var(--navbarColor) 70%;
   padding: 2rem 2.5rem;
-  -webkit-transition: opacity 0.5s ease;
-  transition: opacity 0.5s ease;
+  -webkit-transition: var(--transitionMid);
+  transition: var(--transitionMid);
 }
 
 .project_card .project_info .info_project_container {
@@ -2183,9 +2186,9 @@ BUTTON {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -2204,36 +2207,114 @@ BUTTON {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 3rem;
+}
+
+.selection_list {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  text-align: center;
+  font-size: var(--fontSizeM);
+  color: var(--blackOff);
+  width: var(--widthClamp);
+  height: 3rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: var(--transitionSlow);
+  transition: var(--transitionSlow);
+}
+
+.selection_list .option_list_btn_search {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.1rem;
+  color: var(--textColor);
   background: var(--navbarColor);
+  height: 3rem;
   width: 100%;
-  height: 5rem;
+  cursor: pointer;
 }
 
-.selection_list {
+.selection_list .option_list_btn_search .arrow_btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  text-align: center;
-  font-size: var(--fontSizeM);
-  color: var(--blackOff);
-  width: var(--widthClamp);
-  height: 100%;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  height: 3rem;
+  width: 3rem;
+  padding: 0.5rem;
+  pointer-events: none;
+}
+
+.selection_list .option_list_btn_search .arrow_btn .arrow_btn_svg {
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease;
+}
+
+.selection_list .option_list_btn_search .arrow_btn .arrow_btn_svg .cls-1 {
+  fill: var(--textColor);
+}
+
+.selection_list .option_list_btn_search:hover {
+  background: var(--firstColor);
+  color: var(--textContrastColor);
+}
+
+.selection_list .option_list_btn_search:hover .arrow_btn_svg .cls-1 {
+  fill: var(--textContrastColor);
 }
 
 .option_list_btn {
@@ -2247,10 +2328,12 @@ BUTTON {
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;
   color: var(--textColor);
-  height: 100%;
+  background: var(--navbarColor);
+  height: 3rem;
   width: 100%;
+  z-index: var(--zIndexMenu);
   cursor: pointer;
 }
 
@@ -2263,8 +2346,21 @@ BUTTON {
   pointer-events: none;
 }
 
-#cards_search_container {
-  background: var(--bgOff);
+#search_project_btns_container {
+  position: relative;
+  z-index: var(--zIndexMenu);
+}
+
+#search_project_btns_container #selection_list_type_of_projects {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+#search_project_btns_container #selection_list_type_of_projects #selection_list_search_btn {
+  border: solid 2px var(--firstColor);
 }
 
 #clients_section {

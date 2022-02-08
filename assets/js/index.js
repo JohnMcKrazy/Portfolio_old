@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnsNav = document.querySelectorAll('.btn_nav');
     const btnsSection = document.querySelectorAll('.btn_section');
     const sendBtnFormModal = document.querySelector('#contact_form_send_btn');
-    const btnContact = document.querySelectorAll('.contact_btn');
+    const btnsContact = document.querySelectorAll('.contact_btn');
     const storageAlertModal = document.querySelector('#storage_alert_modal');
     const acceptBtnStorageWarningBtn = document.querySelector('#storage_alert_modal_accept_btn');
     const contactModal = document.querySelector('#contact_modal');
@@ -64,14 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
     //*CONTAINERS WITH ANIMATION FUNCTIONS--OVER
     //* ******************************************************************************************************* *//
     const loadersContainers = document.querySelectorAll('.loader_container');
-
     const loaderSearchCardsContainer = document.querySelector('#loader_cards_hot_container');
     const spinnerHotCardsContainer = document.querySelector('#spinner_container_cards_hot');
     const loaderHotCardsContainer = document.querySelector('#loader_cards_search_container');
     const spinnerSearchCardContainer = document.querySelector('#spinner_container_cards_search');
-
     //* ******************************************************************************************************* *//
-
     const skillsContainer = document.querySelector('.skills_containers');
     const skillsIconsContainers = document.querySelectorAll('.skills_icon_container');
     const lebelBtnMain = document.querySelector('#main_btn_nav');
@@ -79,8 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const lebelBtnSkills = document.querySelector('#skills_btn_nav');
     const lebelBtnServices = document.querySelector('#services_btn_nav');
     const lebelBtnPortfolio = document.querySelector('#portfolio_btn_nav');
-    const lebelBtnLegals = document.querySelector('#legals_btn_nav');
-    const lebelBtnContact = document.querySelector('#contact_btn_nav');
     const lebelBtnClients = document.querySelector('#clients_btn_nav');
     const heroBtnsContainer = document.querySelector('#hero_btns_container');
 
@@ -88,14 +83,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const serviceContainer = document.querySelectorAll('.service_container');
     const serviceCardsLeft = document.querySelectorAll('.service_card_left');
     const serviceCardsRight = document.querySelectorAll('.service_card_right');
-
     const flagBtns = document.querySelectorAll('.flag_project_btn');
-
+    //* ******************************************************************************************************* *//
     const legalBtns = document.querySelectorAll('.btn_link_legal');
     const modalInfoLegal = document.querySelector('#modal_info_legal');
     const legalModal = document.querySelector('#legal_modal');
     const legalAccept = document.querySelector('#legal_modal_accept_btn');
     const logoClientsContainers = document.querySelectorAll('.client_logo_container');
+    //* ******************************************************************************************************* *//
 
     //^FETCH JASON COMPANYS DATA-- START
     const portfolioData = './portfolioDB.json';
@@ -103,27 +98,29 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ ***********************************************************************************************//
     //!GENERAL CONSTANTS --OVER
     //! ***********************************************************************************************//
+    const close = 'close';
+    const open = 'open';
     //!GENERAL VARIANTS--START
     const sunIcon =
         '<svg class="theme_icon_svg" id="sun_icon_svg"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Tema día</title><path class="cls-1" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>';
     const moonIcon =
         '<svg class="theme_icon_svg" id="moon_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Tema noche</title><path class="cls-1" d="M11.38 2.019a7.5 7.5 0 1 0 10.6 10.6C21.662 17.854 17.316 22 12.001 22 6.477 22 2 17.523 2 12c0-5.315 4.146-9.661 9.38-9.981z"/></svg>';
-    let menuStatus = 'close';
-    let menuSocialStatus = 'close';
-    let contactModalStatus = 'close';
-    let alertStorageModalStatus = 'open';
+    let menuStatus = close;
+    let menuSocialStatus = close;
+    let contactModalStatus = close;
+    let alertStorageModalStatus = open;
+    let selectListStatus = close;
     //! ************************************************************************************************************ *//
 
     //! SEARCH LOCAL STORAGE--START
     const localStorageName = 'JohnK_page_storage';
     let storageForJohnKPage = {
         page_view_count: 1,
-        page_alert_status: 'open',
+        page_alert_status: open,
     };
     //! SEARCH LOCAL STORAGE--OVER
     //! ************************************************************************************************************ *//
     //!OBJECTS--START
-
     const infoSoftware = [
         {
             tech_name: 'Illustrator',
@@ -224,7 +221,41 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
     //!OBJECTS--OVER
     //&PRUEBAS
+    const selectListOpen = () => {
+        const selectionTypesList = document.querySelector('#selection_list_type_of_projects');
+        const arrowSvg = document.querySelector('#arrow_btn_select_list_svg');
+        arrowSvg.style.transform = 'rotate(-180deg)';
+        selectionTypesList.style.height = 'fit-content';
+        selectListStatus = open;
+    };
+    const closeSelectList = () => {
+        const selectionTypesList = document.querySelector('#selection_list_type_of_projects');
+        const arrowSvg = document.querySelector('#arrow_btn_select_list_svg');
+        arrowSvg.style.transform = 'rotate(0)';
+        selectionTypesList.style.height = '3rem';
+        selectListStatus = close;
+    };
+    const btnsListObserve = new MutationObserver(([entry]) => {
+        //*console.log(entry);
 
+        const selectionTypesList = document.querySelector('#selection_list_type_of_projects');
+        const arrowSvg = document.querySelector('#arrow_btn_select_list_svg');
+        const searchListBtn = document.querySelector('#selection_list_search_btn');
+
+        const selectListActions = () => {
+            if (selectListStatus === close) {
+                arrowSvg.style.transform = 'rotate(-180deg)';
+                selectionTypesList.style.height = 'fit-content';
+                selectListStatus = open;
+            } else if (selectListStatus === open) {
+                arrowSvg.style.transform = 'rotate(0)';
+                selectionTypesList.style.height = '3rem';
+                selectListStatus = close;
+            }
+        };
+        searchListBtn.addEventListener('click', selectListActions);
+    });
+    btnsListObserve.observe(searchBtnsContainer, { childList: true });
     //&PRUEBAS
     //& ***************************************************************************************** *//
     //! ************************************************************************************************** *//
@@ -295,7 +326,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     //^^BASIC FUNCTION ANIMATION-- OVER
     //^ ************************************************************************* *//
-
     //^ CREATE TEMPLATE CARD --START
     const createCard = (item, frac) => {
         const cloneProjectCard = cardProjectTemplate.cloneNode(true);
@@ -380,13 +410,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const createSearchedCards = (e) => {
                     deleteChildElements(porfolioSearchCardsContainer);
                     const currentNameData = e.target.getAttribute('name');
-                    //*console.log(currentNameData);
+                    //* console.log(currentNameData);
 
                     data.forEach((item) => {
                         const dataIncludedResponse = item['projects']['type'].includes(currentNameData);
                         if (dataIncludedResponse) {
                             //todo CREAR TARJETAS ESPECIFICAS DE BUSQUEDA
                             //*console.log(item);
+                            closeSelectList();
                             createCard(item, fragmentSearchProjects);
                             titleSubsectionCardsSearch.textContent = currentNameData;
                             porfolioSearchCardsContainer.appendChild(fragmentSearchProjects);
@@ -396,6 +427,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                     animateItem(card, '1', 'translateY(0)');
                                 }, 500);
                             });
+                        } else if (!dataIncludedResponse) {
+                            //*console.log('este es el boton que abre la lista, deberia de');
                         }
                     });
                 };
@@ -501,16 +534,16 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ CLOSE MENU SOCIAL-- START
     const closeMenuSocial = () => {
         menuSocialBtnsContainer.style.opacity = 0;
-        menuSocialStatus = 'close';
+        menuSocialStatus = close;
     };
     //^ CLOSE MENU SOCIAL-- OVER
     //^ ***************************************************************************** *//
     //^ ACTIONS BTN MENU SOCIAL--START
     const socialMenuBtnActions = () => {
-        if (menuSocialStatus === 'close') {
+        if (menuSocialStatus === close) {
             menuSocialBtnsContainer.style.opacity = 1;
-            menuSocialStatus = 'open';
-        } else if (menuSocialStatus === 'open') {
+            menuSocialStatus = open;
+        } else if (menuSocialStatus === open) {
             closeMenuSocial();
         }
     };
@@ -518,20 +551,22 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ ***************************************************************************** *//
     //^SOCIAL MENU CLOSE EN BODY CLICK--START
     const closeByBodyClick = (e) => {
-        if (menuSocialStatus === 'open' && e.target.id !== 'contact_menu_btn') {
+        if (menuSocialStatus === open && e.target.id !== 'contact_menu_btn') {
             closeMenuSocial();
+        } else if (selectListStatus === open && e.target.id !== 'selection_list_search_btn') {
+            closeSelectList();
         }
     };
     //^SOCIAL MENU CLOSE EN BODY CLICK--OVER
     //^^ ******************************************************************************* *//
     //^ OPEN MENU-- START
     const btnNavMenu = () => {
-        if (menuStatus === 'close') {
-            menuStatus = 'open';
+        if (menuStatus === close) {
+            menuStatus = open;
             menuContainer.style.opacity = '1';
             menuContainer.style.transform = 'translateY(0)';
             //*openMenuSound.play();
-        } else if (menuStatus === 'open') {
+        } else if (menuStatus === open) {
             closeMenu();
         }
     };
@@ -542,11 +577,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let menuTop = menuContainer.style.top;
 
         if (menuTop === '0px' || menuTop === 0 || menuTop === '') {
-            menuStatus = 'close';
+            menuStatus = close;
             menuContainer.style.transform = 'translateY(-100%)';
             menuContainer.style.opacity = '0';
         } else if (menuTop === 'inherit') {
-            menuStatus = 'close';
+            menuStatus = close;
             menuContainer.style.transform = 'translateY(100%)';
             menuContainer.style.opacity = '0';
         }
@@ -570,18 +605,18 @@ document.addEventListener('DOMContentLoaded', () => {
     //~ ******************************************************************************* *//
     //^ OPEN CONTACT MODAL-- START
     const openContactModal = () => {
-        if (contactModalStatus === 'close') {
+        if (contactModalStatus === close) {
             openModal(contactModal);
-            contactModalStatus = 'open';
+            contactModalStatus = open;
         }
     };
     //^ OPEN CONTACT MODAL-- OVER
     //^ ******************************************************************** *//
     //^ CLOSE MODAL CONTACT FORM-- START
     const closeContactModal = () => {
-        if (contactModalStatus === 'open') {
+        if (contactModalStatus === open) {
             closeModal(contactModal);
-            contactModalStatus = 'close';
+            contactModalStatus = close;
         }
     };
     //^ CLOSE MODAL CONTACT FORM-- OVER
@@ -595,15 +630,15 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 animateItem(storageAlertModal, '1', 'translate(-50%, 0)');
             }, 2000);
-        } else if (storageContent && storageContent['page_alert_status'] === 'open') {
+        } else if (storageContent && storageContent['page_alert_status'] === open) {
             storageForJohnKPage['page_view_count'] = storageContent['page_view_count'] + 1;
             localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
             console.log(`local storage item answer= ${storageContent['page_alert_status']}, page views= ${storageContent['page_view_count']}`);
             setTimeout(() => {
                 animateItem(storageAlertModal, '1', 'translate(-50%, 0)');
             }, 2000);
-        } else if (storageContent && storageContent['page_alert_status'] === 'close') {
-            storageForJohnKPage['page_alert_status'] = 'close';
+        } else if (storageContent && storageContent['page_alert_status'] === close) {
+            storageForJohnKPage['page_alert_status'] = close;
             storageForJohnKPage['page_view_count'] = storageContent['page_view_count'] + 1;
             localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
             storageAlertModal.style.display = 'none';
@@ -612,7 +647,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     checkAlertStorageAnswer();
     const closeAlertStorageModal = () => {
-        storageForJohnKPage['page_alert_status'] = 'close';
+        storageForJohnKPage['page_alert_status'] = close;
         closeModal(storageAlertModal);
         localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
         console.log(localStorage.getItem(localStorageName));
@@ -670,7 +705,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //~~SET CARD CHANGES--OVER
         //~~ ************************************************************************************************** *//
         const firstBreak = 1500;
-        const secondBreak = 1050;
+        const secondBreak = 1100;
         if (widConf > firstBreak) {
             lebelBtnMain.innerHTML = '<h3 class="btn_lebel">Inicio</h3>';
             lebelBtnAbout.innerHTML = '<h3 class="btn_lebel">Acerca de</h3>';
@@ -678,8 +713,6 @@ document.addEventListener('DOMContentLoaded', () => {
             lebelBtnServices.innerHTML = '<h3 class="btn_lebel">Servicios</h3>';
             lebelBtnPortfolio.innerHTML = '<h3 class="btn_lebel">Portafolio</h3>';
             lebelBtnClients.innerHTML = '<h3 class="btn_lebel">Clientes</h3>';
-            lebelBtnLegals.innerHTML = '<h3 class="btn_lebel">Legales</h3>';
-            lebelBtnContact.innerHTML = '<h3 class="btn_lebel">Contactanos</h3>';
         } else if (widConf > secondBreak || (widConf < firstBreak && widConf > secondBreak)) {
             lebelBtnMain.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="home_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Inicio</title><path class="cls-1" d="M19 21H5a1 1 0 0 1-1-1v-9H1l10.327-9.388a1 1 0 0 1 1.346 0L23 11h-3v9a1 1 0 0 1-1 1zM6 19h12V9.157l-6-5.454-6 5.454V19z"/></svg>';
@@ -693,11 +726,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 '<svg class="nav_menu_icon_svg" id="portfolio_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Portafolio</title><path class="cls-1" d="M7 5V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4zm10 2v5h3V7h-3zm-2 0H9v5h6V7zM7 7H4v5h3V7zm2-4v2h6V3H9z"/></svg>';
             lebelBtnClients.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="clients_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Clientes</title><path class="cls-1" d="M12 1l8.217 1.826c.457.102.783.507.783.976v9.987c0 2.006-1.003 3.88-2.672 4.992L12 23l-6.328-4.219C4.002 17.668 3 15.795 3 13.79V3.802c0-.469.326-.874.783-.976L12 1zm0 2.049L5 4.604v9.185c0 1.337.668 2.586 1.781 3.328L12 20.597l5.219-3.48C18.332 16.375 19 15.127 19 13.79V4.604L12 3.05zm4.452 5.173l1.415 1.414L11.503 16 7.26 11.757l1.414-1.414 2.828 2.828 4.95-4.95z"/></svg>';
-            lebelBtnLegals.innerHTML =
-                '<svg class="nav_menu_icon_svg" id="legals_icon_svg"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Legales</title><path class="cls-1"  d="M19 22H5a3 3 0 0 1-3-3V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v12h4v4a3 3 0 0 1-3 3zm-1-5v2a1 1 0 0 0 2 0v-2h-2zm-2 3V4H4v15a1 1 0 0 0 1 1h11zM6 7h8v2H6V7zm0 4h8v2H6v-2zm0 4h5v2H6v-2z"/></svg>';
-
-            lebelBtnContact.innerHTML =
-                '<svg class="nav_menu_icon_svg" id="legals_icon_svg"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Legales</title><path class="cls-1"  d="M19 22H5a3 3 0 0 1-3-3V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v12h4v4a3 3 0 0 1-3 3zm-1-5v2a1 1 0 0 0 2 0v-2h-2zm-2 3V4H4v15a1 1 0 0 0 1 1h11zM6 7h8v2H6V7zm0 4h8v2H6v-2zm0 4h5v2H6v-2z"/></svg>';
 
             btnMenuContainer.style.display = 'none';
             btnsNavContainer.style.display = 'flex';
@@ -781,7 +809,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 menuContainer.style.flexDirection = 'column';
                 menuContainer.style.borderRadius = `0 0 ${borderRadius} ${borderRadius}`;
 
-                if (menuStatus === 'close') {
+                if (menuStatus === close) {
                     menuContainer.style.transform = 'translateY(-100%)';
                 }
             }, 500);
@@ -799,7 +827,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 menuContainer.style.bottom = 0;
                 menuContainer.style.flexDirection = 'column-reverse';
                 menuContainer.style.borderRadius = `${borderRadius} ${borderRadius} 0 0`;
-                if (menuStatus === 'close') {
+                if (menuStatus === close) {
                     menuContainer.style.transform = 'translateY(100%)';
                 }
             }, 500);
@@ -951,6 +979,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     //&CHANGE LANG BY CLICK --OVER
     //& ***********************************************************************************  *//
+
     //!FUNCTIONS --OVER
     //! ******************************************************************************//
     //! ADD EVENT LISTENERS
@@ -965,14 +994,15 @@ document.addEventListener('DOMContentLoaded', () => {
     legalAccept.addEventListener('click', closeLegalModal);
     menuSocialBtn.addEventListener('click', socialMenuBtnActions);
     closeBtnLegalModal.addEventListener('click', closeLegalModal);
+
     //^^LEGAL BTNS--START
     legalBtns.forEach((btn) => {
         const openLegalModal = () => {
-            if (alertStorageModalStatus === 'open') {
+            if (alertStorageModalStatus === open) {
                 closeModal(storageAlertModal);
                 openModal(legalModal);
-                alertStorageModalStatus = 'close';
-            } else if (alertStorageModalStatus === 'close') {
+                alertStorageModalStatus = close;
+            } else if (alertStorageModalStatus === close) {
                 openModal(legalModal);
             }
         };
@@ -1014,7 +1044,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     //^ CLOSE MENU BY BTNS-- OVER
     //^ *****************************************************************************//
-
     //^ BTNS SCROLLS TO SECTION--START
     btnsSection.forEach((btn) => {
         btn.addEventListener('click', () => {
@@ -1024,7 +1053,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ BTNS SCROLLS TO SECTION--OVER
     //^ *****************************************************************************//
     //^^ CONTACT BTNS OPEN MODAL-- START
-    btnContact.forEach((btn) => {
+    btnsContact.forEach((btn) => {
         btn.addEventListener('click', openContactModal);
     });
     //^^ CONTACT BTNS OPEN MODAL-- OVER

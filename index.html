@@ -273,12 +273,6 @@
                 <button class="btn_menu btn_menu_section btn_section" id="clients_btn_menu" name="clients_section">
                     <h3 class="btn_lebel">Clientes</h3>
                 </button>
-                <button class="btn_menu btn_menu_section btn_section" id="contact_btn_menu" name="contact_section">
-                    <h3 class="btn_lebel">Contactanos</h3>
-                </button>
-                <button class="btn_menu btn_menu_section btn_section" id="legals_btn_menu" name="legals_section">
-                    <h3 class="btn_lebel">Legales</h3>
-                </button>
             </div>
             <!--~NAV BTNS CONTAINER--OVER-->
             <!--~EXTRA BTNS CONTAINER--START-->
@@ -409,12 +403,7 @@
                     <button class="btn_nav btn_nav_section btn_section" id="clients_btn_nav" name="clients_section" data-lebel="Clientes">
                         <h3 class="btn_lebel">Clientes</h3>
                     </button>
-                    <button class="btn_nav btn_nav_section btn_section" id="contact_btn_nav" name="contact_section" data-lebel="Contactanos">
-                        <h3 class="btn_lebel">Contactanos</h3>
-                    </button>
-                    <button class="btn_nav btn_nav_section btn_section" id="legals_btn_nav" name="legals_section" data-lebel="Legales">
-                        <h3 class="btn_lebel">Legales</h3>
-                    </button>
+
                     <button class="btn_nav btn_theme" id="change_theme_btn_nav"></button>
                 </div>
             </div>
@@ -519,10 +508,9 @@
             </div>
 
             <div class="swipe_animation_container_full">
-                <h1 class="subtitle_section animation_up" id="subtitle_section_search">Busqueda por tipo de proyecto</h1>
+                <h1 class="subtitle_section animation_up" id="subtitle_section_search">Busqueda por tipo</h1>
             </div>
             <div class="projects_container" id="search_projects_container">
-                <h3 class="title_project_search">Elige un Tema:</h3>
                 <div class="project_btns_container" id="search_project_btns_container"></div>
             </div>
             <div class="swipe_animation_container_full">
@@ -1950,52 +1938,6 @@
 
         <!--^^CLIENTS SECTION-- OVER-->
         <!--^^ ******************************************************-->
-
-        <section class="section" id="contact_section">
-            <div class="section_content" id="contact_content">
-                <div class="header_section" id="header_section_contact">
-                    <div class="swipe_animation_container_full">
-                        <h1 class="title_section animation_up" id="title_contact">Contactanos</h1>
-                    </div>
-
-                    <div class="form_container" id="form_container_contact">
-                        <button class="close_btn close_modal_btn" id="modal_form_close_btn">
-                            <svg
-                                class="close_icon_svg"
-                                xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink"
-                                viewBox="0 0 25 25"
-                            >
-                                <title>Close</title>
-                                <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(12.5 -5.18) rotate(45)" />
-                                <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(30.18 12.5) rotate(135)" />
-                            </svg>
-                        </button>
-                        <h1 class="title_modal">¿Quieres contactarme?</h1>
-                        <div class="contact_info_container" id="modal_info_contact_form">
-                            <p class="description_modal">
-                                Si quisieras contactarte conmigo para hablar sobre alguna idea para trabajar juntos, con el siguiente formulario
-                                puedes mandarme tu propuesta
-                            </p>
-                        </div>
-                        <form class="modal_form" id="modal_contact_form">
-                            <label for="name_input">Nombre </label>
-                            <input type="text" placeholder="Coloca tu nombre" name="name_input" required />
-
-                            <label for="issue_input">Asunto </label>
-                            <input type="text" placeholder="Coloca el asunto" name="issue_input" required />
-
-                            <label for="email_input">Correo </label>
-                            <input type="email" placeholder="Coloca tu Correo" name="email_input" required />
-
-                            <button type="submit" class="btn send_btn" id="contact_form_send_btn">Enviar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!--^^ ******************************************************-->
         <!--^^FOOTER-- START-->
         <footer class="section" id="legals_section">
             <div class="swipe_animation_container_full">
@@ -2201,12 +2143,21 @@
         <!--^^TEMPLATE SELECTION LIST-->
         <!--^^LIST SELECTOR TEMPLATE-->
         <template id="selection_list_template">
-            <div class="selection_list" name="" id=""></div>
+            <ul class="selection_list" name="" id="">
+                <li class="option_list_btn_search option_list_text" name="option_list" data="search" id="selection_list_search_btn">
+                    Selecciona Tipo:
+                    <button type="button" class="arrow_btn" id="arrow_btn_select_list">
+                        <svg class="arrow_btn_svg" id="arrow_btn_select_list_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path class="cls-1" d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                        </svg>
+                    </button>
+                </li>
+            </ul>
         </template>
         <!--^^LIST SELECTOR TEMPLATE-->
         <!--^^LIST OPTION TEMPLATE-->
         <template id="option_list_btn_template">
-            <button type="button" class="option_list_btn" data="" id=""><h3 class="option_list_text"></h3></button>
+            <li class="option_list_btn option_list_text" name="option_list" data="" id=""></li>
         </template>
         <!--^^LIST OPTION TEMPLATE-->
         <!--^^TEMPLATE SELECTION LIST-->
