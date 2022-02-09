@@ -1216,6 +1216,7 @@ BUTTON {
             height: 100%;
             padding: 0 0.5rem;
             cursor: pointer;
+
             transition: var(--transitionMid);
             //*LOGO COLORS START
             #johnK_icon_svg {
@@ -1235,7 +1236,11 @@ BUTTON {
             }
             //*LOGO LOGO OVER
         }
-
+        #logo_nav_btn:hover,
+        #logo_nav_btn:focus,
+        #logo_nav_btn:active {
+            animation: zoom 1s ease;
+        }
         #btn_menu_container {
             @include flexDirection(column, center, center);
             display: none;
@@ -1393,7 +1398,7 @@ BUTTON {
             width: 8rem;
             height: 6rem;
             opacity: var(--opacityBtn);
-            animation: bounceDown 1s ease 0s infinite;
+            animation: bounceDown 1s ease infinite;
             transform: translateX(-50%);
             color: var(--textColor);
             cursor: pointer;

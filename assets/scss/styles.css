@@ -1545,6 +1545,13 @@ BUTTON {
   fill: var(--midGray);
 }
 
+.nav .nav_content #logo_nav_btn:hover,
+.nav .nav_content #logo_nav_btn:focus,
+.nav .nav_content #logo_nav_btn:active {
+  -webkit-animation: zoom 1s ease;
+          animation: zoom 1s ease;
+}
+
 .nav .nav_content #btn_menu_container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1827,8 +1834,8 @@ BUTTON {
   width: 8rem;
   height: 6rem;
   opacity: var(--opacityBtn);
-  -webkit-animation: bounceDown 1s ease 0s infinite;
-          animation: bounceDown 1s ease 0s infinite;
+  -webkit-animation: bounceDown 1s ease infinite;
+          animation: bounceDown 1s ease infinite;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   color: var(--textColor);
