@@ -1575,7 +1575,7 @@ BUTTON {
 
 .nav .nav_content #btn_menu_container .btn_menu_text {
   font-size: var(--fontSizeS);
-  font-weight: var(--fontWeightN);
+  font-weight: var(--fontWeightB);
 }
 
 .nav .nav_content #btn_menu_container #menu_btn {

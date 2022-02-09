@@ -721,7 +721,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //~~SET CARD CHANGES--OVER
         //~~ ************************************************************************************************** *//
         const firstBreak = 1100;
-        const secondBreak = 1000;
+        const secondBreak = 900;
         if (widConf > firstBreak) {
             lebelBtnMain.innerHTML = '<h3 class="btn_lebel">Inicio</h3>';
             lebelBtnAbout.innerHTML = '<h3 class="btn_lebel">Acerca de</h3>';
@@ -807,8 +807,14 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     checkWindowWidth();
     const checkWindowHeight = () => {
+        const rem = 20;
         const navTop = nav.getBoundingClientRect().top;
         const windowHeight = window.innerHeight / 2;
+        const windowWidth = window.innerWidth;
+        const waWidth = waBtnContainer.getBoundingClientRect().width;
+        const leftFixed = windowWidth - (waWidth + rem * 2);
+        waBtnContainer.style.left = `${leftFixed}px`;
+
         let borderRadius = '1rem';
         if (navTop >= windowHeight) {
             nav.style.height = '10rem';
