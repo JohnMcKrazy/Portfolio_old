@@ -713,6 +713,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ CHECK MENU POSITION WINDOW-- START && **/SCALE THE NAVBAR AND CHANGE THE MENU POSITION BY THE PAGE POSITION
     //&CONFIGURATION SIZE SCREEN--START ->//THIS FUNCTION BRING ALL THE CONTAINERS CARACTERISTICTS BY THE SIZE OF THE WINDOW
     const configSize = (widConf) => {
+        const waWidth = waBtnContainer.getBoundingClientRect().width;
+        const leftFixed = widConf - (waWidth + rem * 2);
+        waBtnContainer.style.left = `${leftFixed}px`;
         //~~SET CARD CHANGES--START -> // CHANGE FLEX DIRECTIION AND HEIGHT OF CARD
         const changeCardStyle = (container, fd, he) => {
             container.style.flexDirection = fd;
@@ -810,10 +813,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const rem = 20;
         const navTop = nav.getBoundingClientRect().top;
         const windowHeight = window.innerHeight / 2;
-        const windowWidth = window.innerWidth;
-        const waWidth = waBtnContainer.getBoundingClientRect().width;
-        const leftFixed = windowWidth - (waWidth + rem * 2);
-        waBtnContainer.style.left = `${leftFixed}px`;
 
         let borderRadius = '1rem';
         if (navTop >= windowHeight) {
