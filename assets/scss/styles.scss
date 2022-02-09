@@ -1069,6 +1069,8 @@ BUTTON {
         animation: bounce 1s ease infinite;
         padding: 0.5rem;
         border-radius: 0.5rem;
+        width: fit-content;
+        height: fit-content;
     }
     #wa_btn {
         @include flex(center, center);
@@ -1516,16 +1518,11 @@ BUTTON {
     @include flex(flex-start, center);
     #skills_content {
         #header_section_skills {
-            position: relative;
             background: var(--bgHeaderSectionSkills);
             @include flexDirection(column, flex-start, center);
         }
     }
     .skills_containers {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         @include flexDirection(row, center, flex-start);
         width: var(--widthClamp);
         .skills_container {

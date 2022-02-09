@@ -1259,6 +1259,12 @@ BUTTON {
           animation: bounce 1s ease infinite;
   padding: 0.5rem;
   border-radius: 0.5rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 #wa_btn_container #wa_btn {
@@ -2031,7 +2037,6 @@ BUTTON {
 }
 
 #skills_section #skills_content #header_section_skills {
-  position: relative;
   background: var(--bgHeaderSectionSkills);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2049,11 +2054,6 @@ BUTTON {
 }
 
 #skills_section .skills_containers {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
