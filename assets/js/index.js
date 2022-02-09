@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    //! *********************************************************************************************************** *//
     //!TEMPLATE CONSTANTS
+    //^^ *********************************************************************************************************** *//
     //^^PROJECT CARD TEMPLATE CONSTANTS
     const fragmentHotProjects = document.createDocumentFragment();
     const fragmentSearchProjects = document.createDocumentFragment();
@@ -7,14 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardProjectTemplate = document.querySelector('#card_project_template').content;
     const btnProjectTemplate = document.querySelector('#btn_project_template').content;
     //^^PROJECT CARD TEMPLATE CONSTANTS
+    //^^ *********************************************************************************************************** *//
     //^^TOOLTIP TEMPLATE CONSTANT
     const tooltipTemplate = document.querySelector('#tooltip_template').content;
     //^^TOOLTIP TEMPLATE CONSTANT
+    //^^ *********************************************************************************************************** *//
     //^^SELECTION LIST TEMPLATE CONSTANTS
     const fragmentListProjects = document.createDocumentFragment();
     const selectionListTemplate = document.querySelector('#selection_list_template').content;
     const optionListTemplate = document.querySelector('#option_list_btn_template').content;
     //^^SELECTION LIST TEMPLATE CONSTANTS
+    //^^ *********************************************************************************************************** *//
     //!TEMPLATE CONSTANTS
     //! *********************************************************************************************************** *//
     //!GENERAL CONSTANTS --START
@@ -47,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loader = document.querySelector('.loader');
     const openMenuSound = document.querySelector('#menu_open_sound');
     const menuSocialContainer = document.querySelector('#menu_social_container');
+    const waBtnContainer = document.querySelector('#wa_btn_container');
     const btnsMenuSocial = document.querySelectorAll('.social_btn');
     const menuSocialBtn = document.querySelector('#contact_menu_btn');
     const menuSocialBtnsContainer = document.querySelector('.menu_social_btns_container');
@@ -532,8 +538,15 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ ************************************************************************* *//
 
     //^ CLOSE MENU SOCIAL-- START
+    const closeContainer = (container, animTime) => {
+        container.style.opacity = 0;
+        setTimeout(() => {
+            container.display = 'flex';
+        }, calc(animTime + 200));
+    };
     const closeMenuSocial = () => {
         menuSocialBtnsContainer.style.opacity = 0;
+        menuSocialBtnsContainer.style.height = 0;
         menuSocialStatus = close;
     };
     //^ CLOSE MENU SOCIAL-- OVER
@@ -541,8 +554,11 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ ACTIONS BTN MENU SOCIAL--START
     const socialMenuBtnActions = () => {
         if (menuSocialStatus === close) {
-            menuSocialBtnsContainer.style.opacity = 1;
             menuSocialStatus = open;
+            menuSocialBtnsContainer.style.height = '100%';
+
+            menuSocialBtnsContainer.style.opacity = 1;
+            /*  */
         } else if (menuSocialStatus === open) {
             closeMenuSocial();
         }
@@ -704,7 +720,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         //~~SET CARD CHANGES--OVER
         //~~ ************************************************************************************************** *//
-        const firstBreak = 1250;
+        const firstBreak = 1100;
         const secondBreak = 1000;
         if (widConf > firstBreak) {
             lebelBtnMain.innerHTML = '<h3 class="btn_lebel">Inicio</h3>';
@@ -719,9 +735,9 @@ document.addEventListener('DOMContentLoaded', () => {
             lebelBtnAbout.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="about_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Acerca de</title><path class="cls-1" d="M20 22h-2v-2a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v2H4v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2zm-8-9a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>';
             lebelBtnSkills.innerHTML =
-                '<svg class="nav_menu_icon_svg" id="skills_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Habilidades</title><path class="cls-1" d="M12 8.5l2.116 5.088 5.492.44-4.184 3.584 1.278 5.36L12 20.1l-4.702 2.872 1.278-5.36-4.184-3.584 5.492-.44L12 8.5zm0 5.207l-.739 1.777-1.916.153 1.46 1.251-.447 1.871L12 17.756l1.641 1.003-.446-1.87 1.459-1.252-1.915-.153L12 13.707zM8 2v9H6V2h2zm10 0v9h-2V2h2zm-5 0v5h-2V2h2z"/></svg>';
+                '<svg class="nav_menu_icon_svg" id="skills_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Habilidades</title><path class="cls-1" d="M5.33 3.271a3.5 3.5 0 0 1 4.472 4.474L20.647 18.59l-2.122 2.121L7.68 9.867a3.5 3.5 0 0 1-4.472-4.474L5.444 7.63a1.5 1.5 0 1 0 2.121-2.121L5.329 3.27zm10.367 1.884l3.182-1.768 1.414 1.414-1.768 3.182-1.768.354-2.12 2.121-1.415-1.414 2.121-2.121.354-1.768zm-7.071 7.778l2.121 2.122-4.95 4.95A1.5 1.5 0 0 1 3.58 17.99l.097-.107 4.95-4.95z"/></svg>';
             lebelBtnServices.innerHTML =
-                '<svg class="nav_menu_icon_svg" id="services_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Servicios</title><path class="cls-1" d="M19.938 8H21a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-1.062A8.001 8.001 0 0 1 12 23v-2a6 6 0 0 0 6-6V9A6 6 0 1 0 6 9v7H3a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1.062a8.001 8.001 0 0 1 15.876 0zM3 10v4h1v-4H3zm17 0v4h1v-4h-1zM7.76 15.785l1.06-1.696A5.972 5.972 0 0 0 12 15a5.972 5.972 0 0 0 3.18-.911l1.06 1.696A7.963 7.963 0 0 1 12 17a7.963 7.963 0 0 1-4.24-1.215z"/></svg>';
+                '<svg class="nav_menu_icon_svg" id="services_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Servicios</title><path class="cls-1" d="M12 .5l4.226 6.183 7.187 2.109-4.575 5.93.215 7.486L12 19.69l-7.053 2.518.215-7.486-4.575-5.93 7.187-2.109L12 .5zm0 3.544L9.022 8.402 3.957 9.887l3.225 4.178-.153 5.275L12 17.566l4.97 1.774-.152-5.275 3.224-4.178-5.064-1.485L12 4.044zM10 12a2 2 0 1 0 4 0h2a4 4 0 1 1-8 0h2z"/></svg>';
             lebelBtnPortfolio.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="portfolio_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Portafolio</title><path class="cls-1" d="M7 5V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4zm10 2v5h3V7h-3zm-2 0H9v5h6V7zM7 7H4v5h3V7zm2-4v2h6V3H9z"/></svg>';
             lebelBtnClients.innerHTML =
@@ -730,7 +746,6 @@ document.addEventListener('DOMContentLoaded', () => {
             btnMenuContainer.style.display = 'none';
             btnsNavContainer.style.display = 'flex';
             menuSocialContainer.style.display = 'flex';
-
             servicesContainer.classList.add('services_container_one_columns');
             servicesContainer.classList.remove('services_container_two_columns');
             insertFlex(skillsContainer, 'row', 'center', 'flex-start');
@@ -757,6 +772,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btnsNavContainer.style.display = 'none';
             btnMenuContainer.style.display = 'flex';
             menuSocialContainer.style.display = 'none';
+
             insertFlex(skillsContainer, 'column', 'flex-start', 'center');
             servicesContainer.classList.add('services_container_two_columns');
             servicesContainer.classList.remove('services_container_one_columns');
@@ -800,6 +816,9 @@ document.addEventListener('DOMContentLoaded', () => {
             menuSocialContainer.style.bottom = 'inherit';
             menuSocialContainer.style.top = '2rem';
             menuSocialContainer.style.flexDirection = 'column';
+            waBtnContainer.style.bottom = 'inherit';
+            waBtnContainer.style.top = '2rem';
+
             btnLogo.style.width = '7rem';
             closeMenu();
             closeMenuSocial();
@@ -818,6 +837,8 @@ document.addEventListener('DOMContentLoaded', () => {
             menuSocialContainer.style.top = 'inherit';
             menuSocialContainer.style.bottom = '2rem';
             menuSocialContainer.style.flexDirection = 'column-reverse';
+            waBtnContainer.style.top = 'inherit';
+            waBtnContainer.style.bottom = '2rem';
             btnLogo.style.width = '5rem';
 
             closeMenu();

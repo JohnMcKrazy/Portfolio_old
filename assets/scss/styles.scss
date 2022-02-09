@@ -15,6 +15,11 @@
 }
 @keyframes bounce {
     50% {
+        transform: translateY(-50%);
+    }
+}
+@keyframes bounceDown {
+    50% {
         transform: translate(-50%, 1rem);
     }
 }
@@ -769,10 +774,12 @@ BUTTON {
     border: var(--border) + var(--firstColor);
     border-radius: var(--borderRadius);
     text-align: center;
-    font-weight: var(--fontWeightN);
-    font-size: var(--fontSizeS);
     cursor: pointer;
     transition: var(--transitionBtn);
+    h3 {
+        font-weight: var(--fontWeightN);
+        font-size: var(--fontSizeS);
+    }
 }
 .btn:hover {
     color: var(--textContrastColor);
@@ -971,13 +978,13 @@ BUTTON {
     top: 2rem;
     left: 2rem;
     height: auto;
-    width: 4rem;
+    width: 3rem;
     z-index: var(--zIndexMenu);
 
     #contact_menu_btn {
         background: var(--navbarColor);
         border-radius: var(--borderRadius);
-        padding: 1rem;
+        padding: 0.75rem;
         width: 100%;
         height: auto;
         cursor: pointer;
@@ -1006,7 +1013,8 @@ BUTTON {
 
     .menu_social_btns_container {
         height: fit-content;
-        width: 4rem;
+        width: 3rem;
+        height: 0;
         background: var(--navbarColor);
         border-radius: var(--borderRadius);
         overflow: hidden;
@@ -1021,7 +1029,7 @@ BUTTON {
     .btn_menu_social {
         height: auto;
         width: 100%;
-        padding: 1rem;
+        padding: 0.75rem;
         cursor: pointer;
         transition: var(--transitionBtn);
         .social_icon_svg {
@@ -1044,6 +1052,44 @@ BUTTON {
 }
 //! MENU SOCIAL--OVER
 //! ***************************************************************************** *//
+//! WHATSAPP BTN--START
+#wa_btn_container {
+    position: fixed;
+    @include flexDirection(column, flex-start, center);
+    top: 2rem;
+    right: 2rem;
+    height: fit-content;
+    width: fit-content;
+    z-index: var(--zIndexMenu);
+    .wa_btn_txt {
+        color: var(--textColor);
+        animation: bounce 1s ease infinite;
+    }
+    #wa_btn {
+        @include flex(center, center);
+        height: 3rem;
+        width: 3rem;
+        transition: var(--transitionBtn);
+        cursor: pointer;
+        #wa_icon_svg {
+            width: 100%;
+            height: auto;
+            pointer-events: none;
+            .cls-1 {
+                fill: #fff;
+            }
+            .cls-2 {
+                fill: #38a935;
+            }
+        }
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+}
+//! WHATSAPP BTN--OVER
+//! ***************************************************************************** *//
 //!MENU-- START
 #menu_container {
     position: fixed;
@@ -1061,11 +1107,14 @@ BUTTON {
         @include flex(center, center);
         width: 100%;
         height: auto;
-        font-size: var(--fontSizeS);
-        color: var(--textColor);
         padding: 0 2rem;
         transition: var(--transitionBtn);
+        color: var(--textColor);
         cursor: pointer;
+        .btn_lebel {
+            font-size: var(--fontSizeS);
+            font-weight: var(--fontWeightN);
+        }
     }
     .btn_menu_section {
         padding: 1rem 0;
@@ -1151,7 +1200,7 @@ BUTTON {
     width: 100%;
     background: var(--navbarColor);
     z-index: var(--zIndexNav);
-    transition: var(--transitionSlow);
+    transition: var(--transitionMid);
     .nav_content {
         height: 100%;
         width: var(--widthClamp);
@@ -1162,7 +1211,7 @@ BUTTON {
             height: 100%;
             padding: 0 0.5rem;
             cursor: pointer;
-            transition: var(--transitionSlow);
+            transition: var(--transitionMid);
             //*LOGO COLORS START
             #johnK_icon_svg {
                 width: auto;
@@ -1187,9 +1236,11 @@ BUTTON {
             display: none;
             width: 7rem;
             height: 100%;
+            color: var(--textColor);
             cursor: pointer;
             .btn_menu_text {
-                color: var(--textColor);
+                font-size: var(--fontSizeS);
+                font-weight: var(--fontWeightN);
             }
             #menu_btn {
                 @include flexDirection(column, space-around, center);
@@ -1213,17 +1264,15 @@ BUTTON {
             }
         }
         #btn_menu_container:hover,
-        #btn_menu_container:focus {
+        #btn_menu_container:focus,
+        #btn_menu_container:active {
             #menu_btn {
                 #top_bar_btn,
                 #center_bar_btn,
                 #bottom_bar_btn {
                     width: 2rem;
                 }
-            }
-        }
-        #btn_menu_container:active {
-            #menu_btn {
+
                 transition: var(--transitionBtn);
                 transform: scale(0.9);
             }
@@ -1241,8 +1290,8 @@ BUTTON {
                 border-top: solid 5px transparent;
                 color: var(--textColor);
                 .btn_lebel {
-                    font-size: var(--fontSizeM);
-                    font-weight: var(--fontWeightB);
+                    font-size: var(--fontSizeS);
+                    font-weight: var(--fontWeightN);
                 }
                 .nav_menu_icon_svg {
                     height: 100%;
@@ -1339,7 +1388,7 @@ BUTTON {
             width: 8rem;
             height: 6rem;
             opacity: var(--opacityBtn);
-            animation: bounce 1s ease 0s infinite;
+            animation: bounceDown 1s ease 0s infinite;
             transform: translateX(-50%);
             color: var(--textColor);
             cursor: pointer;
@@ -1638,7 +1687,7 @@ BUTTON {
     width: fit-content;
     overflow: hidden;
     user-select: none;
-    transition: var(--transitionSlow);
+    transition: var(--transitionFast);
     .option_list_btn_search {
         position: relative;
         @include flex(center, center);

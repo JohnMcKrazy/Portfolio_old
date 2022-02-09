@@ -25,12 +25,26 @@
 
 @-webkit-keyframes bounce {
   50% {
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+}
+
+@keyframes bounce {
+  50% {
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+}
+
+@-webkit-keyframes bounceDown {
+  50% {
     -webkit-transform: translate(-50%, 1rem);
             transform: translate(-50%, 1rem);
   }
 }
 
-@keyframes bounce {
+@keyframes bounceDown {
   50% {
     -webkit-transform: translate(-50%, 1rem);
             transform: translate(-50%, 1rem);
@@ -838,11 +852,14 @@ BUTTON {
   border: var(--border)var(--firstColor);
   border-radius: var(--borderRadius);
   text-align: center;
-  font-weight: var(--fontWeightN);
-  font-size: var(--fontSizeS);
   cursor: pointer;
   -webkit-transition: var(--transitionBtn);
   transition: var(--transitionBtn);
+}
+
+.btn h3 {
+  font-weight: var(--fontWeightN);
+  font-size: var(--fontSizeS);
 }
 
 .btn:hover {
@@ -1123,14 +1140,14 @@ BUTTON {
   top: 2rem;
   left: 2rem;
   height: auto;
-  width: 4rem;
+  width: 3rem;
   z-index: var(--zIndexMenu);
 }
 
 #menu_social_container #contact_menu_btn {
   background: var(--navbarColor);
   border-radius: var(--borderRadius);
-  padding: 1rem;
+  padding: 0.75rem;
   width: 100%;
   height: auto;
   cursor: pointer;
@@ -1164,7 +1181,8 @@ BUTTON {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  width: 4rem;
+  width: 3rem;
+  height: 0;
   background: var(--navbarColor);
   border-radius: var(--borderRadius);
   overflow: hidden;
@@ -1181,7 +1199,7 @@ BUTTON {
 #menu_social_container .btn_menu_social {
   height: auto;
   width: 100%;
-  padding: 1rem;
+  padding: 0.75rem;
   cursor: pointer;
   -webkit-transition: var(--transitionBtn);
   transition: var(--transitionBtn);
@@ -1204,6 +1222,74 @@ BUTTON {
 
 #menu_social_container .btn_menu_social:active .social_icon_svg .cls-1 {
   fill: var(--textContrastColor);
+}
+
+#wa_btn_container {
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: 2rem;
+  right: 2rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  z-index: var(--zIndexMenu);
+}
+
+#wa_btn_container .wa_btn_txt {
+  color: var(--textColor);
+  -webkit-animation: bounce 1s ease infinite;
+          animation: bounce 1s ease infinite;
+}
+
+#wa_btn_container #wa_btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 3rem;
+  width: 3rem;
+  -webkit-transition: var(--transitionBtn);
+  transition: var(--transitionBtn);
+  cursor: pointer;
+}
+
+#wa_btn_container #wa_btn #wa_icon_svg {
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+#wa_btn_container #wa_btn #wa_icon_svg .cls-1 {
+  fill: #fff;
+}
+
+#wa_btn_container #wa_btn #wa_icon_svg .cls-2 {
+  fill: #38a935;
+}
+
+#wa_btn_container #wa_btn:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 #menu_container {
@@ -1246,12 +1332,16 @@ BUTTON {
           align-items: center;
   width: 100%;
   height: auto;
-  font-size: var(--fontSizeS);
-  color: var(--textColor);
   padding: 0 2rem;
   -webkit-transition: var(--transitionBtn);
   transition: var(--transitionBtn);
+  color: var(--textColor);
   cursor: pointer;
+}
+
+#menu_container .btn_menu .btn_lebel {
+  font-size: var(--fontSizeS);
+  font-weight: var(--fontWeightN);
 }
 
 #menu_container .btn_menu_section {
@@ -1393,8 +1483,8 @@ BUTTON {
   width: 100%;
   background: var(--navbarColor);
   z-index: var(--zIndexNav);
-  -webkit-transition: var(--transitionSlow);
-  transition: var(--transitionSlow);
+  -webkit-transition: var(--transitionMid);
+  transition: var(--transitionMid);
 }
 
 .nav .nav_content {
@@ -1428,8 +1518,8 @@ BUTTON {
   height: 100%;
   padding: 0 0.5rem;
   cursor: pointer;
-  -webkit-transition: var(--transitionSlow);
-  transition: var(--transitionSlow);
+  -webkit-transition: var(--transitionMid);
+  transition: var(--transitionMid);
 }
 
 .nav .nav_content #logo_nav_btn #johnK_icon_svg {
@@ -1467,11 +1557,13 @@ BUTTON {
   display: none;
   width: 7rem;
   height: 100%;
+  color: var(--textColor);
   cursor: pointer;
 }
 
 .nav .nav_content #btn_menu_container .btn_menu_text {
-  color: var(--textColor);
+  font-size: var(--fontSizeS);
+  font-weight: var(--fontWeightN);
 }
 
 .nav .nav_content #btn_menu_container #menu_btn {
@@ -1508,20 +1600,25 @@ BUTTON {
   width: 4rem;
 }
 
-.nav .nav_content #btn_menu_container:hover #menu_btn #top_bar_btn,
-.nav .nav_content #btn_menu_container:hover #menu_btn #center_bar_btn,
-.nav .nav_content #btn_menu_container:hover #menu_btn #bottom_bar_btn,
-.nav .nav_content #btn_menu_container:focus #menu_btn #top_bar_btn,
-.nav .nav_content #btn_menu_container:focus #menu_btn #center_bar_btn,
-.nav .nav_content #btn_menu_container:focus #menu_btn #bottom_bar_btn {
-  width: 2rem;
-}
-
+.nav .nav_content #btn_menu_container:hover #menu_btn,
+.nav .nav_content #btn_menu_container:focus #menu_btn,
 .nav .nav_content #btn_menu_container:active #menu_btn {
   -webkit-transition: var(--transitionBtn);
   transition: var(--transitionBtn);
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
+}
+
+.nav .nav_content #btn_menu_container:hover #menu_btn #top_bar_btn,
+.nav .nav_content #btn_menu_container:hover #menu_btn #center_bar_btn,
+.nav .nav_content #btn_menu_container:hover #menu_btn #bottom_bar_btn,
+.nav .nav_content #btn_menu_container:focus #menu_btn #top_bar_btn,
+.nav .nav_content #btn_menu_container:focus #menu_btn #center_bar_btn,
+.nav .nav_content #btn_menu_container:focus #menu_btn #bottom_bar_btn,
+.nav .nav_content #btn_menu_container:active #menu_btn #top_bar_btn,
+.nav .nav_content #btn_menu_container:active #menu_btn #center_bar_btn,
+.nav .nav_content #btn_menu_container:active #menu_btn #bottom_bar_btn {
+  width: 2rem;
 }
 
 .nav .nav_content #nav_sections_btns_container {
@@ -1562,8 +1659,8 @@ BUTTON {
 }
 
 .nav .nav_content #nav_sections_btns_container .btn_nav .btn_lebel {
-  font-size: var(--fontSizeM);
-  font-weight: var(--fontWeightB);
+  font-size: var(--fontSizeS);
+  font-weight: var(--fontWeightN);
 }
 
 .nav .nav_content #nav_sections_btns_container .btn_nav .nav_menu_icon_svg {
@@ -1725,8 +1822,8 @@ BUTTON {
   width: 8rem;
   height: 6rem;
   opacity: var(--opacityBtn);
-  -webkit-animation: bounce 1s ease 0s infinite;
-          animation: bounce 1s ease 0s infinite;
+  -webkit-animation: bounceDown 1s ease 0s infinite;
+          animation: bounceDown 1s ease 0s infinite;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   color: var(--textColor);
@@ -2251,8 +2348,8 @@ BUTTON {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  -webkit-transition: var(--transitionSlow);
-  transition: var(--transitionSlow);
+  -webkit-transition: var(--transitionFast);
+  transition: var(--transitionFast);
 }
 
 .selection_list .option_list_btn_search {
