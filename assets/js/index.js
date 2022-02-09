@@ -713,6 +713,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ CHECK MENU POSITION WINDOW-- START && **/SCALE THE NAVBAR AND CHANGE THE MENU POSITION BY THE PAGE POSITION
     //&CONFIGURATION SIZE SCREEN--START ->//THIS FUNCTION BRING ALL THE CONTAINERS CARACTERISTICTS BY THE SIZE OF THE WINDOW
     const configSize = (widConf) => {
+        const rem = 14;
         const waWidth = waBtnContainer.getBoundingClientRect().width;
         const leftFixed = widConf - (waWidth + rem * 2);
         waBtnContainer.style.left = `${leftFixed}px`;
