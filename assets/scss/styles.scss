@@ -1062,8 +1062,13 @@ BUTTON {
     width: fit-content;
     z-index: var(--zIndexMenu);
     .wa_btn_txt {
+        background: var(--navbarColor);
         color: var(--textColor);
+        font-size: var(--fontSizeS);
+        font-weight: var(--fontWeightB);
         animation: bounce 1s ease infinite;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
     }
     #wa_btn {
         @include flex(center, center);
@@ -1748,7 +1753,7 @@ BUTTON {
 }
 #search_project_btns_container {
     position: relative;
-    z-index: var(--zIndexMenu);
+    z-index: var(--zIndexHover);
     #selection_list_type_of_projects {
         position: absolute;
         top: 0;
