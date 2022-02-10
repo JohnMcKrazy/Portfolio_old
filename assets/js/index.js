@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loader = document.querySelector('.loader');
     const openMenuSound = document.querySelector('#menu_open_sound');
     const menuSocialContainer = document.querySelector('#menu_social_container');
-    const waBtnContainer = document.querySelector('#wa_btn_container');
+
     const btnsMenuSocial = document.querySelectorAll('.social_btn');
     const menuSocialBtn = document.querySelector('#contact_menu_btn');
     const menuSocialBtnsContainer = document.querySelector('.menu_social_btns_container');
@@ -713,10 +713,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ CHECK MENU POSITION WINDOW-- START && **/SCALE THE NAVBAR AND CHANGE THE MENU POSITION BY THE PAGE POSITION
     //&CONFIGURATION SIZE SCREEN--START ->//THIS FUNCTION BRING ALL THE CONTAINERS CARACTERISTICTS BY THE SIZE OF THE WINDOW
     const configSize = (widConf) => {
-        const rem = 14;
-        const waWidth = waBtnContainer.getBoundingClientRect().width;
-        const leftFixed = widConf - (waWidth + rem * 2);
-        waBtnContainer.style.left = `${leftFixed}px`;
         //~~SET CARD CHANGES--START -> // CHANGE FLEX DIRECTIION AND HEIGHT OF CARD
         const changeCardStyle = (container, fd, he) => {
             container.style.flexDirection = fd;
@@ -822,8 +818,6 @@ document.addEventListener('DOMContentLoaded', () => {
             menuSocialContainer.style.bottom = 'inherit';
             menuSocialContainer.style.top = '2rem';
             menuSocialContainer.style.flexDirection = 'column';
-            waBtnContainer.style.bottom = 'inherit';
-            waBtnContainer.style.top = '2rem';
 
             btnLogo.style.width = '7rem';
             closeMenu();
@@ -843,8 +837,7 @@ document.addEventListener('DOMContentLoaded', () => {
             menuSocialContainer.style.top = 'inherit';
             menuSocialContainer.style.bottom = '2rem';
             menuSocialContainer.style.flexDirection = 'column-reverse';
-            waBtnContainer.style.top = 'inherit';
-            waBtnContainer.style.bottom = '2rem';
+
             btnLogo.style.width = '5rem';
 
             closeMenu();

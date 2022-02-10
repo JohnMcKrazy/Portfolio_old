@@ -595,6 +595,7 @@ body #node_icon_svg .cls-4 {
   fill-rule: evenodd;
 }
 
+body #wa_icon_svg .cls-1,
 body #fb_icon_svg .cls-1,
 body #behance_icon_svg .cls-1,
 body #contact_icon_svg .cls-1 {
@@ -1222,85 +1223,6 @@ BUTTON {
 
 #menu_social_container .btn_menu_social:active .social_icon_svg .cls-1 {
   fill: var(--textContrastColor);
-}
-
-#wa_btn_container {
-  position: fixed;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  top: 2rem;
-  right: 2rem;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  z-index: var(--zIndexMenu);
-}
-
-#wa_btn_container .wa_btn_txt {
-  background: var(--navbarColor);
-  color: var(--textColor);
-  font-size: var(--fontSizeS);
-  font-weight: var(--fontWeightB);
-  -webkit-animation: bounce 1s ease infinite;
-          animation: bounce 1s ease infinite;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
-#wa_btn_container #wa_btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 3rem;
-  width: 3rem;
-  -webkit-transition: var(--transitionBtn);
-  transition: var(--transitionBtn);
-  cursor: pointer;
-}
-
-#wa_btn_container #wa_btn #wa_icon_svg {
-  width: 100%;
-  height: auto;
-  pointer-events: none;
-}
-
-#wa_btn_container #wa_btn #wa_icon_svg .cls-1 {
-  fill: #fff;
-}
-
-#wa_btn_container #wa_btn #wa_icon_svg .cls-2 {
-  fill: #38a935;
-}
-
-#wa_btn_container #wa_btn:hover {
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
 }
 
 #menu_container {

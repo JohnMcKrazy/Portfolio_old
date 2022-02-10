@@ -580,6 +580,7 @@ body {
 
     //^^TECH ICONS COLORS--OVER
     //^^SOCIAL ICONS COLORS-- START
+    #wa_icon_svg,
     #fb_icon_svg,
     #behance_icon_svg,
     #contact_icon_svg {
@@ -1051,51 +1052,6 @@ BUTTON {
     }
 }
 //! MENU SOCIAL--OVER
-//! ***************************************************************************** *//
-//! WHATSAPP BTN--START
-#wa_btn_container {
-    position: fixed;
-    @include flexDirection(column, flex-start, center);
-    top: 2rem;
-    right: 2rem;
-    height: fit-content;
-    width: fit-content;
-    z-index: var(--zIndexMenu);
-    .wa_btn_txt {
-        background: var(--navbarColor);
-        color: var(--textColor);
-        font-size: var(--fontSizeS);
-        font-weight: var(--fontWeightB);
-        animation: bounce 1s ease infinite;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        width: fit-content;
-        height: fit-content;
-    }
-    #wa_btn {
-        @include flex(center, center);
-        height: 3rem;
-        width: 3rem;
-        transition: var(--transitionBtn);
-        cursor: pointer;
-        #wa_icon_svg {
-            width: 100%;
-            height: auto;
-            pointer-events: none;
-            .cls-1 {
-                fill: #fff;
-            }
-            .cls-2 {
-                fill: #38a935;
-            }
-        }
-
-        &:hover {
-            transform: scale(1.2);
-        }
-    }
-}
-//! WHATSAPP BTN--OVER
 //! ***************************************************************************** *//
 //!MENU-- START
 #menu_container {
