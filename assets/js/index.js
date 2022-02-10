@@ -765,7 +765,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.style.width = '5rem';
                 container.style.height = '5rem';
             });
-            close;
             closeMenu();
         } else if (widConf <= secondBreak) {
             btnsNavContainer.style.display = 'none';

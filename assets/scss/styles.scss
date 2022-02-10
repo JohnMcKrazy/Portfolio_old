@@ -472,6 +472,9 @@ body {
             fill: #9028db;
         }
     }
+    .adobe_icon {
+        transform: scale(0.8);
+    }
     //^^DESIGN ICONS COLORS-- OVER
     //^^TECH ICONS COLORS--START
     .html_icon_svg {
@@ -1454,15 +1457,6 @@ BUTTON {
                 flex-direction: row-reverse;
             }
         }
-    }
-    .services_container_one_column {
-        grid-template-columns: 1fr;
-        height: fit-content;
-    }
-    .services_container_two_columns {
-        grid-template-columns: repeat(auto-fill, 280px);
-        justify-content: center;
-        height: fit-content;
     }
 }
 //!SERVICES SECTION-- OVER
