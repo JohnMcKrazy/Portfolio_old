@@ -285,7 +285,6 @@ body {
     position: relative;
     background: var(--bgColor);
     scroll-behavior: smooth;
-    overflow-x: hidden;
     //^^GENERAL ICONS COLORS--START
     .close_icon_svg,
     .theme_icon_svg {
@@ -691,9 +690,6 @@ ul {
             font-size: 1.5rem;
         }
     }
-}
-HEADER {
-    height: calc(100vh - var(--navbarHeight));
 }
 SECTION {
     min-height: var(--fullscreenFixedHeight);
@@ -1155,7 +1151,7 @@ BUTTON {
     width: 100%;
     background: var(--navbarColor);
     z-index: var(--zIndexNav);
-    transition: var(--transitionMid);
+    transition: var(--transitionFast);
     .nav_content {
         height: 100%;
         width: var(--widthClamp);
@@ -1246,40 +1242,49 @@ BUTTON {
                 @include flex(center, center);
                 height: 100%;
                 width: auto;
-                padding: 0 2rem;
+                padding: 0 1.5rem;
                 border-top: solid 5px transparent;
                 color: var(--textColor);
                 .btn_lebel {
                     font-size: var(--fontSizeS);
                     font-weight: var(--fontWeightN);
                 }
+
                 .nav_menu_icon_svg {
-                    height: 100%;
                     width: 3rem;
                     padding: 0 0.5rem;
                 }
-                .theme_icon_svg {
-                    height: 2rem;
-                    width: 2rem;
-                }
             }
+            .contact_btn,
+            .btn_theme {
+                width: 3rem;
+                padding: 0 0.5rem;
+            }
+
             .btn_nav:hover,
             .btn_nav:focus,
             .btn_nav:active {
                 border-color: var(--firstColor);
                 background: var(--firstColorHover);
+                .contact_icon_svg,
+                .theme_icon_svg {
+                    .cls-1 {
+                        fill: var(--textContrastColor);
+                    }
+                    .cls-2 {
+                        fill: var(--textContrastColor);
+                    }
+                }
                 .nav_menu_icon_svg {
                     .cls-1 {
+                        fill: var(--textContrastColor);
+                    }
+                    .cls-2 {
                         fill: var(--textContrastColor);
                     }
                 }
                 .btn_lebel {
                     color: var(--textContrastColor);
-                }
-                .theme_icon_svg {
-                    .cls-1 {
-                        fill: var(--textContrastColor);
-                    }
                 }
             }
         }
@@ -1292,6 +1297,8 @@ BUTTON {
 #hero_section {
     @include flex(center, center);
     position: relative;
+
+    min-height: calc(100vh - var(--navbarHeight));
     background: var(--backgroundHero);
     background-size: cover;
     #hero_content {
@@ -1712,8 +1719,9 @@ BUTTON {
             top: 0;
             left: 50%;
             transform: translateX(-50%);
+            border: solid 1px var(--firstColor);
             #selection_list_search_btn {
-                border: solid 2px var(--firstColor);
+                border: solid 1px var(--firstColor);
             }
         }
     }

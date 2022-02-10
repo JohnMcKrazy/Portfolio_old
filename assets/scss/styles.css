@@ -291,7 +291,6 @@ body {
   position: relative;
   background: var(--bgColor);
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 body .close_icon_svg .cls-1,
@@ -748,10 +747,6 @@ ul {
   text-align: center;
   font-weight: var(--fontWeightN);
   font-size: 1.5rem;
-}
-
-HEADER {
-  height: calc(100vh - var(--navbarHeight));
 }
 
 SECTION {
@@ -1403,8 +1398,8 @@ BUTTON {
   width: 100%;
   background: var(--navbarColor);
   z-index: var(--zIndexNav);
-  -webkit-transition: var(--transitionMid);
-  transition: var(--transitionMid);
+  -webkit-transition: var(--transitionFast);
+  transition: var(--transitionFast);
 }
 
 .nav .nav_content {
@@ -1580,7 +1575,7 @@ BUTTON {
           align-items: center;
   height: 100%;
   width: auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
   border-top: solid 5px transparent;
   color: var(--textColor);
 }
@@ -1591,14 +1586,14 @@ BUTTON {
 }
 
 .nav .nav_content #nav_sections_btns_container .btn_nav .nav_menu_icon_svg {
-  height: 100%;
   width: 3rem;
   padding: 0 0.5rem;
 }
 
-.nav .nav_content #nav_sections_btns_container .btn_nav .theme_icon_svg {
-  height: 2rem;
-  width: 2rem;
+.nav .nav_content #nav_sections_btns_container .contact_btn,
+.nav .nav_content #nav_sections_btns_container .btn_theme {
+  width: 3rem;
+  padding: 0 0.5rem;
 }
 
 .nav .nav_content #nav_sections_btns_container .btn_nav:hover,
@@ -1608,9 +1603,33 @@ BUTTON {
   background: var(--firstColorHover);
 }
 
+.nav .nav_content #nav_sections_btns_container .btn_nav:hover .contact_icon_svg .cls-1,
+.nav .nav_content #nav_sections_btns_container .btn_nav:hover .theme_icon_svg .cls-1,
+.nav .nav_content #nav_sections_btns_container .btn_nav:focus .contact_icon_svg .cls-1,
+.nav .nav_content #nav_sections_btns_container .btn_nav:focus .theme_icon_svg .cls-1,
+.nav .nav_content #nav_sections_btns_container .btn_nav:active .contact_icon_svg .cls-1,
+.nav .nav_content #nav_sections_btns_container .btn_nav:active .theme_icon_svg .cls-1 {
+  fill: var(--textContrastColor);
+}
+
+.nav .nav_content #nav_sections_btns_container .btn_nav:hover .contact_icon_svg .cls-2,
+.nav .nav_content #nav_sections_btns_container .btn_nav:hover .theme_icon_svg .cls-2,
+.nav .nav_content #nav_sections_btns_container .btn_nav:focus .contact_icon_svg .cls-2,
+.nav .nav_content #nav_sections_btns_container .btn_nav:focus .theme_icon_svg .cls-2,
+.nav .nav_content #nav_sections_btns_container .btn_nav:active .contact_icon_svg .cls-2,
+.nav .nav_content #nav_sections_btns_container .btn_nav:active .theme_icon_svg .cls-2 {
+  fill: var(--textContrastColor);
+}
+
 .nav .nav_content #nav_sections_btns_container .btn_nav:hover .nav_menu_icon_svg .cls-1,
 .nav .nav_content #nav_sections_btns_container .btn_nav:focus .nav_menu_icon_svg .cls-1,
 .nav .nav_content #nav_sections_btns_container .btn_nav:active .nav_menu_icon_svg .cls-1 {
+  fill: var(--textContrastColor);
+}
+
+.nav .nav_content #nav_sections_btns_container .btn_nav:hover .nav_menu_icon_svg .cls-2,
+.nav .nav_content #nav_sections_btns_container .btn_nav:focus .nav_menu_icon_svg .cls-2,
+.nav .nav_content #nav_sections_btns_container .btn_nav:active .nav_menu_icon_svg .cls-2 {
   fill: var(--textContrastColor);
 }
 
@@ -1618,12 +1637,6 @@ BUTTON {
 .nav .nav_content #nav_sections_btns_container .btn_nav:focus .btn_lebel,
 .nav .nav_content #nav_sections_btns_container .btn_nav:active .btn_lebel {
   color: var(--textContrastColor);
-}
-
-.nav .nav_content #nav_sections_btns_container .btn_nav:hover .theme_icon_svg .cls-1,
-.nav .nav_content #nav_sections_btns_container .btn_nav:focus .theme_icon_svg .cls-1,
-.nav .nav_content #nav_sections_btns_container .btn_nav:active .theme_icon_svg .cls-1 {
-  fill: var(--textContrastColor);
 }
 
 #hero_section {
@@ -1637,6 +1650,7 @@ BUTTON {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
+  min-height: calc(100vh - var(--navbarHeight));
   background: var(--backgroundHero);
   background-size: cover;
 }
@@ -2398,10 +2412,11 @@ BUTTON {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  border: solid 1px var(--firstColor);
 }
 
 #search_projects_container #search_project_btns_container #selection_list_type_of_projects #selection_list_search_btn {
-  border: solid 2px var(--firstColor);
+  border: solid 1px var(--firstColor);
 }
 
 #clients_section {
