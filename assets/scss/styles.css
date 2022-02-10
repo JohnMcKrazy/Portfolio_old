@@ -163,7 +163,7 @@
   --borderRadius: 0.25rem;
   --navbarHeightFixed: 6rem;
   --navbarHeight: 10rem;
-  --widthClamp: clamp(200px, 1500px, 90%);
+  --widthClamp: clamp(300px, 1500px, 90%);
   --cardWidth: clamp(280px, 30rem, 80%);
   --fullscreenFixedHeight: calc(100vh - var(--navbarHeightFixed));
   --transitionBtn: all 250ms ease;
@@ -312,32 +312,32 @@ body .close_icon_svg {
           transform: scale(0.7);
 }
 
-body #coffee_mug_icon_svg .cls-1 {
+body .coffee_mug_icon_svg .cls-1 {
   fill: #999;
 }
 
-body #coffee_mug_icon_svg .cls-2 {
+body .coffee_mug_icon_svg .cls-2 {
   fill: #f2f2f2;
 }
 
-body #coffee_mug_icon_svg .cls-3 {
+body .coffee_mug_icon_svg .cls-3 {
   fill: #f2f2f2;
 }
 
-body #coffee_mug_icon_svg .cls-4 {
+body .coffee_mug_icon_svg .cls-4 {
   fill: #42210b;
 }
 
-body #coffee_mug_icon_svg .cls-5 {
+body .coffee_mug_icon_svg .cls-5 {
   fill: #c69c6d;
 }
 
-body #conection_icon_svg .cls-1,
-body #conection_icon_svg .cls-2 {
+body .conection_icon_svg .cls-1,
+body .conection_icon_svg .cls-2 {
   fill: var(--firstColor);
 }
 
-body #conection_icon_svg .cls-2 {
+body .conection_icon_svg .cls-2 {
   fill-rule: evenodd;
 }
 
@@ -345,264 +345,264 @@ body .nav_menu_icon_svg .cls-1 {
   fill: var(--textColor);
 }
 
-body #impulso_icon_svg .cls-1 {
+body .impulso_icon_svg .cls-1 {
   fill: #c01918;
 }
 
-body #impulso_icon_svg .cls-2 {
+body .impulso_icon_svg .cls-2 {
   fill: var(--textColor);
 }
 
-body #verona_icon_svg .cls-1 {
+body .verona_icon_svg .cls-1 {
   fill: #b29f10;
 }
 
-body #verona_icon_svg .cls-2 {
+body .verona_icon_svg .cls-2 {
   fill: var(--textColor);
 }
 
-body #verona_icon_svg .cls-3 {
+body .verona_icon_svg .cls-3 {
   fill: #db0a15;
 }
 
-body #verona_icon_svg .cls-4 {
+body .verona_icon_svg .cls-4 {
   fill: #ffffff;
 }
 
-body #gorgona_icon_svg .cls-1,
-body #gorgona_icon_svg .cls-2 {
+body .gorgona_icon_svg .cls-1,
+body .gorgona_icon_svg .cls-2 {
   fill: #d8ab79;
 }
 
-body #gorgona_icon_svg .cls-2 {
+body .gorgona_icon_svg .cls-2 {
   fill-rule: evenodd;
 }
 
-body #bucefalos_icon_svg .cls-1 {
+body .bucefalos_icon_svg .cls-1 {
   fill: var(--textColor);
 }
 
-body #bucefalos_icon_svg .cls-2 {
+body .bucefalos_icon_svg .cls-2 {
   fill: #b77e0b;
 }
 
-body #krazy_icon_svg .cls-1 {
+body .krazy_icon_svg .cls-1 {
   fill: #e10b17;
 }
 
-body #krazy_icon_svg .cls-2 {
+body .krazy_icon_svg .cls-2 {
   fill: #fff;
 }
 
-body #krazy_icon_svg .cls-3 {
+body .krazy_icon_svg .cls-3 {
   fill: #000;
 }
 
-body #krazy_icon_svg .cls-4 {
+body .krazy_icon_svg .cls-4 {
   fill: var(--textColor);
 }
 
-body #camaleonica_icon_svg {
+body .camaleonica_icon_svg {
   height: 100%;
   width: auto;
 }
 
-body #camaleonica_icon_svg .cls-1 {
+body .camaleonica_icon_svg .cls-1 {
   fill: #633188;
 }
 
-body #camaleonica_icon_svg .cls-2 {
+body .camaleonica_icon_svg .cls-2 {
   fill: #d1709b;
 }
 
-body #camaleonica_icon_svg .cls-3 {
+body .camaleonica_icon_svg .cls-3 {
   fill: #f3a7c6;
 }
 
-body #camaleonica_icon_svg .cls-4 {
+body .camaleonica_icon_svg .cls-4 {
   fill: #6ec6d8;
 }
 
-body #camaleonica_icon_svg .cls-5 {
+body .camaleonica_icon_svg .cls-5 {
   fill: #fff;
 }
 
-body #camaleonica_icon_svg .cls-6 {
+body .camaleonica_icon_svg .cls-6 {
   fill: #000001;
 }
 
-body #leiru_icon_svg #polygon {
+body .leiru_icon_svg #polygon {
   fill: #18a038;
 }
 
-body #leiru_icon_svg #text .cls-2 {
+body .leiru_icon_svg #text .cls-2 {
   fill: #fff;
 }
 
-body #illustrator_icon_svg .cls-1 {
+body .illustrator_icon_svg .cls-1 {
   fill: #2c0d0e;
 }
 
-body #illustrator_icon_svg .cls-2 {
+body .illustrator_icon_svg .cls-2 {
   fill: #f39719;
 }
 
-body #photoshop_icon_svg .cls-1 {
+body .photoshop_icon_svg .cls-1 {
   fill: #132034;
 }
 
-body #photoshop_icon_svg .cls-2 {
+body .photoshop_icon_svg .cls-2 {
   fill: #529fd7;
 }
 
-body #inDesign_icon_svg .cls-1 {
+body .inDesign_icon_svg .cls-1 {
   fill: #450c21;
 }
 
-body #inDesign_icon_svg .cls-2 {
+body .inDesign_icon_svg .cls-2 {
   fill: #e73b68;
 }
 
-body #premier_icon_svg .cls-1 {
+body .premier_icon_svg .cls-1 {
   fill: #21244d;
 }
 
-body #premier_icon_svg .cls-2 {
+body .premier_icon_svg .cls-2 {
   fill: #9193c8;
 }
 
-body #xd_icon_svg .cls-1 {
+body .xd_icon_svg .cls-1 {
   fill: #431238;
 }
 
-body #xd_icon_svg .cls-2 {
+body .xd_icon_svg .cls-2 {
   fill: #be74ad;
 }
 
-body #figma_icon_svg .cls-1 {
+body .figma_icon_svg .cls-1 {
   fill: #2aa3d3;
 }
 
-body #figma_icon_svg .cls-2 {
+body .figma_icon_svg .cls-2 {
   fill: #2fa542;
 }
 
-body #figma_icon_svg .cls-3 {
+body .figma_icon_svg .cls-3 {
   fill: #f66;
 }
 
-body #figma_icon_svg .cls-4 {
+body .figma_icon_svg .cls-4 {
   fill: #dd3636;
 }
 
-body #figma_icon_svg .cls-5 {
+body .figma_icon_svg .cls-5 {
   fill: #9028db;
 }
 
-body #html_icon_svg .cls-1 {
+body .html_icon_svg .cls-1 {
   fill: #e34d27;
 }
 
-body #html_icon_svg .cls-2 {
+body .html_icon_svg .cls-2 {
   fill: #eb652b;
 }
 
-body #html_icon_svg .cls-3 {
+body .html_icon_svg .cls-3 {
   fill: #fff;
 }
 
-body #html_icon_svg .cls-4 {
+body .html_icon_svg .cls-4 {
   fill: #cdcdcc;
 }
 
-body #html_icon_svg .cls-5 {
+body .html_icon_svg .cls-5 {
   fill: var(--textContrastColor);
 }
 
-body #css_icon_svg .cls-1 {
+body .css_icon_svg .cls-1 {
   fill: #2073b5;
 }
 
-body #css_icon_svg .cls-2 {
+body .css_icon_svg .cls-2 {
   fill: #51a2d9;
 }
 
-body #css_icon_svg .cls-3 {
+body .css_icon_svg .cls-3 {
   fill: #fff;
 }
 
-body #css_icon_svg .cls-4 {
+body .css_icon_svg .cls-4 {
   fill: #cdcdcc;
 }
 
-body #css_icon_svg .cls-5 {
+body .css_icon_svg .cls-5 {
   fill: var(--textContrastColor);
 }
 
-body #js_icon_svg {
+body .js_icon_svg {
   -webkit-transform: scale(0.7);
           transform: scale(0.7);
 }
 
-body #js_icon_svg .cls-1 {
+body .js_icon_svg .cls-1 {
   fill: #f7df1e;
 }
 
-body #js_icon_svg .cls-2 {
+body .js_icon_svg .cls-2 {
   fill: #000;
 }
 
-body #gitHub_icon_svg .cls-1 {
+body .gitHub_icon_svg .cls-1 {
   fill: var(--firstColor);
 }
 
-body #gitHub_icon_svg .cls-2 {
+body .gitHub_icon_svg .cls-2 {
   fill: var(--firstColor);
   fill-rule: evenodd;
 }
 
-body #sass_icon_svg .cls-1 {
+body .sass_icon_svg .cls-1 {
   fill: #cf649a;
 }
 
-body #vue_icon_svg .cls-1 {
+body .vue_icon_svg .cls-1 {
   fill: #41b883;
 }
 
-body #vue_icon_svg .cls-2 {
+body .vue_icon_svg .cls-2 {
   fill: #41b883;
 }
 
-body #vue_icon_svg .cls-3 {
+body .vue_icon_svg .cls-3 {
   fill: #35495e;
 }
 
-body #node_icon_svg .cls-1 {
+body .node_icon_svg .cls-1 {
   fill: #689f63;
 }
 
-body #node_icon_svg .cls-2,
-body #node_icon_svg .cls-4 {
+body .node_icon_svg .cls-2,
+body .node_icon_svg .cls-4 {
   fill: #689f63;
 }
 
-body #node_icon_svg .cls-3 {
+body .node_icon_svg .cls-3 {
   fill: var(--vueIconText);
 }
 
-body #node_icon_svg .cls-3,
-body #node_icon_svg .cls-4 {
+body .node_icon_svg .cls-3,
+body .node_icon_svg .cls-4 {
   fill-rule: evenodd;
 }
 
-body #wa_icon_svg .cls-1,
-body #fb_icon_svg .cls-1,
-body #behance_icon_svg .cls-1,
-body #contact_icon_svg .cls-1 {
+body .wa_icon_svg .cls-1,
+body .fb_icon_svg .cls-1,
+body .behance_icon_svg .cls-1,
+body .contact_icon_svg .cls-1 {
   fill: var(--firstColor);
 }
 
-body #contact_icon_svg {
+body .contact_icon_svg {
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
 }
@@ -771,10 +771,6 @@ SECTION {
   width: 100%;
 }
 
-.section_padding {
-  padding: 6rem 0;
-}
-
 .section_content {
   height: calc(100vh - var(--navbarHeightFixed));
   min-width: 100%;
@@ -849,7 +845,7 @@ BUTTON {
 
 .btn {
   color: var(--textColor);
-  padding: 1rem 2rem;
+  padding: 1rem 0.5rem;
   border: var(--border)var(--firstColor);
   border-radius: var(--borderRadius);
   text-align: center;
@@ -1052,7 +1048,6 @@ BUTTON {
 
 #storage_alert_modal {
   z-index: var(--zIndexFull);
-  width: clamp(200px, 550px, 90%);
 }
 
 #storage_alert_modal .btn_container {
@@ -1265,7 +1260,6 @@ BUTTON {
           align-items: center;
   width: 100%;
   height: auto;
-  padding: 0 2rem;
   -webkit-transition: var(--transitionBtn);
   transition: var(--transitionBtn);
   color: var(--textColor);
@@ -1275,17 +1269,6 @@ BUTTON {
 #menu_container .btn_menu .btn_lebel {
   font-size: var(--fontSizeS);
   font-weight: var(--fontWeightN);
-}
-
-#menu_container .btn_menu_section {
-  padding: 1rem 0;
-  border-top: solid 0.25rem transparent;
-  border-bottom: solid 0.25rem transparent;
-}
-
-#menu_container .btn_menu_section:hover,
-#menu_container .btn_menu_section:focus {
-  border-color: var(--firstColor);
 }
 
 #menu_container #extra_btns_container,
@@ -1303,18 +1286,18 @@ BUTTON {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: var(--widthClamp);
+  width: 100%;
 }
 
 #menu_container #social_btns_container {
-  height: 5rem;
+  height: 3rem;
   width: 100%;
 }
 
 #menu_container #social_btns_container .btn_menu_social {
-  height: 4rem;
+  height: 3rem;
   width: auto;
-  padding: 1rem 0;
+  padding: 0.75rem 0;
 }
 
 #menu_container #social_btns_container .btn_menu_social .social_icon_svg {
@@ -1345,6 +1328,34 @@ BUTTON {
 #menu_container #social_btns_container > * {
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
+}
+
+#menu_container #sections_btns_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+#menu_container #sections_btns_container .btn_menu_section {
+  padding: 0.75rem 0;
+  border-top: solid 0.25rem transparent;
+  border-bottom: solid 0.25rem transparent;
+}
+
+#menu_container #sections_btns_container .btn_menu_section:hover,
+#menu_container #sections_btns_container .btn_menu_section:focus {
+  border-color: var(--firstColor);
 }
 
 #menu_container #extra_btns_container {
@@ -1379,23 +1390,6 @@ BUTTON {
 #menu_container #extra_btns_container .extra_btn_menu_active .close_icon_svg .cls-1,
 #menu_container #extra_btns_container .extra_btn_menu_active .theme_icon_svg .cls-1 {
   fill: var(--textContrastColor);
-}
-
-#menu_container #sections_btns_container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
 }
 
 .nav {
@@ -2109,7 +2103,7 @@ BUTTON {
 }
 
 .project_card {
-  width: 30rem;
+  width: var(--cardWidth);
   height: 30rem;
   background: var(--firstColor);
   background-repeat: no-repeat;
@@ -2380,6 +2374,10 @@ BUTTON {
 #search_project_btns_container {
   position: relative;
   z-index: var(--zIndexHover);
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 #search_project_btns_container #selection_list_type_of_projects {
@@ -2677,7 +2675,7 @@ FOOTER .logos_container .tech_logo_container {
   cursor: pointer;
 }
 
-FOOTER .logos_container .tech_logo_container #coffee_mug_icon_svg {
+FOOTER .logos_container .tech_logo_container .coffee_mug_icon_svg {
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
 }

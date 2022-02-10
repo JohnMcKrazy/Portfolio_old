@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //!TEMPLATE CONSTANTS
     //! *********************************************************************************************************** *//
     //!GENERAL CONSTANTS --START
-
     const htmlLebel = document.documentElement;
     const body = document.querySelector('BODY');
     const nav = document.querySelector('.nav');
@@ -752,10 +751,10 @@ document.addEventListener('DOMContentLoaded', () => {
             serviceContainer.forEach((container) => {
                 container.style.width = '100%';
                 serviceCardsLeft.forEach((card) => {
-                    changeCardStyle(card, 'row', '30rem');
+                    changeCardStyle(card, 'row', 'var(--cardWidth)');
                 });
                 serviceCardsRight.forEach((card) => {
-                    changeCardStyle(card, 'row-reverse', '30rem');
+                    changeCardStyle(card, 'row-reverse', 'var(--cardWidth)');
                 });
             });
             logoClientsContainers.forEach((container) => {

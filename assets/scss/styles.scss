@@ -123,7 +123,7 @@
     --borderRadius: 0.25rem;
     --navbarHeightFixed: 6rem;
     --navbarHeight: 10rem;
-    --widthClamp: clamp(200px, 1500px, 90%);
+    --widthClamp: clamp(300px, 1500px, 90%);
     --cardWidth: clamp(280px, 30rem, 80%);
     --fullscreenFixedHeight: calc(100vh - var(--navbarHeightFixed));
     --transitionBtn: all 250ms ease;
@@ -302,9 +302,7 @@ body {
     background: var(--bgColor);
     scroll-behavior: smooth;
     overflow-x: hidden;
-
     //^^GENERAL ICONS COLORS--START
-
     .close_icon_svg,
     .theme_icon_svg {
         .cls-1 {
@@ -314,7 +312,7 @@ body {
     .close_icon_svg {
         transform: scale(0.7);
     }
-    #coffee_mug_icon_svg {
+    .coffee_mug_icon_svg {
         .cls-1 {
             fill: #999;
         }
@@ -331,7 +329,7 @@ body {
             fill: #c69c6d;
         }
     }
-    #conection_icon_svg {
+    .conection_icon_svg {
         .cls-1,
         .cls-2 {
             fill: var(--firstColor);
@@ -347,7 +345,7 @@ body {
     }
     //^^GENERAL ICONS COLORS--OVER
     //^^CLIENTS LOGO COLORS--START
-    #impulso_icon_svg {
+    .impulso_icon_svg {
         .cls-1 {
             fill: #c01918;
         }
@@ -355,7 +353,7 @@ body {
             fill: var(--textColor);
         }
     }
-    #verona_icon_svg {
+    .verona_icon_svg {
         .cls-1 {
             fill: hsl(53, 84%, 38%);
         }
@@ -369,7 +367,7 @@ body {
             fill: #ffffff;
         }
     }
-    #gorgona_icon_svg {
+    .gorgona_icon_svg {
         .cls-1,
         .cls-2 {
             fill: hsl(32, 55%, 66%);
@@ -378,7 +376,7 @@ body {
             fill-rule: evenodd;
         }
     }
-    #bucefalos_icon_svg {
+    .bucefalos_icon_svg {
         .cls-1 {
             fill: var(--textColor);
         }
@@ -386,7 +384,7 @@ body {
             fill: #b77e0b;
         }
     }
-    #krazy_icon_svg {
+    .krazy_icon_svg {
         .cls-1 {
             fill: #e10b17;
         }
@@ -400,7 +398,7 @@ body {
             fill: var(--textColor);
         }
     }
-    #camaleonica_icon_svg {
+    .camaleonica_icon_svg {
         height: 100%;
         width: auto;
         .cls-1 {
@@ -422,7 +420,7 @@ body {
             fill: #000001;
         }
     }
-    #leiru_icon_svg {
+    .leiru_icon_svg {
         #polygon {
             fill: hsl(134, 74%, 36%);
         }
@@ -434,7 +432,7 @@ body {
     }
     //^^CLIENTS LOGO COLORS--OVER
     //^^DESIGN ICONS COLORS-- START
-    #illustrator_icon_svg {
+    .illustrator_icon_svg {
         .cls-1 {
             fill: #2c0d0e;
         }
@@ -442,7 +440,7 @@ body {
             fill: #f39719;
         }
     }
-    #photoshop_icon_svg {
+    .photoshop_icon_svg {
         .cls-1 {
             fill: #132034;
         }
@@ -450,7 +448,7 @@ body {
             fill: #529fd7;
         }
     }
-    #inDesign_icon_svg {
+    .inDesign_icon_svg {
         .cls-1 {
             fill: #450c21;
         }
@@ -458,7 +456,7 @@ body {
             fill: #e73b68;
         }
     }
-    #premier_icon_svg {
+    .premier_icon_svg {
         .cls-1 {
             fill: #21244d;
         }
@@ -466,7 +464,7 @@ body {
             fill: #9193c8;
         }
     }
-    #xd_icon_svg {
+    .xd_icon_svg {
         .cls-1 {
             fill: #431238;
         }
@@ -474,7 +472,7 @@ body {
             fill: #be74ad;
         }
     }
-    #figma_icon_svg {
+    .figma_icon_svg {
         .cls-1 {
             fill: #2aa3d3;
         }
@@ -493,7 +491,7 @@ body {
     }
     //^^DESIGN ICONS COLORS-- OVER
     //^^TECH ICONS COLORS--START
-    #html_icon_svg {
+    .html_icon_svg {
         .cls-1 {
             fill: #e34d27;
         }
@@ -510,7 +508,7 @@ body {
             fill: var(--textContrastColor);
         }
     }
-    #css_icon_svg {
+    .css_icon_svg {
         .cls-1 {
             fill: #2073b5;
         }
@@ -527,7 +525,7 @@ body {
             fill: var(--textContrastColor);
         }
     }
-    #js_icon_svg {
+    .js_icon_svg {
         transform: scale(0.7);
         .cls-1 {
             fill: #f7df1e;
@@ -536,7 +534,7 @@ body {
             fill: #000;
         }
     }
-    #gitHub_icon_svg {
+    .gitHub_icon_svg {
         .cls-1 {
             fill: var(--firstColor);
         }
@@ -545,12 +543,12 @@ body {
             fill-rule: evenodd;
         }
     }
-    #sass_icon_svg {
+    .sass_icon_svg {
         .cls-1 {
             fill: #cf649a;
         }
     }
-    #vue_icon_svg {
+    .vue_icon_svg {
         .cls-1 {
             fill: #41b883;
         }
@@ -561,7 +559,7 @@ body {
             fill: #35495e;
         }
     }
-    #node_icon_svg {
+    .node_icon_svg {
         .cls-1 {
             fill: #689f63;
         }
@@ -580,15 +578,15 @@ body {
 
     //^^TECH ICONS COLORS--OVER
     //^^SOCIAL ICONS COLORS-- START
-    #wa_icon_svg,
-    #fb_icon_svg,
-    #behance_icon_svg,
-    #contact_icon_svg {
+    .wa_icon_svg,
+    .fb_icon_svg,
+    .behance_icon_svg,
+    .contact_icon_svg {
         .cls-1 {
             fill: var(--firstColor);
         }
     }
-    #contact_icon_svg {
+    .contact_icon_svg {
         transform: scale(0.8);
     }
     //^^SOCIAL ICONS COLORS-- OVER
@@ -720,9 +718,6 @@ SECTION {
 .section {
     width: 100%;
 }
-.section_padding {
-    padding: 6rem 0;
-}
 .section_content {
     height: calc(100vh - var(--navbarHeightFixed));
     min-width: 100%;
@@ -771,7 +766,7 @@ BUTTON {
 //^^BASIC BUTTON START
 .btn {
     color: var(--textColor);
-    padding: 1rem 2rem;
+    padding: 1rem 0.5rem;
     border: var(--border) + var(--firstColor);
     border-radius: var(--borderRadius);
     text-align: center;
@@ -922,7 +917,6 @@ BUTTON {
 //! STORAGE MODAL--START
 #storage_alert_modal {
     z-index: var(--zIndexFull);
-    width: clamp(200px, 550px, 90%);
     .btn_container {
         @include flex(center, center);
         width: 100%;
@@ -1066,11 +1060,12 @@ BUTTON {
     transform: translateY(-100%);
     opacity: 0;
     transition: var(--transitionMid);
+    //^^ *************************************************************** *//
+    //^^ GENERAL BTN CONFIG--START
     .btn_menu {
         @include flex(center, center);
         width: 100%;
         height: auto;
-        padding: 0 2rem;
         transition: var(--transitionBtn);
         color: var(--textColor);
         cursor: pointer;
@@ -1079,29 +1074,22 @@ BUTTON {
             font-weight: var(--fontWeightN);
         }
     }
-    .btn_menu_section {
-        padding: 1rem 0;
-        border-top: solid 0.25rem transparent;
-        border-bottom: solid 0.25rem transparent;
-    }
-
-    .btn_menu_section:hover,
-    .btn_menu_section:focus {
-        border-color: var(--firstColor);
-    }
+    //^^ GENERAL BTN CONFIG--OVER
+    //^^ *************************************************************** *//
+    //!! GENERAL CONTAINER CONFIGURATION--START
     #extra_btns_container,
     #social_btns_container {
         @include flexDirection(row, space-between, center);
-        width: var(--widthClamp);
-    }
-    #social_btns_container {
-        height: 5rem;
         width: 100%;
-
+    }
+    //^^SOCIAL BTNS CONTAINER--START
+    #social_btns_container {
+        height: 3rem;
+        width: 100%;
         .btn_menu_social {
-            height: 4rem;
+            height: 3rem;
             width: auto;
-            padding: 1rem 0;
+            padding: 0.75rem 0;
             .social_icon_svg {
                 height: 100%;
                 width: auto;
@@ -1127,6 +1115,26 @@ BUTTON {
     #social_btns_container > * {
         flex-basis: 100%;
     }
+    //^^SOCIAL BTNS CONTAINER--OVER
+    //^^ ****************************************************** *//
+    //^^SECTIONS BTNS CONTAINER--START
+    #sections_btns_container {
+        @include flexDirection(column, flex-start, center);
+        width: 100%;
+        .btn_menu_section {
+            padding: 0.75rem 0;
+            border-top: solid 0.25rem transparent;
+            border-bottom: solid 0.25rem transparent;
+        }
+
+        .btn_menu_section:hover,
+        .btn_menu_section:focus {
+            border-color: var(--firstColor);
+        }
+    }
+    //^^SECTIONS BTNS CONTAINER--OVER
+    //^^ ****************************************************** *//
+    //^^EXTRA BTNS CONTAINER--START
     #extra_btns_container {
         height: auto;
         .extra_btn_menu {
@@ -1146,10 +1154,10 @@ BUTTON {
             }
         }
     }
-    #sections_btns_container {
-        @include flexDirection(column, flex-start, center);
-        width: 100%;
-    }
+    //^^EXTRA BTNS CONTAINER--OVER
+    //^^ *************************************************************** *//
+    //!! GENERAL CONTAINER CONFIGURATION--OVER
+    //!!  *************************************************************** *//
 }
 //!MENU-- OVER
 //! ****************************************************************************** *//
@@ -1549,7 +1557,7 @@ BUTTON {
 }
 //&TEMPLATE STYLE--START
 .project_card {
-    width: 30rem;
+    width: var(--cardWidth);
     height: 30rem;
     background: var(--firstColor);
     background-repeat: no-repeat;
@@ -1712,6 +1720,8 @@ BUTTON {
 #search_project_btns_container {
     position: relative;
     z-index: var(--zIndexHover);
+    width: 100%;
+    height: fit-content;
     #selection_list_type_of_projects {
         position: absolute;
         top: 0;
@@ -1873,7 +1883,7 @@ FOOTER {
             height: auto;
             cursor: pointer;
 
-            #coffee_mug_icon_svg {
+            .coffee_mug_icon_svg {
                 transform: scale(0.8);
             }
         }
