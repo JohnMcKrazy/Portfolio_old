@@ -762,7 +762,7 @@ SECTION {
 .section {
   min-width: 100%;
   min-height: var(--fullscreenFixedHeight);
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .section_content {
@@ -1937,6 +1937,10 @@ BUTTON {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -1979,7 +1983,7 @@ BUTTON {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  width: var(--widthClamp);
+  width: 100%;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -1997,15 +2001,16 @@ BUTTON {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   padding: 1rem 2rem;
+  gap: 0.5rem;
 }
 
 #skills_section .skills_containers .skills_container .skills_icon_container {
@@ -2081,6 +2086,7 @@ BUTTON {
 
 #portfolio_section .cards_container {
   position: relative;
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

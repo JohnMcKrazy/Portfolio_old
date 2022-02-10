@@ -701,9 +701,8 @@ SECTION {
 }
 .section {
     min-width: 100%;
-
     min-height: var(--fullscreenFixedHeight);
-    overflow-x: hidden;
+    overflow: hidden;
 }
 .section_content {
     height: 100%;
@@ -1464,7 +1463,7 @@ BUTTON {
 
 //!SKILLS SECTION-- START
 #skills_section {
-    @include flex(flex-start, center);
+    @include flexDirection(column, flex-start, center);
     height: fit-content;
     #skills_content {
         #header_section_skills {
@@ -1474,14 +1473,15 @@ BUTTON {
     }
     .skills_containers {
         @include flexDirection(row, center, flex-start);
-        width: var(--widthClamp);
+        width: 100%;
         height: fit-content;
         .skills_container {
             width: auto;
             .skills_icons_container {
-                @include flexDirection(row, space-between, flex-start);
+                @include flexDirection(row, center, flex-start);
                 flex-wrap: wrap;
                 padding: 1rem 2rem;
+                gap: 0.5rem;
             }
             .skills_icon_container {
                 position: relative;
@@ -1528,6 +1528,7 @@ BUTTON {
 
 #portfolio_section {
     @include flexDirection(column, flex-start, center);
+
     #portfolio_content {
         #header_section_portfolio {
             background: var(--bgHeaderSectionPortfolio);
@@ -1535,6 +1536,7 @@ BUTTON {
     }
     .cards_container {
         position: relative;
+        overflow: hidden;
         @include flexDirection(row, center, center);
         flex-wrap: wrap;
         min-height: 30rem;
