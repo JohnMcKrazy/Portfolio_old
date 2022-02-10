@@ -2637,7 +2637,7 @@ BUTTON {
   width: 100%;
 }
 
-FOOTER {
+#legals_section {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2653,21 +2653,23 @@ FOOTER {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  height: auto;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
   background: var(--firstColor);
   color: var(--textContrastColor);
   text-align: center;
   padding: 4rem 0;
 }
 
-FOOTER .title_footer {
+#legals_section .title_footer {
   height: auto;
   width: auto;
   margin-bottom: 2rem;
   color: var(--textContrastColor);
 }
 
-FOOTER .logos_container {
+#legals_section .logos_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2687,7 +2689,7 @@ FOOTER .logos_container {
   margin-bottom: 4rem;
 }
 
-FOOTER .logos_container .tech_logo_container {
+#legals_section .logos_container .tech_logo_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2702,12 +2704,12 @@ FOOTER .logos_container .tech_logo_container {
   cursor: pointer;
 }
 
-FOOTER .logos_container .tech_logo_container .coffee_mug_icon_svg {
+#legals_section .logos_container .tech_logo_container .coffee_mug_icon_svg {
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
 }
 
-FOOTER .logos_container .plus_sign {
+#legals_section .logos_container .plus_sign {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2722,14 +2724,14 @@ FOOTER .logos_container .plus_sign {
   color: var(--textContrastColor);
 }
 
-FOOTER .logos_container .tech_logo_container:hover,
-FOOTER .logos_container .tech_logo_container:focus,
-FOOTER .logos_container .tech_logo_container:active {
+#legals_section .logos_container .tech_logo_container:hover,
+#legals_section .logos_container .tech_logo_container:focus,
+#legals_section .logos_container .tech_logo_container:active {
   -webkit-animation: zoom 1000ms ease-out;
           animation: zoom 1000ms ease-out;
 }
 
-FOOTER #footer_btns_container {
+#legals_section #footer_btns_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2753,14 +2755,14 @@ FOOTER #footer_btns_container {
   background: var(--bgColor);
 }
 
-FOOTER #footer_btns_container .btn_link {
+#legals_section #footer_btns_container .btn_link {
   color: var(--textColor);
   text-decoration: none;
   -webkit-transition: color 200ms ease;
   transition: color 200ms ease;
 }
 
-FOOTER #footer_btns_container .btn_link:hover {
+#legals_section #footer_btns_container .btn_link:hover {
   color: var(--secondColor);
 }
 

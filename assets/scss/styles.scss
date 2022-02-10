@@ -1845,11 +1845,11 @@ BUTTON {
 //!CONTACT SECTION--OVER
 //! ******************************************************************** *//
 //!FOOTER-- START
-FOOTER {
+#legals_section {
     position: relative;
     @include flexDirection(column, center, center);
     width: 100%;
-    height: auto;
+    min-height: fit-content;
     background: var(--firstColor);
     color: var(--textContrastColor);
     text-align: center;
