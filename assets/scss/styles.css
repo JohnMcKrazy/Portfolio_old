@@ -141,8 +141,6 @@
   --blackOff: hsl(0, 0%, 15%);
   --whiteOff: hsl(0, 0%, 85%);
   --backgroundContrast: hsla(0, 0%, 50%, 0.9);
-  --boxShadowB: 0 -5px 1rem hsla(0, 0%, 80%, 0.25);
-  --boxShadowT: 0 5px 1rem hsla(0, 0%, 80%, 0.25);
   --titanimFont: 'Titillium Web', sans-serif;
   --zIndexStart: 1;
   --zIndexHover: 5;
@@ -190,10 +188,7 @@
   --bgColor: hsl(0, 0%, 90%);
   --bgOff: hsl(0, 0%, 80%);
   --bgModal: hsla(0, 0%, 90%, 0.75);
-  --firstShadowColor: hsla(260, 84%, 45%, 0.75);
-  --secondShadowColor: hsla(195, 85%, 80%, 0.75);
   --vueIconText: hsl(0, 0%, 20%);
-  --shadow: hsla(0, 0%, 75%, 50%);
   --bgHeaderSectionAbout: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
         url('../img/pagina/pexels-artem-beliaikin-1051747.jpg') center no-repeat fixed;
   --bgHeaderSectionServices: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
@@ -206,36 +201,36 @@
   --backgroundHero: linear-gradient(transparent, var(--bgColor) 75%), url('../img/backgrounds/day.jpg') center no-repeat fixed;
 }
 
-.light_theme #charly_y_sebas_icon_svg .cls-1 {
+.light_theme .charly_y_sebas_icon_svg .cls-1 {
   fill: #363760;
 }
 
-.light_theme #charly_y_sebas_icon_svg .cls-2 {
+.light_theme .charly_y_sebas_icon_svg .cls-2 {
   fill: #1f1429;
 }
 
-.light_theme #charly_y_sebas_icon_svg .cls-3 {
+.light_theme .charly_y_sebas_icon_svg .cls-3 {
   fill: #d3443f;
 }
 
-.light_theme #charly_y_sebas_icon_svg .cls-4 {
+.light_theme .charly_y_sebas_icon_svg .cls-4 {
   fill: #57a8c9;
 }
 
-.light_theme #charly_y_sebas_icon_svg .cls-5 {
+.light_theme .charly_y_sebas_icon_svg .cls-5 {
   fill: #e8bc2b;
 }
 
-.light_theme #charly_y_sebas_icon_svg .cls-6 {
+.light_theme .charly_y_sebas_icon_svg .cls-6 {
   fill: #fff;
 }
 
-.light_theme #leiru_icon_svg #brand .cls-1,
-.light_theme #leiru_icon_svg #brand-append .cls-1 {
+.light_theme .leiru_icon_svg #brand .cls-1,
+.light_theme .leiru_icon_svg #brand-append .cls-1 {
   fill: #18a038;
 }
 
-.light_theme #leiru_icon_svg #text {
+.light_theme .leiru_icon_svg #text {
   fill: var(--textColor);
 }
 
@@ -250,9 +245,6 @@
   --bgColor: hsl(0, 0%, 10%);
   --bgOff: hsl(0, 0%, 20%);
   --bgModal: hsla(0, 0%, 10%, 0.75);
-  --shadow: hsla(0, 0%, 75%, 50%);
-  --firstShadowColor: hsla(195, 100%, 80%, 0.75);
-  --secondShadowColor: hsla(60, 85%, 80%, 0.75);
   --vueIconText: hsl(0, 0%, 80%);
   color: var(--textColor);
   --backgroundHero: linear-gradient(transparent, var(--bgColor) 90%), url('../img/backgrounds/night.jpg') center no-repeat fixed;
@@ -266,32 +258,32 @@
         url('../img/pagina/tools-1083796_1920.jpg') center no-repeat fixed;
 }
 
-.dark_theme #charly_y_sebas_icon_svg .cls-1 {
+.dark_theme .charly_y_sebas_icon_svg .cls-1 {
   fill: #363760;
 }
 
-.dark_theme #charly_y_sebas_icon_svg .cls-2 {
+.dark_theme .charly_y_sebas_icon_svg .cls-2 {
   fill: #fff;
 }
 
-.dark_theme #charly_y_sebas_icon_svg .cls-3 {
+.dark_theme .charly_y_sebas_icon_svg .cls-3 {
   fill: #d3443f;
 }
 
-.dark_theme #charly_y_sebas_icon_svg .cls-4 {
+.dark_theme .charly_y_sebas_icon_svg .cls-4 {
   fill: #57a8c9;
 }
 
-.dark_theme #charly_y_sebas_icon_svg .cls-5 {
+.dark_theme .charly_y_sebas_icon_svg .cls-5 {
   fill: #e8bc2b;
 }
 
-.dark_theme #charly_y_sebas_icon_svg .cls-6 {
+.dark_theme .charly_y_sebas_icon_svg .cls-6 {
   fill: #5b5b8c;
 }
 
-.dark_theme #leiru_icon_svg #brand .cls-1,
-.dark_theme #leiru_icon_svg #brand-append .cls-1 {
+.dark_theme .leiru_icon_svg #brand .cls-1,
+.dark_theme .leiru_icon_svg #brand-append .cls-1 {
   fill: var(--textColor);
 }
 
@@ -768,16 +760,17 @@ SECTION {
 }
 
 .section {
-  width: 100%;
+  min-width: 100%;
+  min-height: var(--fullscreenFixedHeight);
 }
 
 .section_content {
-  height: calc(100vh - var(--navbarHeightFixed));
+  height: 100%;
   min-width: 100%;
 }
 
 .section_content .header_section {
-  height: 100%;
+  height: calc(100vh - var(--navbarHeightFixed));
   width: 100%;
   background-size: cover !important;
 }
@@ -1178,7 +1171,6 @@ BUTTON {
   height: -moz-fit-content;
   height: fit-content;
   width: 3rem;
-  height: 0;
   background: var(--navbarColor);
   border-radius: var(--borderRadius);
   overflow: hidden;
@@ -1238,7 +1230,7 @@ BUTTON {
   top: 0;
   left: 0;
   background: var(--navbarColor);
-  width: 100%;
+  width: 100vw;
   height: auto;
   z-index: var(--zIndexMenu);
   -webkit-transform: translateY(-100%);
@@ -1286,7 +1278,7 @@ BUTTON {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
+  width: var(--widthClamp);
 }
 
 #menu_container #social_btns_container {
@@ -1950,6 +1942,9 @@ BUTTON {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 #skills_section #skills_content #header_section_skills {
@@ -1984,6 +1979,9 @@ BUTTON {
       -ms-flex-align: start;
           align-items: flex-start;
   width: var(--widthClamp);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 #skills_section .skills_containers .skills_container {
@@ -2028,20 +2026,20 @@ BUTTON {
           transform: all 200ms ease;
 }
 
-#skills_section .skills_containers .skills_container .skills_icon_container #html_icon_svg .cls-5 {
+#skills_section .skills_containers .skills_container .skills_icon_container .html_icon_svg .cls-5 {
   fill: var(--textColor);
 }
 
-#skills_section .skills_containers .skills_container .skills_icon_container #css_icon_svg .cls-5 {
+#skills_section .skills_containers .skills_container .skills_icon_container .css_icon_svg .cls-5 {
   fill: var(--textColor);
 }
 
-#skills_section .skills_containers .skills_container .skills_icon_container #gitHub_icon_svg {
+#skills_section .skills_containers .skills_container .skills_icon_container .gitHub_icon_svg {
   -webkit-transform: scale(0.7);
           transform: scale(0.7);
 }
 
-#skills_section .skills_containers .skills_container .skills_icon_container #gitHub_icon_svg .cls-1 {
+#skills_section .skills_containers .skills_container .skills_icon_container .gitHub_icon_svg .cls-1 {
   fill: var(--textColor);
 }
 
@@ -2218,7 +2216,12 @@ BUTTON {
       -ms-flex-align: center;
           align-items: center;
   gap: 1rem;
-  width: 100%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .projects_container .title_project_search {
@@ -2242,7 +2245,9 @@ BUTTON {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   height: 3rem;
 }
 
@@ -2261,12 +2266,9 @@ BUTTON {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   text-align: center;
   font-size: var(--fontSizeM);
   color: var(--blackOff);
-  width: var(--widthClamp);
   height: 3rem;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -2293,7 +2295,6 @@ BUTTON {
           align-items: center;
   text-align: center;
   padding: 0.5rem 1rem;
-  margin-bottom: 0.1rem;
   color: var(--textColor);
   background: var(--navbarColor);
   height: 3rem;
@@ -2356,7 +2357,9 @@ BUTTON {
   padding: 0.5rem 1rem;
   color: var(--textColor);
   background: var(--navbarColor);
-  height: 3rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   width: 100%;
   z-index: var(--zIndexMenu);
   cursor: pointer;
@@ -2371,16 +2374,19 @@ BUTTON {
   pointer-events: none;
 }
 
-#search_project_btns_container {
-  position: relative;
-  z-index: var(--zIndexHover);
+#search_projects_container {
+  min-height: 4rem;
   width: 100%;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
 }
 
-#search_project_btns_container #selection_list_type_of_projects {
+#search_projects_container #search_project_btns_container {
+  position: relative;
+  z-index: var(--zIndexHover);
+  width: var(--widthClamp);
+  height: 3rem;
+}
+
+#search_projects_container #search_project_btns_container #selection_list_type_of_projects {
   position: absolute;
   top: 0;
   left: 50%;
@@ -2388,7 +2394,7 @@ BUTTON {
           transform: translateX(-50%);
 }
 
-#search_project_btns_container #selection_list_type_of_projects #selection_list_search_btn {
+#search_projects_container #search_project_btns_container #selection_list_type_of_projects #selection_list_search_btn {
   border: solid 2px var(--firstColor);
 }
 

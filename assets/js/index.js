@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const selectionListTemplateClone = selectionListTemplate.cloneNode(true);
             const newList = selectionListTemplateClone.querySelector('.selection_list');
-            newList.name = 'types_of_projects';
+            newList.setAttribute('name', 'types_of_projects');
             newList.id = `selection_list_type_of_projects`;
             newProjectsListData.forEach((option) => {
                 const optionValue = option['value'];

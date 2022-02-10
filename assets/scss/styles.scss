@@ -67,9 +67,6 @@
     justify-content: $jc;
     align-items: $ai;
 }
-@mixin shadow($color) {
-    text-shadow: 53px 5px 0.5rem $color, -5px -5px 0.5rem $color;
-}
 //!MIXINS OVER
 //! ******************************************************************************************************************************/
 
@@ -84,12 +81,8 @@
     --blackOff: hsl(0, 0%, 15%);
     --whiteOff: hsl(0, 0%, 85%);
     --backgroundContrast: hsla(0, 0%, 50%, 0.9);
-    --boxShadowB: 0 -5px 1rem hsla(0, 0%, 80%, 0.25);
-    --boxShadowT: 0 5px 1rem hsla(0, 0%, 80%, 0.25);
-
     //!GENERAL COLORS OVER
     //! ******************************************************************************************************************************/
-
     //!FONTS START
     --titanimFont: 'Titillium Web', sans-serif;
     //!FONTS OVER
@@ -113,7 +106,6 @@
     --fontWeightN: 400;
     --fontWeightB: 600;
     --fontWeightBB: 800;
-
     //! FONT WEIGHT--OVER
     //! *********************************************************************************************************************** *//
     //!GENERAL START
@@ -141,7 +133,6 @@
     //! ******************************************************************************************************************************/
 }
 //! ******************************************************************************************************************************/
-
 //!THEMES START
 //^^ LIGHT THEME START
 .light_theme {
@@ -156,10 +147,7 @@
     --bgColor: hsl(0, 0%, 90%);
     --bgOff: hsl(0, 0%, 80%);
     --bgModal: hsla(0, 0%, 90%, 0.75);
-    --firstShadowColor: hsla(260, 84%, 45%, 0.75);
-    --secondShadowColor: hsla(195, 85%, 80%, 0.75);
     --vueIconText: hsl(0, 0%, 20%);
-    --shadow: hsla(0, 0%, 75%, 50%);
     //!THEME COLORS OVER
     //! ************************************************************************************************************************ *//
     //!SECTION BACKGROUNDS--START
@@ -183,7 +171,7 @@
 
     //!LOGOS SPECIFIC COLOR START
 
-    #charly_y_sebas_icon_svg {
+    .charly_y_sebas_icon_svg {
         .cls-1 {
             fill: #363760;
         }
@@ -204,7 +192,7 @@
         }
     }
 
-    #leiru_icon_svg {
+    .leiru_icon_svg {
         #brand,
         #brand-append {
             .cls-1 {
@@ -234,9 +222,6 @@
     --bgColor: hsl(0, 0%, 10%);
     --bgOff: hsl(0, 0%, 20%);
     --bgModal: hsla(0, 0%, 10%, 0.75);
-    --shadow: hsla(0, 0%, 75%, 50%);
-    --firstShadowColor: hsla(195, 100%, 80%, 0.75);
-    --secondShadowColor: hsla(60, 85%, 80%, 0.75);
     --vueIconText: hsl(0, 0%, 80%);
     //!THEME COLORS OVER
     //! ************************************************************************************************************************ *//
@@ -260,7 +245,7 @@
     //! ************************************************************************************************************************ *//
 
     //!LOGOS SPECIFIC COLOR START
-    #charly_y_sebas_icon_svg {
+    .charly_y_sebas_icon_svg {
         .cls-1 {
             fill: #363760;
         }
@@ -280,7 +265,7 @@
             fill: #5b5b8c;
         }
     }
-    #leiru_icon_svg {
+    .leiru_icon_svg {
         #brand,
         #brand-append {
             .cls-1 {
@@ -296,7 +281,6 @@
 //^^ *****************************************************************************************************************************/
 //!THEMES OVER
 //! ******************************************************************************************************************************/
-
 body {
     position: relative;
     background: var(--bgColor);
@@ -716,13 +700,15 @@ SECTION {
     margin-bottom: 6rem;
 }
 .section {
-    width: 100%;
+    min-width: 100%;
+
+    min-height: var(--fullscreenFixedHeight);
 }
 .section_content {
-    height: calc(100vh - var(--navbarHeightFixed));
+    height: 100%;
     min-width: 100%;
     .header_section {
-        height: 100%;
+        height: calc(100vh - var(--navbarHeightFixed));
         width: 100%;
         background-size: cover !important;
     }
@@ -1009,7 +995,6 @@ BUTTON {
     .menu_social_btns_container {
         height: fit-content;
         width: 3rem;
-        height: 0;
         background: var(--navbarColor);
         border-radius: var(--borderRadius);
         overflow: hidden;
@@ -1054,7 +1039,7 @@ BUTTON {
     top: 0;
     left: 0;
     background: var(--navbarColor);
-    width: 100%;
+    width: 100vw;
     height: auto;
     z-index: var(--zIndexMenu);
     transform: translateY(-100%);
@@ -1080,7 +1065,7 @@ BUTTON {
     #extra_btns_container,
     #social_btns_container {
         @include flexDirection(row, space-between, center);
-        width: 100%;
+        width: var(--widthClamp);
     }
     //^^SOCIAL BTNS CONTAINER--START
     #social_btns_container {
@@ -1480,6 +1465,7 @@ BUTTON {
 //!SKILLS SECTION-- START
 #skills_section {
     @include flex(flex-start, center);
+    height: fit-content;
     #skills_content {
         #header_section_skills {
             background: var(--bgHeaderSectionSkills);
@@ -1489,6 +1475,7 @@ BUTTON {
     .skills_containers {
         @include flexDirection(row, center, flex-start);
         width: var(--widthClamp);
+        height: fit-content;
         .skills_container {
             width: auto;
             .skills_icons_container {
@@ -1504,17 +1491,17 @@ BUTTON {
                 height: 5rem;
                 cursor: pointer;
                 transform: all 200ms ease;
-                #html_icon_svg {
+                .html_icon_svg {
                     .cls-5 {
                         fill: var(--textColor);
                     }
                 }
-                #css_icon_svg {
+                .css_icon_svg {
                     .cls-5 {
                         fill: var(--textColor);
                     }
                 }
-                #gitHub_icon_svg {
+                .gitHub_icon_svg {
                     transform: scale(0.7);
                     .cls-1 {
                         fill: var(--textColor);
@@ -1628,8 +1615,8 @@ BUTTON {
 .projects_container {
     @include flexDirection(column, flex-start, center);
     gap: 1rem;
-    width: 100%;
-
+    width: fit-content;
+    height: fit-content;
     .title_project_search {
         color: var(--secondColor);
         font-size: var(--fontSizeM);
@@ -1638,22 +1625,19 @@ BUTTON {
     }
     .project_btns_container {
         @include flexDirection(column, flex-start, center);
-        width: 100%;
+        width: fit-content;
         height: 3rem;
     }
 }
 
 //!PROJECTS CONTAINER--OVER
 //! ******************************************************************************************** *//
-
 .selection_list {
     position: relative;
     @include flexDirection(column, flex-start, center);
-    flex-wrap: wrap;
     text-align: center;
     font-size: var(--fontSizeM);
     color: var(--blackOff);
-    width: var(--widthClamp);
     height: 3rem;
     width: fit-content;
     overflow: hidden;
@@ -1664,7 +1648,6 @@ BUTTON {
         @include flex(center, center);
         text-align: center;
         padding: 0.5rem 1rem;
-        margin-bottom: 0.1rem;
         color: var(--textColor);
         background: var(--navbarColor);
         height: 3rem;
@@ -1698,14 +1681,13 @@ BUTTON {
         }
     }
 }
-
 .option_list_btn {
     @include flex(center, center);
     text-align: center;
     padding: 0.5rem 1rem;
     color: var(--textColor);
     background: var(--navbarColor);
-    height: 3rem;
+    height: fit-content;
     width: 100%;
     z-index: var(--zIndexMenu);
     cursor: pointer;
@@ -1717,24 +1699,27 @@ BUTTON {
         pointer-events: none;
     }
 }
-#search_project_btns_container {
-    position: relative;
-    z-index: var(--zIndexHover);
+#search_projects_container {
+    min-height: 4rem;
     width: 100%;
-    height: fit-content;
-    #selection_list_type_of_projects {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        #selection_list_search_btn {
-            border: solid 2px var(--firstColor);
+    #search_project_btns_container {
+        position: relative;
+        z-index: var(--zIndexHover);
+        width: var(--widthClamp);
+        height: 3rem;
+        #selection_list_type_of_projects {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            #selection_list_search_btn {
+                border: solid 2px var(--firstColor);
+            }
         }
     }
 }
 //&TEMPLATE STYLE--OVER
 //& ******************************************************************************************** *//
-
 //!PORTFOLIO SECTION-- OVER
 //! ******************************************************************** *//
 //!CLIENTS SECTION-- START
