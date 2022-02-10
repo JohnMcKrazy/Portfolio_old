@@ -762,6 +762,7 @@ SECTION {
 .section {
   min-width: 100%;
   min-height: var(--fullscreenFixedHeight);
+  overflow-x: hidden;
 }
 
 .section_content {
@@ -1996,15 +1997,14 @@ BUTTON {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 1rem;
   padding: 1rem 2rem;
 }
 

@@ -703,6 +703,7 @@ SECTION {
     min-width: 100%;
 
     min-height: var(--fullscreenFixedHeight);
+    overflow-x: hidden;
 }
 .section_content {
     height: 100%;
@@ -822,7 +823,6 @@ BUTTON {
     text-align: center;
     cursor: pointer;
 }
-
 .btn_link:focus {
     border: dotted 1px white;
 }
@@ -1479,9 +1479,8 @@ BUTTON {
         .skills_container {
             width: auto;
             .skills_icons_container {
-                @include flexDirection(row, center, flex-start);
+                @include flexDirection(row, space-between, flex-start);
                 flex-wrap: wrap;
-                gap: 1rem;
                 padding: 1rem 2rem;
             }
             .skills_icon_container {
@@ -1629,7 +1628,6 @@ BUTTON {
         height: 3rem;
     }
 }
-
 //!PROJECTS CONTAINER--OVER
 //! ******************************************************************************************** *//
 .selection_list {
@@ -1723,7 +1721,6 @@ BUTTON {
 //!PORTFOLIO SECTION-- OVER
 //! ******************************************************************** *//
 //!CLIENTS SECTION-- START
-
 #clients_section {
     position: relative;
     @include flexDirection(column, flex-start, center);
@@ -1758,11 +1755,9 @@ BUTTON {
         }
     }
 }
-
 //!CLIENTS SECTION-- OVER
 //! ******************************************************************** *//
 //!CONTACT SECTION--START
-
 #contact_section {
     @include flex(flex-start, center);
     #contact_content {
@@ -1905,7 +1900,6 @@ FOOTER {
 }
 //!FOOTER-- OVER
 //! ******************************************************************** *//
-
 //*SWIPER LEFT CONTAINER--START
 .animation_left {
     opacity: 0;
