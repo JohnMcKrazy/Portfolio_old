@@ -1458,6 +1458,15 @@ BUTTON {
             }
         }
     }
+    .services_container_one_column {
+        grid-template-columns: 1fr;
+        height: fit-content;
+    }
+    .services_container_two_columns {
+        grid-template-columns: repeat(auto-fill, 280px);
+        justify-content: center;
+        height: fit-content;
+    }
 }
 //!SERVICES SECTION-- OVER
 //! ******************************************************************** *//
