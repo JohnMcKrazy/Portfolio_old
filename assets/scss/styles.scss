@@ -99,7 +99,10 @@
     --fontSizeS: 1.2rem;
     --fontSizeM: 1.5rem;
     --fontSizeX: 1.8rem;
-    --fontSizeXXL: 2rem;
+    --fontSizeSClamp: clamp(1.2rem, calc(1.2rem + 0.5vw), 1.8rem);
+    --fontSizeMClamp: clamp(2rem, calc(1.5rem + 0.5vw), 2.2rem);
+    --fontSizeXClamp: clamp(2.5rem, calc(1.5rem + 1.5vw), 4rem);
+
     //! FONT SIZES--OVER
     //! *********************************************************************************************************************** *//
     //! FONT WEIGHT--START
@@ -118,7 +121,7 @@
     --widthClamp: clamp(300px, 1500px, 90%);
     --cardWidth: clamp(280px, 30rem, 80%);
     --fullscreenFixedHeight: calc(100vh - var(--navbarHeightFixed));
-    --transitionBtn: all 250ms ease;
+    --transitionUF: all 250ms ease;
     --transitionFast: all 500ms ease;
     --transitionMid: all 750ms ease;
     --transitionSlow: all 1000ms ease;
@@ -140,6 +143,8 @@
     --firstColor: hsl(260, 85%, 25%);
     --firstColorHover: hsl(260, 85%, 15%);
     --secondColor: hsl(195, 85%, 60%);
+    --secondColorHover: hsl(195, 63%, 48%);
+
     --textColor: hsl(0, 0%, 10%);
     --textContrastColor: hsl(0, 0%, 90%);
     --navbarColor: hsl(0, 0%, 95%);
@@ -152,14 +157,15 @@
     //! ************************************************************************************************************************ *//
     //!SECTION BACKGROUNDS--START
     --bgHeaderSectionAbout: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
-        url('../img/pagina/pexels-artem-beliaikin-1051747.jpg') center no-repeat fixed;
+        url('../img/backgrounds/pexels-artem-beliaikin-1051747.jpg') center no-repeat fixed;
     --bgHeaderSectionServices: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
-        url('../img/pagina/office-932926_1920.jpg') center no-repeat fixed;
+        url('../img/backgrounds/office-932926_1920.jpg') center no-repeat fixed;
     --bgHeaderSectionPortfolio: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
-        url('../img/pagina/sunglasses-1284392_1920.jpg') center no-repeat fixed;
-
+        url('../img/backgrounds/sunglasses-1284392_1920.jpg') center no-repeat fixed;
     --bgHeaderSectionSkills: linear-gradient(var(--bgColor), hsla(0, 0%, 100%, 0.5), var(--bgColor)),
-        url('../img/pagina/pexels-julia-m-cameron-4144097.jpg') center no-repeat fixed;
+        url('../img/backgrounds/pexels-julia-m-cameron-4144097.jpg') center no-repeat fixed;
+    --bgHeaderSectionContact: linear-gradient(var(--bgColor), hsla(0, 0%, 100%, 0.5), var(--bgColor)),
+        url('../img/backgrounds/pexels-alex-andrews-821754.jpg') center no-repeat fixed;
 
     //!SECTION BACKGROUNDS--OVER
     //! ************************************************************************************************************************ *//
@@ -212,9 +218,10 @@
 //^^ DARK THEME START
 .dark_theme {
     //!THEME COLORS START
-    --firstColor: hsl(195, 100%, 60%);
+    --firstColor: #00b4d8;
     --firstColorHover: hsl(195, 100%, 40%);
-    --secondColor: hsl(60, 85%, 60%);
+    --secondColor: #5e60ce;
+    --secondColorHover: #70a3a5;
     --textColor: hsl(0, 0%, 90%);
     --textContrastColor: hsl(0, 0%, 10%);
     --navbarColor: hsl(0, 0%, 5%);
@@ -233,14 +240,16 @@
     //! *********************************************************************************************************/
     //!SECTION BACKGROUNDS--START
     --bgHeaderSectionAbout: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%),
-        url('../img/pagina/graffiti-background-1554703550MY5.jpg') center no-repeat fixed;
+        url('../img/backgrounds/graffiti-background-1554703550MY5.jpg') center no-repeat fixed;
     --bgHeaderSectionServices: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%),
-        url('../img/pagina/pexels-ovan-57690.jpg') center no-repeat fixed;
+        url('../img/backgrounds/pexels-ovan-57690.jpg') center no-repeat fixed;
     --bgHeaderSectionPortfolio: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%),
-        url('../img/pagina/workspace-1280538_1920.jpg') center no-repeat fixed;
-
+        url('../img/backgrounds/workspace-1280538_1920.jpg') center no-repeat fixed;
     --bgHeaderSectionSkills: linear-gradient(var(--bgColor) 10%, hsla(0, 0%, 0%, 0.5), var(--bgColor) 90%),
-        url('../img/pagina/tools-1083796_1920.jpg') center no-repeat fixed;
+        url('../img/backgrounds/tools-1083796_1920.jpg') center no-repeat fixed;
+
+    --bgHeaderSectionContact: linear-gradient(var(--bgColor) 10%, hsla(0, 0%, 0%, 0.5), var(--bgColor) 90%),
+        url('../img/backgrounds/post-letter-2828146_1920.jpg') center no-repeat fixed;
     //!SECTION BACKGROUNDS--OVER
     //! ************************************************************************************************************************ *//
 
@@ -720,7 +729,7 @@ SECTION {
     margin: 2rem 0 2rem;
     -webkit-text-stroke: 1px var(--firstColor);
     color: transparent;
-    font-size: clamp(2.5rem, calc(1.5rem + 1.5vw), 4rem);
+    font-size: var(--fontSizeXClamp);
 }
 .subtitle_section {
     @include flex(center, center);
@@ -729,7 +738,7 @@ SECTION {
     margin: 4rem 0 2rem;
     color: var(--firstColor);
     font-weight: var(--fontWeightN);
-    font-size: clamp(2rem, calc(1.5rem + 0.5vw), 2.2rem);
+    font-size: var(--fontSizeMClamp);
 }
 .title_subsection {
     @include flex(center, center);
@@ -738,7 +747,7 @@ SECTION {
     margin: 1rem 0 0.5rem;
     color: var(--textColor);
     font-weight: var(--fontWeightN);
-    font-size: clamp(1.2rem, calc(1.2rem + 0.5vw), 1.8rem);
+    font-size: var(--fontSizeSClamp);
 }
 BUTTON {
     padding: 0;
@@ -756,7 +765,7 @@ BUTTON {
     border-radius: var(--borderRadius);
     text-align: center;
     cursor: pointer;
-    transition: var(--transitionBtn);
+    transition: var(--transitionUF);
     h3 {
         font-weight: var(--fontWeightN);
         font-size: var(--fontSizeS);
@@ -785,6 +794,10 @@ BUTTON {
     border-color: var(--firstColor);
     background: var(--firstColor);
 }
+.btn_lebel {
+    font-size: var(--fontSizeS);
+    font-weight: var(--fontWeightN);
+}
 //^^ BASIC BUTTON OVER
 //^^CLOSE BTN OVER
 .btn_theme,
@@ -793,7 +806,7 @@ BUTTON {
     width: 3rem;
     height: 3rem;
     padding: 0.5rem;
-    transition: var(--transitionBtn);
+    transition: var(--transitionUF);
 }
 //^^CLOSE BTN OVER
 //^^BTNS SECTION ACTIVE--START
@@ -817,12 +830,15 @@ BUTTON {
     padding: 1rem;
     font-size: var(--fontSizeS);
     font-weight: var(--fontWeightN);
-    text-decoration: underline;
     text-align: center;
     cursor: pointer;
-}
-.btn_link:focus {
-    border: dotted 1px white;
+    .footer_menu_icon_svg {
+        width: 1.75rem;
+        height: 100%;
+        .cls-1 {
+            fill: var(--textColor);
+        }
+    }
 }
 //^^BTN LINK--OVER
 //^^ *************************************************************************************************** *//
@@ -915,10 +931,6 @@ BUTTON {
             text-align: center;
             cursor: pointer;
         }
-
-        .btn_link:focus {
-            border: dotted 1px white;
-        }
     }
     .description_modal {
         font-size: var(--fontSizeS);
@@ -960,7 +972,7 @@ BUTTON {
     width: 3rem;
     z-index: var(--zIndexMenu);
 
-    #contact_menu_btn {
+    #menu_social_btn {
         background: var(--navbarColor);
         border-radius: var(--borderRadius);
         padding: 0.75rem;
@@ -969,16 +981,16 @@ BUTTON {
         cursor: pointer;
         .social_icon_svg {
             pointer-events: none;
-            transition: var(--transitionBtn);
+            transition: var(--transitionUF);
         }
     }
-    #contact_menu_btn:hover,
-    #contact_menu_btn:focus {
+    #menu_social_btn:hover,
+    #menu_social_btn:focus {
         .social_icon_svg {
             transform: scale(1.2);
         }
     }
-    #contact_menu_btn:active {
+    #menu_social_btn:active {
         background: var(--firstColor);
         .social_icon_svg {
             .cls-1 {
@@ -1009,7 +1021,7 @@ BUTTON {
         width: 100%;
         padding: 0.75rem;
         cursor: pointer;
-        transition: var(--transitionBtn);
+        transition: var(--transitionUF);
         .social_icon_svg {
             height: auto;
             width: 100%;
@@ -1049,13 +1061,9 @@ BUTTON {
         @include flex(center, center);
         width: 100%;
         height: auto;
-        transition: var(--transitionBtn);
+        transition: var(--transitionUF);
         color: var(--textColor);
         cursor: pointer;
-        .btn_lebel {
-            font-size: var(--fontSizeS);
-            font-weight: var(--fontWeightN);
-        }
     }
     //^^ GENERAL BTN CONFIG--OVER
     //^^ *************************************************************** *//
@@ -1076,7 +1084,7 @@ BUTTON {
             .social_icon_svg {
                 height: 100%;
                 width: auto;
-                transition: var(--transitionBtn);
+                transition: var(--transitionUF);
             }
         }
         .btn_menu_social:hover,
@@ -1122,7 +1130,7 @@ BUTTON {
         height: auto;
         .extra_btn_menu {
             @include flex(center, center);
-            transition: var(--transitionBtn);
+            transition: var(--transitionUF);
             cursor: pointer;
         }
         .extra_btn_menu:hover,
@@ -1154,7 +1162,7 @@ BUTTON {
     width: 100%;
     background: var(--navbarColor);
     z-index: var(--zIndexNav);
-    transition: var(--transitionFast);
+    transition: var(--transitionUF);
     .nav_content {
         height: 100%;
         width: var(--widthClamp);
@@ -1190,7 +1198,7 @@ BUTTON {
         #logo_nav_btn:active {
             animation: zoom 1s ease;
         }
-        #btn_menu_container {
+        #btn_menu_slider {
             @include flexDirection(column, center, center);
             display: none;
             width: 7rem;
@@ -1222,9 +1230,9 @@ BUTTON {
                 }
             }
         }
-        #btn_menu_container:hover,
-        #btn_menu_container:focus,
-        #btn_menu_container:active {
+        #btn_menu_slider:hover,
+        #btn_menu_slider:focus,
+        #btn_menu_slider:active {
             #menu_btn {
                 #top_bar_btn,
                 #center_bar_btn,
@@ -1232,7 +1240,7 @@ BUTTON {
                     width: 2rem;
                 }
 
-                transition: var(--transitionBtn);
+                transition: var(--transitionUF);
                 transform: scale(0.9);
             }
         }
@@ -1248,10 +1256,7 @@ BUTTON {
                 padding: 0 1.5rem;
                 border-top: solid 5px transparent;
                 color: var(--textColor);
-                .btn_lebel {
-                    font-size: var(--fontSizeS);
-                    font-weight: var(--fontWeightN);
-                }
+                cursor: pointer;
 
                 .nav_menu_icon_svg {
                     width: 3rem;
@@ -1550,7 +1555,7 @@ BUTTON {
         @include flexDirection(row, center, center);
         flex-wrap: wrap;
         min-height: 30rem;
-        width: 100%;
+        width: var(--widthClamp);
     }
 }
 //&TEMPLATE STYLE--START
@@ -1561,7 +1566,7 @@ BUTTON {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    transition: var(--transitionBtn);
+    transition: var(--transitionUF);
     z-index: var(--zIndexStart);
     .project_info {
         @include flexDirection(column, center, center);
@@ -1772,75 +1777,54 @@ BUTTON {
 //! ******************************************************************** *//
 //!CONTACT SECTION--START
 #contact_section {
-    @include flex(flex-start, center);
     #contact_content {
+        @include flexDirection(column, flex-start, center);
         #header_section_contact {
             position: relative;
-            background: var(--bgHeaderSectionSkills);
+            background: var(--bgHeaderSectionContact);
             @include flexDirection(column, flex-start, center);
-        }
-    }
-    .form_container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        @include flexDirection(column, flex-start, flex-start);
+            .form_container {
+                @include flexDirection(column, flex-start, flex-start);
+                height: fit-content;
+                background: var(--navbarColor);
+                width: clamp(300px, 800px, 90%);
+                padding: 1rem 1.5rem 2rem;
 
-        height: fit-content;
-        background: var(--navbarColor);
-        width: clamp(300px, 800px, 90%);
-        padding: 1rem 1.5rem 2rem;
-        .close_btn {
-            position: absolute;
-            right: 0;
-            top: 0;
-            padding: 0.5rem;
-        }
-        .close_btn:hover,
-        .close_btn:focus,
-        .close_btn:active {
-            background: var(--firstColor);
-
-            .close_icon_svg {
-                .cls-1 {
-                    fill: var(--textContrastColor);
+                .contact_info {
+                    width: 100%;
+                    height: fit-content;
+                    margin-bottom: 1rem;
                 }
-            }
-        }
-        .modal_info {
-            width: 100%;
-            height: fit-content;
-            margin-bottom: 1rem;
-        }
-        .modal_form {
-            width: 100%;
-            height: auto;
-            LABEL {
-                @include flex(flex-start, center);
-                display: block;
-                width: 100%;
-                padding: 0.5rem 0;
-                font-weight: var(--fontWeightB);
-                font-size: var(--fontSizeS);
-            }
-            INPUT {
-                display: block;
-                width: 100%;
-                border: none;
-                padding: 0.5rem 1rem;
-                margin-bottom: 1rem;
-                background: var(--bgColor);
-            }
-            INPUT:focus {
-                outline: none;
-                background: var(--bgOff);
-            }
-            INPUT::placeholder {
-                color: var(--textColor);
-            }
-            BUTTON {
-                width: 100%;
+                .contact_form {
+                    width: 100%;
+                    height: auto;
+                    LABEL {
+                        @include flex(flex-start, center);
+                        display: block;
+                        width: 100%;
+                        padding: 0.5rem 0;
+                        font-weight: var(--fontWeightB);
+                        font-size: var(--fontSizeS);
+                    }
+                    INPUT {
+                        display: block;
+                        width: 100%;
+                        border: none;
+                        padding: 0.5rem 1rem;
+                        margin-bottom: 1rem;
+                        background: var(--bgColor);
+                    }
+                    INPUT:focus {
+                        outline: none;
+                        background: var(--bgOff);
+                    }
+                    INPUT::placeholder {
+                        color: var(--textColor);
+                    }
+                    BUTTON {
+                        width: 100%;
+                    }
+                }
             }
         }
     }
@@ -1850,13 +1834,13 @@ BUTTON {
 //!FOOTER-- START
 #legals_section {
     position: relative;
-    @include flexDirection(column, center, center);
+    @include flexDirection(column, flex-start, center);
     width: 100%;
     min-height: fit-content;
     background: var(--firstColor);
     color: var(--textContrastColor);
     text-align: center;
-    padding: 4rem 0;
+    padding: 4rem 0 0;
     .title_footer {
         height: auto;
         width: auto;
@@ -1869,7 +1853,6 @@ BUTTON {
         width: var(--widthClamp);
         height: auto;
         padding: 1rem;
-        margin-bottom: 4rem;
         .tech_logo_container {
             @include flex(center, center);
             width: 8rem;
@@ -1892,22 +1875,78 @@ BUTTON {
             animation: zoom 1000ms ease-out;
         }
     }
-    #footer_btns_container {
-        @include flexDirection(row, center, center);
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        border-radius: 1rem 1rem 0 0;
-        padding: 0.5rem 2rem;
-        background: var(--bgColor);
-        .btn_link {
-            color: var(--textColor);
-            text-decoration: none;
-            transition: color 200ms ease;
+
+    #menu_legals_container {
+        @include flexDirection(column, flex-start, center);
+        width: 100%;
+        height: fit-content;
+        .subtitle_footer {
+            @include flex(center, center);
+            text-align: center;
+            width: 100%;
+            margin: 2rem 0 0.5rem;
+            color: var(--textContrastColor);
+            font-weight: var(--fontWeightN);
+            font-size: var(--fontSizeSClamp);
         }
-        .btn_link:hover {
-            color: var(--secondColor);
+        #menu_legals_btns_container {
+            @include flexDirection(row, center, center);
+            border-radius: 1rem 1rem 0 0;
+            background: var(--bgColor);
+            overflow: hidden;
+            height: fit-content;
+            width: fit-content;
+            .btn_link {
+                color: var(--textColor);
+                transition: color 200ms ease;
+            }
+            .btn_link:hover {
+                background: var(--secondColorHover);
+                .btn_lebel {
+                    color: var(--textContrastColor);
+                }
+                .footer_menu_icon_svg {
+                    .cls-1 {
+                        fill: var(--textContrastColor);
+                    }
+                }
+            }
+            .btn_link:active,
+            .btn_link:focus {
+                background: var(--secondColor);
+                .btn_lebel {
+                    color: var(--textContrastColor);
+                }
+                .footer_menu_icon_svg {
+                    .cls-1 {
+                        fill: var(--textContrastColor);
+                    }
+                }
+            }
+        }
+        #made_container {
+            @include flex(center, center);
+            width: 100%;
+            height: fit-content;
+            background: var(--secondColor);
+            padding: 1rem 0;
+            #made_content {
+                @include flexDirection(column, center, center);
+
+                color: var(--textColor);
+                row-gap: 0.5rem;
+                column-gap: 0.5rem;
+                flex-wrap: wrap;
+                font-weight: var(--fontWeightN);
+                font-size: var(--fontSizeNClamp);
+                width: var(--widthClamp);
+                .heart_icon {
+                    color: var(--firstColor);
+                }
+                .link_text {
+                    color: var(--firstColor);
+                }
+            }
         }
     }
 }

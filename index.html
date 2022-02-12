@@ -56,11 +56,99 @@
                 You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.
             </p>
         <![endif]-->
+        <!--!MODALS START -->
+        <!--^^FIRST MESSAGE MODAL--START -->
+        <div class="modal" id="storage_alert_modal">
+            <h1 class="title_modal">Aviso de uso de datos</h1>
+            <div class="modal_info">
+                <p class="description_modal">Esta pagina no utiliza cookies ni ninguno de sus datos</p>
+                <div class="btn_container">
+                    <button type="button" class="btn_link btn_link_legal">Avisos legales</button>
+                </div>
+            </div>
+            <button type="button" class="btn more_btn" id="storage_alert_modal_accept_btn">Aceptar</button>
+        </div>
+        <!--^^FIRST MESSAGE MODAL-- OVER -->
+        <!--^^ ******************************************************-->
+        <!--^^LEGAL MODAL--START-->
+        <div class="modal" id="legal_modal">
+            <button class="close_btn close_modal_btn" id="modal_legal_close_btn">
+                <svg class="close_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 25 25">
+                    <title>Close</title>
+                    <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(12.5 -5.18) rotate(45)" />
+                    <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(30.18 12.5) rotate(135)" />
+                </svg>
+            </button>
+            <div class="modal_header">
+                <h1 class="title_modal">Aviso Legal</h1>
+                <h2>Avisos legales y articulos que mas aderlante incluire:</h2>
+            </div>
+            <div class="modal_info" id="modal_info_legal">
+                <p class="description_modal">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sequi, magnam corrupti sed delectus odit tempore saepe nam
+                    asperiores enim, porro quod placeat qui sunt omnis deserunt nemo cupiditate. Soluta! Omnis illum voluptatibus veniam officiis
+                    commodi quisquam odio dolorum similique eum incidunt? Dolores vel perspiciatis veritatis, similique quis soluta, tempora ab maxime
+                    sit dolore minus ullam sunt aliquam, voluptatum numquam? Iure velit saepe perspiciatis incidunt optio facere quasi, repudiandae
+                    aspernatur? Quibusdam dolore tenetur distinctio ullam dicta dolores provident inventore cum repudiandae cupiditate, rerum rem
+                    magni alias assumenda corrupti, odit molestiae. Ab quis dicta delectus, natus voluptatum illum ex itaque assumenda animi officia
+                    dolorem quisquam sapiente molestias ipsa minima cumque, culpa molestiae magnam consequuntur possimus. Magnam illo nisi
+                    reprehenderit id voluptas! Ratione aliquid quo odio, dignissimos alias consequatur consequuntur neque ullam amet! Ad asperiores
+                    dolorem nostrum vitae dolore autem laudantium iusto unde totam voluptatem ipsam repellendus, perspiciatis, sequi obcaecati quia
+                    aperiam. Neque, qui atque nesciunt voluptas ad tempore velit asperiores harum temporibus repellat enim doloremque, fugiat
+                    similique inventore exercitationem minima consequuntur numquam culpa voluptatem ut eius? Sequi quo doloribus dolores cum. Quis
+                    sequi laborum cupiditate fugiat, repudiandae veniam maxime debitis, repellat repellendus praesentium similique corrupti modi. Ea
+                    ipsam tempora consequatur odit! Blanditiis autem et odio in excepturi officiis, cum inventore perspiciatis! Eligendi rem vero
+                    suscipit, dignissimos ullam consequuntur, laborum et non aspernatur doloribus voluptatum hic obcaecati. Eum magnam a soluta
+                    doloribus nam quae voluptate, velit quisquam doloremque odit rerum, ad totam? Sequi quidem doloremque quia voluptate adipisci
+                    eaque pariatur minus, eligendi, facere similique, provident ad soluta fugiat. Voluptatem hic pariatur, delectus enim distinctio
+                    eos! Fuga quos facilis recusandae fugit reprehenderit delectus. Animi eos eveniet atque libero quo quisquam officia, ducimus neque
+                    suscipit similique aliquid velit enim, recusandae voluptatibus laborum obcaecati. Maiores aut quae architecto molestiae quisquam
+                    nemo odio est soluta ut!
+                </p>
+                <div class="btn_container">
+                    <button type="button" class="btn more_btn" id="legal_modal_accept_btn">Aceptar</button>
+                </div>
+            </div>
+        </div>
+        <!--^^LEGAL MODAL--OVER-->
+        <!--^^ ******************************************************-->
+        <!--^^CONTACT MODAL-- START-->
+        <div class="modal" id="contact_modal">
+            <button class="close_btn close_modal_btn" id="modal_form_close_btn">
+                <svg class="close_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 25 25">
+                    <title>Close</title>
+                    <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(12.5 -5.18) rotate(45)" />
+                    <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(30.18 12.5) rotate(135)" />
+                </svg>
+            </button>
+            <h1 class="title_modal">¿Quieres contactarme?</h1>
+            <div class="modal_info" id="modal_info_contact_form">
+                <p class="description_modal">
+                    Si quisieras contactarte conmigo para hablar sobre alguna idea para trabajar juntos, con el siguiente formulario puedes mandarme
+                    tu propuesta
+                </p>
+            </div>
+            <form class="modal_form" id="modal_contact_form">
+                <label for="name_input">Nombre </label>
+                <input type="text" placeholder="Coloca tu nombre" name="name_input" required />
 
+                <label for="issue_input">Asunto </label>
+                <input type="text" placeholder="Coloca el asunto" name="issue_input" required />
+
+                <label for="email_input">Correo </label>
+                <input type="email" placeholder="Coloca tu Correo" name="email_input" required />
+
+                <button type="submit" class="btn send_btn" id="contact_form_send_btn">Enviar</button>
+            </form>
+        </div>
+        <!--^^CONTACT MODAL-- OVER-->
+        <!--^^ ******************************************************-->
+        <!--!MODALS OVER -->
+        <!--! ******************************************************-->
         <!--!MENUS STATIC STICKY--START -->
-        <!--~~SOCIAL MENU CONTAINER-- START-->
+        <!--^^SOCIAL MENU CONTAINER-- START-->
         <div id="menu_social_container">
-            <button id="contact_menu_btn">
+            <button id="menu_social_btn">
                 <svg
                     class="social_icon_svg conection_icon_svg"
                     data-name="social_icon_svg"
@@ -168,7 +256,7 @@
                         xmlns:xlink="http://www.w3.org/1999/xlink"
                         viewBox="0 0 25 18"
                     >
-                        <title>Contact</title>
+                        <title>Contacto</title>
                         <polygon class="cls-1" points="12.5 10.42 0 0 25 0 12.5 10.42" />
                         <polygon class="cls-1" points="16.05 9.06 25 16.79 25 1.6 16.05 9.06" />
                         <polygon class="cls-1" points="0 1.6 0 16.79 8.96 9.06 0 1.6" />
@@ -177,9 +265,9 @@
                 </button>
             </div>
         </div>
-        <!--~~SOCIAL MENU CONTAINER-- OVER-->
-        <!--~~ ******************************************************-->
-        <!--~~MENU LINKS CONTAINER-- START-->
+        <!--^^SOCIAL MENU CONTAINER-- OVER-->
+        <!--^^ ******************************************************-->
+        <!--^^MENU LINKS CONTAINER-- START-->
         <div id="menu_container">
             <!--~SOCIAL BTNS CONTAINER--START-->
             <div id="social_btns_container">
@@ -273,7 +361,7 @@
                         xmlns:xlink="http://www.w3.org/1999/xlink"
                         viewBox="0 0 25 18"
                     >
-                        <title>Contact</title>
+                        <title>Contact0</title>
                         <polygon class="cls-1" points="12.5 10.42 0 0 25 0 12.5 10.42" />
                         <polygon class="cls-1" points="16.05 9.06 25 16.79 25 1.6 16.05 9.06" />
                         <polygon class="cls-1" points="0 1.6 0 16.79 8.96 9.06 0 1.6" />
@@ -297,17 +385,20 @@
                     <h3 class="btn_lebel">Portafolio</h3>
                 </button>
                 <button class="btn_menu btn_menu_section btn_section" id="skills_btn_menu" name="skills_section">
-                    <h3 class="btn_lebel">Habilidades</h3>
+                    <h3 class="btn_lebel">Conocimientos</h3>
                 </button>
                 <button class="btn_menu btn_menu_section btn_section" id="clients_btn_menu" name="clients_section">
                     <h3 class="btn_lebel">Clientes</h3>
+                </button>
+                <button class="btn_menu btn_menu_section btn_section" id="contact_btn_menu" name="contact_section">
+                    <h3 class="btn_lebel">Contactame</h3>
                 </button>
             </div>
             <!--~NAV BTNS CONTAINER--OVER-->
             <!--~EXTRA BTNS CONTAINER--START-->
             <div id="extra_btns_container">
                 <button class="extra_btn_menu btn_theme" id="change_theme_btn_menu"></button>
-                <button class="extra_btn_menu close_btn" id="nav_menu_close_btn">
+                <button class="extra_btn_menu close_btn" id="menu_container_close_btn">
                     <svg class="close_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 25 25">
                         <title>Close</title>
                         <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(12.5 -5.18) rotate(45)" />
@@ -317,10 +408,9 @@
             </div>
             <!--~EXTRA BTNS CONTAINER--OVER-->
         </div>
-        <!--~~MENU LINKS CONTAINER-- OVER-->
-        <!--~~ ******************************************************-->
+        <!--^^MENU LINKS CONTAINER-- OVER-->
+        <!--^^ ******************************************************-->
         <!--!MENUS STATIC STICKY--OVER -->
-
         <!--^^HERO SECTION-- START-->
         <header class="section" id="hero_section">
             <!--~SECTION CONTENT-- START-->
@@ -405,7 +495,7 @@
                         </g>
                     </svg>
                 </button>
-                <button id="btn_menu_container">
+                <button id="btn_menu_slider">
                     <span class="btn_menu_text">Ménu</span>
                     <div id="menu_btn">
                         <div class="bar_btn" id="top_bar_btn"></div>
@@ -426,29 +516,16 @@
                     <button class="btn_nav btn_section" id="portfolio_btn_nav" name="portfolio_section" data-lebel="Portafolio">
                         <h3 class="btn_lebel">Portafolio</h3>
                     </button>
-                    <button class="btn_nav btn_section" id="skills_btn_nav" name="skills_section" data-lebel="Habilidades">
-                        <h3 class="btn_lebel">Habilidades</h3>
+                    <button class="btn_nav btn_section" id="skills_btn_nav" name="skills_section" data-lebel="Conocimientos">
+                        <h3 class="btn_lebel">Conocimientos</h3>
                     </button>
                     <button class="btn_nav btn_section" id="clients_btn_nav" name="clients_section" data-lebel="Clientes">
                         <h3 class="btn_lebel">Clientes</h3>
                     </button>
-
-                    <button class="btn_nav btn_theme" id="change_theme_btn_nav"></button>
-                    <button class="btn_nav contact_btn" id="contact_btn_nav">
-                        <svg
-                            class="social_icon_svg contact_icon_svg"
-                            data-name="contact_icon_svg"
-                            xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                            viewBox="0 0 25 18"
-                        >
-                            <title>Contact</title>
-                            <polygon class="cls-1" points="12.5 10.42 0 0 25 0 12.5 10.42" />
-                            <polygon class="cls-1" points="16.05 9.06 25 16.79 25 1.6 16.05 9.06" />
-                            <polygon class="cls-1" points="0 1.6 0 16.79 8.96 9.06 0 1.6" />
-                            <polygon class="cls-1" points="15.3 9.68 12.5 12.02 9.7 9.68 0 18 25 18 15.3 9.68" />
-                        </svg>
+                    <button class="btn_nav btn_section" id="contact_btn_nav" name="contact_section" data-lebel="Contactame">
+                        <h3 class="btn_lebel">Contactame</h3>
                     </button>
+                    <button class="btn_nav btn_theme" id="change_theme_btn_nav"></button>
                 </div>
             </div>
             <!--~NAV CONTENT--OVER-->
@@ -575,16 +652,15 @@
             <div class="section_content" id="skills_content">
                 <div class="header_section" id="header_section_skills">
                     <div class="swipe_animation_container_full">
-                        <h1 class="title_section animation_up" id="title_skills">Habilidades</h1>
+                        <h1 class="title_section animation_up" id="title_skills">Conocimientos</h1>
                     </div>
                 </div>
-
                 <!--&SKILLS CONTAINERS-- START-->
                 <div class="skills_containers">
                     <div class="swipe_animation_container_half">
                         <!--!DESIGN SKILLS CONTAINER--START-->
                         <div class="skills_container animation_up" id="design_skills_container">
-                            <h2 class="title_subsection" id="skills_design_subtitle">Diseñador</h2>
+                            <h2 class="title_subsection" id="skills_design_subtitle">Diseño</h2>
                             <!--~~SKILLS ICONS CONTAINER-- START-->
 
                             <div class="skills_icons_container">
@@ -739,7 +815,7 @@
                     <div class="swipe_animation_container_half">
                         <!--!DEV SKILLS CONTAINER--START-->
                         <div class="skills_container animation_up" id="dev_skills_container">
-                            <h2 class="title_subsection" id="skills_dev_subtitle">Desarrollador</h2>
+                            <h2 class="title_subsection" id="skills_dev_subtitle">Desarrollo</h2>
                             <!--~~SKILLS ICONS CONTAINER-- START-->
                             <div class="skills_icons_container">
                                 <!--*SKILLS ICON--START-->
@@ -1952,8 +2028,41 @@
         </section>
         <!--^^CLIENTS SECTION-- OVER-->
         <!--^^ ******************************************************-->
+        <!--^^CONTACT SECTION--START-->
+        <section class="section" id="contact_section">
+            <div class="section_content" id="contact_content">
+                <div class="header_section" id="header_section_contact">
+                    <div class="swipe_animation_container_full">
+                        <h1 class="title_section animation_up" id="title_contact">Contactame</h1>
+                    </div>
+                    <div class="form_info">
+                        <h2 class="subtitle_section">¿Quieres contactarme?</h1>
+                            <p class="description_modal">
+                                Si quisieras contactarte conmigo para hablar sobre alguna idea para trabajar juntos, con el siguiente formulario
+                                puedes mandarme tu propuesta
+                            </p>
+                    </div>
+                    <div class="form_container">
+                        <form class="contact_form" id="contact_form_contact_section">
+                            <label for="name_input">Nombre </label>
+                            <input type="text" placeholder="Coloca tu nombre" name="name_input" />
+
+                            <label for="issue_input">Asunto </label>
+                            <input type="text" placeholder="Coloca el asunto" name="issue_input" required />
+
+                            <label for="email_input">Correo </label>
+                            <input type="email" placeholder="Coloca tu Correo" name="email_input" required />
+
+                            <button type="submit" class="btn send_btn" id="contact_form_contact_section_send_btn">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--^^CONTACT SECTION-- OVER-->
+        <!--^^ ******************************************************-->
         <!--^^FOOTER-- START-->
-        <footer class="section" id="legals_section">
+        <footer id="legals_section">
             <div class="swipe_animation_container_full">
                 <h1 class="title_footer animation_up" id="title_footer_id">Página realizada con:</h1>
             </div>
@@ -2100,102 +2209,22 @@
                     </svg>
                 </div>
             </div>
-            <div id="footer_btns_container">
-                <button type="button" class="btn_link btn_link_legal">Avisos legales</button>
-                <button type="button" class="btn_link btn_link_data">Uso de datos</button>
+            <div id="menu_legals_container">
+                <h2 class="subtitle_footer">Avisos</h2>
+                <div id="menu_legals_btns_container">
+                    <button type="button" class="btn_link btn_link_legal" id="btn_legal_legals">Legales</button>
+                    <button type="button" class="btn_link btn_link_data" id="btn_data_legals">Uso de datos</button>
+                </div>
+                <div id="made_container">
+                    <div id="made_content">
+                        <p>Diseñado & programado con <span class="heart_icon">❤</span> por:</p>
+                        <p class="link_text">@JohnKrazy</p>
+                    </div>
+                </div>
             </div>
         </footer>
         <!--^^FOOTER-- OVER-->
         <!--^^ ******************************************************-->
-        <!--!MODALS START -->
-        <!--^^FIRST MESSAGE MODAL--START -->
-        <div class="modal" id="storage_alert_modal">
-            <h1 class="title_modal">Aviso de uso de datos</h1>
-            <div class="modal_info">
-                <p class="description_modal">Esta pagina no utiliza cookies ni ninguno de sus datos</p>
-                <div class="btn_container">
-                    <button type="button" class="btn_link btn_link_legal">Avisos legales</button>
-                </div>
-            </div>
-            <button type="button" class="btn more_btn" id="storage_alert_modal_accept_btn">Aceptar</button>
-        </div>
-        <!--^^FIRST MESSAGE MODAL-- OVER -->
-        <!--^^ ******************************************************-->
-        <!--^^LEGAL MODAL--START-->
-        <div class="modal" id="legal_modal">
-            <button class="close_btn close_modal_btn" id="modal_legal_close_btn">
-                <svg class="close_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 25 25">
-                    <title>Close</title>
-                    <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(12.5 -5.18) rotate(45)" />
-                    <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(30.18 12.5) rotate(135)" />
-                </svg>
-            </button>
-            <div class="modal_header">
-                <h1 class="title_modal">Aviso Legal</h1>
-                <h2>Avisos legales y articulos que mas aderlante incluire:</h2>
-            </div>
-            <div class="modal_info" id="modal_info_legal">
-                <p class="description_modal">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sequi, magnam corrupti sed delectus odit tempore saepe nam
-                    asperiores enim, porro quod placeat qui sunt omnis deserunt nemo cupiditate. Soluta! Omnis illum voluptatibus veniam officiis
-                    commodi quisquam odio dolorum similique eum incidunt? Dolores vel perspiciatis veritatis, similique quis soluta, tempora ab maxime
-                    sit dolore minus ullam sunt aliquam, voluptatum numquam? Iure velit saepe perspiciatis incidunt optio facere quasi, repudiandae
-                    aspernatur? Quibusdam dolore tenetur distinctio ullam dicta dolores provident inventore cum repudiandae cupiditate, rerum rem
-                    magni alias assumenda corrupti, odit molestiae. Ab quis dicta delectus, natus voluptatum illum ex itaque assumenda animi officia
-                    dolorem quisquam sapiente molestias ipsa minima cumque, culpa molestiae magnam consequuntur possimus. Magnam illo nisi
-                    reprehenderit id voluptas! Ratione aliquid quo odio, dignissimos alias consequatur consequuntur neque ullam amet! Ad asperiores
-                    dolorem nostrum vitae dolore autem laudantium iusto unde totam voluptatem ipsam repellendus, perspiciatis, sequi obcaecati quia
-                    aperiam. Neque, qui atque nesciunt voluptas ad tempore velit asperiores harum temporibus repellat enim doloremque, fugiat
-                    similique inventore exercitationem minima consequuntur numquam culpa voluptatem ut eius? Sequi quo doloribus dolores cum. Quis
-                    sequi laborum cupiditate fugiat, repudiandae veniam maxime debitis, repellat repellendus praesentium similique corrupti modi. Ea
-                    ipsam tempora consequatur odit! Blanditiis autem et odio in excepturi officiis, cum inventore perspiciatis! Eligendi rem vero
-                    suscipit, dignissimos ullam consequuntur, laborum et non aspernatur doloribus voluptatum hic obcaecati. Eum magnam a soluta
-                    doloribus nam quae voluptate, velit quisquam doloremque odit rerum, ad totam? Sequi quidem doloremque quia voluptate adipisci
-                    eaque pariatur minus, eligendi, facere similique, provident ad soluta fugiat. Voluptatem hic pariatur, delectus enim distinctio
-                    eos! Fuga quos facilis recusandae fugit reprehenderit delectus. Animi eos eveniet atque libero quo quisquam officia, ducimus neque
-                    suscipit similique aliquid velit enim, recusandae voluptatibus laborum obcaecati. Maiores aut quae architecto molestiae quisquam
-                    nemo odio est soluta ut!
-                </p>
-                <div class="btn_container">
-                    <button type="button" class="btn more_btn" id="legal_modal_accept_btn">Aceptar</button>
-                </div>
-            </div>
-        </div>
-        <!--^^LEGAL MODAL--OVER-->
-        <!--^^ ******************************************************-->
-        <!--^^CONTACT MODAL-- START-->
-        <div class="modal" id="contact_modal">
-            <button class="close_btn close_modal_btn" id="modal_form_close_btn">
-                <svg class="close_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 25 25">
-                    <title>Close</title>
-                    <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(12.5 -5.18) rotate(45)" />
-                    <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(30.18 12.5) rotate(135)" />
-                </svg>
-            </button>
-            <h1 class="title_modal">¿Quieres contactarme?</h1>
-            <div class="modal_info" id="modal_info_contact_form">
-                <p class="description_modal">
-                    Si quisieras contactarte conmigo para hablar sobre alguna idea para trabajar juntos, con el siguiente formulario puedes mandarme
-                    tu propuesta
-                </p>
-            </div>
-            <form class="modal_form" id="modal_contact_form">
-                <label for="name_input">Nombre </label>
-                <input type="text" placeholder="Coloca tu nombre" name="name_input" required />
-
-                <label for="issue_input">Asunto </label>
-                <input type="text" placeholder="Coloca el asunto" name="issue_input" required />
-
-                <label for="email_input">Correo </label>
-                <input type="email" placeholder="Coloca tu Correo" name="email_input" required />
-
-                <button type="submit" class="btn send_btn" id="contact_form_send_btn">Enviar</button>
-            </form>
-        </div>
-        <!--^^CONTACT MODAL-- OVER-->
-        <!--^^ ******************************************************-->
-        <!--!MODALS OVER -->
-        <!--! ******************************************************-->
         <!--!EXTRAS START-->
         <!--^^SOUDS START-->
         <!-- <audio id="menu_open_sound">

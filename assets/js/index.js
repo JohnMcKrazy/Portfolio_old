@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    //! *********************************************************************************************************** *//
     //!TEMPLATE CONSTANTS
     //^^ *********************************************************************************************************** *//
     //^^PROJECT CARD TEMPLATE CONSTANTS
@@ -25,37 +24,87 @@ document.addEventListener('DOMContentLoaded', () => {
     //!GENERAL CONSTANTS --START
     const htmlLebel = document.documentElement;
     const body = document.querySelector('BODY');
-    const nav = document.querySelector('.nav');
-    const btnLogo = document.querySelector('#logo_nav_btn');
-    const btnThemeMenu = document.querySelector('#change_theme_btn_menu');
-    const btnThemeNav = document.querySelector('#change_theme_btn_nav');
-    const btnsTheme = document.querySelectorAll('.btn_theme');
-    const menuContainer = document.querySelector('#menu_container');
-    const closeMenuBtn = document.querySelector('#nav_menu_close_btn');
-    const btnsMenu = document.querySelectorAll('.btn_menu');
-    const btnsNav = document.querySelectorAll('.btn_nav');
     const btnsSection = document.querySelectorAll('.btn_section');
-    const sendBtnFormModal = document.querySelector('#contact_form_send_btn');
     const btnsContact = document.querySelectorAll('.contact_btn');
+    const btnsTheme = document.querySelectorAll('.btn_theme');
+    const sections = document.querySelectorAll('.section');
+    const legalBtns = document.querySelectorAll('.btn_link_legal');
+    const dataBtns = document.querySelectorAll('.btn_link_data');
+    //* ******************************************************************************************************* *//
+    //*CONTAINERS WITH ANIMATION FUNCTIONS--START
+    const swipeAnimationContainersFull = document.querySelectorAll('.swipe_animation_container_full');
+    const swipeAnimationContainersHalf = document.querySelectorAll('.swipe_animation_container_half');
+    //*CONTAINERS WITH ANIMATION FUNCTIONS--OVER
+    //* ******************************************************************************************************* *//
+    //^^MODALS--START
+    //&STORAGE MODAL--START
     const storageAlertModal = document.querySelector('#storage_alert_modal');
     const acceptBtnStorageWarningBtn = document.querySelector('#storage_alert_modal_accept_btn');
+    //&STORAGE MODAL--OVER
+    //& ******************************************************************************************************* *//
+    //&CONTACT MODAL--START
+    const sendBtnFormModal = document.querySelector('#contact_form_send_btn');
     const contactModal = document.querySelector('#contact_modal');
     const closeBtnModalContactForm = document.querySelector('#modal_form_close_btn');
     const closeBtnLegalModal = document.querySelector('#modal_legal_close_btn');
-    const btnHeroDown = document.querySelector('#hero_btn_down');
-    const btnsHero = document.querySelectorAll('.btn_hero');
-    const sections = document.querySelectorAll('.section');
-    const btnMenuContainer = document.querySelector('#btn_menu_container');
-    const btnsNavContainer = document.querySelector('#nav_sections_btns_container');
-    const titleSubsectionCardsSearch = document.querySelector('#title_subsection_search_type');
-    const loader = document.querySelector('.loader');
+    //&CONTACT MODAL--OVER
+    //& ******************************************************************************************************* *//
+    //&LEGAL MODAL--START
+    const modalInfoLegal = document.querySelector('#modal_info_legal');
+    const legalModal = document.querySelector('#legal_modal');
+    const legalAccept = document.querySelector('#legal_modal_accept_btn');
+    //&LEGAL MODAL--OVER
+    //& ******************************************************************************************************* *//
+    //^^MODALS--OVER
+    //^^ ******************************************************************************************************* *//
+    //^^MENU CONTENT--START
+    const menuContainer = document.querySelector('#menu_container');
+    const btnsMenu = document.querySelectorAll('.btn_menu');
+    const btnThemeMenu = document.querySelector('#change_theme_btn_menu');
+    const closeMenuBtn = document.querySelector('#menu_container_close_btn');
     const openMenuSound = document.querySelector('#menu_open_sound');
+    //^^MENU CONTENT--OVER
+    //^^ ****************************************************************************************************************** *//
+    //^^MENU SOCIAL--START
     const menuSocialContainer = document.querySelector('#menu_social_container');
-
-    const btnsMenuSocial = document.querySelectorAll('.social_btn');
-    const menuSocialBtn = document.querySelector('#contact_menu_btn');
+    const menuSocialBtn = document.querySelector('#menu_social_btn');
     const menuSocialBtnsContainer = document.querySelector('.menu_social_btns_container');
-
+    const btnsMenuSocial = document.querySelectorAll('.social_btn');
+    //^^MENU SOCIAL--OVER
+    //^^ ****************************************************************************************************************** *//
+    //^^NAV--START
+    const nav = document.querySelector('.nav');
+    const btnMenuContainer = document.querySelector('#btn_menu_slider');
+    const btnsNavContainer = document.querySelector('#nav_sections_btns_container');
+    const btnsNav = document.querySelectorAll('.btn_nav');
+    //&BTN LOGO
+    const btnLogo = document.querySelector('#logo_nav_btn');
+    //&TBN THEME
+    const btnThemeNav = document.querySelector('#change_theme_btn_nav');
+    //&BTN LEBELS
+    const lebelBtnMain = document.querySelector('#main_btn_nav');
+    const lebelBtnAbout = document.querySelector('#about_btn_nav');
+    const lebelBtnSkills = document.querySelector('#skills_btn_nav');
+    const lebelBtnServices = document.querySelector('#services_btn_nav');
+    const lebelBtnPortfolio = document.querySelector('#portfolio_btn_nav');
+    const lebelBtnClients = document.querySelector('#clients_btn_nav');
+    const lebelBtnContact = document.querySelector('#contact_btn_nav');
+    //^^NAV OVER
+    //^^ ****************************************************************************************************************** *//
+    //^^HERO
+    const btnHeroDown = document.querySelector('#hero_btn_down');
+    const heroBtnsContainer = document.querySelector('#hero_btns_container');
+    const btnsHero = document.querySelectorAll('.btn_hero');
+    //^^SERVICES
+    const servicesContainer = document.querySelector('#services_container');
+    const serviceContainer = document.querySelectorAll('.service_container');
+    const serviceCardsLeft = document.querySelectorAll('.service_card_left');
+    const serviceCardsRight = document.querySelectorAll('.service_card_right');
+    //^^SKILLS
+    const skillsContainer = document.querySelector('.skills_containers');
+    const skillsIconsContainers = document.querySelectorAll('.skills_icon_container');
+    //^^PORTFOLIO
+    const titleSubsectionCardsSearch = document.querySelector('#title_subsection_search_type');
     //* ******************************************************************************************************* *//
     //*CONTAINERS WHERE TEMPLATES APPEND--START
     const portfolioHotCardsContainer = document.querySelector('#cards_hot_container');
@@ -63,39 +112,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const porfolioSearchCardsContainer = document.querySelector('#cards_search_container');
     //*CONTAINERS WHERE TEMPLATES APPEND--OVER
     //* ******************************************************************************************************* *//
-    //*CONTAINERS WITH ANIMATION FUNCTIONS--START
-    const swipeAnimationContainersFull = document.querySelectorAll('.swipe_animation_container_full');
-    const swipeAnimationContainersHalf = document.querySelectorAll('.swipe_animation_container_half');
-    //*CONTAINERS WITH ANIMATION FUNCTIONS--OVER
-    //* ******************************************************************************************************* *//
     const loadersContainers = document.querySelectorAll('.loader_container');
     const loaderSearchCardsContainer = document.querySelector('#loader_cards_hot_container');
     const spinnerHotCardsContainer = document.querySelector('#spinner_container_cards_hot');
     const loaderHotCardsContainer = document.querySelector('#loader_cards_search_container');
     const spinnerSearchCardContainer = document.querySelector('#spinner_container_cards_search');
     //* ******************************************************************************************************* *//
-    const skillsContainer = document.querySelector('.skills_containers');
-    const skillsIconsContainers = document.querySelectorAll('.skills_icon_container');
-    const lebelBtnMain = document.querySelector('#main_btn_nav');
-    const lebelBtnAbout = document.querySelector('#about_btn_nav');
-    const lebelBtnSkills = document.querySelector('#skills_btn_nav');
-    const lebelBtnServices = document.querySelector('#services_btn_nav');
-    const lebelBtnPortfolio = document.querySelector('#portfolio_btn_nav');
-    const lebelBtnClients = document.querySelector('#clients_btn_nav');
-    const heroBtnsContainer = document.querySelector('#hero_btns_container');
-
-    const servicesContainer = document.querySelector('#services_container');
-    const serviceContainer = document.querySelectorAll('.service_container');
-    const serviceCardsLeft = document.querySelectorAll('.service_card_left');
-    const serviceCardsRight = document.querySelectorAll('.service_card_right');
     const flagBtns = document.querySelectorAll('.flag_project_btn');
     //* ******************************************************************************************************* *//
-    const legalBtns = document.querySelectorAll('.btn_link_legal');
-    const modalInfoLegal = document.querySelector('#modal_info_legal');
-    const legalModal = document.querySelector('#legal_modal');
-    const legalAccept = document.querySelector('#legal_modal_accept_btn');
+    //^^CLIENTS--START
     const logoClientsContainers = document.querySelectorAll('.client_logo_container');
-    //* ******************************************************************************************************* *//
+    //^^CLIENTS--OVER
+    //^^ ******************************************************************************************************* */
+    //^^LEGALS--START
+    const btnLegalFooter = document.querySelector('#btn_legal_legals');
+    const btnDataFooter = document.querySelector('#btn_data_legals');
+    //^^LEGALS OVER
+    //^^ ******************************************************************************************************* *//
 
     //^FETCH JASON COMPANYS DATA-- START
     const portfolioData = './portfolioDB.json';
@@ -103,6 +136,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ ***********************************************************************************************//
     //!GENERAL CONSTANTS --OVER
     //! ***********************************************************************************************//
+    const es = 'Español';
+    const eng = 'English';
+    let pageLang = es;
     const close = 'close';
     const open = 'open';
     //!GENERAL VARIANTS--START
@@ -116,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let alertStorageModalStatus = open;
     let selectListStatus = close;
     //! ************************************************************************************************************ *//
-
     //! SEARCH LOCAL STORAGE--START
     const localStorageName = 'JohnK_page_storage';
     let storageForJohnKPage = {
@@ -224,46 +259,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
         },
     ];
-    //!OBJECTS--OVER
-    //&PRUEBAS
-    const selectListOpen = () => {
-        const selectionTypesList = document.querySelector('#selection_list_type_of_projects');
-        const arrowSvg = document.querySelector('#arrow_btn_select_list_svg');
-        arrowSvg.style.transform = 'rotate(-180deg)';
-        selectionTypesList.style.height = 'fit-content';
-        selectListStatus = open;
-    };
-    const closeSelectList = () => {
-        const selectionTypesList = document.querySelector('#selection_list_type_of_projects');
-        const arrowSvg = document.querySelector('#arrow_btn_select_list_svg');
-        arrowSvg.style.transform = 'rotate(0)';
-        selectionTypesList.style.height = '3rem';
-        selectListStatus = close;
-    };
-    const btnsListObserve = new MutationObserver(([entry]) => {
-        //*console.log(entry);
-
-        const selectionTypesList = document.querySelector('#selection_list_type_of_projects');
-        const arrowSvg = document.querySelector('#arrow_btn_select_list_svg');
-        const searchListBtn = document.querySelector('#selection_list_search_btn');
-
-        const selectListActions = () => {
-            if (selectListStatus === close) {
-                arrowSvg.style.transform = 'rotate(-180deg)';
-                selectionTypesList.style.height = 'fit-content';
-                selectListStatus = open;
-            } else if (selectListStatus === open) {
-                arrowSvg.style.transform = 'rotate(0)';
-                selectionTypesList.style.height = '3rem';
-                selectListStatus = close;
-            }
-        };
-        searchListBtn.addEventListener('click', selectListActions);
-    });
-    btnsListObserve.observe(searchBtnsContainer, { childList: true });
-    //&PRUEBAS
-    //& ***************************************************************************************** *//
-    //! ************************************************************************************************** *//
     //!GENERAL VARIANTS--OVER
     //! ***********************************************************************************************//
     //!GENERAL START FUNCTIONS-- START
@@ -286,12 +281,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //^CHANGE THEME BY HOUR-- OVER
     //^ ***********************************************************************************************//
-    //^^ADD OBJECT WITH TOOLTIPS INFO--START
-
-    //!SESSION STORAGE--START
-
-    //!SESSION STORAGE--OVER
-    //! ******************************************************************************** /** */
     //^^GENERATE RANDOM ITEM--START
     const randomDataSelector = (arr) => {
         const arrayLenght = arr.length;
@@ -379,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
             //*console.log(typesOfProjects);
-            typesOfProjects.forEach((type) => {
+            typesOfProjects.sort().forEach((type) => {
                 const createID = type.toLowerCase().split(' ').join('_');
                 newID = createID;
                 let newProjectTypeData = new ProjectTypeData(type, newID);
@@ -447,6 +436,42 @@ document.addEventListener('DOMContentLoaded', () => {
     createSelectionTypeBtns();
     //^^FETCH SEARCH SELECTION DATA--OVER
     //^ ************************************************************************* *//
+    //^^SELECT LIST ACTIONS--START
+    //&OPEN SELECT LIST--START
+    const openSelectList = () => {
+        const selectionTypesList = document.querySelector('#selection_list_type_of_projects');
+        const arrowSvg = document.querySelector('#arrow_btn_select_list_svg');
+        arrowSvg.style.transform = 'rotate(-180deg)';
+        selectionTypesList.style.height = 'fit-content';
+        selectListStatus = open;
+    };
+    //&OPEN SELECT LIST--OVER
+    //& ***************************************************************************** *//
+    //&CLOSE SELECT LIST--START
+    const closeSelectList = () => {
+        const selectionTypesList = document.querySelector('#selection_list_type_of_projects');
+        const arrowSvg = document.querySelector('#arrow_btn_select_list_svg');
+        arrowSvg.style.transform = 'rotate(0)';
+        selectionTypesList.style.height = '3rem';
+        selectListStatus = close;
+    };
+    //&CLOSE SELECT LIST--OVER
+    //& ***************************************************************************** *//
+    const btnsListObserve = new MutationObserver(([entry]) => {
+        //*console.log(entry);
+        const searchListBtn = document.querySelector('#selection_list_search_btn');
+        const selectListActions = () => {
+            if (selectListStatus === close) {
+                openSelectList();
+            } else if (selectListStatus === open) {
+                closeSelectList();
+            }
+        };
+        searchListBtn.addEventListener('click', selectListActions);
+    });
+    btnsListObserve.observe(searchBtnsContainer, { childList: true });
+    //^^SELECT LIST ACTIONS--OVER
+    //^^ ************************************************************************ *//
     //~~CREATE PROJECT HOT CARDS--START
     const createProjectCardHot = async () => {
         try {
@@ -537,12 +562,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ ************************************************************************* *//
 
     //^ CLOSE MENU SOCIAL-- START
-    const closeContainer = (container, animTime) => {
-        container.style.opacity = 0;
-        setTimeout(() => {
-            container.display = 'flex';
-        }, calc(animTime + 200));
-    };
     const closeMenuSocial = () => {
         menuSocialBtnsContainer.style.opacity = 0;
         menuSocialBtnsContainer.style.height = 0;
@@ -566,7 +585,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ ***************************************************************************** *//
     //^SOCIAL MENU CLOSE EN BODY CLICK--START
     const closeByBodyClick = (e) => {
-        if (menuSocialStatus === open && e.target.id !== 'contact_menu_btn') {
+        if (menuSocialStatus === open && e.target.id !== 'menu_social_btn') {
             closeMenuSocial();
         } else if (selectListStatus === open && e.target.id !== 'selection_list_search_btn') {
             closeSelectList();
@@ -724,24 +743,32 @@ document.addEventListener('DOMContentLoaded', () => {
         if (widConf > firstBreak) {
             lebelBtnMain.innerHTML = '<h3 class="btn_lebel">Inicio</h3>';
             lebelBtnAbout.innerHTML = '<h3 class="btn_lebel">Acerca de</h3>';
-            lebelBtnSkills.innerHTML = '<h3 class="btn_lebel">Habilidades</h3>';
+            lebelBtnSkills.innerHTML = '<h3 class="btn_lebel">Conocimientos</h3>';
             lebelBtnServices.innerHTML = '<h3 class="btn_lebel">Servicios</h3>';
             lebelBtnPortfolio.innerHTML = '<h3 class="btn_lebel">Portafolio</h3>';
             lebelBtnClients.innerHTML = '<h3 class="btn_lebel">Clientes</h3>';
+            lebelBtnContact.innerHTML = '<h3 class="btn_lebel">Contactame</h3>';
         } else if (widConf > secondBreak || (widConf < firstBreak && widConf > secondBreak)) {
+            btnLegalFooter.innerHTML = '<h3 class="btn_lebel">Legales</h3>';
+            btnDataFooter.innerHTML = '<h3 class="btn_lebel">Uso de datos</h3>';
             lebelBtnMain.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="home_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Inicio</title><path class="cls-1" d="M19 21H5a1 1 0 0 1-1-1v-9H1l10.327-9.388a1 1 0 0 1 1.346 0L23 11h-3v9a1 1 0 0 1-1 1zM6 19h12V9.157l-6-5.454-6 5.454V19z"/></svg>';
             lebelBtnAbout.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="about_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Acerca de</title><path class="cls-1" d="M20 22h-2v-2a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v2H4v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2zm-8-9a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>';
             lebelBtnSkills.innerHTML =
-                '<svg class="nav_menu_icon_svg" id="skills_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Habilidades</title><path class="cls-1" d="M5.33 3.271a3.5 3.5 0 0 1 4.472 4.474L20.647 18.59l-2.122 2.121L7.68 9.867a3.5 3.5 0 0 1-4.472-4.474L5.444 7.63a1.5 1.5 0 1 0 2.121-2.121L5.329 3.27zm10.367 1.884l3.182-1.768 1.414 1.414-1.768 3.182-1.768.354-2.12 2.121-1.415-1.414 2.121-2.121.354-1.768zm-7.071 7.778l2.121 2.122-4.95 4.95A1.5 1.5 0 0 1 3.58 17.99l.097-.107 4.95-4.95z"/></svg>';
+                '<svg class="nav_menu_icon_svg" id="skills_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Conocimientos</title><path class="cls-1" d="M9.973 18H11v-5h2v5h1.027c.132-1.202.745-2.194 1.74-3.277.113-.122.832-.867.917-.973a6 6 0 1 0-9.37-.002c.086.107.807.853.918.974.996 1.084 1.609 2.076 1.741 3.278zM10 20v1h4v-1h-4zm-4.246-5a8 8 0 1 1 12.49.002C17.624 15.774 16 17 16 18.5V21a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.5C8 17 6.375 15.774 5.754 15z"/></svg>';
             lebelBtnServices.innerHTML =
-                '<svg class="nav_menu_icon_svg" id="services_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Servicios</title><path class="cls-1" d="M12 .5l4.226 6.183 7.187 2.109-4.575 5.93.215 7.486L12 19.69l-7.053 2.518.215-7.486-4.575-5.93 7.187-2.109L12 .5zm0 3.544L9.022 8.402 3.957 9.887l3.225 4.178-.153 5.275L12 17.566l4.97 1.774-.152-5.275 3.224-4.178-5.064-1.485L12 4.044zM10 12a2 2 0 1 0 4 0h2a4 4 0 1 1-8 0h2z"/></svg>';
+                '<svg class="nav_menu_icon_svg" id="services_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Servicios</title><path class="cls-1" d="M21 8a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-1.062A8.001 8.001 0 0 1 12 23v-2a6 6 0 0 0 6-6V9A6 6 0 1 0 6 9v7H3a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1.062a8.001 8.001 0 0 1 15.876 0H21zM7.76 15.785l1.06-1.696A5.972 5.972 0 0 0 12 15a5.972 5.972 0 0 0 3.18-.911l1.06 1.696A7.963 7.963 0 0 1 12 17a7.963 7.963 0 0 1-4.24-1.215z"/></svg>';
+            //*'<svg class="nav_menu_icon_svg" id="services_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Servicios</title><path class="cls-1" d="M12 .5l4.226 6.183 7.187 2.109-4.575 5.93.215 7.486L12 19.69l-7.053 2.518.215-7.486-4.575-5.93 7.187-2.109L12 .5zm0 3.544L9.022 8.402 3.957 9.887l3.225 4.178-.153 5.275L12 17.566l4.97 1.774-.152-5.275 3.224-4.178-5.064-1.485L12 4.044zM10 12a2 2 0 1 0 4 0h2a4 4 0 1 1-8 0h2z"/></svg>';
             lebelBtnPortfolio.innerHTML =
-                '<svg class="nav_menu_icon_svg" id="portfolio_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Portafolio</title><path class="cls-1" d="M7 5V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4zm10 2v5h3V7h-3zm-2 0H9v5h6V7zM7 7H4v5h3V7zm2-4v2h6V3H9z"/></svg>';
+                '<svg class="nav_menu_icon_svg" id="portfolio_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Portafolio</title><path class="cls-1" d="M17.409 19c-.776-2.399-2.277-3.885-4.266-5.602A10.954 10.954 0 0 1 20 11V3h1.008c.548 0 .992.445.992.993v16.014a1 1 0 0 1-.992.993H2.992A.993.993 0 0 1 2 20.007V3.993A1 1 0 0 1 2.992 3H6V1h2v4H4v7c5.22 0 9.662 2.462 11.313 7h2.096zM18 1v4h-8V3h6V1h2zm-1.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>';
             lebelBtnClients.innerHTML =
-                '<svg class="nav_menu_icon_svg" id="clients_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Clientes</title><path class="cls-1" d="M12 1l8.217 1.826c.457.102.783.507.783.976v9.987c0 2.006-1.003 3.88-2.672 4.992L12 23l-6.328-4.219C4.002 17.668 3 15.795 3 13.79V3.802c0-.469.326-.874.783-.976L12 1zm0 2.049L5 4.604v9.185c0 1.337.668 2.586 1.781 3.328L12 20.597l5.219-3.48C18.332 16.375 19 15.127 19 13.79V4.604L12 3.05zm4.452 5.173l1.415 1.414L11.503 16 7.26 11.757l1.414-1.414 2.828 2.828 4.95-4.95z"/></svg>';
-
+                '<svg class="nav_menu_icon_svg" id="clients_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Clientes</title><path class="cls-1" d="M12 8.5l2.116 5.088 5.492.44-4.184 3.584 1.278 5.36L12 20.1l-4.702 2.872 1.278-5.36-4.184-3.584 5.492-.44L12 8.5zM8 2v9H6V2h2zm10 0v9h-2V2h2zm-5 0v5h-2V2h2z"/></svg>';
+            //* '<svg class="nav_menu_icon_svg" id="clients_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Clientes</title><path class="cls-1" d="M12 8.5l2.116 5.088 5.492.44-4.184 3.584 1.278 5.36L12 20.1l-4.702 2.872 1.278-5.36-4.184-3.584 5.492-.44L12 8.5zm0 5.207l-.739 1.777-1.916.153 1.46 1.251-.447 1.871L12 17.756l1.641 1.003-.446-1.87 1.459-1.252-1.915-.153L12 13.707zM8 2v9H6V2h2zm10 0v9h-2V2h2zm-5 0v5h-2V2h2z"/></svg>';
+            //* '<svg class="nav_menu_icon_svg" id="clients_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Clientes</title><path class="cls-1" d="M2 19h20v2H2v-2zm9-11h2v8h-2V8zM7.965 8h2.125l-2.986 7.964h-2L2.118 8h2.125l1.861 5.113L7.965 8zM17 14v2h-2V8h4a3 3 0 0 1 0 6h-2zm0-4v2h2a1 1 0 0 0 0-2h-2zM2 3h20v2H2V3z"/></svg>';
+            //*'<svg class="nav_menu_icon_svg" id="clients_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Clientes</title><path class="cls-1" d="M12 1l8.217 1.826c.457.102.783.507.783.976v9.987c0 2.006-1.003 3.88-2.672 4.992L12 23l-6.328-4.219C4.002 17.668 3 15.795 3 13.79V3.802c0-.469.326-.874.783-.976L12 1zm0 2.049L5 4.604v9.185c0 1.337.668 2.586 1.781 3.328L12 20.597l5.219-3.48C18.332 16.375 19 15.127 19 13.79V4.604L12 3.05zm4.452 5.173l1.415 1.414L11.503 16 7.26 11.757l1.414-1.414 2.828 2.828 4.95-4.95z"/></svg>';
+            lebelBtnContact.innerHTML =
+                '<svg class="nav_menu_icon_svg" id="contact_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Contactame</title><path class="cls-1" d="M6.455 19L2 22.5V4a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H6.455zm-.692-2H20V5H4v13.385L5.763 17zM11 10h2v2h-2v-2zm-4 0h2v2H7v-2zm8 0h2v2h-2v-2z"/></svg>';
             btnMenuContainer.style.display = 'none';
             btnsNavContainer.style.display = 'flex';
             menuSocialContainer.style.display = 'flex';
@@ -767,6 +794,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             closeMenu();
         } else if (widConf <= secondBreak) {
+            btnLegalFooter.innerHTML =
+                '<svg class="footer_menu_icon_svg" id="legals_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Legales</title><path class="cls-1" d="M19 22H5a3 3 0 0 1-3-3V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v12h4v4a3 3 0 0 1-3 3zm-1-5v2a1 1 0 0 0 2 0v-2h-2zm-2 3V4H4v15a1 1 0 0 0 1 1h11zM6 7h8v2H6V7zm0 4h8v2H6v-2zm0 4h5v2H6v-2z"/></svg>';
+            btnDataFooter.innerHTML =
+                '<svg class="footer_menu_icon_svg" id="data_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Uso de datos</title><path class="cls-1" d="M5 12.5c0 .313.461.858 1.53 1.393C7.914 14.585 9.877 15 12 15c2.123 0 4.086-.415 5.47-1.107 1.069-.535 1.53-1.08 1.53-1.393v-2.171C17.35 11.349 14.827 12 12 12s-5.35-.652-7-1.671V12.5zm14 2.829C17.35 16.349 14.827 17 12 17s-5.35-.652-7-1.671V17.5c0 .313.461.858 1.53 1.393C7.914 19.585 9.877 20 12 20c2.123 0 4.086-.415 5.47-1.107 1.069-.535 1.53-1.08 1.53-1.393v-2.171zM3 17.5v-10C3 5.015 7.03 3 12 3s9 2.015 9 4.5v10c0 2.485-4.03 4.5-9 4.5s-9-2.015-9-4.5zm9-7.5c2.123 0 4.086-.415 5.47-1.107C18.539 8.358 19 7.813 19 7.5c0-.313-.461-.858-1.53-1.393C16.086 5.415 14.123 5 12 5c-2.123 0-4.086.415-5.47 1.107C5.461 6.642 5 7.187 5 7.5c0 .313.461.858 1.53 1.393C7.914 9.585 9.877 10 12 10z"/></svg>';
+
             btnsNavContainer.style.display = 'none';
             btnMenuContainer.style.display = 'flex';
             menuSocialContainer.style.display = 'none';
