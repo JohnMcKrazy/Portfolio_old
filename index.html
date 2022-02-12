@@ -34,19 +34,16 @@
         <!--!GOOGLE FONTS START-->
 
         <!--^TITANIM FONT START-->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
-            rel="stylesheet"
-        />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
         <!--^TITANIM FONT OVER-->
         <!--!GOOGLE FONTS ENDS-->
         <!--!NORMALIZE STYLE SHEET START-->
         <link rel="stylesheet" href="./assets/scss/normalize.css" />
         <!--!NORMALIZE STYLE SHEET OVER-->
         <!--!SCSS STYLE SHEET START-->
-        <link rel="stylesheet" href="./assets/scss/styles.css" />
+        <link rel="stylesheet" href="./assets/scss/styles.min.css" />
         <!--!SCSS STYLE SHEET OVER-->
     </head>
     <!--!BODY-- STAR-->
@@ -58,13 +55,14 @@
         <![endif]-->
         <!--!MODALS START -->
         <!--^^FIRST MESSAGE MODAL--START -->
-        <div class="modal" id="storage_alert_modal">
-            <h1 class="title_modal">Aviso de uso de datos</h1>
+        <div class="alert_modal" id="storage_alert_modal">
             <div class="modal_info">
+                <h1 class="title_modal">Aviso de uso de datos</h1>
                 <p class="description_modal">Esta pagina no utiliza cookies ni ninguno de sus datos</p>
-                <div class="btn_container">
+               <div class="btn_container">
                     <button type="button" class="btn_link btn_link_legal">Avisos legales</button>
                 </div>
+               
             </div>
             <button type="button" class="btn more_btn" id="storage_alert_modal_accept_btn">Aceptar</button>
         </div>
@@ -2037,7 +2035,7 @@
                     </div>
                     <div class="form_info">
                         <h2 class="subtitle_section">¿Quieres contactarme?</h1>
-                            <p class="description_modal">
+                            <p class="description_contact_section">
                                 Si quisieras contactarte conmigo para hablar sobre alguna idea para trabajar juntos, con el siguiente formulario
                                 puedes mandarme tu propuesta
                             </p>
@@ -2273,7 +2271,7 @@
             <ul class="selection_list" name="" id="">
                 <li class="option_list_btn_search option_list_text" name="option_list" data="search" id="selection_list_search_btn">
                     Categorias:
-                    <button type="button" class="arrow_btn" id="arrow_btn_select_list">
+                    <button type="button" class="open_list_btn" id="open_select_list_btn">
                         <svg class="arrow_btn_svg" id="arrow_btn_select_list_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path class="cls-1" d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
                         </svg>

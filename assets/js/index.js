@@ -37,11 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //*CONTAINERS WITH ANIMATION FUNCTIONS--OVER
     //* ******************************************************************************************************* *//
     //^^MODALS--START
-    //&STORAGE MODAL--START
-    const storageAlertModal = document.querySelector('#storage_alert_modal');
-    const acceptBtnStorageWarningBtn = document.querySelector('#storage_alert_modal_accept_btn');
-    //&STORAGE MODAL--OVER
-    //& ******************************************************************************************************* *//
     //&CONTACT MODAL--START
     const sendBtnFormModal = document.querySelector('#contact_form_send_btn');
     const contactModal = document.querySelector('#contact_modal');
@@ -57,6 +52,15 @@ document.addEventListener('DOMContentLoaded', () => {
     //& ******************************************************************************************************* *//
     //^^MODALS--OVER
     //^^ ******************************************************************************************************* *//
+    //^^ALERT MODAL--START
+    //&STORAGE MODAL--START
+    const storageAlertModal = document.querySelector('#storage_alert_modal');
+    const acceptBtnStorageWarningBtn = document.querySelector('#storage_alert_modal_accept_btn');
+    const closeBtnAlertModal = document.querySelector('#close_btn_alert_modal');
+    //&STORAGE MODAL--OVER
+    //& ******************************************************************************************************* *//
+    //^^ALERT MODAL--OVER
+    //^^ ****************************************************************************************************** *//
     //^^MENU CONTENT--START
     const menuContainer = document.querySelector('#menu_container');
     const btnsMenu = document.querySelectorAll('.btn_menu');
@@ -141,6 +145,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let pageLang = es;
     const close = 'close';
     const open = 'open';
+    const accepted = 'accepted';
+    const decline = 'decline';
+
     //!GENERAL VARIANTS--START
     const sunIcon =
         '<svg class="theme_icon_svg" id="sun_icon_svg"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Tema día</title><path class="cls-1" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>';
@@ -150,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let menuSocialStatus = close;
     let contactModalStatus = close;
     let alertStorageModalStatus = open;
+    let legalModalStatus = close;
     let selectListStatus = close;
     //! ************************************************************************************************************ *//
     //! SEARCH LOCAL STORAGE--START
@@ -157,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let storageForJohnKPage = {
         page_view_count: 1,
         page_alert_status: open,
+        page_legal_content: accepted,
     };
     //! SEARCH LOCAL STORAGE--OVER
     //! ************************************************************************************************************ *//
@@ -553,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
         const optionsIO_loaders = {
-            threshold: '.8',
+            threshold: '.5',
         };
         const loadersObserver = new IntersectionObserver(watchCardsContainers, optionsIO_loaders);
         loadersObserver.observe(loader);
@@ -662,14 +671,14 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
             console.log('local storage item is created');
             setTimeout(() => {
-                animateItem(storageAlertModal, '1', 'translate(-50%, 0)');
+                animateItem(storageAlertModal, '1', 'translateX(0)');
             }, 2000);
         } else if (storageContent && storageContent['page_alert_status'] === open) {
             storageForJohnKPage['page_view_count'] = storageContent['page_view_count'] + 1;
             localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
             console.log(`local storage item answer= ${storageContent['page_alert_status']}, page views= ${storageContent['page_view_count']}`);
             setTimeout(() => {
-                animateItem(storageAlertModal, '1', 'translate(-50%, 0)');
+                animateItem(storageAlertModal, '1', 'translateX(0)');
             }, 2000);
         } else if (storageContent && storageContent['page_alert_status'] === close) {
             storageForJohnKPage['page_alert_status'] = close;
@@ -680,17 +689,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     checkAlertStorageAnswer();
+    const closeAlert = (cont) => {
+        animateItem(cont, '0', 'translateX(50%)');
+        setTimeout(() => {
+            cont.style.display = 'none';
+        }, 1100);
+    };
+    const openAlert = (cont) => {
+        cont.style.display = 'block';
+        setTimeout(() => {
+            animateItem(cont, '1', 'translateX(0)');
+        }, 100);
+    };
     const closeAlertStorageModal = () => {
         storageForJohnKPage['page_alert_status'] = close;
-        closeModal(storageAlertModal);
+        closeAlert(storageAlertModal);
         localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
         console.log(localStorage.getItem(localStorageName));
     };
     //^^STORAGE WARNING CLOSE--OVER
     //^^ *********************************************************************************** *//
-    //^^LEAGL MODAL CLOSE--START
+    //^^LEGAL MODAL CLOSE--START
     const closeLegalModal = () => {
         const currentPosition = modalInfoLegal.getBoundingClientRect().top;
+        legalModalStatus = close;
         if (currentPosition !== 0) {
             modalInfoLegal.scrollTo(currentPosition, 0);
             setTimeout(() => {
@@ -700,7 +722,7 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal(legalModal);
         }
     };
-    //^^LEAGL MODAL CLOSE--OVER
+    //^^LEGAL MODAL CLOSE--OVER
     //^^ *********************************************************************************** *//
     //^TO THE TOP-- START && **/RETURN THE PAGE TO THE PAGE TOP
     const toTheTop = () => {
@@ -1045,29 +1067,6 @@ document.addEventListener('DOMContentLoaded', () => {
     menuSocialBtn.addEventListener('click', socialMenuBtnActions);
     closeBtnLegalModal.addEventListener('click', closeLegalModal);
 
-    //^^LEGAL BTNS--START
-    legalBtns.forEach((btn) => {
-        const openLegalModal = () => {
-            if (alertStorageModalStatus === open) {
-                closeModal(storageAlertModal);
-                openModal(legalModal);
-                alertStorageModalStatus = close;
-            } else if (alertStorageModalStatus === close) {
-                openModal(legalModal);
-            }
-        };
-        btn.addEventListener('click', openLegalModal);
-    });
-    //^^LEGAL BTNS--OVER
-    //^^ ************************************************************************** *//
-    //^ BTNS HERO-- START && **/POSITION THE PAGE IN SECTIONS BY THE BTNS IN THE HERO SECTION
-    btnsHero.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            scrollToSection(btn);
-        });
-    });
-    //^ BTNS HERO-- OVER
-    //^ ************************************************************************* *//
     //^ CHANGE THEME BTN-- START && --/CHANGE THE THEME PAGE BY THE MENU BTN
     btnsTheme.forEach((btn) => {
         const changeThemeBtn = () => {
@@ -1102,6 +1101,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     //^ BTNS SCROLLS TO SECTION--OVER
     //^ *****************************************************************************//
+    //^ BTNS HERO-- START && **/POSITION THE PAGE IN SECTIONS BY THE BTNS IN THE HERO SECTION
+    btnsHero.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            scrollToSection(btn);
+        });
+    });
+    //^ BTNS HERO-- OVER
+    //^ ************************************************************************* *//
     //^^ CONTACT BTNS OPEN MODAL-- START
     btnsContact.forEach((btn) => {
         btn.addEventListener('click', openContactModal);
@@ -1115,6 +1122,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     //^ SEND FORM-- OVER
     //^ ************************************************************************* *//
+    //^^LEGAL BTNS--START
+    legalBtns.forEach((btn) => {
+        const openLegalModal = () => {
+            if (alertStorageModalStatus === open) {
+                openModal(legalModal);
+                closeAlert(storageAlertModal);
+                alertStorageModalStatus = close;
+                legalModalStatus = open;
+            } else if (alertStorageModalStatus === close) {
+                openModal(legalModal);
+                closeAlert(storageAlertModal);
+                legalModalStatus = open;
+            }
+        };
+        btn.addEventListener('click', openLegalModal);
+    });
+    //^^LEGAL BTNS--OVER
+    //^^ ************************************************************************** *//
 
     /* const checkMark = () => {
         const checkBtn = document.querySelector('.complete-button');

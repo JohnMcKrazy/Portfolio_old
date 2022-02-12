@@ -108,7 +108,7 @@
     //! FONT WEIGHT--START
     --fontWeightN: 400;
     --fontWeightB: 600;
-    --fontWeightBB: 800;
+    --fontWeightBB: 700;
     //! FONT WEIGHT--OVER
     //! *********************************************************************************************************************** *//
     //!GENERAL START
@@ -827,7 +827,6 @@ BUTTON {
 //^^BTN LINK--START
 .btn_link {
     width: fit-content;
-    padding: 1rem;
     font-size: var(--fontSizeS);
     font-weight: var(--fontWeightN);
     text-align: center;
@@ -908,37 +907,7 @@ BUTTON {
         }
     }
 }
-//! MODAL OVER
-//! *********************************************************************************************** *//
-//*#storage_alert_modal,
-#contact_modal {
-    display: none;
-}
-//! STORAGE MODAL--START
-#storage_alert_modal {
-    z-index: var(--zIndexFull);
-    .btn_container {
-        @include flex(center, center);
-        width: 100%;
-        padding: 0.5rem 0;
-        .btn_link {
-            width: fit-content;
-            padding: 1rem;
-            color: var(--secondColor);
-            font-size: var(--fontSizeS);
-            font-weight: var(--fontWeightN);
-            text-decoration: underline;
-            text-align: center;
-            cursor: pointer;
-        }
-    }
-    .description_modal {
-        font-size: var(--fontSizeS);
-    }
-}
-//! STORAGE MODAL--OVER
-//! ************************************************************************************************ *//
-//! LEGAL MODAL--START
+//^^ LEGAL MODAL--START
 #legal_modal {
     max-height: 90vh;
     display: none;
@@ -958,9 +927,51 @@ BUTTON {
         }
     }
 }
-//! LEGAL MODAL--OVER
-//! ************************************************************************************************ *//
-
+//^^ LEGAL MODAL--OVER
+//^^ ************************************************************************************************ *//
+//^^CONTACT MODAL--START
+#contact_modal {
+    display: none;
+}
+//^^CONTACT MODAL--OVER
+//^^ ************************************************************************************************ *//
+//! MODAL OVER
+//! *********************************************************************************************** *//
+//!ALERT MODAL--START
+.alert_modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: fit-content;
+    z-index: var(--zIndexFull);
+    background: var(--whiteOff);
+    max-width: 800px;
+    height: fit-content;
+}
+//^^ALERT STORAGE MODAL--START
+#storage_alert_modal {
+    .modal_info {
+        padding: 1rem 1rem 0;
+        color: var(--blackOff);
+        .title_modal {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+    }
+    .btn_container {
+        @include flex(center, center);
+        width: 100%;
+        height: auto;
+        .btn_link {
+            padding: 0.5rem;
+            text-decoration: underline;
+        }
+    }
+}
+//^^ALERT STORAGE MODAL--OVER
+//^^ ************************************************************************************************ *//
+//!ALERT MODAL--OVER
+//! *********************************************************************************************** *//
 //! MENU SOCIAL--START
 #menu_social_container {
     position: fixed;
@@ -1668,7 +1679,7 @@ BUTTON {
         height: 3rem;
         width: 100%;
         cursor: pointer;
-        .arrow_btn {
+        .open_list_btn {
             @include flex(center, center);
             position: absolute;
             top: 50%;
@@ -1783,6 +1794,11 @@ BUTTON {
             position: relative;
             background: var(--bgHeaderSectionContact);
             @include flexDirection(column, flex-start, center);
+            .form_info {
+                .description_contact_section {
+                    width: clamp(280px, 800px, 90%);
+                }
+            }
             .form_container {
                 @include flexDirection(column, flex-start, flex-start);
                 height: fit-content;
@@ -1899,6 +1915,7 @@ BUTTON {
             .btn_link {
                 color: var(--textColor);
                 transition: color 200ms ease;
+                padding: 1rem;
             }
             .btn_link:hover {
                 background: var(--secondColorHover);
@@ -1981,8 +1998,14 @@ BUTTON {
 //* ************************************************************************** *//
 
 //*SWIPER DOWN CONTAINER--START
+
+#storage_alert_modal {
+    transform: translateX(50%);
+    opacity: 0;
+    transition: all 1000ms ease;
+}
+
 #legal_modal,
-#storage_alert_modal,
 #contact_modal {
     transform: translate(-50%, -50%);
     opacity: 0;

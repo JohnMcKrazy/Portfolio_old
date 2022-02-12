@@ -156,7 +156,7 @@
   --fontSizeXClamp: clamp(2.5rem, calc(1.5rem + 1.5vw), 4rem);
   --fontWeightN: 400;
   --fontWeightB: 600;
-  --fontWeightBB: 800;
+  --fontWeightBB: 700;
   --pushTtansition: transform 1000ms ease;
   --border: solid 0.2rem;
   --borderMenu: solid 0.3rem;
@@ -928,7 +928,6 @@ BUTTON {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  padding: 1rem;
   font-size: var(--fontSizeS);
   font-weight: var(--fontWeightN);
   text-align: center;
@@ -1053,45 +1052,6 @@ BUTTON {
   width: 100%;
 }
 
-#contact_modal {
-  display: none;
-}
-
-#storage_alert_modal {
-  z-index: var(--zIndexFull);
-}
-
-#storage_alert_modal .btn_container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  padding: 0.5rem 0;
-}
-
-#storage_alert_modal .btn_container .btn_link {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 1rem;
-  color: var(--secondColor);
-  font-size: var(--fontSizeS);
-  font-weight: var(--fontWeightN);
-  text-decoration: underline;
-  text-align: center;
-  cursor: pointer;
-}
-
-#storage_alert_modal .description_modal {
-  font-size: var(--fontSizeS);
-}
-
 #legal_modal {
   max-height: 90vh;
   display: none;
@@ -1122,6 +1082,52 @@ BUTTON {
 
 #legal_modal .modal_info .more_btn {
   width: var(--widthClamp);
+}
+
+#contact_modal {
+  display: none;
+}
+
+.alert_modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  z-index: var(--zIndexFull);
+  background: var(--whiteOff);
+  max-width: 800px;
+  height: fit-content;
+}
+
+#storage_alert_modal .modal_info {
+  padding: 1rem 1rem 0;
+  color: var(--blackOff);
+}
+
+#storage_alert_modal .modal_info .title_modal {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#storage_alert_modal .btn_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+#storage_alert_modal .btn_container .btn_link {
+  padding: 0.5rem;
+  text-decoration: underline;
 }
 
 #menu_social_container {
@@ -2331,7 +2337,7 @@ BUTTON {
   cursor: pointer;
 }
 
-.selection_list .option_list_btn_search .arrow_btn {
+.selection_list .option_list_btn_search .open_list_btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2352,14 +2358,14 @@ BUTTON {
   pointer-events: none;
 }
 
-.selection_list .option_list_btn_search .arrow_btn .arrow_btn_svg {
+.selection_list .option_list_btn_search .open_list_btn .arrow_btn_svg {
   -webkit-transition: -webkit-transform 500ms ease;
   transition: -webkit-transform 500ms ease;
   transition: transform 500ms ease;
   transition: transform 500ms ease, -webkit-transform 500ms ease;
 }
 
-.selection_list .option_list_btn_search .arrow_btn .arrow_btn_svg .cls-1 {
+.selection_list .option_list_btn_search .open_list_btn .arrow_btn_svg .cls-1 {
   fill: var(--textColor);
 }
 
@@ -2538,6 +2544,10 @@ BUTTON {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+#contact_section #contact_content #header_section_contact .form_info .description_contact_section {
+  width: clamp(280px, 800px, 90%);
 }
 
 #contact_section #contact_content #header_section_contact .form_container {
@@ -2786,6 +2796,7 @@ BUTTON {
   color: var(--textColor);
   -webkit-transition: color 200ms ease;
   transition: color 200ms ease;
+  padding: 1rem;
 }
 
 #legals_section #menu_legals_container #menu_legals_btns_container .btn_link:hover {
@@ -2893,8 +2904,15 @@ BUTTON {
   transition: all 1000ms ease;
 }
 
+#storage_alert_modal {
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+  opacity: 0;
+  -webkit-transition: all 1000ms ease;
+  transition: all 1000ms ease;
+}
+
 #legal_modal,
-#storage_alert_modal,
 #contact_modal {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
