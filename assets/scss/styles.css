@@ -764,7 +764,7 @@ ul {
 
 SECTION {
   min-height: var(--fullscreenFixedHeight);
-  margin-bottom: 6rem;
+  margin-bottom: 2rem;
 }
 
 .section {
@@ -779,7 +779,20 @@ SECTION {
 }
 
 .section_content .header_section {
-  height: calc(100vh - var(--navbarHeightFixed));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: calc(100vh - var(--navbarHeightFixed));
   width: 100%;
   background-size: cover !important;
 }
@@ -815,7 +828,7 @@ SECTION {
           align-items: center;
   text-align: center;
   width: 100%;
-  margin: 4rem 0 2rem;
+  margin: 2rem 0 1rem;
   color: var(--firstColor);
   font-weight: var(--fontWeightN);
   font-size: var(--fontSizeMClamp);
@@ -1062,7 +1075,7 @@ BUTTON {
 }
 
 #legal_modal .modal_info {
-  overflow-y: scroll;
+  overflow: auto;
   scroll-behavior: smooth;
 }
 
@@ -2020,6 +2033,7 @@ BUTTON {
 
 #skills_section .skills_containers .skills_container {
   width: auto;
+  margin-bottom: 8rem;
 }
 
 #skills_section .skills_containers .skills_container .skills_icons_container {
@@ -2546,6 +2560,23 @@ BUTTON {
           align-items: center;
 }
 
+#contact_section #contact_content #header_section_contact .form_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2rem;
+}
+
 #contact_section #contact_content #header_section_contact .form_info .description_contact_section {
   width: clamp(280px, 800px, 90%);
 }
@@ -2564,6 +2595,7 @@ BUTTON {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  border-radius: var(--borderRadius);
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -2634,6 +2666,98 @@ BUTTON {
 
 #contact_section #contact_content #header_section_contact .form_container .contact_form BUTTON {
   width: 100%;
+}
+
+#contact_section #contact_content #header_section_contact #contact_cards_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+#contact_section #contact_content #header_section_contact #contact_cards_container .contact_card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 20rem;
+  height: 10rem;
+  background: var(--navbarColor);
+  border-radius: var(--borderRadius);
+}
+
+#contact_section #contact_content #header_section_contact #contact_cards_container .contact_card .title_contact_card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: var(--secondColor);
+  font-size: var(--fontSizeSClamp);
+  padding: 1rem 1.5rem 0;
+  text-align: center;
+}
+
+#contact_section #contact_content #header_section_contact #contact_cards_container .contact_card .btns_contact_card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: var(--textColor);
+  padding: 0 1.5rem 1rem;
+}
+
+#contact_section #contact_content #header_section_contact #contact_cards_container .contact_card .btns_contact_card .contact_card_btn {
+  height: 3rem;
+  width: 3rem;
+  padding: 0.5rem;
+}
+
+#contact_section #contact_content #header_section_contact #contact_cards_container .contact_card .btns_contact_card .contact_card_btn .social_icon_svg {
+  -webkit-transition: var(--transitionUF);
+  transition: var(--transitionUF);
+}
+
+#contact_section #contact_content #header_section_contact #contact_cards_container .contact_card .btns_contact_card .contact_card_btn:hover .social_icon_svg {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 #legals_section {

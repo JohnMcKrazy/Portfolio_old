@@ -705,7 +705,7 @@ ul {
 }
 SECTION {
     min-height: var(--fullscreenFixedHeight);
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
 }
 .section {
     min-width: 100%;
@@ -716,7 +716,8 @@ SECTION {
     height: 100%;
     min-width: 100%;
     .header_section {
-        height: calc(100vh - var(--navbarHeightFixed));
+        @include flexDirection(column, flex-start, center);
+        min-height: calc(100vh - var(--navbarHeightFixed));
         width: 100%;
         background-size: cover !important;
     }
@@ -735,7 +736,7 @@ SECTION {
     @include flex(center, center);
     text-align: center;
     width: 100%;
-    margin: 4rem 0 2rem;
+    margin: 2rem 0 1rem;
     color: var(--firstColor);
     font-weight: var(--fontWeightN);
     font-size: var(--fontSizeMClamp);
@@ -915,7 +916,7 @@ BUTTON {
         padding: 2rem 0;
     }
     .modal_info {
-        overflow-y: scroll;
+        overflow: auto;
         scroll-behavior: smooth;
         .btn_container {
             margin-top: 2rem;
@@ -1503,6 +1504,7 @@ BUTTON {
         height: fit-content;
         .skills_container {
             width: auto;
+            margin-bottom: 8rem;
             .skills_icons_container {
                 @include flexDirection(row, center, flex-start);
                 flex-wrap: wrap;
@@ -1795,12 +1797,15 @@ BUTTON {
             background: var(--bgHeaderSectionContact);
             @include flexDirection(column, flex-start, center);
             .form_info {
+                @include flexDirection(column, flex-start, center);
+                margin-bottom: 2rem;
                 .description_contact_section {
                     width: clamp(280px, 800px, 90%);
                 }
             }
             .form_container {
                 @include flexDirection(column, flex-start, flex-start);
+                border-radius: var(--borderRadius);
                 height: fit-content;
                 background: var(--navbarColor);
                 width: clamp(300px, 800px, 90%);
@@ -1839,6 +1844,46 @@ BUTTON {
                     }
                     BUTTON {
                         width: 100%;
+                    }
+                }
+            }
+            #contact_cards_container {
+                @include flexDirection(row, center, center);
+                flex-wrap: wrap;
+                width: 100%;
+                height: auto;
+                gap: 1rem;
+                margin: 2rem 0;
+                .contact_card {
+                    @include flexDirection(column, center, center);
+                    width: 20rem;
+                    height: 10rem;
+                    background: var(--navbarColor);
+                    border-radius: var(--borderRadius);
+                    .title_contact_card {
+                        @include flex(center, center);
+                        color: var(--secondColor);
+                        font-size: var(--fontSizeSClamp);
+                        padding: 1rem 1.5rem 0;
+                        text-align: center;
+                    }
+                    .btns_contact_card {
+                        @include flexDirection(row, center, center);
+                        color: var(--textColor);
+                        padding: 0 1.5rem 1rem;
+                        .contact_card_btn {
+                            height: 3rem;
+                            width: 3rem;
+                            padding: 0.5rem;
+                            .social_icon_svg {
+                                transition: var(--transitionUF);
+                            }
+                            &:hover {
+                                .social_icon_svg {
+                                    transform: scale(1.2);
+                                }
+                            }
+                        }
                     }
                 }
             }
