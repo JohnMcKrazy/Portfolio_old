@@ -157,7 +157,7 @@
     //! ************************************************************************************************************************ *//
     //!SECTION BACKGROUNDS--START
     --bgHeaderSectionAbout: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
-        url('../img/backgrounds/pexels-artem-beliaikin-1051747.jpg') center no-repeat fixed;
+        url('../img/backgrounds/fondoBasket.png') center no-repeat fixed;
     --bgHeaderSectionServices: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
         url('../img/backgrounds/office-932926_1920.jpg') center no-repeat fixed;
     --bgHeaderSectionPortfolio: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
@@ -577,12 +577,14 @@ body {
     .fb_icon_svg,
     .behance_icon_svg,
     .contact_icon_svg {
+        height: auto;
+        width: 100%;
         .cls-1 {
             fill: var(--firstColor);
         }
     }
-    .contact_icon_svg {
-        transform: scale(0.8);
+    .fb_icon_svg {
+        transform: scale(0.85);
     }
     //^^SOCIAL ICONS COLORS-- OVER
 }
@@ -1556,7 +1558,6 @@ BUTTON {
 
 #portfolio_section {
     @include flexDirection(column, flex-start, center);
-
     #portfolio_content {
         #header_section_portfolio {
             background: var(--bgHeaderSectionPortfolio);
@@ -1715,7 +1716,7 @@ BUTTON {
     padding: 0.5rem 1rem;
     color: var(--textColor);
     background: var(--navbarColor);
-    height: fit-content;
+    min-height: 3rem;
     width: 100%;
     z-index: var(--zIndexMenu);
     cursor: pointer;
@@ -1728,7 +1729,7 @@ BUTTON {
     }
 }
 #search_projects_container {
-    min-height: 4rem;
+    height: 3rem;
     width: 100%;
     #search_project_btns_container {
         position: relative;
@@ -1742,7 +1743,8 @@ BUTTON {
             transform: translateX(-50%);
             border: solid 1px var(--firstColor);
             #selection_list_search_btn {
-                border: solid 1px var(--firstColor);
+                height: 3rem;
+                border-bottom: 2px solid var(--firstColor);
             }
         }
     }
@@ -1850,7 +1852,7 @@ BUTTON {
             #contact_cards_container {
                 @include flexDirection(row, center, center);
                 flex-wrap: wrap;
-                width: 100%;
+                width: var(--widthClamp);
                 height: auto;
                 gap: 1rem;
                 margin: 2rem 0;

@@ -193,7 +193,7 @@
   --bgModal: hsla(0, 0%, 90%, 0.75);
   --vueIconText: hsl(0, 0%, 20%);
   --bgHeaderSectionAbout: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
-        url('../img/backgrounds/pexels-artem-beliaikin-1051747.jpg') center no-repeat fixed;
+        url('../img/backgrounds/fondoBasket.png') center no-repeat fixed;
   --bgHeaderSectionServices: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
         url('../img/backgrounds/office-932926_1920.jpg') center no-repeat fixed;
   --bgHeaderSectionPortfolio: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
@@ -599,6 +599,14 @@ body .node_icon_svg .cls-4 {
   fill-rule: evenodd;
 }
 
+body .wa_icon_svg,
+body .fb_icon_svg,
+body .behance_icon_svg,
+body .contact_icon_svg {
+  height: auto;
+  width: 100%;
+}
+
 body .wa_icon_svg .cls-1,
 body .fb_icon_svg .cls-1,
 body .behance_icon_svg .cls-1,
@@ -606,9 +614,9 @@ body .contact_icon_svg .cls-1 {
   fill: var(--firstColor);
 }
 
-body .contact_icon_svg {
-  -webkit-transform: scale(0.8);
-          transform: scale(0.8);
+body .fb_icon_svg {
+  -webkit-transform: scale(0.85);
+          transform: scale(0.85);
 }
 
 scrollbar-button,
@@ -2406,9 +2414,7 @@ BUTTON {
   padding: 0.5rem 1rem;
   color: var(--textColor);
   background: var(--navbarColor);
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  min-height: 3rem;
   width: 100%;
   z-index: var(--zIndexMenu);
   cursor: pointer;
@@ -2424,7 +2430,7 @@ BUTTON {
 }
 
 #search_projects_container {
-  min-height: 4rem;
+  height: 3rem;
   width: 100%;
 }
 
@@ -2445,7 +2451,8 @@ BUTTON {
 }
 
 #search_projects_container #search_project_btns_container #selection_list_type_of_projects #selection_list_search_btn {
-  border: solid 1px var(--firstColor);
+  height: 3rem;
+  border-bottom: 2px solid var(--firstColor);
 }
 
 #clients_section {
@@ -2684,7 +2691,7 @@ BUTTON {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 100%;
+  width: var(--widthClamp);
   height: auto;
   gap: 1rem;
   margin: 2rem 0;
