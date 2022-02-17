@@ -775,15 +775,12 @@ BUTTON {
         font-weight: var(--fontWeightN);
         font-size: var(--fontSizeS);
     }
-}
-.btn:hover {
-    color: var(--textContrastColor);
-    background: var(--firstColorHover);
-}
-.btn:focus,
-.btn:active {
-    color: var(--textContrastColor);
-    background: var(--firstColor);
+    &:hover,
+    :active,
+    :focus {
+        color: var(--textContrastColor);
+        background: var(--firstColor);
+    }
 }
 .more_btn {
     width: 100%;
@@ -1350,116 +1347,138 @@ BUTTON {
     width: 100%;
     background-size: cover;
     user-select: none;
-    .slider_side_btns_container {
+    .slider_btn_container {
         position: absolute;
         top: 0;
-        left: 0;
-        @include flexDirection(row, space-between, center);
-        width: 100%;
-        height: calc(100vh - var(--navbarHeight));
-        z-index: var(--zIndexHover);
-        .slider_btn_container {
-            @include flex(center, center);
+        @include flex(center, center);
+        height: 100%;
+        width: clamp(2rem, 4rem, 90%);
+        padding: 0.5rem;
+        .slider_btn {
             height: 100%;
-            width: clamp(2rem, 4rem, 90%);
-            padding: 0.5rem;
-            .slider_btn {
-                width: 100%;
-                min-height: 5rem;
-                opacity: 0.25;
-                transition: var(--transitionMid);
-                cursor: pointer;
-                .arrow_slider {
-                    .cls-1 {
-                        fill: var(--firstColor);
-                        fill-rule: evenodd;
-                    }
-                }
-                &:hover {
-                    opacity: 0.8;
-                }
-            }
-        }
-        .btn_down {
-            position: absolute;
-            @include flexDirection(column, center, center);
-            bottom: 2rem;
-            left: 50%;
-            width: 8rem;
-            height: 6rem;
-            opacity: var(--opacityBtn);
-            animation: bounceDown 1s ease infinite;
-            transform: translateX(-50%);
-            color: var(--textColor);
-            cursor: pointer;
+            width: 5rem;
+            opacity: 0.25;
             transition: var(--transitionMid);
-            #arrow_down_svg {
-                margin-top: 0.5rem;
-                width: 2rem;
+            cursor: pointer;
+            z-index: var(--zIndexMenu);
+            .arrow_slider {
                 .cls-1 {
                     fill: var(--firstColor);
                     fill-rule: evenodd;
                 }
             }
-        }
-        .btn_down:hover,
-        .btn_down:focus,
-        .btn_down:active {
-            opacity: 1;
-            /*   box-shadow: none;
-                filter: drop-shadow(0 0 0.5rem var(--backgroundContrast)); */
-        }
-        #slider_page_markers_container {
-            position: absolute;
-            top: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            @include flexDirection(row, center, center);
-            gap: 2rem;
-            height: fit-content;
-            width: fit-content;
+            &:hover {
+                opacity: 0.8;
+            }
         }
     }
-    .sliders_container {
-        width: 100%;
-        height: calc(100vh - var(--navbarHeight));
-        overflow: hidden;
-        .slider_window_container {
-            @include flexDirection(row, flex-start, flex-start);
-            height: 100%;
-            transition: var(--transitionUF);
+    #slider_btn_container_right {
+        right: 0;
+    }
+    #slider_btn_container_left {
+        left: 0;
+    }
+    .btn_down {
+        position: absolute;
+        @include flexDirection(column, center, center);
+        bottom: 2rem;
+        left: 50%;
+        width: 8rem;
+        height: 6rem;
+        opacity: var(--opacityBtn);
+        animation: bounceDown 1s ease infinite;
+        transform: translateX(-50%);
+        color: var(--textColor);
+        cursor: pointer;
+        transition: var(--transitionMid);
+
+        z-index: var(--zIndexMenu);
+        #arrow_down_svg {
+            margin-top: 0.5rem;
+            width: 2rem;
+            .cls-1 {
+                fill: var(--firstColor);
+                fill-rule: evenodd;
+            }
         }
-        .slider_container {
-            @include flex(center, center);
-            width: 100%;
+    }
+    .btn_down:hover,
+    .btn_down:focus,
+    .btn_down:active {
+        opacity: 1;
+        /*   box-shadow: none;
+                filter: drop-shadow(0 0 0.5rem var(--backgroundContrast)); */
+    }
+    #slider_page_markers_container {
+        position: absolute;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        @include flexDirection(row, center, center);
+        gap: 2rem;
+        height: fit-content;
+        width: fit-content;
+        z-index: var(--zIndexFull);
+    }
+}
+.sliders_container {
+    width: 100%;
+    height: calc(100vh - var(--navbarHeight));
+    overflow: hidden;
+    .slider_window_container {
+        @include flexDirection(row, flex-start, flex-start);
+        height: 100%;
+        transition: var(--transitionUF);
+    }
+    .slider_container {
+        @include flex(center, center);
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        .slider_content {
             height: 100%;
-            .slider_content {
-                height: 100%;
-                width: var(--widthClamp);
-                @include flexDirection(row, space-around, center);
-                gap: 2rem;
-                .img_container {
-                    @include flex(center, center);
-                    height: auto;
-                    width: 100%;
-                    IMAGE,
-                    SVG {
-                        height: 100%;
-                        width: auto;
-                    }
-                }
-                .info_container {
-                    @include flexDirection(column, center, center);
-                    height: auto;
-                    width: 100%;
+            width: var(--widthClamp);
+            @include flexDirection(row, space-around, center);
+            gap: 2rem;
+            .img_container,
+            .info_container {
+                padding: 0 2rem;
+            }
+            .img_container {
+                @include flex(center, center);
+                height: auto;
+                width: 100%;
+                z-index: -1;
+                IMAGE,
+                SVG {
+                    height: 100%;
+                    width: auto;
                 }
             }
-            .slider_content > * {
-                flex-basis: 100%;
+            .info_container {
+                @include flexDirection(column, center, center);
+                height: auto;
+                width: 100%;
+                .slider_title {
+                    width: 100%;
+                    padding-bottom: 1rem;
+                }
+                .slider_info {
+                    width: 100%;
+                }
+                .btn {
+                    margin-top: 1rem;
+                    width: 100%;
+                    z-index: var(--zIndexMenu);
+                }
             }
+        }
+        .slider_content > * {
+            flex-basis: 100%;
         }
     }
 }
+
 //&TEMPLATE MARKER SLIDER
 .marker_slider_btn {
     width: 1rem;
@@ -1468,6 +1487,8 @@ BUTTON {
     border-radius: var(--borderRadius);
     transition: var(--transitionUF);
     cursor: pointer;
+
+    z-index: var(--zIndexMenu);
 }
 //&TEMPLATE MARKER SLIDER
 //&TEMPLATE MARKER SLIDER

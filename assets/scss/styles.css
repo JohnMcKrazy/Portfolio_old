@@ -880,13 +880,9 @@ BUTTON {
   font-size: var(--fontSizeS);
 }
 
-.btn:hover {
-  color: var(--textContrastColor);
-  background: var(--firstColorHover);
-}
-
-.btn:focus,
-.btn:active {
+.btn:hover,
+.btn :active,
+.btn :focus {
   color: var(--textContrastColor);
   background: var(--firstColor);
 }
@@ -1730,29 +1726,9 @@ BUTTON {
           user-select: none;
 }
 
-#hero_section .slider_side_btns_container {
+#hero_section .slider_btn_container {
   position: absolute;
   top: 0;
-  left: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  height: calc(100vh - var(--navbarHeight));
-  z-index: var(--zIndexHover);
-}
-
-#hero_section .slider_side_btns_container .slider_btn_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1767,25 +1743,34 @@ BUTTON {
   padding: 0.5rem;
 }
 
-#hero_section .slider_side_btns_container .slider_btn_container .slider_btn {
-  width: 100%;
-  min-height: 5rem;
+#hero_section .slider_btn_container .slider_btn {
+  height: 100%;
+  width: 5rem;
   opacity: 0.25;
   -webkit-transition: var(--transitionMid);
   transition: var(--transitionMid);
   cursor: pointer;
+  z-index: var(--zIndexMenu);
 }
 
-#hero_section .slider_side_btns_container .slider_btn_container .slider_btn .arrow_slider .cls-1 {
+#hero_section .slider_btn_container .slider_btn .arrow_slider .cls-1 {
   fill: var(--firstColor);
   fill-rule: evenodd;
 }
 
-#hero_section .slider_side_btns_container .slider_btn_container .slider_btn:hover {
+#hero_section .slider_btn_container .slider_btn:hover {
   opacity: 0.8;
 }
 
-#hero_section .slider_side_btns_container .btn_down {
+#hero_section #slider_btn_container_right {
+  right: 0;
+}
+
+#hero_section #slider_btn_container_left {
+  left: 0;
+}
+
+#hero_section .btn_down {
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1813,27 +1798,28 @@ BUTTON {
   cursor: pointer;
   -webkit-transition: var(--transitionMid);
   transition: var(--transitionMid);
+  z-index: var(--zIndexMenu);
 }
 
-#hero_section .slider_side_btns_container .btn_down #arrow_down_svg {
+#hero_section .btn_down #arrow_down_svg {
   margin-top: 0.5rem;
   width: 2rem;
 }
 
-#hero_section .slider_side_btns_container .btn_down #arrow_down_svg .cls-1 {
+#hero_section .btn_down #arrow_down_svg .cls-1 {
   fill: var(--firstColor);
   fill-rule: evenodd;
 }
 
-#hero_section .slider_side_btns_container .btn_down:hover,
-#hero_section .slider_side_btns_container .btn_down:focus,
-#hero_section .slider_side_btns_container .btn_down:active {
+#hero_section .btn_down:hover,
+#hero_section .btn_down:focus,
+#hero_section .btn_down:active {
   opacity: 1;
   /*   box-shadow: none;
                 filter: drop-shadow(0 0 0.5rem var(--backgroundContrast)); */
 }
 
-#hero_section .slider_side_btns_container #slider_page_markers_container {
+#hero_section #slider_page_markers_container {
   position: absolute;
   top: 2rem;
   left: 50%;
@@ -1859,15 +1845,16 @@ BUTTON {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  z-index: var(--zIndexFull);
 }
 
-#hero_section .sliders_container {
+.sliders_container {
   width: 100%;
   height: calc(100vh - var(--navbarHeight));
   overflow: hidden;
 }
 
-#hero_section .sliders_container .slider_window_container {
+.sliders_container .slider_window_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1886,7 +1873,7 @@ BUTTON {
   transition: var(--transitionUF);
 }
 
-#hero_section .sliders_container .slider_container {
+.sliders_container .slider_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1898,9 +1885,10 @@ BUTTON {
           align-items: center;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
-#hero_section .sliders_container .slider_container .slider_content {
+.sliders_container .slider_container .slider_content {
   height: 100%;
   width: var(--widthClamp);
   display: -webkit-box;
@@ -1918,7 +1906,12 @@ BUTTON {
   gap: 2rem;
 }
 
-#hero_section .sliders_container .slider_container .slider_content .img_container {
+.sliders_container .slider_container .slider_content .img_container,
+.sliders_container .slider_container .slider_content .info_container {
+  padding: 0 2rem;
+}
+
+.sliders_container .slider_container .slider_content .img_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1930,15 +1923,16 @@ BUTTON {
           align-items: center;
   height: auto;
   width: 100%;
+  z-index: -1;
 }
 
-#hero_section .sliders_container .slider_container .slider_content .img_container IMAGE,
-#hero_section .sliders_container .slider_container .slider_content .img_container SVG {
+.sliders_container .slider_container .slider_content .img_container IMAGE,
+.sliders_container .slider_container .slider_content .img_container SVG {
   height: 100%;
   width: auto;
 }
 
-#hero_section .sliders_container .slider_container .slider_content .info_container {
+.sliders_container .slider_container .slider_content .info_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1956,7 +1950,22 @@ BUTTON {
   width: 100%;
 }
 
-#hero_section .sliders_container .slider_container .slider_content > * {
+.sliders_container .slider_container .slider_content .info_container .slider_title {
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
+.sliders_container .slider_container .slider_content .info_container .slider_info {
+  width: 100%;
+}
+
+.sliders_container .slider_container .slider_content .info_container .btn {
+  margin-top: 1rem;
+  width: 100%;
+  z-index: var(--zIndexMenu);
+}
+
+.sliders_container .slider_container .slider_content > * {
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
 }
@@ -1969,6 +1978,7 @@ BUTTON {
   -webkit-transition: var(--transitionUF);
   transition: var(--transitionUF);
   cursor: pointer;
+  z-index: var(--zIndexMenu);
 }
 
 #about_section {

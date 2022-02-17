@@ -809,7 +809,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const imgsContainer = container.querySelectorAll('IMG');
                 const SVGsContainer = container.querySelectorAll('SVG');
                 imgsContainer.forEach((img) => {
-                    console.log(img);
+                    //*console.log(img);
                     img.style.height = '100%';
                     img.style.width = 'auto';
                 });
@@ -872,13 +872,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const imgsContainer = container.querySelectorAll('IMG');
                 const SVGsContainer = container.querySelectorAll('SVG');
                 imgsContainer.forEach((img) => {
-                    console.log(img);
+                    //*console.log(img);
                     img.style.height = '100%';
                     img.style.width = 'auto';
                 });
-            });
-            sliderImgContainers.forEach((container) => {
-                container.style.height = `100%`;
             });
             serviceContainer.forEach((container) => {
                 container.style.width = '100%';
