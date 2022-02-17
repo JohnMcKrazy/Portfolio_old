@@ -149,6 +149,7 @@
     --textColor: hsl(0, 0%, 10%);
     --textContrastColor: hsl(0, 0%, 90%);
     --navbarColor: hsl(0, 0%, 95%);
+    --navbarColorTransparent: hsla(0, 0%, 95%, 0.75);
     --tooltipColor: hsl(0, 0%, 5%);
     --bgColor: hsl(0, 0%, 90%);
     --bgOff: hsl(0, 0%, 80%);
@@ -226,6 +227,8 @@
     --textColor: hsl(0, 0%, 90%);
     --textContrastColor: hsl(0, 0%, 10%);
     --navbarColor: hsl(0, 0%, 5%);
+    --navbarColorTransparent: hsla(0, 0%, 5%, 0.75);
+
     --tooltipColor: hsl(0, 0%, 95%);
     --bgColor: hsl(0, 0%, 10%);
     --bgOff: hsl(0, 0%, 20%);
@@ -1459,17 +1462,23 @@ BUTTON {
                 @include flexDirection(column, center, center);
                 height: auto;
                 width: 100%;
-                .slider_title {
+                background: var(--navbarColorTransparent);
+                border-radius: var(--borderRadius);
+                .slider_card_info {
+                    height: fit-content;
                     width: 100%;
-                    padding-bottom: 1rem;
-                }
-                .slider_info {
-                    width: 100%;
-                }
-                .btn {
-                    margin-top: 1rem;
-                    width: 100%;
-                    z-index: var(--zIndexMenu);
+                    .slider_title {
+                        width: 100%;
+                        padding: 1rem 0;
+                    }
+                    .slider_info {
+                        width: 100%;
+                    }
+                    .btn {
+                        margin-top: 1rem;
+                        width: 100%;
+                        z-index: var(--zIndexMenu);
+                    }
                 }
             }
         }
