@@ -1137,7 +1137,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let sliderObserver = new IntersectionObserver(watchSliders, optionsIO_sliders);
         sliderObserver.observe(slider);
     });
-
+    let dinamicSliderWidth = imgsCount * 100;
+    sliderImgsContainer.style.width = `${dinamicSliderWidth}%`;
     sliderPageMarkersContainer.appendChild(fragmentSliderMarkers);
 
     //!SLIDER BTNS CONSTANT--NOT MOVE

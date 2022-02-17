@@ -157,7 +157,6 @@
   --fontWeightN: 400;
   --fontWeightB: 600;
   --fontWeightBB: 700;
-  --pushTtansition: transform 1000ms ease;
   --border: solid 0.2rem;
   --borderMenu: solid 0.3rem;
   --borderRadius: 0.25rem;
@@ -1883,12 +1882,9 @@ BUTTON {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  width: 400%;
   height: 100%;
-  -webkit-transition: -webkit-transform 500ms ease;
-  transition: -webkit-transform 500ms ease;
-  transition: transform 500ms ease;
-  transition: transform 500ms ease, -webkit-transform 500ms ease;
+  -webkit-transition: var(--transitionUF);
+  transition: var(--transitionUF);
 }
 
 #hero_section .sliders_container .slider_img_container {

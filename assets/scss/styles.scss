@@ -112,7 +112,6 @@
     //! FONT WEIGHT--OVER
     //! *********************************************************************************************************************** *//
     //!GENERAL START
-    --pushTtansition: transform 1000ms ease;
     --border: solid 0.2rem;
     --borderMenu: solid 0.3rem;
     --borderRadius: 0.25rem;
@@ -122,6 +121,7 @@
     --widthClamp: clamp(300px, 1500px, 90%);
     --cardWidth: clamp(280px, 30rem, 80%);
     --fullscreenFixedHeight: calc(100vh - var(--navbarHeightFixed));
+
     --transitionUF: all 250ms ease;
     --transitionFast: all 500ms ease;
     --transitionMid: all 750ms ease;
@@ -1427,9 +1427,8 @@ BUTTON {
         overflow: hidden;
         .slider_imgs_container {
             @include flexDirection(row, flex-start, flex-start);
-            width: 400%;
             height: 100%;
-            transition: transform 500ms ease;
+            transition: var(--transitionUF);
         }
         .slider_img_container {
             @include flex(center, center);
