@@ -1111,6 +1111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newMarker.setAttribute('id', `marker_slider_btn_${imgsCount}`);
         newMarker.setAttribute('name', slider.id);
         fragmentSliderMarkers.appendChild(newMarker);
+
         const watchSliders = ([entry]) => {
             const sliderMarkers = document.querySelectorAll('.marker_slider_btn');
             if (entry.isIntersecting) {
@@ -1122,30 +1123,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     //*console.log(currentMarker);
                     if (currentMarkerName === currentId) {
                         const markerActive = document.querySelector(`#${currentMarker}`);
-                        markerActive.style.background = 'var(--secondColor)';
+                        markerActive.style.background = 'var(--firstColor)';
                     } else {
                         const markerInactive = document.querySelector(`#${currentMarker}`);
-                        markerInactive.style.background = 'var(--firstColor)';
+                        markerInactive.style.background = 'var(--secondColor)';
                     }
                 });
             }
-
-            //^^SLIDER MARKERS BTNS--START
-            //TODO ******************************************************************************** *//
-            /*  sliderMarkers.forEach((marker) => {
-                const checkSlider = () => {
-                    const sliderId = marker.name;
-                    const sliderSearched = document.querySelector(`#${sliderId}`).getBoundingClientRect().left;
-                    const sliderWidth = sliderImgsContainer.getBoundingClientRect().width;
-
-                   
-                };
-                marker.addEventListener('click', checkSlider);
-            }); */
-            //TODO ******************************************************************************** *//
-
-            //^^SLIDER MARKERS BTNS--OVER
-            //^^ **********************************************************************************************************************************************  *//
         };
         const optionsIO_sliders = {
             threshold: 1,
@@ -1155,7 +1139,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     sliderPageMarkersContainer.appendChild(fragmentSliderMarkers);
+
     //!SLIDER BTNS CONSTANT--NOT MOVE
+
+    const sliderMarkers = document.querySelectorAll('.marker_slider_btn');
+    //^^SLIDER MARKERS BTNS--START
+    //TODO ******************************************************************************** *//
+    sliderMarkers.forEach((marker) => {
+        const checkSlider = () => {
+            const sliderId = marker.name;
+            const sliderSearched = document.querySelector(`#${sliderId}`).getBoundingClientRect().left;
+            const sliderWidth = sliderImgsContainer.getBoundingClientRect().width;
+            //*console.log(sliderFullCount, sliderSearched, sliderWidth);
+
+            if (sliderSearched > 0) {
+                sliderFullCount += sliderSearched;
+                sliderImgsContainer.style.transform = `translateX(-${sliderFullCount}px)`;
+                //*console.log(sliderFullCount, sliderSearched, sliderWidth, 'by higher than 0');
+            } else if (sliderSearched < 0) {
+                sliderFullCount += sliderSearched;
+                sliderImgsContainer.style.transform = `translateX(-${sliderFullCount}px)`;
+                //*console.log(sliderFullCount, sliderSearched, sliderWidth, 'by lower than 0');
+            } else if (sliderSearched === 0) {
+                //*console.log(sliderFullCount, sliderSearched, sliderWidth, 'by equal than 0');
+            }
+        };
+        marker.addEventListener('click', checkSlider);
+    });
+    //TODO ******************************************************************************** *//
+
+    //^^SLIDER MARKERS BTNS--OVER
+    //^^ **********************************************************************************************************************************************  *//
     //!SLIDER BTNS CONSTANT--NOT MOVE
 
     //^ ***********************************************************************************************//
