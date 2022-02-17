@@ -4,9 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^PROJECT CARD TEMPLATE CONSTANTS
     const fragmentHotProjects = document.createDocumentFragment();
     const fragmentSearchProjects = document.createDocumentFragment();
+    const fragmentSliderMarkers = document.createDocumentFragment();
 
     const cardProjectTemplate = document.querySelector('#card_project_template').content;
     const btnProjectTemplate = document.querySelector('#btn_project_template').content;
+    const markersTemplate = document.querySelector('#marker_slider_template').content;
     //^^PROJECT CARD TEMPLATE CONSTANTS
     //^^ *********************************************************************************************************** *//
     //^^TOOLTIP TEMPLATE CONSTANT
@@ -56,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //&STORAGE MODAL--START
     const storageAlertModal = document.querySelector('#storage_alert_modal');
     const acceptBtnStorageWarningBtn = document.querySelector('#storage_alert_modal_accept_btn');
-    const closeBtnAlertModal = document.querySelector('#close_btn_alert_modal');
+    const closeBtnAlertModal = document.querySelector('#alert_modal_storage_close_btn');
     //&STORAGE MODAL--OVER
     //& ******************************************************************************************************* *//
     //^^ALERT MODAL--OVER
@@ -95,10 +97,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const lebelBtnContact = document.querySelector('#contact_btn_nav');
     //^^NAV OVER
     //^^ ****************************************************************************************************************** *//
+
     //^^HERO
+
+    const sliderImgsContainer = document.querySelector('.slider_imgs_container');
+    const sliderImgs = document.querySelectorAll('.slider_img_container');
+    const sliderPageMarkersContainer = document.querySelector('#slider_page_markers_container');
+    const sliderBtnLeft = document.querySelector('#slider_btn_left');
+    const sliderBtnRight = document.querySelector('#slider_btn_right');
+    const slidersContent = document.querySelectorAll('.slider_content');
     const btnHeroDown = document.querySelector('#hero_btn_down');
-    const heroBtnsContainer = document.querySelector('#hero_btns_container');
-    const btnsHero = document.querySelectorAll('.btn_hero');
     //^^SERVICES
     const servicesContainer = document.querySelector('#services_container');
     const serviceContainer = document.querySelectorAll('.service_container');
@@ -159,6 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let alertStorageModalStatus = open;
     let legalModalStatus = close;
     let selectListStatus = close;
+    let imgsCount = 0;
+    let sliderFullCount = 0;
+
     //! ************************************************************************************************************ *//
     //! SEARCH LOCAL STORAGE--START
     const localStorageName = 'JohnK_page_storage';
@@ -290,6 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //^CHANGE THEME BY HOUR-- OVER
     //^ ***********************************************************************************************//
+
     //^^GENERATE RANDOM ITEM--START
     const randomDataSelector = (arr) => {
         const arrayLenght = arr.length;
@@ -479,6 +491,13 @@ document.addEventListener('DOMContentLoaded', () => {
         searchListBtn.addEventListener('click', selectListActions);
     });
     btnsListObserve.observe(searchBtnsContainer, { childList: true });
+
+    /* 
+    const markersMutationObserve = new MutationObserver(([entry]) => {
+        console.log(entry);
+    });
+    markersMutationObserve.observe(sliderPageMarkersContainer, { childList: true });
+ */
     //^^SELECT LIST ACTIONS--OVER
     //^^ ************************************************************************ *//
     //~~CREATE PROJECT HOT CARDS--START
@@ -671,14 +690,14 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
             console.log('local storage item is created');
             setTimeout(() => {
-                animateItem(storageAlertModal, '1', 'translateX(0)');
+                animateItem(storageAlertModal, '1', 'translateY(0)');
             }, 2000);
         } else if (storageContent && storageContent['page_alert_status'] === open) {
             storageForJohnKPage['page_view_count'] = storageContent['page_view_count'] + 1;
             localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
             console.log(`local storage item answer= ${storageContent['page_alert_status']}, page views= ${storageContent['page_view_count']}`);
             setTimeout(() => {
-                animateItem(storageAlertModal, '1', 'translateX(0)');
+                animateItem(storageAlertModal, '1', 'translateY(0)');
             }, 2000);
         } else if (storageContent && storageContent['page_alert_status'] === close) {
             storageForJohnKPage['page_alert_status'] = close;
@@ -690,7 +709,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     checkAlertStorageAnswer();
     const closeAlert = (cont) => {
-        animateItem(cont, '0', 'translateX(50%)');
+        animateItem(cont, '0', 'translateY(-50%)');
         setTimeout(() => {
             cont.style.display = 'none';
         }, 1100);
@@ -698,7 +717,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const openAlert = (cont) => {
         cont.style.display = 'block';
         setTimeout(() => {
-            animateItem(cont, '1', 'translateX(0)');
+            animateItem(cont, '1', 'translateY(0)');
         }, 100);
     };
     const closeAlertStorageModal = () => {
@@ -770,6 +789,34 @@ document.addEventListener('DOMContentLoaded', () => {
             lebelBtnPortfolio.innerHTML = '<h3 class="btn_lebel">Portafolio</h3>';
             lebelBtnClients.innerHTML = '<h3 class="btn_lebel">Clientes</h3>';
             lebelBtnContact.innerHTML = '<h3 class="btn_lebel">Contactame</h3>';
+            btnMenuContainer.style.display = 'none';
+            btnsNavContainer.style.display = 'flex';
+            menuSocialContainer.style.display = 'flex';
+            servicesContainer.classList.add('services_container_one_column');
+            servicesContainer.classList.remove('services_container_two_columns');
+
+            slidersContent.forEach((slider) => {
+                insertFlex(slider, 'row', 'center', 'center');
+            });
+            insertFlex(skillsContainer, 'row', 'center', 'flex-start');
+            serviceContainer.forEach((container) => {
+                container.style.width = '100%';
+                serviceCardsLeft.forEach((card) => {
+                    changeCardStyle(card, 'row', 'var(--cardWidth)');
+                });
+                serviceCardsRight.forEach((card) => {
+                    changeCardStyle(card, 'row-reverse', 'var(--cardWidth)');
+                });
+            });
+            logoClientsContainers.forEach((container) => {
+                container.style.width = '12.5rem';
+                container.style.height = '8rem';
+            });
+            skillsIconsContainers.forEach((container) => {
+                container.style.width = '5rem';
+                container.style.height = '5rem';
+            });
+            closeMenu();
         } else if (widConf > secondBreak || (widConf < firstBreak && widConf > secondBreak)) {
             btnLegalFooter.innerHTML = '<h3 class="btn_lebel">Legales</h3>';
             btnDataFooter.innerHTML = '<h3 class="btn_lebel">Uso de datos</h3>';
@@ -794,9 +841,12 @@ document.addEventListener('DOMContentLoaded', () => {
             btnMenuContainer.style.display = 'none';
             btnsNavContainer.style.display = 'flex';
             menuSocialContainer.style.display = 'flex';
-            servicesContainer.classList.add('services_container_one_columns');
+            servicesContainer.classList.add('services_container_one_column');
             servicesContainer.classList.remove('services_container_two_columns');
             insertFlex(skillsContainer, 'row', 'center', 'flex-start');
+            slidersContent.forEach((slider) => {
+                insertFlex(slider, 'row', 'center', 'center');
+            });
             serviceContainer.forEach((container) => {
                 container.style.width = '100%';
                 serviceCardsLeft.forEach((card) => {
@@ -827,11 +877,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             insertFlex(skillsContainer, 'column', 'flex-start', 'center');
             servicesContainer.classList.add('services_container_two_columns');
-            servicesContainer.classList.remove('services_container_one_columns');
-
+            servicesContainer.classList.remove('services_container_one_column');
+            slidersContent.forEach((slider) => {
+                insertFlex(slider, 'column-reverse', 'center', 'center');
+            });
             serviceContainer.forEach((container) => {
                 container.style.width = '280px';
-                container.style.height = 'auto';
+                container.style.height = 'fit-content';
                 serviceCardsLeft.forEach((card) => {
                     changeCardStyle(card, 'column', 'auto');
                 });
@@ -1051,6 +1103,64 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     //&CHANGE LANG BY CLICK --OVER
     //& ***********************************************************************************  *//
+    //&CREATE SLIDER MARKERS AND CHECK POSITION SLIDER
+    sliderImgs.forEach((slider) => {
+        imgsCount++;
+        const cloneMarker = markersTemplate.cloneNode(true);
+        const newMarker = cloneMarker.querySelector('.marker_slider_btn');
+        newMarker.setAttribute('id', `marker_slider_btn_${imgsCount}`);
+        newMarker.setAttribute('name', slider.id);
+        fragmentSliderMarkers.appendChild(newMarker);
+        const watchSliders = ([entry]) => {
+            const sliderMarkers = document.querySelectorAll('.marker_slider_btn');
+            if (entry.isIntersecting) {
+                const currentId = entry.target.id;
+                //*console.log(currentId);
+                sliderMarkers.forEach((marker) => {
+                    let currentMarker = marker.getAttribute('id');
+                    let currentMarkerName = marker.getAttribute('name');
+                    //*console.log(currentMarker);
+                    if (currentMarkerName === currentId) {
+                        const markerActive = document.querySelector(`#${currentMarker}`);
+                        markerActive.style.background = 'var(--secondColor)';
+                    } else {
+                        const markerInactive = document.querySelector(`#${currentMarker}`);
+                        markerInactive.style.background = 'var(--firstColor)';
+                    }
+                });
+            }
+
+            //^^SLIDER MARKERS BTNS--START
+            //TODO ******************************************************************************** *//
+            /*  sliderMarkers.forEach((marker) => {
+                const checkSlider = () => {
+                    const sliderId = marker.name;
+                    const sliderSearched = document.querySelector(`#${sliderId}`).getBoundingClientRect().left;
+                    const sliderWidth = sliderImgsContainer.getBoundingClientRect().width;
+
+                   
+                };
+                marker.addEventListener('click', checkSlider);
+            }); */
+            //TODO ******************************************************************************** *//
+
+            //^^SLIDER MARKERS BTNS--OVER
+            //^^ **********************************************************************************************************************************************  *//
+        };
+        const optionsIO_sliders = {
+            threshold: 1,
+        };
+        let sliderObserver = new IntersectionObserver(watchSliders, optionsIO_sliders);
+        sliderObserver.observe(slider);
+    });
+
+    sliderPageMarkersContainer.appendChild(fragmentSliderMarkers);
+    //!SLIDER BTNS CONSTANT--NOT MOVE
+    //!SLIDER BTNS CONSTANT--NOT MOVE
+
+    //^ ***********************************************************************************************//
+    //&CREATE SLIDER MARKERS AND CHECK POSITION SLIDER
+    //& ***********************************************************************************  *//
 
     //!FUNCTIONS --OVER
     //! ******************************************************************************//
@@ -1067,6 +1177,44 @@ document.addEventListener('DOMContentLoaded', () => {
     menuSocialBtn.addEventListener('click', socialMenuBtnActions);
     closeBtnLegalModal.addEventListener('click', closeLegalModal);
 
+    //^CLOSE BTN ALERT--START
+    closeBtnAlertModal.addEventListener('click', () => {
+        closeAlert(storageAlertModal);
+    });
+    //^CLOSE BTN ALERT--OVER
+    //^^ **********************************************************************************************************************************************  *//
+
+    //^BTN LEFT SLIDER--START
+    sliderBtnLeft.addEventListener('click', () => {
+        const sliderWidth = sliderImgsContainer.getBoundingClientRect().width;
+        //*console.log(imgsCount);
+        const sliderWidthFull = sliderWidth / imgsCount;
+        if (sliderFullCount === 0) {
+            sliderFullCount = sliderWidth - sliderWidthFull;
+            sliderImgsContainer.style.transform = `translateX(-${sliderFullCount}px)`;
+        } else {
+            sliderFullCount -= sliderWidthFull;
+            sliderImgsContainer.style.transform = `translateX(-${sliderFullCount}px)`;
+        }
+    });
+    //^BTN LEFT SLIDER--OVER
+    //^^ **********************************************************************************************************************************************  *//
+
+    //^BTN RIGHT SLIDER--START
+    sliderBtnRight.addEventListener('click', () => {
+        const sliderWidth = sliderImgsContainer.getBoundingClientRect().width;
+        //*console.log(imgsCount);
+        const sliderWidthFull = sliderWidth / imgsCount;
+        sliderFullCount += sliderWidthFull;
+        if (sliderFullCount === sliderWidth) {
+            sliderImgsContainer.style.transform = `translateX(0)`;
+            sliderFullCount = 0;
+        } else {
+            sliderImgsContainer.style.transform = `translateX(-${sliderFullCount}px)`;
+        }
+    });
+    //^BTN RIGHT SLIDER--OVER
+    //^^ **********************************************************************************************************************************************  *//
     //^ CHANGE THEME BTN-- START && --/CHANGE THE THEME PAGE BY THE MENU BTN
     btnsTheme.forEach((btn) => {
         const changeThemeBtn = () => {
@@ -1083,6 +1231,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', changeThemeBtn);
     });
     //^ CHANGE THEME BTN-- OVER
+    //^^ **********************************************************************************************************************************************  *//
     btnsMenuSocial.forEach((btn) => {
         btn.addEventListener('click', closeMenuSocial);
     });
@@ -1101,14 +1250,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     //^ BTNS SCROLLS TO SECTION--OVER
     //^ *****************************************************************************//
-    //^ BTNS HERO-- START && **/POSITION THE PAGE IN SECTIONS BY THE BTNS IN THE HERO SECTION
-    btnsHero.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            scrollToSection(btn);
-        });
-    });
-    //^ BTNS HERO-- OVER
-    //^ ************************************************************************* *//
+
     //^^ CONTACT BTNS OPEN MODAL-- START
     btnsContact.forEach((btn) => {
         btn.addEventListener('click', openContactModal);
