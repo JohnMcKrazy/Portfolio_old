@@ -100,12 +100,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //^^HERO
 
-    const sliderImgsContainer = document.querySelector('.slider_imgs_container');
-    const sliderImgs = document.querySelectorAll('.slider_img_container');
+    const sliderWindowContainer = document.querySelector('.slider_window_container');
+    const sliderContainers = document.querySelectorAll('.slider_container');
     const sliderPageMarkersContainer = document.querySelector('#slider_page_markers_container');
     const sliderBtnLeft = document.querySelector('#slider_btn_left');
     const sliderBtnRight = document.querySelector('#slider_btn_right');
     const slidersContent = document.querySelectorAll('.slider_content');
+    const sliderImgContainers = document.querySelectorAll('.img_container');
+    const sliderInfoContainers = document.querySelectorAll('.info_container');
     const btnHeroDown = document.querySelector('#hero_btn_down');
     //^^SERVICES
     const servicesContainer = document.querySelector('#services_container');
@@ -780,7 +782,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //~~SET CARD CHANGES--OVER
         //~~ ************************************************************************************************** *//
         const firstBreak = 1100;
-        const secondBreak = 839;
+        const secondBreak = 899;
         if (widConf > firstBreak) {
             lebelBtnMain.innerHTML = '<h3 class="btn_lebel">Inicio</h3>';
             lebelBtnAbout.innerHTML = '<h3 class="btn_lebel">Acerca de</h3>';
@@ -797,6 +799,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
             slidersContent.forEach((slider) => {
                 insertFlex(slider, 'row', 'center', 'center');
+            });
+            sliderImgContainers.forEach((container) => {
+                const windowHeight = slidersContent[0].clientHeight;
+                const windowHalfWidth = slidersContent[0].clientWidth / 2;
+                //*console.log(windowHalfHeight);
+                container.style.height = `${windowHeight}px`;
+                container.style.width = `${windowHalfWidth}px`;
+                const imgsContainer = container.querySelectorAll('IMG');
+                const SVGsContainer = container.querySelectorAll('SVG');
+                imgsContainer.forEach((img) => {
+                    console.log(img);
+                    img.style.height = '100%';
+                    img.style.width = 'auto';
+                });
             });
             insertFlex(skillsContainer, 'row', 'center', 'flex-start');
             serviceContainer.forEach((container) => {
@@ -847,6 +863,23 @@ document.addEventListener('DOMContentLoaded', () => {
             slidersContent.forEach((slider) => {
                 insertFlex(slider, 'row', 'center', 'center');
             });
+            sliderImgContainers.forEach((container) => {
+                const windowHeight = slidersContent[0].clientHeight;
+                const windowHalfWidth = slidersContent[0].clientWidth / 2;
+                //*console.log(windowHalfHeight);
+                container.style.height = `${windowHeight}px`;
+                container.style.width = `${windowHalfWidth}px`;
+                const imgsContainer = container.querySelectorAll('IMG');
+                const SVGsContainer = container.querySelectorAll('SVG');
+                imgsContainer.forEach((img) => {
+                    console.log(img);
+                    img.style.height = '100%';
+                    img.style.width = 'auto';
+                });
+            });
+            sliderImgContainers.forEach((container) => {
+                container.style.height = `100%`;
+            });
             serviceContainer.forEach((container) => {
                 container.style.width = '100%';
                 serviceCardsLeft.forEach((card) => {
@@ -879,7 +912,22 @@ document.addEventListener('DOMContentLoaded', () => {
             servicesContainer.classList.add('services_container_two_columns');
             servicesContainer.classList.remove('services_container_one_column');
             slidersContent.forEach((slider) => {
-                insertFlex(slider, 'column-reverse', 'center', 'center');
+                insertFlex(slider, 'column', 'flex-start', 'center');
+            });
+
+            sliderImgContainers.forEach((container) => {
+                const windowHalfHeight = slidersContent[0].clientHeight / 2;
+                const windowWidth = slidersContent[0].clientWidth;
+                //*console.log(windowHalfHeight);
+                container.style.height = `${windowHalfHeight}px`;
+                container.style.width = `${windowWidth}px`;
+                const imgsContainer = container.querySelectorAll('IMG');
+                const SVGsContainer = container.querySelectorAll('SVG');
+                imgsContainer.forEach((img) => {
+                    //* console.log(img);
+                    img.style.height = '100%';
+                    img.style.width = 'auto';
+                });
             });
             serviceContainer.forEach((container) => {
                 container.style.width = '280px';
@@ -1104,7 +1152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //&CHANGE LANG BY CLICK --OVER
     //& ***********************************************************************************  *//
     //&CREATE SLIDER MARKERS AND CHECK POSITION SLIDER
-    sliderImgs.forEach((slider) => {
+    sliderContainers.forEach((slider) => {
         imgsCount++;
         const cloneMarker = markersTemplate.cloneNode(true);
         const newMarker = cloneMarker.querySelector('.marker_slider_btn');
@@ -1138,28 +1186,27 @@ document.addEventListener('DOMContentLoaded', () => {
         sliderObserver.observe(slider);
     });
     let dinamicSliderWidth = imgsCount * 100;
-    sliderImgsContainer.style.width = `${dinamicSliderWidth}%`;
+    sliderWindowContainer.style.width = `${dinamicSliderWidth}%`;
     sliderPageMarkersContainer.appendChild(fragmentSliderMarkers);
 
     //!SLIDER BTNS CONSTANT--NOT MOVE
 
     const sliderMarkers = document.querySelectorAll('.marker_slider_btn');
     //^^SLIDER MARKERS BTNS--START
-    //TODO ******************************************************************************** *//
     sliderMarkers.forEach((marker) => {
         const checkSlider = () => {
             const sliderId = marker.name;
             const sliderSearched = document.querySelector(`#${sliderId}`).getBoundingClientRect().left;
-            const sliderWidth = sliderImgsContainer.getBoundingClientRect().width;
+            const sliderWidth = sliderWindowContainer.getBoundingClientRect().width;
             //*console.log(sliderFullCount, sliderSearched, sliderWidth);
 
             if (sliderSearched > 0) {
                 sliderFullCount += sliderSearched;
-                sliderImgsContainer.style.transform = `translateX(-${sliderFullCount}px)`;
+                sliderWindowContainer.style.transform = `translateX(-${sliderFullCount}px)`;
                 //*console.log(sliderFullCount, sliderSearched, sliderWidth, 'by higher than 0');
             } else if (sliderSearched < 0) {
                 sliderFullCount += sliderSearched;
-                sliderImgsContainer.style.transform = `translateX(-${sliderFullCount}px)`;
+                sliderWindowContainer.style.transform = `translateX(-${sliderFullCount}px)`;
                 //*console.log(sliderFullCount, sliderSearched, sliderWidth, 'by lower than 0');
             } else if (sliderSearched === 0) {
                 //*console.log(sliderFullCount, sliderSearched, sliderWidth, 'by equal than 0');
@@ -1167,7 +1214,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         marker.addEventListener('click', checkSlider);
     });
-    //TODO ******************************************************************************** *//
 
     //^^SLIDER MARKERS BTNS--OVER
     //^^ **********************************************************************************************************************************************  *//
@@ -1201,15 +1247,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //^BTN LEFT SLIDER--START
     sliderBtnLeft.addEventListener('click', () => {
-        const sliderWidth = sliderImgsContainer.getBoundingClientRect().width;
+        const sliderWidth = sliderWindowContainer.getBoundingClientRect().width;
         //*console.log(imgsCount);
         const sliderWidthFull = sliderWidth / imgsCount;
         if (sliderFullCount === 0) {
             sliderFullCount = sliderWidth - sliderWidthFull;
-            sliderImgsContainer.style.transform = `translateX(-${sliderFullCount}px)`;
+            sliderWindowContainer.style.transform = `translateX(-${sliderFullCount}px)`;
         } else {
             sliderFullCount -= sliderWidthFull;
-            sliderImgsContainer.style.transform = `translateX(-${sliderFullCount}px)`;
+            sliderWindowContainer.style.transform = `translateX(-${sliderFullCount}px)`;
         }
     });
     //^BTN LEFT SLIDER--OVER
@@ -1217,15 +1263,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //^BTN RIGHT SLIDER--START
     sliderBtnRight.addEventListener('click', () => {
-        const sliderWidth = sliderImgsContainer.getBoundingClientRect().width;
+        const sliderWidth = sliderWindowContainer.getBoundingClientRect().width;
         //*console.log(imgsCount);
         const sliderWidthFull = sliderWidth / imgsCount;
         sliderFullCount += sliderWidthFull;
         if (sliderFullCount === sliderWidth) {
-            sliderImgsContainer.style.transform = `translateX(0)`;
+            sliderWindowContainer.style.transform = `translateX(0)`;
             sliderFullCount = 0;
         } else {
-            sliderImgsContainer.style.transform = `translateX(-${sliderFullCount}px)`;
+            sliderWindowContainer.style.transform = `translateX(-${sliderFullCount}px)`;
         }
     });
     //^BTN RIGHT SLIDER--OVER

@@ -1361,8 +1361,7 @@ BUTTON {
         .slider_btn_container {
             @include flex(center, center);
             height: 100%;
-            max-width: 10rem;
-            min-width: 5rem;
+            width: clamp(2rem, 4rem, 90%);
             padding: 0.5rem;
             .slider_btn {
                 width: 100%;
@@ -1425,25 +1424,34 @@ BUTTON {
         width: 100%;
         height: calc(100vh - var(--navbarHeight));
         overflow: hidden;
-        .slider_imgs_container {
+        .slider_window_container {
             @include flexDirection(row, flex-start, flex-start);
             height: 100%;
             transition: var(--transitionUF);
         }
-        .slider_img_container {
+        .slider_container {
             @include flex(center, center);
             width: 100%;
             height: 100%;
             .slider_content {
                 height: 100%;
                 width: var(--widthClamp);
-                @include flexDirection(row, center, center);
-                gap: 4rem;
+                @include flexDirection(row, space-around, center);
+                gap: 2rem;
                 .img_container {
-                    @include flex(center, flex-start);
+                    @include flex(center, center);
+                    height: auto;
+                    width: 100%;
+                    IMAGE,
+                    SVG {
+                        height: 100%;
+                        width: auto;
+                    }
                 }
                 .info_container {
-                    @include flexDirection(column, flex-end, center);
+                    @include flexDirection(column, center, center);
+                    height: auto;
+                    width: 100%;
                 }
             }
             .slider_content > * {
@@ -1612,7 +1620,6 @@ BUTTON {
 }
 //!SERVICES SECTION-- OVER
 //! ******************************************************************** *//
-
 //!SKILLS SECTION-- START
 #skills_section {
     @include flexDirection(column, flex-start, center);
@@ -1678,7 +1685,6 @@ BUTTON {
 //! ******************************************************************** *//
 //!SERVICES SECTION-- START
 //!PORTFOLIO SECTION-- START
-
 #portfolio_section {
     @include flexDirection(column, flex-start, center);
     #portfolio_content {
