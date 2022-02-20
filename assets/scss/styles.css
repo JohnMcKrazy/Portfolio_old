@@ -2329,9 +2329,8 @@ BUTTON {
       -ms-flex-align: center;
           align-items: center;
   border-radius: var(--borderRadius);
-  width: 30rem;
+  width: 20rem;
   height: 15rem;
-  padding: 1rem 1.5rem;
   cursor: pointer;
   -webkit-transition: var(--transitionFast);
   transition: var(--transitionFast);
@@ -2375,12 +2374,12 @@ BUTTON {
           transform: scale(0.9);
 }
 
-#services_section .service_cards_container #btn_service_gd {
+#services_section .service_cards_container #btn_service_ci {
   background: url("../svg/hero/day71-designer-tool-essential.svg") no-repeat center;
   background-size: cover;
 }
 
-#services_section .service_cards_container #btn_service_dev {
+#services_section .service_cards_container #btn_service_logo {
   background: url("../svg/hero/day93-programing.svg") no-repeat center;
   background-size: cover;
 }
@@ -2390,16 +2389,32 @@ BUTTON {
   background-size: cover;
 }
 
-#services_section .service_cards_container #btn_service_il2 {
+#services_section .service_cards_container #btn_service_wgd {
+  background: darkslateblue;
+}
+
+#services_section .service_cards_container #btn_service_wdev {
   background: red;
 }
 
-#services_section .service_cards_container #btn_service_gd2 {
+#services_section .service_cards_container #btn_service_tp {
   background: blue;
 }
 
-#services_section .service_cards_container #btn_service_dev2 {
-  background: darkslateblue;
+#services_section .service_cards_container #btn_service_menu {
+  background: #00fff2;
+}
+
+#services_section .service_cards_container #btn_service_flayer {
+  background: #a3207c;
+}
+
+#services_section .service_cards_container #btn_service_ed {
+  background: #d4522a;
+}
+
+#services_section .service_cards_container #btn_service_cover {
+  background: #457e3e;
 }
 
 #services_section .services_container {

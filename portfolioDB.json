@@ -46,8 +46,8 @@
             "images": {
                 "avatar": "assets/img/leiru/avatar.png",
                 "hero": {
-                    "small": "assets/img/leiru/hero.png",
-                    "big": "assets/img/leiru/hero.png"
+                    "small": "assets/img/leiru/leiru_mockup_full.png",
+                    "big": "assets/img/leiru/leiru_mockup_full.png"
                 },
                 "1": {
                     "small": "",

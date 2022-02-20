@@ -1720,9 +1720,8 @@ BUTTON {
             position: relative;
             @include flex(center, center);
             border-radius: var(--borderRadius);
-            width: 30rem;
+            width: 20rem;
             height: 15rem;
-            padding: 1rem 1.5rem;
             cursor: pointer;
             transition: var(--transitionFast);
             filter: grayscale(0.8);
@@ -1749,11 +1748,11 @@ BUTTON {
             }
         }
 
-        #btn_service_gd {
+        #btn_service_ci {
             background: url('../svg/hero/day71-designer-tool-essential.svg') no-repeat center;
             background-size: cover;
         }
-        #btn_service_dev {
+        #btn_service_logo {
             background: url('../svg/hero/day93-programing.svg') no-repeat center;
             background-size: cover;
         }
@@ -1761,14 +1760,27 @@ BUTTON {
             background: url('../svg/hero/day70-designer-fav-tool-wacom.svg') no-repeat center;
             background-size: cover;
         }
-        #btn_service_il2 {
+        #btn_service_wgd {
+            background: darkslateblue;
+        }
+        #btn_service_wdev {
             background: red;
         }
-        #btn_service_gd2 {
+        #btn_service_tp {
             background: blue;
         }
-        #btn_service_dev2 {
-            background: darkslateblue;
+
+        #btn_service_menu {
+            background: rgb(0, 255, 242);
+        }
+        #btn_service_flayer {
+            background: rgb(163, 32, 124);
+        }
+        #btn_service_ed {
+            background: rgb(212, 82, 42);
+        }
+        #btn_service_cover {
+            background: rgb(69, 126, 62);
         }
     }
     .services_container {
