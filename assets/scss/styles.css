@@ -140,7 +140,6 @@
   --white: hsl(100, 100%, 100%);
   --blackOff: hsl(0, 0%, 15%);
   --whiteOff: hsl(0, 0%, 85%);
-  --backgroundContrast: hsla(0, 0%, 50%, 0.9);
   --titanimFont: 'Titillium Web', sans-serif;
   --zIndexStart: 1;
   --zIndexHover: 5;
@@ -148,6 +147,7 @@
   --zIndexMenu: 15;
   --zIndexTooltip: 20;
   --zIndexFull: 25;
+  --zIndexAlert: 100;
   --fontSizeS: 1.2rem;
   --fontSizeM: 1.5rem;
   --fontSizeX: 1.8rem;
@@ -190,6 +190,7 @@
   --navbarColorTransparent: hsla(0, 0%, 95%, 0.75);
   --tooltipColor: hsl(0, 0%, 5%);
   --bgColor: hsl(0, 0%, 90%);
+  --bgContrast: hsl(0, 0%, 10%);
   --bgOff: hsl(0, 0%, 80%);
   --bgModal: hsla(0, 0%, 90%, 0.75);
   --vueIconText: hsl(0, 0%, 20%);
@@ -240,16 +241,17 @@
 }
 
 .dark_theme {
-  --firstColor: #00b4d8;
-  --firstColorHover: hsl(195, 100%, 40%);
-  --secondColor: #5e60ce;
-  --secondColorHover: #70a3a5;
+  --firstColor: hsl(190, 100%, 40%);
+  --firstColorHover: hsl(190, 100%, 30%);
+  --secondColor: hsl(240, 55%, 60%);
+  --secondColorHover: hsl(240, 55%, 40%);
   --textColor: hsl(0, 0%, 90%);
   --textContrastColor: hsl(0, 0%, 10%);
   --navbarColor: hsl(0, 0%, 5%);
   --navbarColorTransparent: hsla(0, 0%, 5%, 0.75);
   --tooltipColor: hsl(0, 0%, 95%);
   --bgColor: hsl(0, 0%, 10%);
+  --bgContrast: hsl(0, 0%, 90%);
   --bgOff: hsl(0, 0%, 20%);
   --bgModal: hsla(0, 0%, 10%, 0.75);
   --vueIconText: hsl(0, 0%, 80%);
@@ -299,6 +301,98 @@ body {
   position: relative;
   background: var(--bgColor);
   scroll-behavior: smooth;
+}
+
+body #computer_icon_svg .st1 {
+  fill: var(--midGray);
+}
+
+body #computer_icon_svg .st2 {
+  fill: var(--textColor);
+}
+
+body #computer_icon_svg .st3 {
+  fill: var(--textContrastColor);
+}
+
+body #computer_icon_svg .st4 {
+  fill: var(--textContrastColor);
+}
+
+body #computer_icon_svg .st5 {
+  fill: var(--bgColor);
+}
+
+body #computer_icon_svg .st6 {
+  fill: var(--navbarColor);
+}
+
+body #computer_icon_svg .st7 {
+  fill: var(--secondColor);
+}
+
+body #computer_icon_svg .st8 {
+  fill: var(--bgOff);
+}
+
+body #computer_icon_svg .st9 {
+  fill: var(--bgOff);
+}
+
+body #computer_icon_svg .st10 {
+  fill: var(--textColor);
+}
+
+body #computer_icon_svg .st11 {
+  fill: var(--firstColor);
+}
+
+body #computer_icon_svg .st12 {
+  opacity: 0.1;
+}
+
+body #computer_icon_svg .st13 {
+  fill: red;
+}
+
+body #computer_icon_svg .st14 {
+  fill: var(--navbarColor);
+}
+
+body #show_card_slider_1 .cls-1 {
+  fill: #3f3d56;
+}
+
+body #show_card_slider_1 .cls-2 {
+  fill: #ffb6b6;
+}
+
+body #show_card_slider_1 .cls-3 {
+  fill: #2f2e41;
+}
+
+body #show_card_slider_1 .cls-4 {
+  fill: #a0616a;
+}
+
+body #show_card_slider_1 .cls-5 {
+  fill: var(--midGray);
+}
+
+body #show_card_slider_1 .cls-6 {
+  fill: var(--secondColor);
+}
+
+body #show_card_slider_1 .cls-7 {
+  fill: green;
+}
+
+body #show_card_slider_1 .cls-8 {
+  fill: var(--firstColor);
+}
+
+body #show_card_slider_1 .cls-24 {
+  fill: var(--white);
 }
 
 body .close_icon_svg .cls-1,
@@ -1116,7 +1210,7 @@ BUTTON {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  z-index: var(--zIndexFull);
+  z-index: var(--zIndexAlert);
   background: var(--whiteOff);
   width: 100%;
   height: fit-content;
@@ -1756,12 +1850,16 @@ BUTTON {
 }
 
 #hero_section .slider_btn_container .slider_btn .arrow_slider .cls-1 {
-  fill: var(--firstColor);
+  fill: var(--secondColor);
   fill-rule: evenodd;
 }
 
 #hero_section .slider_btn_container .slider_btn:hover {
   opacity: 0.8;
+}
+
+#hero_section .slider_btn_container .slider_btn:hover .arrow_slider .cls-1 {
+  fill: var(--firstColor);
 }
 
 #hero_section #slider_btn_container_right {
@@ -1893,18 +1991,6 @@ BUTTON {
 .sliders_container .slider_container .slider_content {
   height: 100%;
   width: var(--widthClamp);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   gap: 2rem;
 }
 
@@ -1914,6 +2000,7 @@ BUTTON {
 }
 
 .sliders_container .slider_container .slider_content .img_container {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1932,6 +2019,15 @@ BUTTON {
 .sliders_container .slider_container .slider_content .img_container SVG {
   height: 100%;
   width: auto;
+}
+
+.sliders_container .slider_container .slider_content .img_container .illustration_mine {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100%;
 }
 
 .sliders_container .slider_container .slider_content .info_container {
@@ -1981,10 +2077,51 @@ BUTTON {
       flex-basis: 100%;
 }
 
+.sliders_container .slider_container #slider_1_content,
+.sliders_container .slider_container #slider_3_content,
+.sliders_container .slider_container #slider_5_content,
+.sliders_container .slider_container #slider_7_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sliders_container .slider_container #slider_2_content,
+.sliders_container .slider_container #slider_4_content,
+.sliders_container .slider_container #slider_6_content,
+.sliders_container .slider_container #slider_8_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sliders_container .slider_container .web_planet_img {
+  -webkit-animation: spin 300s linear infinite;
+          animation: spin 300s linear infinite;
+}
+
 .marker_slider_btn {
   width: 1rem;
   height: 1rem;
-  background: var(--firstColor);
+  background: var(--secondColor);
   border-radius: var(--borderRadius);
   -webkit-transition: var(--transitionUF);
   transition: var(--transitionUF);
@@ -2154,6 +2291,115 @@ BUTTON {
 
 #services_section #services_content #header_section_services {
   background: var(--bgHeaderSectionServices);
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+}
+
+#services_section .service_cards_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1rem;
+  width: var(--widthClamp);
+  height: 100%;
+}
+
+#services_section .service_cards_container .btn_service {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: var(--borderRadius);
+  width: 30rem;
+  height: 15rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  -webkit-transition: var(--transitionFast);
+  transition: var(--transitionFast);
+  -webkit-filter: grayscale(0.8);
+          filter: grayscale(0.8);
+}
+
+#services_section .service_cards_container .btn_service .service_btn_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  text-align: center;
+  color: var(--firstColor);
+  font-size: var(--fontSizeMClamp);
+  font-weight: var(--fontWeightB);
+  background: var(--bgColor);
+  -webkit-transition: var(--transitionMid);
+  transition: var(--transitionMid);
+}
+
+#services_section .service_cards_container .btn_service:hover {
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+}
+
+#services_section .service_cards_container .btn_service:hover .service_btn_title {
+  opacity: 0.75;
+}
+
+#services_section .service_cards_container .btn_service:active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+#services_section .service_cards_container #btn_service_gd {
+  background: url("/assets/svg/hero/day71-designer-tool-essential.svg") no-repeat center;
+  background-size: cover;
+}
+
+#services_section .service_cards_container #btn_service_dev {
+  background: url("/assets/svg/hero/day93-programing.svg") no-repeat center;
+  background-size: cover;
+}
+
+#services_section .service_cards_container #btn_service_il {
+  background: url("/assets/svg/hero/day70-designer-fav-tool-wacom.svg") no-repeat center;
+  background-size: cover;
+}
+
+#services_section .service_cards_container #btn_service_il2 {
+  background: red;
+}
+
+#services_section .service_cards_container #btn_service_gd2 {
+  background: blue;
+}
+
+#services_section .service_cards_container #btn_service_dev2 {
+  background: darkslateblue;
 }
 
 #services_section .services_container {
@@ -2183,7 +2429,7 @@ BUTTON {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  height: 30rem;
+  height: 20rem;
 }
 
 #services_section .services_container .service_container .service_card svg {
@@ -2531,22 +2777,22 @@ BUTTON {
   margin-bottom: 1rem;
 }
 
-.flag_project_btn {
-  position: relative;
-  color: var(--textColor);
-  font-weight: var(--fontWeightB);
-}
-
 .project_card:hover,
-.project_card:active,
-.project_card:focus {
+.project_card :focus,
+.project_card :active {
   z-index: var(--zIndexHover);
 }
 
 .project_card:hover .project_info,
-.project_card:active .project_info,
-.project_card:focus .project_info {
+.project_card :focus .project_info,
+.project_card :active .project_info {
   opacity: 0.9;
+}
+
+.flag_project_btn {
+  position: relative;
+  color: var(--textColor);
+  font-weight: var(--fontWeightB);
 }
 
 .projects_container {

@@ -80,7 +80,6 @@
 
     --blackOff: hsl(0, 0%, 15%);
     --whiteOff: hsl(0, 0%, 85%);
-    --backgroundContrast: hsla(0, 0%, 50%, 0.9);
     //!GENERAL COLORS OVER
     //! ******************************************************************************************************************************/
     //!FONTS START
@@ -94,6 +93,7 @@
     --zIndexMenu: 15;
     --zIndexTooltip: 20;
     --zIndexFull: 25;
+    --zIndexAlert: 100;
     //!Z INDEX COUNT-- OVER
     //! FONT SIZES--START
     --fontSizeS: 1.2rem;
@@ -152,6 +152,8 @@
     --navbarColorTransparent: hsla(0, 0%, 95%, 0.75);
     --tooltipColor: hsl(0, 0%, 5%);
     --bgColor: hsl(0, 0%, 90%);
+
+    --bgContrast: hsl(0, 0%, 10%);
     --bgOff: hsl(0, 0%, 80%);
     --bgModal: hsla(0, 0%, 90%, 0.75);
     --vueIconText: hsl(0, 0%, 20%);
@@ -220,10 +222,10 @@
 //^^ DARK THEME START
 .dark_theme {
     //!THEME COLORS START
-    --firstColor: #00b4d8;
-    --firstColorHover: hsl(195, 100%, 40%);
-    --secondColor: #5e60ce;
-    --secondColorHover: #70a3a5;
+    --firstColor: hsl(190, 100%, 40%);
+    --firstColorHover: hsl(190, 100%, 30%);
+    --secondColor: hsl(240, 55%, 60%);
+    --secondColorHover: hsl(240, 55%, 40%);
     --textColor: hsl(0, 0%, 90%);
     --textContrastColor: hsl(0, 0%, 10%);
     --navbarColor: hsl(0, 0%, 5%);
@@ -231,6 +233,8 @@
 
     --tooltipColor: hsl(0, 0%, 95%);
     --bgColor: hsl(0, 0%, 10%);
+
+    --bgContrast: hsl(0, 0%, 90%);
     --bgOff: hsl(0, 0%, 20%);
     --bgModal: hsla(0, 0%, 10%, 0.75);
     --vueIconText: hsl(0, 0%, 80%);
@@ -299,6 +303,93 @@ body {
     position: relative;
     background: var(--bgColor);
     scroll-behavior: smooth;
+    //!!PRUEBA DE ICONOS
+    #computer_icon_svg {
+        .st1 {
+            fill: var(--midGray);
+            //*pantalla
+        }
+        .st2 {
+            fill: var(--textColor);
+            //*base de laptop
+        }
+        .st3 {
+            fill: var(--textContrastColor);
+            //*teclas
+        }
+        .st4 {
+            fill: var(--textContrastColor);
+            //*bizagras
+        }
+        .st5 {
+            fill: var(--bgColor);
+            //*color de pantalla
+        }
+        .st6 {
+            fill: var(--navbarColor);
+            //*sombras
+        }
+        .st7 {
+            fill: var(--secondColor);
+            //*some bubles
+        }
+        .st8 {
+            fill: var(--bgOff);
+            //*fondo de navegador
+        }
+        .st9 {
+            fill: var(--bgOff);
+        }
+        .st10 {
+            fill: var(--textColor);
+            //*textos y fondos de navegador
+        }
+        .st11 {
+            fill: var(--firstColor);
+            //*las otras burbujas y los corazones
+        }
+        .st12 {
+            opacity: 0.1;
+        }
+        .st13 {
+            fill: red;
+            //*puntos de burbuja con puntos
+        }
+        .st14 {
+            fill: var(--navbarColor);
+            //*ventana de navegador
+        }
+    }
+    #show_card_slider_1 {
+        .cls-1 {
+            fill: #3f3d56;
+        }
+        .cls-2 {
+            fill: #ffb6b6;
+        }
+        .cls-3 {
+            fill: #2f2e41;
+        }
+        .cls-4 {
+            fill: #a0616a;
+        }
+        .cls-5 {
+            fill: var(--midGray);
+        }
+        .cls-6 {
+            fill: var(--secondColor);
+        }
+        .cls-7 {
+            fill: green;
+        }
+        .cls-8 {
+            fill: var(--firstColor);
+        }
+        .cls-24 {
+            fill: var(--white);
+        }
+    }
+    //!!PRUEBA DE ICONOS
     //^^GENERAL ICONS COLORS--START
     .close_icon_svg,
     .theme_icon_svg {
@@ -951,7 +1042,7 @@ BUTTON {
     top: 0;
     left: 0;
     height: fit-content;
-    z-index: var(--zIndexFull);
+    z-index: var(--zIndexAlert);
     background: var(--whiteOff);
     width: 100%;
     height: fit-content;
@@ -1366,12 +1457,17 @@ BUTTON {
             z-index: var(--zIndexMenu);
             .arrow_slider {
                 .cls-1 {
-                    fill: var(--firstColor);
+                    fill: var(--secondColor);
                     fill-rule: evenodd;
                 }
             }
             &:hover {
                 opacity: 0.8;
+                .arrow_slider {
+                    .cls-1 {
+                        fill: var(--firstColor);
+                    }
+                }
             }
         }
     }
@@ -1441,13 +1537,13 @@ BUTTON {
         .slider_content {
             height: 100%;
             width: var(--widthClamp);
-            @include flexDirection(row, space-around, center);
             gap: 2rem;
             .img_container,
             .info_container {
                 padding: 0 2rem;
             }
             .img_container {
+                position: relative;
                 @include flex(center, center);
                 height: auto;
                 width: 100%;
@@ -1456,6 +1552,13 @@ BUTTON {
                 SVG {
                     height: 100%;
                     width: auto;
+                }
+                .illustration_mine {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 100%;
                 }
             }
             .info_container {
@@ -1485,6 +1588,28 @@ BUTTON {
         .slider_content > * {
             flex-basis: 100%;
         }
+        #slider_1_content,
+        #slider_3_content,
+        #slider_5_content,
+        #slider_7_content {
+            @include flexDirection(row, space-around, center);
+        }
+        #slider_2_content,
+        #slider_4_content,
+        #slider_6_content,
+        #slider_8_content {
+            @include flexDirection(row-reverse, space-around, center);
+        }
+
+        //^^ILLUSTRATION ANIMATIONS
+        //&&PLANET SPIN--START
+        .web_planet_img {
+            animation: spin 300s linear infinite;
+        }
+        //&&PLANET SPIN--OVER
+        //&& **************************************************************************** *//
+        //^^ILLUSTRATION ANIMATIONS
+        //^^ **************************************************************************** *//
     }
 }
 
@@ -1492,7 +1617,7 @@ BUTTON {
 .marker_slider_btn {
     width: 1rem;
     height: 1rem;
-    background: var(--firstColor);
+    background: var(--secondColor);
     border-radius: var(--borderRadius);
     transition: var(--transitionUF);
     cursor: pointer;
@@ -1582,6 +1707,68 @@ BUTTON {
     #services_content {
         #header_section_services {
             background: var(--bgHeaderSectionServices);
+            min-height: fit-content;
+        }
+    }
+    .service_cards_container {
+        @include flexDirection(row, center, center);
+        flex-wrap: wrap;
+        gap: 1rem;
+        width: var(--widthClamp);
+        height: 100%;
+        .btn_service {
+            position: relative;
+            @include flex(center, center);
+            border-radius: var(--borderRadius);
+            width: 30rem;
+            height: 15rem;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: var(--transitionFast);
+            filter: grayscale(0.8);
+            .service_btn_title {
+                @include flex(center, center);
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                text-align: center;
+                color: var(--firstColor);
+                font-size: var(--fontSizeMClamp);
+                font-weight: var(--fontWeightB);
+                background: var(--bgColor);
+                transition: var(--transitionMid);
+            }
+            &:hover {
+                filter: grayscale(0);
+                .service_btn_title {
+                    opacity: 0.75;
+                }
+            }
+            &:active {
+                transform: scale(0.9);
+            }
+        }
+
+        #btn_service_gd {
+            background: url('/assets/svg/hero/day71-designer-tool-essential.svg') no-repeat center;
+            background-size: cover;
+        }
+        #btn_service_dev {
+            background: url('/assets/svg/hero/day93-programing.svg') no-repeat center;
+            background-size: cover;
+        }
+        #btn_service_il {
+            background: url('/assets/svg/hero/day70-designer-fav-tool-wacom.svg') no-repeat center;
+            background-size: cover;
+        }
+        #btn_service_il2 {
+            background: red;
+        }
+        #btn_service_gd2 {
+            background: blue;
+        }
+        #btn_service_dev2 {
+            background: darkslateblue;
         }
     }
     .services_container {
@@ -1596,7 +1783,7 @@ BUTTON {
                 justify-content: space-between;
                 align-items: center;
                 width: 100%;
-                height: 30rem;
+                height: 20rem;
                 svg {
                     width: 100%;
                     height: auto;
@@ -1786,19 +1973,19 @@ BUTTON {
             }
         }
     }
+    &:hover,
+    :focus,
+    :active {
+        z-index: var(--zIndexHover);
+        .project_info {
+            opacity: 0.9;
+        }
+    }
 }
 .flag_project_btn {
     position: relative;
     color: var(--textColor);
     font-weight: var(--fontWeightB);
-}
-.project_card:hover,
-.project_card:active,
-.project_card:focus {
-    z-index: var(--zIndexHover);
-    .project_info {
-        opacity: 0.9;
-    }
 }
 //!PROJECTS CONTAINER--START
 .projects_container {

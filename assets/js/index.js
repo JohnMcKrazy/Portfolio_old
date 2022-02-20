@@ -480,6 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     //&CLOSE SELECT LIST--OVER
     //& ***************************************************************************** *//
+    //&&BTNS LIST ACTIVATION--START
     const btnsListObserve = new MutationObserver(([entry]) => {
         //*console.log(entry);
         const searchListBtn = document.querySelector('#selection_list_search_btn');
@@ -494,12 +495,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     btnsListObserve.observe(searchBtnsContainer, { childList: true });
 
-    /* 
-    const markersMutationObserve = new MutationObserver(([entry]) => {
-        console.log(entry);
-    });
-    markersMutationObserve.observe(sliderPageMarkersContainer, { childList: true });
- */
+    //&&BTNS LIST ACTIVATION--OVER
+    //&& ************************************************************************ *//
+
     //^^SELECT LIST ACTIONS--OVER
     //^^ ************************************************************************ *//
     //~~CREATE PROJECT HOT CARDS--START
@@ -796,9 +794,15 @@ document.addEventListener('DOMContentLoaded', () => {
             menuSocialContainer.style.display = 'flex';
             servicesContainer.classList.add('services_container_one_column');
             servicesContainer.classList.remove('services_container_two_columns');
-
+            sliderWindowContainer.style.transform = `translateX(0)`;
+            sliderFullCount = 0;
             slidersContent.forEach((slider) => {
-                insertFlex(slider, 'row', 'center', 'center');
+                const idSplit = slider.id.split('_');
+                if (idSplit.includes('2') || idSplit.includes('4') || idSplit.includes('6') || idSplit.includes('8')) {
+                    insertFlex(slider, 'row-reverse', 'center', 'center');
+                } else if (idSplit.includes('1') || idSplit.includes('3') || idSplit.includes('5') || idSplit.includes('7')) {
+                    insertFlex(slider, 'row', 'center', 'center');
+                }
             });
             sliderImgContainers.forEach((container) => {
                 const windowHeight = slidersContent[0].clientHeight;
@@ -809,6 +813,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const imgsContainer = container.querySelectorAll('IMG');
                 const SVGsContainer = container.querySelectorAll('SVG');
                 imgsContainer.forEach((img) => {
+                    //*console.log(img);
+                    img.style.height = '100%';
+                    img.style.width = 'auto';
+                });
+                SVGsContainer.forEach((img) => {
                     //*console.log(img);
                     img.style.height = '100%';
                     img.style.width = 'auto';
@@ -837,9 +846,11 @@ document.addEventListener('DOMContentLoaded', () => {
             btnLegalFooter.innerHTML = '<h3 class="btn_lebel">Legales</h3>';
             btnDataFooter.innerHTML = '<h3 class="btn_lebel">Uso de datos</h3>';
             lebelBtnMain.innerHTML =
-                '<svg class="nav_menu_icon_svg" id="home_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Inicio</title><path class="cls-1" d="M19 21H5a1 1 0 0 1-1-1v-9H1l10.327-9.388a1 1 0 0 1 1.346 0L23 11h-3v9a1 1 0 0 1-1 1zM6 19h12V9.157l-6-5.454-6 5.454V19z"/></svg>';
+                '<svg class="nav_menu_icon_svg" id="home_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Inicio</title><path class="cls-1" d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"></path></svg>';
+            /* '<svg class="nav_menu_icon_svg" id="home_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Inicio</title><path class="cls-1" d="M19 21H5a1 1 0 0 1-1-1v-9H1l10.327-9.388a1 1 0 0 1 1.346 0L23 11h-3v9a1 1 0 0 1-1 1zM6 19h12V9.157l-6-5.454-6 5.454V19z"/></svg>'; */
             lebelBtnAbout.innerHTML =
-                '<svg class="nav_menu_icon_svg" id="about_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Acerca de</title><path class="cls-1" d="M20 22h-2v-2a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v2H4v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2zm-8-9a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>';
+                '<svg class="nav_menu_icon_svg" id="about_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Acerca de</title><circle class="cls-1" cx="12" cy="4" r="2"></circle><path class="cls-1"  d="M15 22V9h5V7H4v2h5v13h2v-7h2v7z"></path></svg>';
+            /*   '<svg class="nav_menu_icon_svg" id="about_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Acerca de</title><path class="cls-1" d="M20 22h-2v-2a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v2H4v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2zm-8-9a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>'; */
             lebelBtnSkills.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="skills_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Conocimientos</title><path class="cls-1" d="M9.973 18H11v-5h2v5h1.027c.132-1.202.745-2.194 1.74-3.277.113-.122.832-.867.917-.973a6 6 0 1 0-9.37-.002c.086.107.807.853.918.974.996 1.084 1.609 2.076 1.741 3.278zM10 20v1h4v-1h-4zm-4.246-5a8 8 0 1 1 12.49.002C17.624 15.774 16 17 16 18.5V21a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.5C8 17 6.375 15.774 5.754 15z"/></svg>';
             lebelBtnServices.innerHTML =
@@ -860,8 +871,15 @@ document.addEventListener('DOMContentLoaded', () => {
             servicesContainer.classList.add('services_container_one_column');
             servicesContainer.classList.remove('services_container_two_columns');
             insertFlex(skillsContainer, 'row', 'center', 'flex-start');
+            sliderWindowContainer.style.transform = `translateX(0)`;
+            sliderFullCount = 0;
             slidersContent.forEach((slider) => {
-                insertFlex(slider, 'row', 'center', 'center');
+                const idSplit = slider.id.split('_');
+                if (idSplit.includes('2') || idSplit.includes('4') || idSplit.includes('6') || idSplit.includes('8')) {
+                    insertFlex(slider, 'row-reverse', 'center', 'center');
+                } else if (idSplit.includes('1') || idSplit.includes('3') || idSplit.includes('5') || idSplit.includes('7')) {
+                    insertFlex(slider, 'row', 'center', 'center');
+                }
             });
             sliderImgContainers.forEach((container) => {
                 const windowHeight = slidersContent[0].clientHeight;
@@ -872,6 +890,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const imgsContainer = container.querySelectorAll('IMG');
                 const SVGsContainer = container.querySelectorAll('SVG');
                 imgsContainer.forEach((img) => {
+                    //*console.log(img);
+                    img.style.height = '100%';
+                    img.style.width = 'auto';
+                });
+                SVGsContainer.forEach((img) => {
                     //*console.log(img);
                     img.style.height = '100%';
                     img.style.width = 'auto';
@@ -908,6 +931,8 @@ document.addEventListener('DOMContentLoaded', () => {
             insertFlex(skillsContainer, 'column', 'flex-start', 'center');
             servicesContainer.classList.add('services_container_two_columns');
             servicesContainer.classList.remove('services_container_one_column');
+            sliderWindowContainer.style.transform = `translateX(0)`;
+            sliderFullCount = 0;
             slidersContent.forEach((slider) => {
                 insertFlex(slider, 'column', 'flex-start', 'center');
             });
@@ -921,6 +946,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const imgsContainer = container.querySelectorAll('IMG');
                 const SVGsContainer = container.querySelectorAll('SVG');
                 imgsContainer.forEach((img) => {
+                    //* console.log(img);
+                    img.style.height = '100%';
+                    img.style.width = 'auto';
+                });
+                SVGsContainer.forEach((img) => {
                     //* console.log(img);
                     img.style.height = '100%';
                     img.style.width = 'auto';
@@ -948,6 +978,7 @@ document.addEventListener('DOMContentLoaded', () => {
             closeMenuSocial();
         }
     };
+
     //&CONFIGURATION SIZE SCREEN--OVER
     //& ********** *********************************************************************************************//
     const checkWindowWidth = () => {
@@ -1168,10 +1199,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     //*console.log(currentMarker);
                     if (currentMarkerName === currentId) {
                         const markerActive = document.querySelector(`#${currentMarker}`);
-                        markerActive.style.background = 'var(--firstColor)';
+                        markerActive.style.background = 'var(--secondColor)';
                     } else {
                         const markerInactive = document.querySelector(`#${currentMarker}`);
-                        markerInactive.style.background = 'var(--secondColor)';
+                        markerInactive.style.background = 'var(--firstColor)';
                     }
                 });
             }
