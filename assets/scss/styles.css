@@ -2376,17 +2376,17 @@ BUTTON {
 }
 
 #services_section .service_cards_container #btn_service_gd {
-  background: url("/assets/svg/hero/day71-designer-tool-essential.svg") no-repeat center;
+  background: url("../svg/hero/day71-designer-tool-essential.svg") no-repeat center;
   background-size: cover;
 }
 
 #services_section .service_cards_container #btn_service_dev {
-  background: url("/assets/svg/hero/day93-programing.svg") no-repeat center;
+  background: url("../svg/hero/day93-programing.svg") no-repeat center;
   background-size: cover;
 }
 
 #services_section .service_cards_container #btn_service_il {
-  background: url("/assets/svg/hero/day70-designer-fav-tool-wacom.svg") no-repeat center;
+  background: url("../svg/hero/day70-designer-fav-tool-wacom.svg") no-repeat center;
   background-size: cover;
 }
 
