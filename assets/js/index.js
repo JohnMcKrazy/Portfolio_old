@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^PROJECT CARD TEMPLATE CONSTANTS
     const fragmentHotProjects = document.createDocumentFragment();
     const fragmentSearchProjects = document.createDocumentFragment();
-    const fragmentSliderMarkers = document.createDocumentFragment();
+    const fragmentSliderMarkersServices = document.createDocumentFragment();
 
     const cardProjectTemplate = document.querySelector('#card_project_template').content;
     const btnProjectTemplate = document.querySelector('#btn_project_template').content;
@@ -100,18 +100,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //^^HERO
 
-    const sliderWindowContainer = document.querySelector('.slider_window_container');
-    const sliderContainers = document.querySelectorAll('.slider_container');
-    const sliderPageMarkersContainer = document.querySelector('#slider_page_markers_container');
-    const sliderBtnLeft = document.querySelector('#slider_btn_left');
-    const sliderBtnRight = document.querySelector('#slider_btn_right');
-    const slidersContent = document.querySelectorAll('.slider_content');
-    const sliderImgContainers = document.querySelectorAll('.img_container');
-    const sliderInfoContainers = document.querySelectorAll('.info_container');
     const btnHeroDown = document.querySelector('#hero_btn_down');
     //^^SERVICES
+
+    const sliderWindowContainerServices = document.querySelector('#slider_window_container_services');
+    const sliderContainersServices = document.querySelectorAll('.slider_container_services');
+    const sliderPageMarkersContainerServices = document.querySelector('#slider_page_markers_container_services');
+    const sliderBtnLeftServices = document.querySelector('#btn_swipe_left_slider_services');
+    const sliderBtnRightServices = document.querySelector('#btn_swipe_right_slider_services');
+    const slidersContentServices = document.querySelectorAll('.slider_content_services');
+    const sliderImgContainersServices = document.querySelectorAll('.img_container_services');
+    const sliderInfoContainersServices = document.querySelectorAll('.info_container_services');
+
     const servicesContainer = document.querySelector('#services_container');
-    const serviceContainer = document.querySelectorAll('.service_container');
+    const serviceContainers = document.querySelectorAll('.service_container');
+    const serviceCards = document.querySelectorAll('.service_card');
     const serviceCardsLeft = document.querySelectorAll('.service_card_left');
     const serviceCardsRight = document.querySelectorAll('.service_card_right');
     //^^SKILLS
@@ -169,8 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let alertStorageModalStatus = open;
     let legalModalStatus = close;
     let selectListStatus = close;
-    let imgsCount = 0;
-    let sliderFullCount = 0;
+    let slidersServicesCount = 0;
+    let servicecardsCount = 0;
+    let sliderFullCountServices = 0;
 
     //! ************************************************************************************************************ *//
     //! SEARCH LOCAL STORAGE--START
@@ -343,218 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     //^^BASIC FUNCTION ANIMATION-- OVER
     //^ ************************************************************************* *//
-    //^ CREATE TEMPLATE CARD --START
-    const createCard = (item, frac) => {
-        const cloneProjectCard = cardProjectTemplate.cloneNode(true);
-        const projectCard = cloneProjectCard.querySelector('.project_card');
-        const fieldsetCard = cloneProjectCard.querySelector('.btns_flag_project_container');
-        const cardTitle = cloneProjectCard.querySelector('.title');
-        //* ******************************************************************************** *//
-        const clientName = item['client_name'];
-        const cardImg = item['projects']['images']['hero']['small'];
-        projectCard.style.backgroundImage = `url("${cardImg}")`;
-        const clientTechnologiesInProjects = item['projects']['technologies'];
-        clientTechnologiesInProjects.forEach((project) => {
-            const cloneBtn = btnProjectTemplate.cloneNode(true);
-            const flagBtn = cloneBtn.querySelector('.flag_project_btn');
-            flagBtn.textContent = project;
-            fieldsetCard.appendChild(flagBtn);
-        });
-        cardTitle.textContent = clientName;
-        frac.appendChild(projectCard);
-    };
 
-    //^ CREATE TEMPLATE CARD --OVER
-    //^ ************************************************************************* *//
-    //^^FETCH SEARCH SELECTION DATA--START //-fetch selection option data for search projects
-    let typesOfProjects = [];
-    let newProjectsListData = [];
-    const createSelectionTypeBtns = async () => {
-        try {
-            const rawData = await fetch(portfolioData);
-            const data = await rawData.json();
-            let newID;
-            //*console.log(data);
-            class ProjectTypeData {
-                constructor(value, id) {
-                    this.value = value;
-                    this.id = id;
-                }
-            }
-            data.forEach((item) => {
-                const projectTypes = item['projects']['type'];
-
-                projectTypes.forEach((type) => {
-                    if (!typesOfProjects.includes(type)) {
-                        typesOfProjects.push(type);
-                    }
-                });
-            });
-            //*console.log(typesOfProjects);
-            typesOfProjects.sort().forEach((type) => {
-                const createID = type.toLowerCase().split(' ').join('_');
-                newID = createID;
-                let newProjectTypeData = new ProjectTypeData(type, newID);
-                newProjectsListData.push(newProjectTypeData);
-            });
-            //*console.log(newProjectsListData);
-
-            const selectionListTemplateClone = selectionListTemplate.cloneNode(true);
-            const newList = selectionListTemplateClone.querySelector('.selection_list');
-            newList.setAttribute('name', 'types_of_projects');
-            newList.id = `selection_list_type_of_projects`;
-            newProjectsListData.forEach((option) => {
-                const optionValue = option['value'];
-                const optionId = option['id'];
-                //*console.log(optionValue, optionProject);
-
-                //* console.log(projects);
-                const optionListTemplateClone = optionListTemplate.cloneNode(true);
-                const newOptionBtn = optionListTemplateClone.querySelector('.option_list_btn');
-
-                const newOptionText = optionListTemplateClone.querySelector('.option_list_text');
-                newOptionBtn.id = `option_list_btn_${optionId}`;
-                newOptionBtn.setAttribute('name', optionValue);
-                newOptionText.textContent = optionValue;
-                newList.appendChild(newOptionBtn);
-            });
-            fragmentListProjects.appendChild(newList);
-            searchBtnsContainer.appendChild(fragmentListProjects);
-            const typesOfProjectOptionList = document.querySelectorAll('.option_list_btn');
-            //*console.log(typesOfProjectOptionList);
-            typesOfProjectOptionList.forEach((optionType) => {
-                //* console.log(optionType);
-                const createSearchedCards = (e) => {
-                    deleteChildElements(porfolioSearchCardsContainer);
-                    const currentNameData = e.target.getAttribute('name');
-                    //* console.log(currentNameData);
-
-                    data.forEach((item) => {
-                        const dataIncludedResponse = item['projects']['type'].includes(currentNameData);
-                        if (dataIncludedResponse) {
-                            //todo CREAR TARJETAS ESPECIFICAS DE BUSQUEDA
-                            //*console.log(item);
-                            closeSelectList();
-                            createCard(item, fragmentSearchProjects);
-                            titleSubsectionCardsSearch.textContent = currentNameData;
-                            porfolioSearchCardsContainer.appendChild(fragmentSearchProjects);
-                            const projectCards = document.querySelectorAll('.project_card');
-                            projectCards.forEach((card) => {
-                                setTimeout(() => {
-                                    animateItem(card, '1', 'translateY(0)');
-                                }, 500);
-                            });
-                        } else if (!dataIncludedResponse) {
-                            //*console.log('este es el boton que abre la lista, deberia de');
-                        }
-                    });
-                };
-
-                optionType.addEventListener('click', createSearchedCards);
-            });
-        } catch (error) {
-            console.log(error);
-        }
-    };
-    createSelectionTypeBtns();
-    //^^FETCH SEARCH SELECTION DATA--OVER
-    //^ ************************************************************************* *//
-    //^^SELECT LIST ACTIONS--START
-    //&OPEN SELECT LIST--START
-    const openSelectList = () => {
-        const selectionTypesList = document.querySelector('#selection_list_type_of_projects');
-        const arrowSvg = document.querySelector('#arrow_btn_select_list_svg');
-        arrowSvg.style.transform = 'rotate(-180deg)';
-        selectionTypesList.style.height = 'fit-content';
-        selectListStatus = open;
-    };
-    //&OPEN SELECT LIST--OVER
-    //& ***************************************************************************** *//
-    //&CLOSE SELECT LIST--START
-    const closeSelectList = () => {
-        const selectionTypesList = document.querySelector('#selection_list_type_of_projects');
-        const arrowSvg = document.querySelector('#arrow_btn_select_list_svg');
-        arrowSvg.style.transform = 'rotate(0)';
-        selectionTypesList.style.height = '3rem';
-        selectListStatus = close;
-    };
-    //&CLOSE SELECT LIST--OVER
-    //& ***************************************************************************** *//
-    //&&BTNS LIST ACTIVATION--START
-    const btnsListObserve = new MutationObserver(([entry]) => {
-        //*console.log(entry);
-        const searchListBtn = document.querySelector('#selection_list_search_btn');
-        const selectListActions = () => {
-            if (selectListStatus === close) {
-                openSelectList();
-            } else if (selectListStatus === open) {
-                closeSelectList();
-            }
-        };
-        searchListBtn.addEventListener('click', selectListActions);
-    });
-    btnsListObserve.observe(searchBtnsContainer, { childList: true });
-
-    //&&BTNS LIST ACTIVATION--OVER
-    //&& ************************************************************************ *//
-
-    //^^SELECT LIST ACTIONS--OVER
-    //^^ ************************************************************************ *//
-    //~~CREATE PROJECT HOT CARDS--START
-    const createProjectCardHot = async () => {
-        try {
-            const rawData = await fetch(portfolioData);
-            const data = await rawData.json();
-            data.forEach((item) => {
-                createCard(item, fragmentHotProjects);
-            });
-            portfolioHotCardsContainer.appendChild(fragmentHotProjects);
-            const projectCards = document.querySelectorAll('.project_card');
-            projectCards.forEach((card) => {
-                setTimeout(() => {
-                    animateItem(card, '1', 'translateY(0)');
-                }, 500);
-            });
-        } catch (error) {
-            console.log(error);
-        }
-    };
-    //~~CREATE PROJECT HOT CARDS--OVER
-    //~~ ************************************************************************* *//
-
-    //~~CREATE PROJECT RANDOM CARDS--START
-    const createProjectCardRandom = async () => {
-        let randomTypeSelection = randomDataSelector(typesOfProjects);
-        try {
-            const rawData = await fetch(portfolioData);
-            const data = await rawData.json();
-            let randomItems = [];
-            data.forEach((item) => {
-                const itemsTypesOfProjects = item['projects']['type'];
-                if (itemsTypesOfProjects.includes(randomTypeSelection)) {
-                    randomItems.push(item);
-                    titleSubsectionCardsSearch.textContent = randomTypeSelection;
-                }
-            });
-            //*console.log(randomItems);
-            randomItems.forEach((item) => {
-                createCard(item, fragmentSearchProjects);
-            });
-
-            porfolioSearchCardsContainer.appendChild(fragmentSearchProjects);
-            const projectCards = document.querySelectorAll('.project_card');
-
-            projectCards.forEach((card) => {
-                setTimeout(() => {
-                    animateItem(card, '1', 'translateY(0)');
-                }, 500);
-            });
-        } catch (error) {
-            console.log(error);
-        }
-    };
-    //~~CREATE PROJECT RANDOM CARDS--OVER
-    //~~ ************************************************************************* *//
     //^^SPINNERS LOADER OBSERVER--START
     loadersContainers.forEach((loader) => {
         const watchCardsContainers = ([entry]) => {
@@ -769,6 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     //^SCROLL T0-- OVER
     //^ ************************************************************************** *//
+
     //^ CHECK MENU POSITION WINDOW-- START && **/SCALE THE NAVBAR AND CHANGE THE MENU POSITION BY THE PAGE POSITION
     //&CONFIGURATION SIZE SCREEN--START ->//THIS FUNCTION BRING ALL THE CONTAINERS CARACTERISTICTS BY THE SIZE OF THE WINDOW
     const configSize = (widConf) => {
@@ -794,9 +588,8 @@ document.addEventListener('DOMContentLoaded', () => {
             menuSocialContainer.style.display = 'flex';
             servicesContainer.classList.add('services_container_one_column');
             servicesContainer.classList.remove('services_container_two_columns');
-            sliderWindowContainer.style.transform = `translateX(0)`;
-            sliderFullCount = 0;
-            slidersContent.forEach((slider) => {
+
+            slidersContentServices.forEach((slider) => {
                 const idSplit = slider.id.split('_');
                 if (idSplit.includes('2') || idSplit.includes('4') || idSplit.includes('6') || idSplit.includes('8')) {
                     insertFlex(slider, 'row-reverse', 'center', 'center');
@@ -804,34 +597,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     insertFlex(slider, 'row', 'center', 'center');
                 }
             });
-            sliderImgContainers.forEach((container) => {
+            sliderImgContainersServices.forEach((container) => {
                 const windowHeight = slidersContent[0].clientHeight;
                 const windowHalfWidth = slidersContent[0].clientWidth / 2;
                 //*console.log(windowHalfHeight);
                 container.style.height = `${windowHeight}px`;
                 container.style.width = `${windowHalfWidth}px`;
-                const imgsContainer = container.querySelectorAll('IMG');
-                const SVGsContainer = container.querySelectorAll('SVG');
-                imgsContainer.forEach((img) => {
-                    //*console.log(img);
-                    img.style.height = '100%';
-                    img.style.width = 'auto';
-                });
-                SVGsContainer.forEach((img) => {
-                    //*console.log(img);
-                    img.style.height = '100%';
-                    img.style.width = 'auto';
-                });
+                insertFlex(container, 'center', 'center');
             });
             insertFlex(skillsContainer, 'row', 'center', 'flex-start');
-            serviceContainer.forEach((container) => {
+            serviceContainers.forEach((container) => {
                 container.style.width = '100%';
-                serviceCardsLeft.forEach((card) => {
-                    changeCardStyle(card, 'row', 'var(--cardWidth)');
-                });
-                serviceCardsRight.forEach((card) => {
-                    changeCardStyle(card, 'row-reverse', 'var(--cardWidth)');
-                });
+            });
+            serviceCardsLeft.forEach((card) => {
+                changeCardStyle(card, 'row', 'var(--cardServiceHeight)');
+            });
+            serviceCardsRight.forEach((card) => {
+                changeCardStyle(card, 'row-reverse', 'var(--cardServiceHeight)');
             });
             logoClientsContainers.forEach((container) => {
                 container.style.width = '12.5rem';
@@ -869,11 +651,10 @@ document.addEventListener('DOMContentLoaded', () => {
             btnsNavContainer.style.display = 'flex';
             menuSocialContainer.style.display = 'flex';
             servicesContainer.classList.add('services_container_one_column');
-            servicesContainer.classList.remove('services_container_two_columns');
+            servicesContainer.classList.remove('services_container_more_columns');
             insertFlex(skillsContainer, 'row', 'center', 'flex-start');
-            sliderWindowContainer.style.transform = `translateX(0)`;
-            sliderFullCount = 0;
-            slidersContent.forEach((slider) => {
+
+            slidersContentServices.forEach((slider) => {
                 const idSplit = slider.id.split('_');
                 if (idSplit.includes('2') || idSplit.includes('4') || idSplit.includes('6') || idSplit.includes('8')) {
                     insertFlex(slider, 'row-reverse', 'center', 'center');
@@ -881,33 +662,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     insertFlex(slider, 'row', 'center', 'center');
                 }
             });
-            sliderImgContainers.forEach((container) => {
+            sliderImgContainersServices.forEach((container) => {
                 const windowHeight = slidersContent[0].clientHeight;
                 const windowHalfWidth = slidersContent[0].clientWidth / 2;
                 //*console.log(windowHalfHeight);
                 container.style.height = `${windowHeight}px`;
                 container.style.width = `${windowHalfWidth}px`;
-                const imgsContainer = container.querySelectorAll('IMG');
-                const SVGsContainer = container.querySelectorAll('SVG');
-                imgsContainer.forEach((img) => {
-                    //*console.log(img);
-                    img.style.height = '100%';
-                    img.style.width = 'auto';
-                });
-                SVGsContainer.forEach((img) => {
-                    //*console.log(img);
-                    img.style.height = '100%';
-                    img.style.width = 'auto';
-                });
+                insertFlex(container, 'center', 'center');
             });
-            serviceContainer.forEach((container) => {
+            serviceContainers.forEach((container) => {
                 container.style.width = '100%';
-                serviceCardsLeft.forEach((card) => {
-                    changeCardStyle(card, 'row', 'var(--cardWidth)');
-                });
-                serviceCardsRight.forEach((card) => {
-                    changeCardStyle(card, 'row-reverse', 'var(--cardWidth)');
-                });
+            });
+            serviceCardsLeft.forEach((card) => {
+                changeCardStyle(card, 'row', 'var(--cardServiceHeight)');
+            });
+            serviceCardsRight.forEach((card) => {
+                changeCardStyle(card, 'row-reverse', 'var(--cardServiceHeight)');
             });
             logoClientsContainers.forEach((container) => {
                 container.style.width = '12.5rem';
@@ -929,42 +699,30 @@ document.addEventListener('DOMContentLoaded', () => {
             menuSocialContainer.style.display = 'none';
 
             insertFlex(skillsContainer, 'column', 'flex-start', 'center');
-            servicesContainer.classList.add('services_container_two_columns');
+            servicesContainer.classList.add('services_container_more_columns');
             servicesContainer.classList.remove('services_container_one_column');
-            sliderWindowContainer.style.transform = `translateX(0)`;
-            sliderFullCount = 0;
-            slidersContent.forEach((slider) => {
+
+            slidersContentServices.forEach((slider) => {
                 insertFlex(slider, 'column', 'flex-start', 'center');
             });
 
-            sliderImgContainers.forEach((container) => {
+            sliderImgContainersServices.forEach((container) => {
                 const windowHalfHeight = slidersContent[0].clientHeight / 2;
                 const windowWidth = slidersContent[0].clientWidth;
                 //*console.log(windowHalfHeight);
                 container.style.height = `${windowHalfHeight}px`;
                 container.style.width = `${windowWidth}px`;
-                const imgsContainer = container.querySelectorAll('IMG');
-                const SVGsContainer = container.querySelectorAll('SVG');
-                imgsContainer.forEach((img) => {
-                    //* console.log(img);
-                    img.style.height = '100%';
-                    img.style.width = 'auto';
-                });
-                SVGsContainer.forEach((img) => {
-                    //* console.log(img);
-                    img.style.height = '100%';
-                    img.style.width = 'auto';
-                });
+                insertFlex(container, 'center', 'center');
             });
-            serviceContainer.forEach((container) => {
-                container.style.width = '280px';
-                container.style.height = 'fit-content';
-                serviceCardsLeft.forEach((card) => {
-                    changeCardStyle(card, 'column', 'auto');
-                });
-                serviceCardsRight.forEach((card) => {
-                    changeCardStyle(card, 'column', 'auto');
-                });
+            serviceContainers.forEach((container) => {
+                container.style.width = 'var(--cardServiceWidthMore)';
+                container.style.height = 'var(--cardServiceHeight)';
+            });
+            serviceCardsLeft.forEach((card) => {
+                changeCardStyle(card, 'column', 'var(--cardServiceHeight)');
+            });
+            serviceCardsRight.forEach((card) => {
+                changeCardStyle(card, 'column', 'var(--cardServiceHeight)');
             });
 
             logoClientsContainers.forEach((container) => {
@@ -1167,12 +925,224 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ NAV RESIZE OBSERVER PARA MENU RESPONSIVE-- START --/CHANGE MENU NAV BY SCREEN SIZE
     const watchNavResize = ([entry]) => {
         const navWidth = entry.contentRect.width;
+
         configSize(navWidth);
     };
     const navResizeObserve = new ResizeObserver(watchNavResize);
     navResizeObserve.observe(nav);
     //^ NAV RESIZE OBSERVER PARA MENU RESPONSIVE-- OVER
     //^ ***********************************************************************************  *//
+    //^ CREATE TEMPLATE CARD --START
+    const createCard = (item, frac) => {
+        const cloneProjectCard = cardProjectTemplate.cloneNode(true);
+        const projectCard = cloneProjectCard.querySelector('.project_card');
+        const fieldsetCard = cloneProjectCard.querySelector('.btns_flag_project_container');
+        const cardTitle = cloneProjectCard.querySelector('.title');
+        //* ******************************************************************************** *//
+        const clientName = item['client_name'];
+        const cardImg = item['projects']['images']['hero']['small'];
+        projectCard.style.backgroundImage = `url("${cardImg}")`;
+        const clientTechnologiesInProjects = item['projects']['technologies'];
+        clientTechnologiesInProjects.forEach((project) => {
+            const cloneBtn = btnProjectTemplate.cloneNode(true);
+            const flagBtn = cloneBtn.querySelector('.flag_project_btn');
+            flagBtn.textContent = project;
+            fieldsetCard.appendChild(flagBtn);
+        });
+        cardTitle.textContent = clientName;
+        frac.appendChild(projectCard);
+    };
+    //^ CREATE TEMPLATE CARD --OVER
+    //^ ************************************************************************* *//
+    //^^FETCH SEARCH SELECTION DATA--START //-fetch selection option data for search projects
+    let typesOfProjects = [];
+    let newProjectsListData = [];
+    const createSelectionTypeBtns = async () => {
+        try {
+            const rawData = await fetch(portfolioData);
+            const data = await rawData.json();
+            let newID;
+            //*console.log(data);
+            class ProjectTypeData {
+                constructor(value, id) {
+                    this.value = value;
+                    this.id = id;
+                }
+            }
+            data.forEach((item) => {
+                const projectTypes = item['projects']['type'];
+
+                projectTypes.forEach((type) => {
+                    if (!typesOfProjects.includes(type)) {
+                        typesOfProjects.push(type);
+                    }
+                });
+            });
+            //*console.log(typesOfProjects);
+            typesOfProjects.sort().forEach((type) => {
+                const createID = type.toLowerCase().split(' ').join('_');
+                newID = createID;
+                let newProjectTypeData = new ProjectTypeData(type, newID);
+                newProjectsListData.push(newProjectTypeData);
+            });
+            //*console.log(newProjectsListData);
+
+            const selectionListTemplateClone = selectionListTemplate.cloneNode(true);
+            const newList = selectionListTemplateClone.querySelector('.selection_list');
+            newList.setAttribute('name', 'types_of_projects');
+            newList.id = `selection_list_type_of_projects`;
+            newProjectsListData.forEach((option) => {
+                const optionValue = option['value'];
+                const optionId = option['id'];
+                //*console.log(optionValue, optionProject);
+
+                //* console.log(projects);
+                const optionListTemplateClone = optionListTemplate.cloneNode(true);
+                const newOptionBtn = optionListTemplateClone.querySelector('.option_list_btn');
+
+                const newOptionText = optionListTemplateClone.querySelector('.option_list_text');
+                newOptionBtn.id = `option_list_btn_${optionId}`;
+                newOptionBtn.setAttribute('name', optionValue);
+                newOptionText.textContent = optionValue;
+                newList.appendChild(newOptionBtn);
+            });
+            fragmentListProjects.appendChild(newList);
+            searchBtnsContainer.appendChild(fragmentListProjects);
+            const typesOfProjectOptionList = document.querySelectorAll('.option_list_btn');
+            //*console.log(typesOfProjectOptionList);
+            typesOfProjectOptionList.forEach((optionType) => {
+                //* console.log(optionType);
+                const createSearchedCards = (e) => {
+                    deleteChildElements(porfolioSearchCardsContainer);
+                    const currentNameData = e.target.getAttribute('name');
+                    //* console.log(currentNameData);
+
+                    data.forEach((item) => {
+                        const dataIncludedResponse = item['projects']['type'].includes(currentNameData);
+                        if (dataIncludedResponse) {
+                            //todo CREAR TARJETAS ESPECIFICAS DE BUSQUEDA
+                            //*console.log(item);
+                            closeSelectList();
+                            createCard(item, fragmentSearchProjects);
+                            titleSubsectionCardsSearch.textContent = currentNameData;
+                            porfolioSearchCardsContainer.appendChild(fragmentSearchProjects);
+                            const projectCards = document.querySelectorAll('.project_card');
+                            projectCards.forEach((card) => {
+                                setTimeout(() => {
+                                    animateItem(card, '1', 'translateY(0)');
+                                }, 500);
+                            });
+                        } else if (!dataIncludedResponse) {
+                            //*console.log('este es el boton que abre la lista, deberia de');
+                        }
+                    });
+                };
+
+                optionType.addEventListener('click', createSearchedCards);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    createSelectionTypeBtns();
+    //^^FETCH SEARCH SELECTION DATA--OVER
+    //^ ************************************************************************* *//
+    //^^SELECT LIST ACTIONS--START
+    //&OPEN SELECT LIST--START
+    const openSelectList = () => {
+        const selectionTypesList = document.querySelector('#selection_list_type_of_projects');
+        const arrowSvg = document.querySelector('#arrow_btn_select_list_svg');
+        arrowSvg.style.transform = 'rotate(-180deg)';
+        selectionTypesList.style.height = 'fit-content';
+        selectListStatus = open;
+    };
+    //&OPEN SELECT LIST--OVER
+    //& ***************************************************************************** *//
+    //&CLOSE SELECT LIST--START
+    const closeSelectList = () => {
+        const selectionTypesList = document.querySelector('#selection_list_type_of_projects');
+        const arrowSvg = document.querySelector('#arrow_btn_select_list_svg');
+        arrowSvg.style.transform = 'rotate(0)';
+        selectionTypesList.style.height = '3rem';
+        selectListStatus = close;
+    };
+    //&CLOSE SELECT LIST--OVER
+    //& ***************************************************************************** *//
+    //&&BTNS LIST ACTIVATION--START
+    const btnsListObserve = new MutationObserver(([entry]) => {
+        //*console.log(entry);
+        const searchListBtn = document.querySelector('#selection_list_search_btn');
+        const selectListActions = () => {
+            if (selectListStatus === close) {
+                openSelectList();
+            } else if (selectListStatus === open) {
+                closeSelectList();
+            }
+        };
+        searchListBtn.addEventListener('click', selectListActions);
+    });
+    btnsListObserve.observe(searchBtnsContainer, { childList: true });
+
+    //&&BTNS LIST ACTIVATION--OVER
+    //&& ************************************************************************ *//
+
+    //^^SELECT LIST ACTIONS--OVER
+    //^^ ************************************************************************ *//
+    //~~CREATE PROJECT HOT CARDS--START
+    const createProjectCardHot = async () => {
+        try {
+            const rawData = await fetch(portfolioData);
+            const data = await rawData.json();
+            data.forEach((item) => {
+                createCard(item, fragmentHotProjects);
+            });
+            portfolioHotCardsContainer.appendChild(fragmentHotProjects);
+            const projectCards = document.querySelectorAll('.project_card');
+            projectCards.forEach((card) => {
+                setTimeout(() => {
+                    animateItem(card, '1', 'translateY(0)');
+                }, 500);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    //~~CREATE PROJECT HOT CARDS--OVER
+    //~~ ************************************************************************* *//
+
+    //~~CREATE PROJECT RANDOM CARDS--START
+    const createProjectCardRandom = async () => {
+        let randomTypeSelection = randomDataSelector(typesOfProjects);
+        try {
+            const rawData = await fetch(portfolioData);
+            const data = await rawData.json();
+            let randomItems = [];
+            data.forEach((item) => {
+                const itemsTypesOfProjects = item['projects']['type'];
+                if (itemsTypesOfProjects.includes(randomTypeSelection)) {
+                    randomItems.push(item);
+                    titleSubsectionCardsSearch.textContent = randomTypeSelection;
+                }
+            });
+            //*console.log(randomItems);
+            randomItems.forEach((item) => {
+                createCard(item, fragmentSearchProjects);
+            });
+
+            porfolioSearchCardsContainer.appendChild(fragmentSearchProjects);
+            const projectCards = document.querySelectorAll('.project_card');
+
+            projectCards.forEach((card) => {
+                setTimeout(() => {
+                    animateItem(card, '1', 'translateY(0)');
+                }, 500);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    //~~CREATE PROJECT RANDOM CARDS--OVER
+    //~~ ************************************************************************* *//
     //&CHANGE LANG BY CLICK--START
     const changeLang = (lang) => {
         document.documentElement.setAttribute('lang', lang);
@@ -1180,16 +1150,18 @@ document.addEventListener('DOMContentLoaded', () => {
     //&CHANGE LANG BY CLICK --OVER
     //& ***********************************************************************************  *//
     //&CREATE SLIDER MARKERS AND CHECK POSITION SLIDER
-    sliderContainers.forEach((slider) => {
-        imgsCount++;
+
+    sliderContainersServices.forEach((slider) => {
+        slidersServicesCount++;
         const cloneMarker = markersTemplate.cloneNode(true);
         const newMarker = cloneMarker.querySelector('.marker_slider_btn');
-        newMarker.setAttribute('id', `marker_slider_btn_${imgsCount}`);
+        newMarker.setAttribute('id', `marker_slider_btn_${slidersServicesCount}`);
+        newMarker.classList.add('marker_slider_services_btn');
         newMarker.setAttribute('name', slider.id);
-        fragmentSliderMarkers.appendChild(newMarker);
+        fragmentSliderMarkersServices.appendChild(newMarker);
 
         const watchSliders = ([entry]) => {
-            const sliderMarkers = document.querySelectorAll('.marker_slider_btn');
+            const sliderMarkers = document.querySelectorAll('.marker_slider_services_btn');
             if (entry.isIntersecting) {
                 const currentId = entry.target.id;
                 //*console.log(currentId);
@@ -1208,36 +1180,36 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
         const optionsIO_sliders = {
-            threshold: 1,
+            threshold: 0.4,
         };
         let sliderObserver = new IntersectionObserver(watchSliders, optionsIO_sliders);
         sliderObserver.observe(slider);
     });
-    let dinamicSliderWidth = imgsCount * 100;
-    sliderWindowContainer.style.width = `${dinamicSliderWidth}%`;
-    sliderPageMarkersContainer.appendChild(fragmentSliderMarkers);
+    let dinamicSliderWidth = slidersServicesCount * 100;
+    sliderWindowContainerServices.style.width = `${dinamicSliderWidth}%`;
+    sliderPageMarkersContainerServices.appendChild(fragmentSliderMarkersServices);
 
     //!SLIDER BTNS CONSTANT--NOT MOVE
 
-    const sliderMarkers = document.querySelectorAll('.marker_slider_btn');
+    const sliderMarkersServices = document.querySelectorAll('.marker_slider_services_btn');
     //^^SLIDER MARKERS BTNS--START
-    sliderMarkers.forEach((marker) => {
+    sliderMarkersServices.forEach((marker) => {
         const checkSlider = () => {
             const sliderId = marker.name;
             const sliderSearched = document.querySelector(`#${sliderId}`).getBoundingClientRect().left;
-            const sliderWidth = sliderWindowContainer.getBoundingClientRect().width;
-            //*console.log(sliderFullCount, sliderSearched, sliderWidth);
+            const sliderWidth = sliderWindowContainerServices.getBoundingClientRect().width;
+            //*console.log(sliderFullCountServices, sliderSearched, sliderWidth);
 
             if (sliderSearched > 0) {
-                sliderFullCount += sliderSearched;
-                sliderWindowContainer.style.transform = `translateX(-${sliderFullCount}px)`;
-                //*console.log(sliderFullCount, sliderSearched, sliderWidth, 'by higher than 0');
+                sliderFullCountServices += sliderSearched;
+                sliderWindowContainerServices.style.transform = `translateX(-${sliderFullCountServices}px)`;
+                //*console.log(sliderFullCountServices, sliderSearched, sliderWidth, 'by higher than 0');
             } else if (sliderSearched < 0) {
-                sliderFullCount += sliderSearched;
-                sliderWindowContainer.style.transform = `translateX(-${sliderFullCount}px)`;
-                //*console.log(sliderFullCount, sliderSearched, sliderWidth, 'by lower than 0');
+                sliderFullCountServices += sliderSearched;
+                sliderWindowContainerServices.style.transform = `translateX(-${sliderFullCountServices}px)`;
+                //*console.log(sliderFullCountServices, sliderSearched, sliderWidth, 'by lower than 0');
             } else if (sliderSearched === 0) {
-                //*console.log(sliderFullCount, sliderSearched, sliderWidth, 'by equal than 0');
+                //*console.log(sliderFullCountServices, sliderSearched, sliderWidth, 'by equal than 0');
             }
         };
         marker.addEventListener('click', checkSlider);
@@ -1274,32 +1246,32 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^ **********************************************************************************************************************************************  *//
 
     //^BTN LEFT SLIDER--START
-    sliderBtnLeft.addEventListener('click', () => {
-        const sliderWidth = sliderWindowContainer.getBoundingClientRect().width;
-        //*console.log(imgsCount);
-        const sliderWidthFull = sliderWidth / imgsCount;
-        if (sliderFullCount === 0) {
-            sliderFullCount = sliderWidth - sliderWidthFull;
-            sliderWindowContainer.style.transform = `translateX(-${sliderFullCount}px)`;
+    sliderBtnLeftServices.addEventListener('click', () => {
+        const sliderWidth = sliderWindowContainerServices.getBoundingClientRect().width;
+        //*console.log(slidersServicesCount);
+        const sliderWidthFull = sliderWidth / slidersServicesCount;
+        if (sliderFullCountServices === 0) {
+            sliderFullCountServices = sliderWidth - sliderWidthFull;
+            sliderWindowContainerServices.style.transform = `translateX(-${sliderFullCountServices}px)`;
         } else {
-            sliderFullCount -= sliderWidthFull;
-            sliderWindowContainer.style.transform = `translateX(-${sliderFullCount}px)`;
+            sliderFullCountServices -= sliderWidthFull;
+            sliderWindowContainerServices.style.transform = `translateX(-${sliderFullCountServices}px)`;
         }
     });
     //^BTN LEFT SLIDER--OVER
     //^^ **********************************************************************************************************************************************  *//
 
     //^BTN RIGHT SLIDER--START
-    sliderBtnRight.addEventListener('click', () => {
-        const sliderWidth = sliderWindowContainer.getBoundingClientRect().width;
-        //*console.log(imgsCount);
-        const sliderWidthFull = sliderWidth / imgsCount;
-        sliderFullCount += sliderWidthFull;
-        if (sliderFullCount === sliderWidth) {
-            sliderWindowContainer.style.transform = `translateX(0)`;
-            sliderFullCount = 0;
+    sliderBtnRightServices.addEventListener('click', () => {
+        const sliderWidth = sliderWindowContainerServices.getBoundingClientRect().width;
+        //*console.log(slidersServicesCount);
+        const sliderWidthFull = sliderWidth / slidersServicesCount;
+        sliderFullCountServices += sliderWidthFull;
+        if (sliderFullCountServices === sliderWidth) {
+            sliderWindowContainerServices.style.transform = `translateX(0)`;
+            sliderFullCountServices = 0;
         } else {
-            sliderWindowContainer.style.transform = `translateX(-${sliderFullCount}px)`;
+            sliderWindowContainerServices.style.transform = `translateX(-${sliderFullCountServices}px)`;
         }
     });
     //^BTN RIGHT SLIDER--OVER
