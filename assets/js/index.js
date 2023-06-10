@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
     //!TEMPLATE CONSTANTS
     //^^ *********************************************************************************************************** *//
     //^^PROJECT CARD TEMPLATE CONSTANTS
@@ -6,160 +6,161 @@ document.addEventListener('DOMContentLoaded', () => {
     const fragmentSearchProjects = document.createDocumentFragment();
     const fragmentSliderMarkersServices = document.createDocumentFragment();
 
-    const cardProjectTemplate = document.querySelector('#card_project_template').content;
-    const btnProjectTemplate = document.querySelector('#btn_project_template').content;
-    const markersTemplate = document.querySelector('#marker_slider_template').content;
+    const cardProjectTemplate = document.querySelector("#card_project_template").content;
+    const btnProjectTemplate = document.querySelector("#btn_project_template").content;
+    const markersTemplate = document.querySelector("#marker_slider_template").content;
     //^^PROJECT CARD TEMPLATE CONSTANTS
     //^^ *********************************************************************************************************** *//
     //^^TOOLTIP TEMPLATE CONSTANT
-    const tooltipTemplate = document.querySelector('#tooltip_template').content;
+    const tooltipTemplate = document.querySelector("#tooltip_template").content;
     //^^TOOLTIP TEMPLATE CONSTANT
     //^^ *********************************************************************************************************** *//
     //^^SELECTION LIST TEMPLATE CONSTANTS
     const fragmentListProjects = document.createDocumentFragment();
-    const selectionListTemplate = document.querySelector('#selection_list_template').content;
-    const optionListTemplate = document.querySelector('#option_list_btn_template').content;
+    const selectionListTemplate = document.querySelector("#selection_list_template").content;
+    const optionListTemplate = document.querySelector("#option_list_btn_template").content;
     //^^SELECTION LIST TEMPLATE CONSTANTS
     //^^ *********************************************************************************************************** *//
     //!TEMPLATE CONSTANTS
     //! *********************************************************************************************************** *//
     //!GENERAL CONSTANTS --START
     const htmlLebel = document.documentElement;
-    const body = document.querySelector('BODY');
-    const btnsSection = document.querySelectorAll('.btn_section');
-    const btnsContact = document.querySelectorAll('.contact_btn');
-    const btnsTheme = document.querySelectorAll('.btn_theme');
-    const sections = document.querySelectorAll('.section');
-    const legalBtns = document.querySelectorAll('.btn_link_legal');
-    const dataBtns = document.querySelectorAll('.btn_link_data');
+    const body = document.querySelector("BODY");
+    const btnsHero = document.querySelectorAll(".btn_hero");
+    const btnsSection = document.querySelectorAll(".btn_section");
+    const btnsContact = document.querySelectorAll(".contact_btn");
+    const btnsTheme = document.querySelectorAll(".btn_theme");
+    const sections = document.querySelectorAll(".section");
+    const legalBtns = document.querySelectorAll(".btn_link_legal");
+    const dataBtns = document.querySelectorAll(".btn_link_data");
     //* ******************************************************************************************************* *//
     //*CONTAINERS WITH ANIMATION FUNCTIONS--START
-    const swipeAnimationContainersFull = document.querySelectorAll('.swipe_animation_container_full');
-    const swipeAnimationContainersHalf = document.querySelectorAll('.swipe_animation_container_half');
+    const swipeAnimationContainersFull = document.querySelectorAll(".swipe_animation_container_full");
+    const swipeAnimationContainersHalf = document.querySelectorAll(".swipe_animation_container_half");
     //*CONTAINERS WITH ANIMATION FUNCTIONS--OVER
     //* ******************************************************************************************************* *//
     //^^MODALS--START
     //&CONTACT MODAL--START
-    const sendBtnFormModal = document.querySelector('#contact_form_send_btn');
-    const contactModal = document.querySelector('#contact_modal');
-    const closeBtnModalContactForm = document.querySelector('#modal_form_close_btn');
-    const closeBtnLegalModal = document.querySelector('#modal_legal_close_btn');
+    const sendBtnFormModal = document.querySelector("#contact_form_send_btn");
+    const contactModal = document.querySelector("#contact_modal");
+    const closeBtnModalContactForm = document.querySelector("#modal_form_close_btn");
+    const closeBtnLegalModal = document.querySelector("#modal_legal_close_btn");
     //&CONTACT MODAL--OVER
     //& ******************************************************************************************************* *//
     //&LEGAL MODAL--START
-    const modalInfoLegal = document.querySelector('#modal_info_legal');
-    const legalModal = document.querySelector('#legal_modal');
-    const legalAccept = document.querySelector('#legal_modal_accept_btn');
+    const modalInfoLegal = document.querySelector("#modal_info_legal");
+    const legalModal = document.querySelector("#legal_modal");
+    const legalAccept = document.querySelector("#legal_modal_accept_btn");
     //&LEGAL MODAL--OVER
     //& ******************************************************************************************************* *//
     //^^MODALS--OVER
     //^^ ******************************************************************************************************* *//
     //^^ALERT MODAL--START
     //&STORAGE MODAL--START
-    const storageAlertModal = document.querySelector('#storage_alert_modal');
-    const acceptBtnStorageWarningBtn = document.querySelector('#storage_alert_modal_accept_btn');
-    const closeBtnAlertModal = document.querySelector('#alert_modal_storage_close_btn');
+    const storageAlertModal = document.querySelector("#storage_alert_modal");
+    const acceptBtnStorageWarningBtn = document.querySelector("#storage_alert_modal_accept_btn");
+    const closeBtnAlertModal = document.querySelector("#alert_modal_storage_close_btn");
     //&STORAGE MODAL--OVER
     //& ******************************************************************************************************* *//
     //^^ALERT MODAL--OVER
     //^^ ****************************************************************************************************** *//
     //^^MENU CONTENT--START
-    const menuContainer = document.querySelector('#menu_container');
-    const btnsMenu = document.querySelectorAll('.btn_menu');
-    const btnThemeMenu = document.querySelector('#change_theme_btn_menu');
-    const closeMenuBtn = document.querySelector('#menu_container_close_btn');
-    const openMenuSound = document.querySelector('#menu_open_sound');
+    const menuContainer = document.querySelector("#menu_container");
+    const btnsMenu = document.querySelectorAll(".btn_menu");
+    const btnThemeMenu = document.querySelector("#change_theme_btn_menu");
+    const closeMenuBtn = document.querySelector("#menu_container_close_btn");
+    const openMenuSound = document.querySelector("#menu_open_sound");
     //^^MENU CONTENT--OVER
     //^^ ****************************************************************************************************************** *//
     //^^MENU SOCIAL--START
-    const menuSocialContainer = document.querySelector('#menu_social_container');
-    const menuSocialBtn = document.querySelector('#menu_social_btn');
-    const menuSocialBtnsContainer = document.querySelector('.menu_social_btns_container');
-    const btnsMenuSocial = document.querySelectorAll('.social_btn');
+    const menuSocialContainer = document.querySelector("#menu_social_container");
+    const menuSocialBtn = document.querySelector("#menu_social_btn");
+    const menuSocialBtnsContainer = document.querySelector(".menu_social_btns_container");
+    const btnsMenuSocial = document.querySelectorAll(".social_btn");
     //^^MENU SOCIAL--OVER
     //^^ ****************************************************************************************************************** *//
     //^^NAV--START
-    const nav = document.querySelector('.nav');
-    const btnMenuContainer = document.querySelector('#btn_menu_slider');
-    const btnsNavContainer = document.querySelector('#nav_sections_btns_container');
-    const btnsNav = document.querySelectorAll('.btn_nav');
+    const nav = document.querySelector(".nav");
+    const btnMenuContainer = document.querySelector("#btn_menu_slider");
+    const btnsNavContainer = document.querySelector("#nav_sections_btns_container");
+    const btnsNav = document.querySelectorAll(".btn_nav");
     //&BTN LOGO
-    const btnLogo = document.querySelector('#logo_nav_btn');
+    const btnLogo = document.querySelector("#logo_nav_btn");
     //&TBN THEME
-    const btnThemeNav = document.querySelector('#change_theme_btn_nav');
+    const btnThemeNav = document.querySelector("#change_theme_btn_nav");
     //&BTN LEBELS
-    const lebelBtnMain = document.querySelector('#main_btn_nav');
-    const lebelBtnAbout = document.querySelector('#about_btn_nav');
-    const lebelBtnSkills = document.querySelector('#skills_btn_nav');
-    const lebelBtnServices = document.querySelector('#services_btn_nav');
-    const lebelBtnPortfolio = document.querySelector('#portfolio_btn_nav');
-    const lebelBtnClients = document.querySelector('#clients_btn_nav');
-    const lebelBtnContact = document.querySelector('#contact_btn_nav');
+    const lebelBtnMain = document.querySelector("#main_btn_nav");
+    const lebelBtnAbout = document.querySelector("#about_btn_nav");
+    const lebelBtnSkills = document.querySelector("#skills_btn_nav");
+    const lebelBtnServices = document.querySelector("#services_btn_nav");
+    const lebelBtnPortfolio = document.querySelector("#portfolio_btn_nav");
+    const lebelBtnClients = document.querySelector("#clients_btn_nav");
+    const lebelBtnContact = document.querySelector("#contact_btn_nav");
     //^^NAV OVER
     //^^ ****************************************************************************************************************** *//
 
     //^^HERO
 
-    const btnHeroDown = document.querySelector('#hero_btn_down');
+    const btnHeroDown = document.querySelector("#hero_btn_down");
     //^^SERVICES
 
-    const sliderWindowContainerServices = document.querySelector('#slider_window_container_services');
-    const sliderContainersServices = document.querySelectorAll('.slider_container_services');
-    const sliderPageMarkersContainerServices = document.querySelector('#slider_page_markers_container_services');
-    const sliderBtnLeftServices = document.querySelector('#btn_swipe_left_slider_services');
-    const sliderBtnRightServices = document.querySelector('#btn_swipe_right_slider_services');
-    const slidersContentServices = document.querySelectorAll('.slider_content_services');
-    const sliderImgContainersServices = document.querySelectorAll('.img_container_services');
-    const sliderInfoContainersServices = document.querySelectorAll('.info_container_services');
+    const sliderWindowContainerServices = document.querySelector("#slider_window_container_services");
+    const sliderContainersServices = document.querySelectorAll(".slider_container_services");
+    const sliderPageMarkersContainerServices = document.querySelector("#slider_page_markers_container_services");
+    const sliderBtnLeftServices = document.querySelector("#btn_swipe_left_slider_services");
+    const sliderBtnRightServices = document.querySelector("#btn_swipe_right_slider_services");
+    const slidersContentServices = document.querySelectorAll(".slider_content_services");
+    const sliderImgContainersServices = document.querySelectorAll(".img_container_services");
+    const sliderInfoContainersServices = document.querySelectorAll(".info_container_services");
 
-    const servicesContainer = document.querySelector('#services_container');
-    const serviceContainers = document.querySelectorAll('.service_container');
-    const serviceCards = document.querySelectorAll('.service_card');
-    const serviceCardsLeft = document.querySelectorAll('.service_card_left');
-    const serviceCardsRight = document.querySelectorAll('.service_card_right');
+    const servicesContainer = document.querySelector("#services_container");
+    const serviceContainers = document.querySelectorAll(".service_container");
+    const serviceCards = document.querySelectorAll(".service_card");
+    const serviceCardsLeft = document.querySelectorAll(".service_card_left");
+    const serviceCardsRight = document.querySelectorAll(".service_card_right");
     //^^SKILLS
-    const skillsContainer = document.querySelector('.skills_containers');
-    const skillsIconsContainers = document.querySelectorAll('.skills_icon_container');
+    const skillsContainer = document.querySelector(".skills_containers");
+    const skillsIconsContainers = document.querySelectorAll(".skills_icon_container");
     //^^PORTFOLIO
-    const titleSubsectionCardsSearch = document.querySelector('#title_subsection_search_type');
+    const titleSubsectionCardsSearch = document.querySelector("#title_subsection_search_type");
     //* ******************************************************************************************************* *//
     //*CONTAINERS WHERE TEMPLATES APPEND--START
-    const portfolioHotCardsContainer = document.querySelector('#cards_hot_container');
-    const searchBtnsContainer = document.querySelector('#search_project_btns_container');
-    const porfolioSearchCardsContainer = document.querySelector('#cards_search_container');
+    const portfolioHotCardsContainer = document.querySelector("#cards_hot_container");
+    const searchBtnsContainer = document.querySelector("#search_project_btns_container");
+    const porfolioSearchCardsContainer = document.querySelector("#cards_search_container");
     //*CONTAINERS WHERE TEMPLATES APPEND--OVER
     //* ******************************************************************************************************* *//
-    const loadersContainers = document.querySelectorAll('.loader_container');
-    const loaderSearchCardsContainer = document.querySelector('#loader_cards_hot_container');
-    const spinnerHotCardsContainer = document.querySelector('#spinner_container_cards_hot');
-    const loaderHotCardsContainer = document.querySelector('#loader_cards_search_container');
-    const spinnerSearchCardContainer = document.querySelector('#spinner_container_cards_search');
+    const loadersContainers = document.querySelectorAll(".loader_container");
+    const loaderSearchCardsContainer = document.querySelector("#loader_cards_hot_container");
+    const spinnerHotCardsContainer = document.querySelector("#spinner_container_cards_hot");
+    const loaderHotCardsContainer = document.querySelector("#loader_cards_search_container");
+    const spinnerSearchCardContainer = document.querySelector("#spinner_container_cards_search");
     //* ******************************************************************************************************* *//
-    const flagBtns = document.querySelectorAll('.flag_project_btn');
+    const flagBtns = document.querySelectorAll(".flag_project_btn");
     //* ******************************************************************************************************* *//
     //^^CLIENTS--START
-    const logoClientsContainers = document.querySelectorAll('.client_logo_container');
+    const logoClientsContainers = document.querySelectorAll(".client_logo_container");
     //^^CLIENTS--OVER
     //^^ ******************************************************************************************************* */
     //^^LEGALS--START
-    const btnLegalFooter = document.querySelector('#btn_legal_legals');
-    const btnDataFooter = document.querySelector('#btn_data_legals');
+    const btnLegalFooter = document.querySelector("#btn_legal_legals");
+    const btnDataFooter = document.querySelector("#btn_data_legals");
     //^^LEGALS OVER
     //^^ ******************************************************************************************************* *//
 
     //^FETCH JASON COMPANYS DATA-- START
-    const portfolioData = './portfolioDB.json';
+    const portfolioData = "./portfolioDB.json";
     //^FETCH JSON COMPANYS DATA-- OVER
     //^ ***********************************************************************************************//
     //!GENERAL CONSTANTS --OVER
     //! ***********************************************************************************************//
-    const es = 'Español';
-    const eng = 'English';
+    const es = "Español";
+    const eng = "English";
     let pageLang = es;
-    const close = 'close';
-    const open = 'open';
-    const accepted = 'accepted';
-    const decline = 'decline';
+    const close = "close";
+    const open = "open";
+    const accepted = "accepted";
+    const decline = "decline";
 
     //!GENERAL VARIANTS--START
     const sunIcon =
@@ -178,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //! ************************************************************************************************************ *//
     //! SEARCH LOCAL STORAGE--START
-    const localStorageName = 'JohnK_page_storage';
+    const localStorageName = "JohnK_page_storage";
     let storageForJohnKPage = {
         page_view_count: 1,
         page_alert_status: open,
@@ -189,100 +190,87 @@ document.addEventListener('DOMContentLoaded', () => {
     //!OBJECTS--START
     const infoSoftware = [
         {
-            tech_name: 'Illustrator',
-            tech_complete_name: 'Adobe Illustrator',
+            tech_name: "Illustrator",
+            tech_complete_name: "Adobe Illustrator",
             tech_info:
-                'Editor de gráficos vectoriales en forma de taller de arte que trabaja sobre un tablero de dibujo, conocido como «mesa de trabajo» y está destinado a la creación artística de dibujo y pintura para ilustración, para crear y diseñar imágenes, sirve para editar entre otras cosas.',
+                "Editor de gráficos vectoriales en forma de taller de arte que trabaja sobre un tablero de dibujo, conocido como «mesa de trabajo» y está destinado a la creación artística de dibujo y pintura para ilustración, para crear y diseñar imágenes, sirve para editar entre otras cosas.",
         },
         {
-            tech_name: 'Photoshop',
-            tech_complete_name: 'Adobe Photoshop',
-            tech_info:
-                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
-        },
-
-        {
-            tech_name: 'InDesign',
-            tech_complete_name: 'Adobe InDesign',
-            tech_info:
-                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+            tech_name: "Photoshop",
+            tech_complete_name: "Adobe Photoshop",
+            tech_info: 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
         },
 
         {
-            tech_name: 'Premier',
-            tech_complete_name: 'Adobe Premier',
-            tech_info:
-                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+            tech_name: "InDesign",
+            tech_complete_name: "Adobe InDesign",
+            tech_info: 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
         },
 
         {
-            tech_name: 'Xd',
-            tech_complete_name: 'Adobe Xd',
-            tech_info:
-                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+            tech_name: "Premier",
+            tech_complete_name: "Adobe Premier",
+            tech_info: 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
         },
 
         {
-            tech_name: 'Figma',
-            tech_complete_name: 'Figma',
-            tech_info:
-                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+            tech_name: "Xd",
+            tech_complete_name: "Adobe Xd",
+            tech_info: 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
         },
 
         {
-            tech_name: 'HTML',
-            tech_complete_name: 'HTML',
-            tech_info:
-                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+            tech_name: "Figma",
+            tech_complete_name: "Figma",
+            tech_info: 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
         },
 
         {
-            tech_name: 'CSS',
-            tech_complete_name: 'CSS',
-            tech_info:
-                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+            tech_name: "HTML",
+            tech_complete_name: "HTML",
+            tech_info: 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
         },
 
         {
-            tech_name: 'SASS',
-            tech_complete_name: 'SASS',
-            tech_info:
-                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+            tech_name: "CSS",
+            tech_complete_name: "CSS",
+            tech_info: 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
         },
 
         {
-            tech_name: 'GitHub',
-            tech_complete_name: 'GitHub',
-            tech_info:
-                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+            tech_name: "SASS",
+            tech_complete_name: "SASS",
+            tech_info: 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
         },
 
         {
-            tech_name: 'JavaScript',
-            tech_complete_name: 'JavaScript',
-            tech_info:
-                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+            tech_name: "GitHub",
+            tech_complete_name: "GitHub",
+            tech_info: 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
         },
 
         {
-            tech_name: 'Node.js',
-            tech_complete_name: 'Node.js',
-            tech_info:
-                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+            tech_name: "JavaScript",
+            tech_complete_name: "JavaScript",
+            tech_info: 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
         },
 
         {
-            tech_name: 'Python',
-            tech_complete_name: 'Python',
-            tech_info:
-                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+            tech_name: "Node.js",
+            tech_complete_name: "Node.js",
+            tech_info: 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
         },
 
         {
-            tech_name: 'Vue.js',
-            tech_complete_name: 'Vue.js',
-            tech_info:
-                'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+            tech_name: "Python",
+            tech_complete_name: "Python",
+            tech_info: 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
+        },
+
+        {
+            tech_name: "Vue.js",
+            tech_complete_name: "Vue.js",
+            tech_info: 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
         },
     ];
     //!GENERAL VARIANTS--OVER
@@ -328,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^ ************************************************************************** *//
     //^^INSERT FLEX--START
     const insertFlex = (cont, dir, jc, ai) => {
-        cont.style.display = 'flex';
+        cont.style.display = "flex";
         cont.style.flexDirection = dir;
         cont.style.justifyContent = jc;
         cont.style.alignItems = ai;
@@ -351,20 +339,20 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^SPINNERS LOADER OBSERVER--START
     loadersContainers.forEach((loader) => {
         const watchCardsContainers = ([entry]) => {
-            const dataNameContainer = entry.target.attributes['data-name'].value;
-            if (entry.isIntersecting && dataNameContainer === 'loader_cards_hot_container') {
-                animateItem(spinnerHotCardsContainer, '0', 'translateY(-4rem)');
+            const dataNameContainer = entry.target.attributes["data-name"].value;
+            if (entry.isIntersecting && dataNameContainer === "loader_cards_hot_container") {
+                animateItem(spinnerHotCardsContainer, "0", "translateY(-4rem)");
                 setTimeout(() => {
-                    loaderSearchCardsContainer.style.display = 'none';
+                    loaderSearchCardsContainer.style.display = "none";
                     createProjectCardHot();
                     setTimeout(() => {
                         loadersObserver.unobserve(spinnerHotCardsContainer);
                     }, 500);
                 }, 1200);
-            } else if (entry.isIntersecting && dataNameContainer === 'loader_cards_search_container') {
-                animateItem(spinnerSearchCardContainer, '0', 'translateY(-4rem)');
+            } else if (entry.isIntersecting && dataNameContainer === "loader_cards_search_container") {
+                animateItem(spinnerSearchCardContainer, "0", "translateY(-4rem)");
                 setTimeout(() => {
-                    loaderHotCardsContainer.style.display = 'none';
+                    loaderHotCardsContainer.style.display = "none";
 
                     createProjectCardRandom();
                     setTimeout(() => {
@@ -374,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
         const optionsIO_loaders = {
-            threshold: '.5',
+            threshold: ".5",
         };
         const loadersObserver = new IntersectionObserver(watchCardsContainers, optionsIO_loaders);
         loadersObserver.observe(loader);
@@ -394,7 +382,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const socialMenuBtnActions = () => {
         if (menuSocialStatus === close) {
             menuSocialStatus = open;
-            menuSocialBtnsContainer.style.height = '100%';
+            menuSocialBtnsContainer.style.height = "100%";
 
             menuSocialBtnsContainer.style.opacity = 1;
             /*  */
@@ -406,9 +394,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ ***************************************************************************** *//
     //^SOCIAL MENU CLOSE EN BODY CLICK--START
     const closeByBodyClick = (e) => {
-        if (menuSocialStatus === open && e.target.id !== 'menu_social_btn') {
+        if (menuSocialStatus === open && e.target.id !== "menu_social_btn") {
             closeMenuSocial();
-        } else if (selectListStatus === open && e.target.id !== 'selection_list_search_btn') {
+        } else if (selectListStatus === open && e.target.id !== "selection_list_search_btn") {
             closeSelectList();
         }
     };
@@ -418,8 +406,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnNavMenu = () => {
         if (menuStatus === close) {
             menuStatus = open;
-            menuContainer.style.opacity = '1';
-            menuContainer.style.transform = 'translateY(0)';
+            menuContainer.style.opacity = "1";
+            menuContainer.style.transform = "translateY(0)";
             //*openMenuSound.play();
         } else if (menuStatus === open) {
             closeMenu();
@@ -431,29 +419,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeMenu = () => {
         let menuTop = menuContainer.style.top;
 
-        if (menuTop === '0px' || menuTop === 0 || menuTop === '') {
+        if (menuTop === "0px" || menuTop === 0 || menuTop === "") {
             menuStatus = close;
-            menuContainer.style.transform = 'translateY(-100%)';
-            menuContainer.style.opacity = '0';
-        } else if (menuTop === 'inherit') {
+            menuContainer.style.transform = "translateY(-100%)";
+            menuContainer.style.opacity = "0";
+        } else if (menuTop === "inherit") {
             menuStatus = close;
-            menuContainer.style.transform = 'translateY(100%)';
-            menuContainer.style.opacity = '0';
+            menuContainer.style.transform = "translateY(100%)";
+            menuContainer.style.opacity = "0";
         }
     };
     //^ CLOSE MENU--OVER
     //^  **************************************************************/
     //~GENERAL MODAL ACTIONS--START
     const openModal = (cont) => {
-        cont.style.display = 'flex';
+        cont.style.display = "flex";
         setTimeout(() => {
-            animateItem(cont, '1', 'translate(-50%, 0)');
+            animateItem(cont, "1", "translate(-50%, 0)");
         }, 500);
     };
     const closeModal = (cont) => {
-        animateItem(cont, '0', 'translate(-50%, -50%)');
+        animateItem(cont, "0", "translate(-50%, -50%)");
         setTimeout(() => {
-            cont.style.display = 'none';
+            cont.style.display = "none";
         }, 1200);
     };
     //~GENERAL MODAL ACTIONS--OVER
@@ -481,40 +469,40 @@ document.addEventListener('DOMContentLoaded', () => {
         let storageContent = JSON.parse(localStorage.getItem(localStorageName));
         if (!storageContent) {
             localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
-            console.log('local storage item is created');
+            console.log("local storage item is created");
             setTimeout(() => {
-                animateItem(storageAlertModal, '1', 'translateY(0)');
+                animateItem(storageAlertModal, "1", "translateY(0)");
             }, 2000);
-        } else if (storageContent && storageContent['page_alert_status'] === open) {
-            storageForJohnKPage['page_view_count'] = storageContent['page_view_count'] + 1;
+        } else if (storageContent && storageContent["page_alert_status"] === open) {
+            storageForJohnKPage["page_view_count"] = storageContent["page_view_count"] + 1;
             localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
-            console.log(`local storage item answer= ${storageContent['page_alert_status']}, page views= ${storageContent['page_view_count']}`);
+            console.log(`local storage item answer= ${storageContent["page_alert_status"]}, page views= ${storageContent["page_view_count"]}`);
             setTimeout(() => {
-                animateItem(storageAlertModal, '1', 'translateY(0)');
+                animateItem(storageAlertModal, "1", "translateY(0)");
             }, 2000);
-        } else if (storageContent && storageContent['page_alert_status'] === close) {
-            storageForJohnKPage['page_alert_status'] = close;
-            storageForJohnKPage['page_view_count'] = storageContent['page_view_count'] + 1;
+        } else if (storageContent && storageContent["page_alert_status"] === close) {
+            storageForJohnKPage["page_alert_status"] = close;
+            storageForJohnKPage["page_view_count"] = storageContent["page_view_count"] + 1;
             localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
-            storageAlertModal.style.display = 'none';
-            console.log(`local storage item answer= ${storageContent['page_alert_status']}, page views= ${storageContent['page_view_count']}`);
+            storageAlertModal.style.display = "none";
+            console.log(`local storage item answer= ${storageContent["page_alert_status"]}, page views= ${storageContent["page_view_count"]}`);
         }
     };
     checkAlertStorageAnswer();
     const closeAlert = (cont) => {
-        animateItem(cont, '0', 'translateY(-50%)');
+        animateItem(cont, "0", "translateY(-50%)");
         setTimeout(() => {
-            cont.style.display = 'none';
+            cont.style.display = "none";
         }, 1100);
     };
     const openAlert = (cont) => {
-        cont.style.display = 'block';
+        cont.style.display = "block";
         setTimeout(() => {
-            animateItem(cont, '1', 'translateY(0)');
+            animateItem(cont, "1", "translateY(0)");
         }, 100);
     };
     const closeAlertStorageModal = () => {
-        storageForJohnKPage['page_alert_status'] = close;
+        storageForJohnKPage["page_alert_status"] = close;
         closeAlert(storageAlertModal);
         localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
         console.log(localStorage.getItem(localStorageName));
@@ -583,18 +571,18 @@ document.addEventListener('DOMContentLoaded', () => {
             lebelBtnPortfolio.innerHTML = '<h3 class="btn_lebel">Portafolio</h3>';
             lebelBtnClients.innerHTML = '<h3 class="btn_lebel">Clientes</h3>';
             lebelBtnContact.innerHTML = '<h3 class="btn_lebel">Contactame</h3>';
-            btnMenuContainer.style.display = 'none';
-            btnsNavContainer.style.display = 'flex';
-            menuSocialContainer.style.display = 'flex';
-            servicesContainer.classList.add('services_container_one_column');
-            servicesContainer.classList.remove('services_container_two_columns');
+            btnMenuContainer.style.display = "none";
+            btnsNavContainer.style.display = "flex";
+            menuSocialContainer.style.display = "flex";
+            servicesContainer.classList.add("services_container_one_column");
+            servicesContainer.classList.remove("services_container_two_columns");
 
             slidersContentServices.forEach((slider) => {
-                const idSplit = slider.id.split('_');
-                if (idSplit.includes('2') || idSplit.includes('4') || idSplit.includes('6') || idSplit.includes('8')) {
-                    insertFlex(slider, 'row-reverse', 'center', 'center');
-                } else if (idSplit.includes('1') || idSplit.includes('3') || idSplit.includes('5') || idSplit.includes('7')) {
-                    insertFlex(slider, 'row', 'center', 'center');
+                const idSplit = slider.id.split("_");
+                if (idSplit.includes("2") || idSplit.includes("4") || idSplit.includes("6") || idSplit.includes("8")) {
+                    insertFlex(slider, "row-reverse", "center", "center");
+                } else if (idSplit.includes("1") || idSplit.includes("3") || idSplit.includes("5") || idSplit.includes("7")) {
+                    insertFlex(slider, "row", "center", "center");
                 }
             });
             sliderImgContainersServices.forEach((container) => {
@@ -603,25 +591,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 //*console.log(windowHalfHeight);
                 container.style.height = `${windowHeight}px`;
                 container.style.width = `${windowHalfWidth}px`;
-                insertFlex(container, 'center', 'center');
+                insertFlex(container, "center", "center");
             });
-            insertFlex(skillsContainer, 'row', 'center', 'flex-start');
+            insertFlex(skillsContainer, "row", "center", "flex-start");
             serviceContainers.forEach((container) => {
-                container.style.width = '100%';
+                container.style.width = "100%";
             });
             serviceCardsLeft.forEach((card) => {
-                changeCardStyle(card, 'row', 'var(--cardServiceHeight)');
+                changeCardStyle(card, "row", "var(--cardServiceHeight)");
             });
             serviceCardsRight.forEach((card) => {
-                changeCardStyle(card, 'row-reverse', 'var(--cardServiceHeight)');
+                changeCardStyle(card, "row-reverse", "var(--cardServiceHeight)");
             });
             logoClientsContainers.forEach((container) => {
-                container.style.width = '12.5rem';
-                container.style.height = '8rem';
+                container.style.width = "12.5rem";
+                container.style.height = "8rem";
             });
             skillsIconsContainers.forEach((container) => {
-                container.style.width = '5rem';
-                container.style.height = '5rem';
+                container.style.width = "5rem";
+                container.style.height = "5rem";
             });
             closeMenu();
         } else if (widConf > secondBreak || (widConf < firstBreak && widConf > secondBreak)) {
@@ -647,19 +635,19 @@ document.addEventListener('DOMContentLoaded', () => {
             //*'<svg class="nav_menu_icon_svg" id="clients_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Clientes</title><path class="cls-1" d="M12 1l8.217 1.826c.457.102.783.507.783.976v9.987c0 2.006-1.003 3.88-2.672 4.992L12 23l-6.328-4.219C4.002 17.668 3 15.795 3 13.79V3.802c0-.469.326-.874.783-.976L12 1zm0 2.049L5 4.604v9.185c0 1.337.668 2.586 1.781 3.328L12 20.597l5.219-3.48C18.332 16.375 19 15.127 19 13.79V4.604L12 3.05zm4.452 5.173l1.415 1.414L11.503 16 7.26 11.757l1.414-1.414 2.828 2.828 4.95-4.95z"/></svg>';
             lebelBtnContact.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="contact_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Contactame</title><path class="cls-1" d="M6.455 19L2 22.5V4a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H6.455zm-.692-2H20V5H4v13.385L5.763 17zM11 10h2v2h-2v-2zm-4 0h2v2H7v-2zm8 0h2v2h-2v-2z"/></svg>';
-            btnMenuContainer.style.display = 'none';
-            btnsNavContainer.style.display = 'flex';
-            menuSocialContainer.style.display = 'flex';
-            servicesContainer.classList.add('services_container_one_column');
-            servicesContainer.classList.remove('services_container_more_columns');
-            insertFlex(skillsContainer, 'row', 'center', 'flex-start');
+            btnMenuContainer.style.display = "none";
+            btnsNavContainer.style.display = "flex";
+            menuSocialContainer.style.display = "flex";
+            servicesContainer.classList.add("services_container_one_column");
+            servicesContainer.classList.remove("services_container_more_columns");
+            insertFlex(skillsContainer, "row", "center", "flex-start");
 
             slidersContentServices.forEach((slider) => {
-                const idSplit = slider.id.split('_');
-                if (idSplit.includes('2') || idSplit.includes('4') || idSplit.includes('6') || idSplit.includes('8')) {
-                    insertFlex(slider, 'row-reverse', 'center', 'center');
-                } else if (idSplit.includes('1') || idSplit.includes('3') || idSplit.includes('5') || idSplit.includes('7')) {
-                    insertFlex(slider, 'row', 'center', 'center');
+                const idSplit = slider.id.split("_");
+                if (idSplit.includes("2") || idSplit.includes("4") || idSplit.includes("6") || idSplit.includes("8")) {
+                    insertFlex(slider, "row-reverse", "center", "center");
+                } else if (idSplit.includes("1") || idSplit.includes("3") || idSplit.includes("5") || idSplit.includes("7")) {
+                    insertFlex(slider, "row", "center", "center");
                 }
             });
             sliderImgContainersServices.forEach((container) => {
@@ -668,24 +656,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 //*console.log(windowHalfHeight);
                 container.style.height = `${windowHeight}px`;
                 container.style.width = `${windowHalfWidth}px`;
-                insertFlex(container, 'center', 'center');
+                insertFlex(container, "center", "center");
             });
             serviceContainers.forEach((container) => {
-                container.style.width = '100%';
+                container.style.width = "100%";
             });
             serviceCardsLeft.forEach((card) => {
-                changeCardStyle(card, 'row', 'var(--cardServiceHeight)');
+                changeCardStyle(card, "row", "var(--cardServiceHeight)");
             });
             serviceCardsRight.forEach((card) => {
-                changeCardStyle(card, 'row-reverse', 'var(--cardServiceHeight)');
+                changeCardStyle(card, "row-reverse", "var(--cardServiceHeight)");
             });
             logoClientsContainers.forEach((container) => {
-                container.style.width = '12.5rem';
-                container.style.height = '8rem';
+                container.style.width = "12.5rem";
+                container.style.height = "8rem";
             });
             skillsIconsContainers.forEach((container) => {
-                container.style.width = '5rem';
-                container.style.height = '5rem';
+                container.style.width = "5rem";
+                container.style.height = "5rem";
             });
             closeMenu();
         } else if (widConf <= secondBreak) {
@@ -694,16 +682,16 @@ document.addEventListener('DOMContentLoaded', () => {
             btnDataFooter.innerHTML =
                 '<svg class="footer_menu_icon_svg" id="data_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Uso de datos</title><path class="cls-1" d="M5 12.5c0 .313.461.858 1.53 1.393C7.914 14.585 9.877 15 12 15c2.123 0 4.086-.415 5.47-1.107 1.069-.535 1.53-1.08 1.53-1.393v-2.171C17.35 11.349 14.827 12 12 12s-5.35-.652-7-1.671V12.5zm14 2.829C17.35 16.349 14.827 17 12 17s-5.35-.652-7-1.671V17.5c0 .313.461.858 1.53 1.393C7.914 19.585 9.877 20 12 20c2.123 0 4.086-.415 5.47-1.107 1.069-.535 1.53-1.08 1.53-1.393v-2.171zM3 17.5v-10C3 5.015 7.03 3 12 3s9 2.015 9 4.5v10c0 2.485-4.03 4.5-9 4.5s-9-2.015-9-4.5zm9-7.5c2.123 0 4.086-.415 5.47-1.107C18.539 8.358 19 7.813 19 7.5c0-.313-.461-.858-1.53-1.393C16.086 5.415 14.123 5 12 5c-2.123 0-4.086.415-5.47 1.107C5.461 6.642 5 7.187 5 7.5c0 .313.461.858 1.53 1.393C7.914 9.585 9.877 10 12 10z"/></svg>';
 
-            btnsNavContainer.style.display = 'none';
-            btnMenuContainer.style.display = 'flex';
-            menuSocialContainer.style.display = 'none';
+            btnsNavContainer.style.display = "none";
+            btnMenuContainer.style.display = "flex";
+            menuSocialContainer.style.display = "none";
 
-            insertFlex(skillsContainer, 'column', 'flex-start', 'center');
-            servicesContainer.classList.add('services_container_more_columns');
-            servicesContainer.classList.remove('services_container_one_column');
+            insertFlex(skillsContainer, "column", "flex-start", "center");
+            servicesContainer.classList.add("services_container_more_columns");
+            servicesContainer.classList.remove("services_container_one_column");
 
             slidersContentServices.forEach((slider) => {
-                insertFlex(slider, 'column', 'flex-start', 'center');
+                insertFlex(slider, "column", "flex-start", "center");
             });
 
             sliderImgContainersServices.forEach((container) => {
@@ -712,26 +700,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 //*console.log(windowHalfHeight);
                 container.style.height = `${windowHalfHeight}px`;
                 container.style.width = `${windowWidth}px`;
-                insertFlex(container, 'center', 'center');
+                insertFlex(container, "center", "center");
             });
             serviceContainers.forEach((container) => {
-                container.style.width = 'var(--cardServiceWidthMore)';
-                container.style.height = 'var(--cardServiceHeight)';
+                container.style.width = "var(--cardServiceWidthMore)";
+                container.style.height = "var(--cardServiceHeight)";
             });
             serviceCardsLeft.forEach((card) => {
-                changeCardStyle(card, 'column', 'var(--cardServiceHeight)');
+                changeCardStyle(card, "column", "var(--cardServiceHeight)");
             });
             serviceCardsRight.forEach((card) => {
-                changeCardStyle(card, 'column', 'var(--cardServiceHeight)');
+                changeCardStyle(card, "column", "var(--cardServiceHeight)");
             });
 
             logoClientsContainers.forEach((container) => {
-                container.style.width = '10rem';
-                container.style.height = '6rem';
+                container.style.width = "10rem";
+                container.style.height = "6rem";
             });
             skillsIconsContainers.forEach((container) => {
-                container.style.width = '4rem';
-                container.style.height = '4rem';
+                container.style.width = "4rem";
+                container.style.height = "4rem";
             });
             closeMenuSocial();
         }
@@ -749,44 +737,44 @@ document.addEventListener('DOMContentLoaded', () => {
         const navTop = nav.getBoundingClientRect().top;
         const windowHeight = window.innerHeight / 2;
 
-        let borderRadius = '1rem';
+        let borderRadius = "1rem";
         if (navTop >= windowHeight) {
-            nav.style.height = '10rem';
+            nav.style.height = "10rem";
 
-            menuSocialContainer.style.bottom = 'inherit';
-            menuSocialContainer.style.top = '2rem';
-            menuSocialContainer.style.flexDirection = 'column';
+            menuSocialContainer.style.bottom = "inherit";
+            menuSocialContainer.style.top = "2rem";
+            menuSocialContainer.style.flexDirection = "column";
 
-            btnLogo.style.width = '7rem';
+            btnLogo.style.width = "7rem";
             closeMenu();
             closeMenuSocial();
             setTimeout(() => {
                 menuContainer.style.top = 0;
-                menuContainer.style.bottom = 'inherit';
-                menuContainer.style.flexDirection = 'column';
+                menuContainer.style.bottom = "inherit";
+                menuContainer.style.flexDirection = "column";
                 menuContainer.style.borderRadius = `0 0 ${borderRadius} ${borderRadius}`;
 
                 if (menuStatus === close) {
-                    menuContainer.style.transform = 'translateY(-100%)';
+                    menuContainer.style.transform = "translateY(-100%)";
                 }
             }, 500);
         } else if (navTop < windowHeight) {
-            nav.style.height = '6rem';
-            menuSocialContainer.style.top = 'inherit';
-            menuSocialContainer.style.bottom = '2rem';
-            menuSocialContainer.style.flexDirection = 'column-reverse';
+            nav.style.height = "6rem";
+            menuSocialContainer.style.top = "inherit";
+            menuSocialContainer.style.bottom = "2rem";
+            menuSocialContainer.style.flexDirection = "column-reverse";
 
-            btnLogo.style.width = '5rem';
+            btnLogo.style.width = "5rem";
 
             closeMenu();
             closeMenuSocial();
             setTimeout(() => {
-                menuContainer.style.top = 'inherit';
+                menuContainer.style.top = "inherit";
                 menuContainer.style.bottom = 0;
-                menuContainer.style.flexDirection = 'column-reverse';
+                menuContainer.style.flexDirection = "column-reverse";
                 menuContainer.style.borderRadius = `${borderRadius} ${borderRadius} 0 0`;
                 if (menuStatus === close) {
-                    menuContainer.style.transform = 'translateY(100%)';
+                    menuContainer.style.transform = "translateY(100%)";
                 }
             }, 500);
         }
@@ -820,9 +808,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 btnsSection.forEach((btn) => {
                     const btnName = btn.name;
                     if (btnName === entryName) {
-                        btn.classList.add('btn_section_active');
+                        btn.classList.add("btn_section_active");
                     } else {
-                        btn.classList.remove('btn_section_active');
+                        btn.classList.remove("btn_section_active");
                     }
                 });
             }
@@ -839,39 +827,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const swipingAnimation = () => {
         swipeAnimationContainersFull.forEach((container) => {
             const watchSwipeAnimationContainer = ([entry]) => {
-                const animationLeftContainers = entry.target.querySelectorAll('.animation_left');
-                const animationRightContainers = entry.target.querySelectorAll('.animation_right');
-                const animationUpContainers = entry.target.querySelectorAll('.animation_up');
+                const animationLeftContainers = entry.target.querySelectorAll(".animation_left");
+                const animationRightContainers = entry.target.querySelectorAll(".animation_right");
+                const animationUpContainers = entry.target.querySelectorAll(".animation_up");
                 if (entry.isIntersecting) {
                     animationLeftContainers.forEach((container) => {
                         const currentItem = document.querySelector(`#${container.id}`);
-                        animateItem(currentItem, '1', 'translateX(0)');
+                        animateItem(currentItem, "1", "translateX(0)");
                     });
                     animationRightContainers.forEach((container) => {
                         const currentItem = document.querySelector(`#${container.id}`);
-                        animateItem(currentItem, '1', 'translateX(0)');
+                        animateItem(currentItem, "1", "translateX(0)");
                     });
                     animationUpContainers.forEach((container) => {
                         const currentItem = document.querySelector(`#${container.id}`);
-                        animateItem(currentItem, '1', 'translateY(0)');
+                        animateItem(currentItem, "1", "translateY(0)");
                     });
                 } else {
                     animationLeftContainers.forEach((container) => {
                         const currentItem = document.querySelector(`#${container.id}`);
-                        animateItem(currentItem, '0', 'translateX(-50%)');
+                        animateItem(currentItem, "0", "translateX(-50%)");
                     });
                     animationRightContainers.forEach((container) => {
                         const currentItem = document.querySelector(`#${container.id}`);
-                        animateItem(currentItem, '0', 'translateX(50%)');
+                        animateItem(currentItem, "0", "translateX(50%)");
                     });
                     animationUpContainers.forEach((container) => {
                         const currentItem = document.querySelector(`#${container.id}`);
-                        animateItem(currentItem, '0', 'translateY(50%)');
+                        animateItem(currentItem, "0", "translateY(50%)");
                     });
                 }
             };
             const optionsIO_skills = {
-                threshold: '1',
+                threshold: "1",
             };
 
             const skillsContainersObserver = new IntersectionObserver(watchSwipeAnimationContainer, optionsIO_skills);
@@ -880,39 +868,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
         swipeAnimationContainersHalf.forEach((container) => {
             const watchSwipeAnimationContainer = ([entry]) => {
-                const animationLeftContainers = entry.target.querySelectorAll('.animation_left');
-                const animationRightContainers = entry.target.querySelectorAll('.animation_right');
-                const animationUpContainers = entry.target.querySelectorAll('.animation_up');
+                const animationLeftContainers = entry.target.querySelectorAll(".animation_left");
+                const animationRightContainers = entry.target.querySelectorAll(".animation_right");
+                const animationUpContainers = entry.target.querySelectorAll(".animation_up");
                 if (entry.isIntersecting) {
                     animationLeftContainers.forEach((container) => {
                         const currentItem = document.querySelector(`#${container.id}`);
-                        animateItem(currentItem, '1', 'translateX(0)');
+                        animateItem(currentItem, "1", "translateX(0)");
                     });
                     animationRightContainers.forEach((container) => {
                         const currentItem = document.querySelector(`#${container.id}`);
-                        animateItem(currentItem, '1', 'translateX(0)');
+                        animateItem(currentItem, "1", "translateX(0)");
                     });
                     animationUpContainers.forEach((container) => {
                         const currentItem = document.querySelector(`#${container.id}`);
-                        animateItem(currentItem, '1', 'translateY(0)');
+                        animateItem(currentItem, "1", "translateY(0)");
                     });
                 } else {
                     animationLeftContainers.forEach((container) => {
                         const currentItem = document.querySelector(`#${container.id}`);
-                        animateItem(currentItem, '0', 'translateX(-50%)');
+                        animateItem(currentItem, "0", "translateX(-50%)");
                     });
                     animationRightContainers.forEach((container) => {
                         const currentItem = document.querySelector(`#${container.id}`);
-                        animateItem(currentItem, '0', 'translateX(50%)');
+                        animateItem(currentItem, "0", "translateX(50%)");
                     });
                     animationUpContainers.forEach((container) => {
                         const currentItem = document.querySelector(`#${container.id}`);
-                        animateItem(currentItem, '0', 'translateY(50%)');
+                        animateItem(currentItem, "0", "translateY(50%)");
                     });
                 }
             };
             const optionsIO_skills = {
-                threshold: '.4',
+                threshold: ".4",
             };
 
             const skillsContainersObserver = new IntersectionObserver(watchSwipeAnimationContainer, optionsIO_skills);
@@ -935,17 +923,17 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ CREATE TEMPLATE CARD --START
     const createCard = (item, frac) => {
         const cloneProjectCard = cardProjectTemplate.cloneNode(true);
-        const projectCard = cloneProjectCard.querySelector('.project_card');
-        const fieldsetCard = cloneProjectCard.querySelector('.btns_flag_project_container');
-        const cardTitle = cloneProjectCard.querySelector('.title');
+        const projectCard = cloneProjectCard.querySelector(".project_card");
+        const fieldsetCard = cloneProjectCard.querySelector(".btns_flag_project_container");
+        const cardTitle = cloneProjectCard.querySelector(".title");
         //* ******************************************************************************** *//
-        const clientName = item['client_name'];
-        const cardImg = item['projects']['images']['hero']['small'];
+        const clientName = item["client_name"];
+        const cardImg = item["projects"]["images"]["hero"]["small"];
         projectCard.style.backgroundImage = `url("${cardImg}")`;
-        const clientTechnologiesInProjects = item['projects']['technologies'];
+        const clientTechnologiesInProjects = item["projects"]["technologies"];
         clientTechnologiesInProjects.forEach((project) => {
             const cloneBtn = btnProjectTemplate.cloneNode(true);
-            const flagBtn = cloneBtn.querySelector('.flag_project_btn');
+            const flagBtn = cloneBtn.querySelector(".flag_project_btn");
             flagBtn.textContent = project;
             fieldsetCard.appendChild(flagBtn);
         });
@@ -970,7 +958,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             data.forEach((item) => {
-                const projectTypes = item['projects']['type'];
+                const projectTypes = item["projects"]["type"];
 
                 projectTypes.forEach((type) => {
                     if (!typesOfProjects.includes(type)) {
@@ -980,7 +968,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             //*console.log(typesOfProjects);
             typesOfProjects.sort().forEach((type) => {
-                const createID = type.toLowerCase().split(' ').join('_');
+                const createID = type.toLowerCase().split(" ").join("_");
                 newID = createID;
                 let newProjectTypeData = new ProjectTypeData(type, newID);
                 newProjectsListData.push(newProjectTypeData);
@@ -988,37 +976,37 @@ document.addEventListener('DOMContentLoaded', () => {
             //*console.log(newProjectsListData);
 
             const selectionListTemplateClone = selectionListTemplate.cloneNode(true);
-            const newList = selectionListTemplateClone.querySelector('.selection_list');
-            newList.setAttribute('name', 'types_of_projects');
+            const newList = selectionListTemplateClone.querySelector(".selection_list");
+            newList.setAttribute("name", "types_of_projects");
             newList.id = `selection_list_type_of_projects`;
             newProjectsListData.forEach((option) => {
-                const optionValue = option['value'];
-                const optionId = option['id'];
+                const optionValue = option["value"];
+                const optionId = option["id"];
                 //*console.log(optionValue, optionProject);
 
                 //* console.log(projects);
                 const optionListTemplateClone = optionListTemplate.cloneNode(true);
-                const newOptionBtn = optionListTemplateClone.querySelector('.option_list_btn');
+                const newOptionBtn = optionListTemplateClone.querySelector(".option_list_btn");
 
-                const newOptionText = optionListTemplateClone.querySelector('.option_list_text');
+                const newOptionText = optionListTemplateClone.querySelector(".option_list_text");
                 newOptionBtn.id = `option_list_btn_${optionId}`;
-                newOptionBtn.setAttribute('name', optionValue);
+                newOptionBtn.setAttribute("name", optionValue);
                 newOptionText.textContent = optionValue;
                 newList.appendChild(newOptionBtn);
             });
             fragmentListProjects.appendChild(newList);
             searchBtnsContainer.appendChild(fragmentListProjects);
-            const typesOfProjectOptionList = document.querySelectorAll('.option_list_btn');
+            const typesOfProjectOptionList = document.querySelectorAll(".option_list_btn");
             //*console.log(typesOfProjectOptionList);
             typesOfProjectOptionList.forEach((optionType) => {
                 //* console.log(optionType);
                 const createSearchedCards = (e) => {
                     deleteChildElements(porfolioSearchCardsContainer);
-                    const currentNameData = e.target.getAttribute('name');
+                    const currentNameData = e.target.getAttribute("name");
                     //* console.log(currentNameData);
 
                     data.forEach((item) => {
-                        const dataIncludedResponse = item['projects']['type'].includes(currentNameData);
+                        const dataIncludedResponse = item["projects"]["type"].includes(currentNameData);
                         if (dataIncludedResponse) {
                             //todo CREAR TARJETAS ESPECIFICAS DE BUSQUEDA
                             //*console.log(item);
@@ -1026,10 +1014,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             createCard(item, fragmentSearchProjects);
                             titleSubsectionCardsSearch.textContent = currentNameData;
                             porfolioSearchCardsContainer.appendChild(fragmentSearchProjects);
-                            const projectCards = document.querySelectorAll('.project_card');
+                            const projectCards = document.querySelectorAll(".project_card");
                             projectCards.forEach((card) => {
                                 setTimeout(() => {
-                                    animateItem(card, '1', 'translateY(0)');
+                                    animateItem(card, "1", "translateY(0)");
                                 }, 500);
                             });
                         } else if (!dataIncludedResponse) {
@@ -1038,7 +1026,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 };
 
-                optionType.addEventListener('click', createSearchedCards);
+                optionType.addEventListener("click", createSearchedCards);
             });
         } catch (error) {
             console.log(error);
@@ -1050,20 +1038,20 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^SELECT LIST ACTIONS--START
     //&OPEN SELECT LIST--START
     const openSelectList = () => {
-        const selectionTypesList = document.querySelector('#selection_list_type_of_projects');
-        const arrowSvg = document.querySelector('#arrow_btn_select_list_svg');
-        arrowSvg.style.transform = 'rotate(-180deg)';
-        selectionTypesList.style.height = 'fit-content';
+        const selectionTypesList = document.querySelector("#selection_list_type_of_projects");
+        const arrowSvg = document.querySelector("#arrow_btn_select_list_svg");
+        arrowSvg.style.transform = "rotate(-180deg)";
+        selectionTypesList.style.height = "fit-content";
         selectListStatus = open;
     };
     //&OPEN SELECT LIST--OVER
     //& ***************************************************************************** *//
     //&CLOSE SELECT LIST--START
     const closeSelectList = () => {
-        const selectionTypesList = document.querySelector('#selection_list_type_of_projects');
-        const arrowSvg = document.querySelector('#arrow_btn_select_list_svg');
-        arrowSvg.style.transform = 'rotate(0)';
-        selectionTypesList.style.height = '3rem';
+        const selectionTypesList = document.querySelector("#selection_list_type_of_projects");
+        const arrowSvg = document.querySelector("#arrow_btn_select_list_svg");
+        arrowSvg.style.transform = "rotate(0)";
+        selectionTypesList.style.height = "3rem";
         selectListStatus = close;
     };
     //&CLOSE SELECT LIST--OVER
@@ -1071,7 +1059,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //&&BTNS LIST ACTIVATION--START
     const btnsListObserve = new MutationObserver(([entry]) => {
         //*console.log(entry);
-        const searchListBtn = document.querySelector('#selection_list_search_btn');
+        const searchListBtn = document.querySelector("#selection_list_search_btn");
         const selectListActions = () => {
             if (selectListStatus === close) {
                 openSelectList();
@@ -1079,7 +1067,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeSelectList();
             }
         };
-        searchListBtn.addEventListener('click', selectListActions);
+        searchListBtn.addEventListener("click", selectListActions);
     });
     btnsListObserve.observe(searchBtnsContainer, { childList: true });
 
@@ -1097,10 +1085,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 createCard(item, fragmentHotProjects);
             });
             portfolioHotCardsContainer.appendChild(fragmentHotProjects);
-            const projectCards = document.querySelectorAll('.project_card');
+            const projectCards = document.querySelectorAll(".project_card");
             projectCards.forEach((card) => {
                 setTimeout(() => {
-                    animateItem(card, '1', 'translateY(0)');
+                    animateItem(card, "1", "translateY(0)");
                 }, 500);
             });
         } catch (error) {
@@ -1118,7 +1106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await rawData.json();
             let randomItems = [];
             data.forEach((item) => {
-                const itemsTypesOfProjects = item['projects']['type'];
+                const itemsTypesOfProjects = item["projects"]["type"];
                 if (itemsTypesOfProjects.includes(randomTypeSelection)) {
                     randomItems.push(item);
                     titleSubsectionCardsSearch.textContent = randomTypeSelection;
@@ -1130,11 +1118,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             porfolioSearchCardsContainer.appendChild(fragmentSearchProjects);
-            const projectCards = document.querySelectorAll('.project_card');
+            const projectCards = document.querySelectorAll(".project_card");
 
             projectCards.forEach((card) => {
                 setTimeout(() => {
-                    animateItem(card, '1', 'translateY(0)');
+                    animateItem(card, "1", "translateY(0)");
                 }, 500);
             });
         } catch (error) {
@@ -1145,7 +1133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //~~ ************************************************************************* *//
     //&CHANGE LANG BY CLICK--START
     const changeLang = (lang) => {
-        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute("lang", lang);
     };
     //&CHANGE LANG BY CLICK --OVER
     //& ***********************************************************************************  *//
@@ -1154,27 +1142,27 @@ document.addEventListener('DOMContentLoaded', () => {
     sliderContainersServices.forEach((slider) => {
         slidersServicesCount++;
         const cloneMarker = markersTemplate.cloneNode(true);
-        const newMarker = cloneMarker.querySelector('.marker_slider_btn');
-        newMarker.setAttribute('id', `marker_slider_btn_${slidersServicesCount}`);
-        newMarker.classList.add('marker_slider_services_btn');
-        newMarker.setAttribute('name', slider.id);
+        const newMarker = cloneMarker.querySelector(".marker_slider_btn");
+        newMarker.setAttribute("id", `marker_slider_btn_${slidersServicesCount}`);
+        newMarker.classList.add("marker_slider_services_btn");
+        newMarker.setAttribute("name", slider.id);
         fragmentSliderMarkersServices.appendChild(newMarker);
 
         const watchSliders = ([entry]) => {
-            const sliderMarkers = document.querySelectorAll('.marker_slider_services_btn');
+            const sliderMarkers = document.querySelectorAll(".marker_slider_services_btn");
             if (entry.isIntersecting) {
                 const currentId = entry.target.id;
                 //*console.log(currentId);
                 sliderMarkers.forEach((marker) => {
-                    let currentMarker = marker.getAttribute('id');
-                    let currentMarkerName = marker.getAttribute('name');
+                    let currentMarker = marker.getAttribute("id");
+                    let currentMarkerName = marker.getAttribute("name");
                     //*console.log(currentMarker);
                     if (currentMarkerName === currentId) {
                         const markerActive = document.querySelector(`#${currentMarker}`);
-                        markerActive.style.background = 'var(--secondColor)';
+                        markerActive.style.background = "var(--secondColor)";
                     } else {
                         const markerInactive = document.querySelector(`#${currentMarker}`);
-                        markerInactive.style.background = 'var(--firstColor)';
+                        markerInactive.style.background = "var(--firstColor)";
                     }
                 });
             }
@@ -1191,7 +1179,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //!SLIDER BTNS CONSTANT--NOT MOVE
 
-    const sliderMarkersServices = document.querySelectorAll('.marker_slider_services_btn');
+    const sliderMarkersServices = document.querySelectorAll(".marker_slider_services_btn");
     //^^SLIDER MARKERS BTNS--START
     sliderMarkersServices.forEach((marker) => {
         const checkSlider = () => {
@@ -1212,7 +1200,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 //*console.log(sliderFullCountServices, sliderSearched, sliderWidth, 'by equal than 0');
             }
         };
-        marker.addEventListener('click', checkSlider);
+        marker.addEventListener("click", checkSlider);
     });
 
     //^^SLIDER MARKERS BTNS--OVER
@@ -1226,27 +1214,27 @@ document.addEventListener('DOMContentLoaded', () => {
     //!FUNCTIONS --OVER
     //! ******************************************************************************//
     //! ADD EVENT LISTENERS
-    window.addEventListener('scroll', scrollBody);
-    body.addEventListener('click', closeByBodyClick);
-    btnLogo.addEventListener('click', toTheTop);
-    btnMenuContainer.addEventListener('click', btnNavMenu);
-    closeMenuBtn.addEventListener('click', closeMenu);
-    closeBtnModalContactForm.addEventListener('click', closeContactModal);
-    btnHeroDown.addEventListener('click', scrollOneHeight);
-    acceptBtnStorageWarningBtn.addEventListener('click', closeAlertStorageModal);
-    legalAccept.addEventListener('click', closeLegalModal);
-    menuSocialBtn.addEventListener('click', socialMenuBtnActions);
-    closeBtnLegalModal.addEventListener('click', closeLegalModal);
+    window.addEventListener("scroll", scrollBody);
+    body.addEventListener("click", closeByBodyClick);
+    btnLogo.addEventListener("click", toTheTop);
+    btnMenuContainer.addEventListener("click", btnNavMenu);
+    closeMenuBtn.addEventListener("click", closeMenu);
+    closeBtnModalContactForm.addEventListener("click", closeContactModal);
+    btnHeroDown.addEventListener("click", scrollOneHeight);
+    acceptBtnStorageWarningBtn.addEventListener("click", closeAlertStorageModal);
+    legalAccept.addEventListener("click", closeLegalModal);
+    menuSocialBtn.addEventListener("click", socialMenuBtnActions);
+    closeBtnLegalModal.addEventListener("click", closeLegalModal);
 
     //^CLOSE BTN ALERT--START
-    closeBtnAlertModal.addEventListener('click', () => {
+    closeBtnAlertModal.addEventListener("click", () => {
         closeAlert(storageAlertModal);
     });
     //^CLOSE BTN ALERT--OVER
     //^^ **********************************************************************************************************************************************  *//
 
     //^BTN LEFT SLIDER--START
-    sliderBtnLeftServices.addEventListener('click', () => {
+    sliderBtnLeftServices.addEventListener("click", () => {
         const sliderWidth = sliderWindowContainerServices.getBoundingClientRect().width;
         //*console.log(slidersServicesCount);
         const sliderWidthFull = sliderWidth / slidersServicesCount;
@@ -1262,7 +1250,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //^^ **********************************************************************************************************************************************  *//
 
     //^BTN RIGHT SLIDER--START
-    sliderBtnRightServices.addEventListener('click', () => {
+    sliderBtnRightServices.addEventListener("click", () => {
         const sliderWidth = sliderWindowContainerServices.getBoundingClientRect().width;
         //*console.log(slidersServicesCount);
         const sliderWidthFull = sliderWidth / slidersServicesCount;
@@ -1279,33 +1267,39 @@ document.addEventListener('DOMContentLoaded', () => {
     //^ CHANGE THEME BTN-- START && --/CHANGE THE THEME PAGE BY THE MENU BTN
     btnsTheme.forEach((btn) => {
         const changeThemeBtn = () => {
-            if (body.className === 'light_theme') {
-                body.className = 'dark_theme';
+            if (body.className === "light_theme") {
+                body.className = "dark_theme";
                 btnThemeNav.innerHTML = sunIcon;
                 btnThemeMenu.innerHTML = sunIcon;
-            } else if (body.className === 'dark_theme') {
-                body.className = 'light_theme';
+            } else if (body.className === "dark_theme") {
+                body.className = "light_theme";
                 btnThemeNav.innerHTML = moonIcon;
                 btnThemeMenu.innerHTML = moonIcon;
             }
         };
-        btn.addEventListener('click', changeThemeBtn);
+        btn.addEventListener("click", changeThemeBtn);
     });
     //^ CHANGE THEME BTN-- OVER
     //^^ **********************************************************************************************************************************************  *//
     btnsMenuSocial.forEach((btn) => {
-        btn.addEventListener('click', closeMenuSocial);
+        btn.addEventListener("click", closeMenuSocial);
     });
     //^ ********************************************************************/
     //^ CLOSE MENU BY BTN-- START && --/EVERYTIME A MENU BTN CLICK MENU CLOSE
     btnsMenu.forEach((btn) => {
-        btn.addEventListener('click', closeMenu);
+        btn.addEventListener("click", closeMenu);
     });
     //^ CLOSE MENU BY BTNS-- OVER
     //^ *****************************************************************************//
     //^ BTNS SCROLLS TO SECTION--START
+
+    btnsHero.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            scrollToSection(btn);
+        });
+    });
     btnsSection.forEach((btn) => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener("click", () => {
             scrollToSection(btn);
         });
     });
@@ -1314,13 +1308,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //^^ CONTACT BTNS OPEN MODAL-- START
     btnsContact.forEach((btn) => {
-        btn.addEventListener('click', openContactModal);
+        btn.addEventListener("click", openContactModal);
     });
     //^^ CONTACT BTNS OPEN MODAL-- OVER
     //^^ ***************************************************************************** *//
     //! *************************************************************************/
     //^ SEND FORM-- START
-    sendBtnFormModal.addEventListener('click', (e) => {
+    sendBtnFormModal.addEventListener("click", (e) => {
         e.preventDefault();
     });
     //^ SEND FORM-- OVER
@@ -1339,7 +1333,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 legalModalStatus = open;
             }
         };
-        btn.addEventListener('click', openLegalModal);
+        btn.addEventListener("click", openLegalModal);
     });
     //^^LEGAL BTNS--OVER
     //^^ ************************************************************************** *//
