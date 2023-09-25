@@ -81,7 +81,7 @@
     //!GENERAL COLORS OVER
     //! ******************************************************************************************************************************/
     //!FONTS START
-    --titanimFont: 'Titillium Web', sans-serif;
+    --titanimFont: "Titillium Web", sans-serif;
     //!FONTS OVER
     //! ******************************************************************************************************************************/
     //!Z INDEX COUNT--START
@@ -180,17 +180,12 @@
     //!THEME COLORS OVER
     //! ************************************************************************************************************************ *//
     //!SECTION BACKGROUNDS--START
-    --backgroundHero: linear-gradient(transparent, var(--bgColor) 75%), url('../img/backgrounds/day.jpg') center no-repeat fixed;
-    --bgHeaderSectionAbout: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
-        url('../img/backgrounds/fondoBasket.png') center no-repeat fixed;
-    --bgHeaderSectionServices: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
-        url('../img/backgrounds/office-932926_1920.jpg') center no-repeat fixed;
-    --bgHeaderSectionPortfolio: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%),
-        url('../img/backgrounds/sunglasses-1284392_1920.jpg') center no-repeat fixed;
-    --bgHeaderSectionSkills: linear-gradient(var(--bgColor), hsla(0, 0%, 100%, 0.5), var(--bgColor)),
-        url('../img/backgrounds/pexels-julia-m-cameron-4144097.jpg') center no-repeat fixed;
-    --bgHeaderSectionContact: linear-gradient(var(--bgColor), hsla(0, 0%, 100%, 0.5), var(--bgColor)),
-        url('../img/backgrounds/pexels-alex-andrews-821754.jpg') center no-repeat fixed;
+    --backgroundHero: linear-gradient(transparent, var(--bgColor) 75%), url("../img/backgrounds/day.jpg") center no-repeat fixed;
+    --bgHeaderSectionAbout: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%), url("../img/backgrounds/fondoBasket.png") center no-repeat fixed;
+    --bgHeaderSectionServices: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%), url("../img/backgrounds/office-932926_1920.jpg") center no-repeat fixed;
+    --bgHeaderSectionPortfolio: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%), url("../img/backgrounds/sunglasses-1284392_1920.jpg") center no-repeat fixed;
+    --bgHeaderSectionSkills: linear-gradient(var(--bgColor), hsla(0, 0%, 100%, 0.5), var(--bgColor)), url("../img/backgrounds/pexels-julia-m-cameron-4144097.jpg") center no-repeat fixed;
+    --bgHeaderSectionContact: linear-gradient(var(--bgColor), hsla(0, 0%, 100%, 0.5), var(--bgColor)), url("../img/backgrounds/pexels-alex-andrews-821754.jpg") center no-repeat fixed;
 
     //!SECTION BACKGROUNDS--OVER
     //! ************************************************************************************************************************ *//
@@ -262,18 +257,13 @@
     //!THEME COLORS OVER
     //! ************************************************************************************************************************ *//
     //!SECTION BACKGROUNDS--START
-    --backgroundHero: linear-gradient(transparent, var(--bgColor) 90%), url('../img/backgrounds/night.jpg') center no-repeat fixed;
-    --bgHeaderSectionAbout: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%),
-        url('../img/backgrounds/graffiti-background-1554703550MY5.jpg') center no-repeat fixed;
-    --bgHeaderSectionServices: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%),
-        url('../img/backgrounds/pexels-ovan-57690.jpg') center no-repeat fixed;
-    --bgHeaderSectionPortfolio: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%),
-        url('../img/backgrounds/workspace-1280538_1920.jpg') center no-repeat fixed;
-    --bgHeaderSectionSkills: linear-gradient(var(--bgColor) 10%, hsla(0, 0%, 0%, 0.5), var(--bgColor) 90%),
-        url('../img/backgrounds/tools-1083796_1920.jpg') center no-repeat fixed;
+    --backgroundHero: linear-gradient(transparent, var(--bgColor) 90%), url("../img/backgrounds/night.jpg") center no-repeat fixed;
+    --bgHeaderSectionAbout: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%), url("../img/backgrounds/graffiti-background-1554703550MY5.jpg") center no-repeat fixed;
+    --bgHeaderSectionServices: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%), url("../img/backgrounds/pexels-ovan-57690.jpg") center no-repeat fixed;
+    --bgHeaderSectionPortfolio: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%), url("../img/backgrounds/workspace-1280538_1920.jpg") center no-repeat fixed;
+    --bgHeaderSectionSkills: linear-gradient(var(--bgColor) 10%, hsla(0, 0%, 0%, 0.5), var(--bgColor) 90%), url("../img/backgrounds/tools-1083796_1920.jpg") center no-repeat fixed;
 
-    --bgHeaderSectionContact: linear-gradient(var(--bgColor) 10%, hsla(0, 0%, 0%, 0.5), var(--bgColor) 90%),
-        url('../img/backgrounds/post-letter-2828146_1920.jpg') center no-repeat fixed;
+    --bgHeaderSectionContact: linear-gradient(var(--bgColor) 10%, hsla(0, 0%, 0%, 0.5), var(--bgColor) 90%), url("../img/backgrounds/post-letter-2828146_1920.jpg") center no-repeat fixed;
     //!SECTION BACKGROUNDS--OVER
     //! ************************************************************************************************************************ *//
     //!LOGOS SPECIFIC COLOR START
@@ -1703,8 +1693,6 @@ BUTTON {
         }
     }
 }
-#slider_container_services_2 {
-}
 #services_section {
     @include flexDirection(column, flex-start, center);
 
@@ -1969,6 +1957,8 @@ BUTTON {
     position: relative;
     color: var(--textColor);
     font-weight: var(--fontWeightB);
+    width: clamp(6rem, 2vw, 12rem);
+    border-radius: 0.5rem;
 }
 //!PROJECTS CONTAINER--START
 .projects_container {

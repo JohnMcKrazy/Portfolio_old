@@ -64,5 +64,37 @@
             }
         },
         "votes": 2
+    },
+    {
+        "client_name": "Pokedex",
+        "db_name": "pokedex",
+        "client_logo": "",
+        "projects": {
+            "type": ["WEB", "JavaScript", "HTML", "CSS"],
+            "type_data": ["web", "javascript", "html", "css"],
+            "description": "",
+            "reach": ["WEB", "JavaScript", "HTML", "CSS"],
+            "technologies": ["HTML", "CSS", "SASS", "JavaScript"],
+            "images": {
+                "avatar": "assets/img/web/pokedex.png",
+                "hero": {
+                    "small": "assets/img/web/pokedex.png",
+                    "big": ""
+                },
+                "1": {
+                    "small": "",
+                    "big": ""
+                },
+                "2": {
+                    "small": "",
+                    "big": ""
+                },
+                "3": {
+                    "small": "",
+                    "big": ""
+                }
+            }
+        },
+        "votes": 5
     }
 ]

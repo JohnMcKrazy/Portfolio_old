@@ -950,7 +950,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const rawData = await fetch(portfolioData);
             const data = await rawData.json();
             let newID;
-            //*console.log(data);
+            console.log(data);
             class ProjectTypeData {
                 constructor(value, id) {
                     this.value = value;
@@ -966,14 +966,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
             });
-            //*console.log(typesOfProjects);
+            console.log(typesOfProjects);
             typesOfProjects.sort().forEach((type) => {
                 const createID = type.toLowerCase().split(" ").join("_");
                 newID = createID;
                 let newProjectTypeData = new ProjectTypeData(type, newID);
                 newProjectsListData.push(newProjectTypeData);
             });
-            //*console.log(newProjectsListData);
+            console.log(newProjectsListData);
 
             const selectionListTemplateClone = selectionListTemplate.cloneNode(true);
             const newList = selectionListTemplateClone.querySelector(".selection_list");
@@ -982,9 +982,8 @@ document.addEventListener("DOMContentLoaded", () => {
             newProjectsListData.forEach((option) => {
                 const optionValue = option["value"];
                 const optionId = option["id"];
-                //*console.log(optionValue, optionProject);
+                console.log(optionValue, optionId);
 
-                //* console.log(projects);
                 const optionListTemplateClone = optionListTemplate.cloneNode(true);
                 const newOptionBtn = optionListTemplateClone.querySelector(".option_list_btn");
 
@@ -997,13 +996,13 @@ document.addEventListener("DOMContentLoaded", () => {
             fragmentListProjects.appendChild(newList);
             searchBtnsContainer.appendChild(fragmentListProjects);
             const typesOfProjectOptionList = document.querySelectorAll(".option_list_btn");
-            //*console.log(typesOfProjectOptionList);
+            /* console.log(typesOfProjectOptionList); */
             typesOfProjectOptionList.forEach((optionType) => {
-                //* console.log(optionType);
+                console.log(optionType);
                 const createSearchedCards = (e) => {
                     deleteChildElements(porfolioSearchCardsContainer);
                     const currentNameData = e.target.getAttribute("name");
-                    //* console.log(currentNameData);
+                    console.log(currentNameData);
 
                     data.forEach((item) => {
                         const dataIncludedResponse = item["projects"]["type"].includes(currentNameData);
