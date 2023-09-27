@@ -926,6 +926,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const projectCard = cloneProjectCard.querySelector(".project_card");
         const fieldsetCard = cloneProjectCard.querySelector(".btns_flag_project_container");
         const cardTitle = cloneProjectCard.querySelector(".title");
+        const moreBtn = cloneProjectCard.querySelector(".more_btn");
         //* ******************************************************************************** *//
         const clientName = item["client_name"];
         const cardImg = item["projects"]["images"]["hero"]["small"];
@@ -934,10 +935,19 @@ document.addEventListener("DOMContentLoaded", () => {
         clientTechnologiesInProjects.forEach((project) => {
             const cloneBtn = btnProjectTemplate.cloneNode(true);
             const flagBtn = cloneBtn.querySelector(".flag_project_btn");
+
             flagBtn.textContent = project;
             fieldsetCard.appendChild(flagBtn);
         });
         cardTitle.textContent = clientName;
+
+        if (item["projects"]["project_link"] !== null && item["projects"]["project_link"] !== "") {
+            console.log(item["projects"]["project_link"]);
+            console.log(moreBtn);
+            moreBtn.setAttribute("href", `${item["projects"]["project_link"]}`);
+        } else {
+            moreBtn.setAttribute("href", "");
+        }
         frac.appendChild(projectCard);
     };
     //^ CREATE TEMPLATE CARD --OVER

@@ -727,10 +727,13 @@ BUTTON {
 }
 
 .more_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  background: var(--firstColorHover);
-  color: var(--textContrastColor);
-  border-color: var(--firstColorHover);
+  background: transparent;
+  color: var(--textColor);
+  border: var(--firstColorHover) 0.25rem solid;
   font-weight: var(--fontWeightB);
   font-size: var(--fontSizeS);
 }
@@ -738,8 +741,8 @@ BUTTON {
 .more_btn:hover,
 .more_btn:focus,
 .more_btn:active {
-  border-color: var(--firstColor);
   background: var(--firstColor);
+  color: var(--textContrastColor);
 }
 
 .btn_lebel {
@@ -1030,7 +1033,7 @@ BUTTON {
   top: 0;
   left: 0;
   background: var(--navbarColor);
-  width: 100vw;
+  width: 100%;
   height: auto;
   z-index: var(--zIndexMenu);
   transform: translateY(-100%);

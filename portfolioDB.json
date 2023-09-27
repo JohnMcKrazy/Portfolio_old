@@ -1,12 +1,11 @@
 [
     {
         "client_name": "Creaciones Hermed",
-
         "db_name": "creaciones_hermed",
         "client_logo": "",
         "projects": {
-            "type": ["Branding", "Tarjeta de presentacion"],
-            "type_data": ["branding", "tarjeta_de_presentacion"],
+            "type": ["Branding"],
+            "type_data": ["Papeleria"],
             "description": "",
             "reach": ["Tarjeta de presentacion", "Promocionales", "Edicion de imagen", "Redes Sociales"],
             "technologies": ["Illustrator", "Photoshop"],
@@ -28,7 +27,8 @@
                     "small": "",
                     "big": ""
                 }
-            }
+            },
+            "project_link": "https://www.behance.net/gallery/107080483/Creaciones-Hermed"
         },
         "votes": 2
     },
@@ -38,10 +38,10 @@
         "db_name": "leiru",
         "client_logo": "",
         "projects": {
-            "type": ["Promocionales", "Edicion de imagen", "Firmas electronicas", "Branding", "Tarjeta de presentacion"],
-            "type_data": ["promocionales", "edicion_de_imagen", "firmas_electronicas", "branding", "tarjeta_de_presentacion"],
+            "type": ["Identidad Corporativa"],
+            "type_data": ["identidad_corporativa"],
             "description": "",
-            "reach": ["Tarjeta de presentacion", "Promocionales", "Edicion de imagen", "Redes Sociales"],
+            "reach": ["Logotipo", "Firma Electronica", "Tarjeta de presentacion", "Promocionales"],
             "technologies": ["Illustrator", "Photoshop"],
             "images": {
                 "avatar": "assets/img/leiru/avatar.png",
@@ -61,7 +61,8 @@
                     "small": "",
                     "big": ""
                 }
-            }
+            },
+            "project_link": null
         },
         "votes": 2
     },
@@ -70,10 +71,10 @@
         "db_name": "pokedex",
         "client_logo": "",
         "projects": {
-            "type": ["WEB", "JavaScript", "HTML", "CSS"],
-            "type_data": ["web", "javascript", "html", "css"],
+            "type": ["Desarrollo WEB"],
+            "type_data": ["desarrollo_web"],
             "description": "",
-            "reach": ["WEB", "JavaScript", "HTML", "CSS"],
+            "reach": ["Desarrollo WEB"],
             "technologies": ["HTML", "CSS", "SASS", "JavaScript"],
             "images": {
                 "avatar": "assets/img/web/pokedex.png",
@@ -93,7 +94,41 @@
                     "small": "",
                     "big": ""
                 }
-            }
+            },
+            "project_link": "https://johnmckrazy.github.io/Pokedex-V2/"
+        },
+        "votes": 5
+    },
+    {
+        "client_name": "Tribute To Kobe",
+        "db_name": "tribute",
+        "client_logo": "",
+        "projects": {
+            "type": ["Desarrollo WEB"],
+            "type_data": ["desarrollo_web"],
+            "description": "",
+            "reach": ["Desarrollo WEB"],
+            "technologies": ["HTML", "CSS", "SASS", "JavaScript"],
+            "images": {
+                "avatar": "assets/img/web/tributo.png",
+                "hero": {
+                    "small": "assets/img/web/tributo.png",
+                    "big": ""
+                },
+                "1": {
+                    "small": "",
+                    "big": ""
+                },
+                "2": {
+                    "small": "",
+                    "big": ""
+                },
+                "3": {
+                    "small": "",
+                    "big": ""
+                }
+            },
+            "project_link": "https://johnmckrazy.github.io/Tribute-Page-In-Memory-Of-Kobe-Bryan/"
         },
         "votes": 5
     }
