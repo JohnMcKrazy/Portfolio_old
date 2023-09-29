@@ -74,6 +74,7 @@
     //!GENERAL COLORS START
     --midGray: hsl(0, 0%, 65%);
     --darkGray: hsl(0, 0%, 30%);
+    --lightGrey: hsl(0, 0%, 20%);
     --black: hsl(0, 0%, 0%);
     --white: hsl(100, 100%, 100%);
     --blackOff: hsl(0, 0%, 15%);
@@ -95,6 +96,7 @@
     //!Z INDEX COUNT-- OVER
     //! *********************************************************************************************************************** *//
     //! FONT SIZES--START
+    --fontSizeXs: 0.8rem;
     --fontSizeS: 1.2rem;
     --fontSizeM: 1.5rem;
     --fontSizeX: 1.8rem;
@@ -307,93 +309,7 @@ body {
     position: relative;
     background: var(--bgColor);
     scroll-behavior: smooth;
-    //!!PRUEBA DE ICONOS
-    #computer_icon_svg {
-        .st1 {
-            fill: var(--midGray);
-            //*pantalla
-        }
-        .st2 {
-            fill: var(--textColor);
-            //*base de laptop
-        }
-        .st3 {
-            fill: var(--textContrastColor);
-            //*teclas
-        }
-        .st4 {
-            fill: var(--textContrastColor);
-            //*bizagras
-        }
-        .st5 {
-            fill: var(--bgColor);
-            //*color de pantalla
-        }
-        .st6 {
-            fill: var(--navbarColor);
-            //*sombras
-        }
-        .st7 {
-            fill: var(--secondColor);
-            //*some bubles
-        }
-        .st8 {
-            fill: var(--bgOff);
-            //*fondo de navegador
-        }
-        .st9 {
-            fill: var(--bgOff);
-        }
-        .st10 {
-            fill: var(--textColor);
-            //*textos y fondos de navegador
-        }
-        .st11 {
-            fill: var(--firstColor);
-            //*las otras burbujas y los corazones
-        }
-        .st12 {
-            opacity: 0.1;
-        }
-        .st13 {
-            fill: red;
-            //*puntos de burbuja con puntos
-        }
-        .st14 {
-            fill: var(--navbarColor);
-            //*ventana de navegador
-        }
-    }
-    #show_card_slider_1 {
-        .cls-1 {
-            fill: #3f3d56;
-        }
-        .cls-2 {
-            fill: #ffb6b6;
-        }
-        .cls-3 {
-            fill: #2f2e41;
-        }
-        .cls-4 {
-            fill: #a0616a;
-        }
-        .cls-5 {
-            fill: var(--midGray);
-        }
-        .cls-6 {
-            fill: var(--secondColor);
-        }
-        .cls-7 {
-            fill: green;
-        }
-        .cls-8 {
-            fill: var(--firstColor);
-        }
-        .cls-24 {
-            fill: var(--white);
-        }
-    }
-    //!!PRUEBA DE ICONOS
+
     //^^GENERAL ICONS COLORS--START
     .close_icon_svg,
     .theme_icon_svg {
@@ -520,6 +436,94 @@ body {
             .cls-2 {
                 fill: #fff;
             }
+        }
+    }
+    .hermed_icon_svg {
+        .cls-1,
+        .cls-8 {
+            fill: #f1c4dc;
+        }
+        .cls-1,
+        .cls-11 {
+            stroke: #996884;
+        }
+        .cls-1,
+        .cls-11,
+        .cls-14,
+        .cls-15,
+        .cls-19,
+        .cls-3,
+        .cls-6,
+        .cls-9 {
+            stroke-miterlimit: 10;
+        }
+        .cls-1,
+        .cls-11,
+        .cls-14,
+        .cls-15,
+        .cls-3,
+        .cls-6,
+        .cls-9 {
+            stroke-width: 0.05px;
+        }
+        .cls-2 {
+            fill: #e6cd00;
+        }
+        .cls-14,
+        .cls-3 {
+            fill: #eeeded;
+        }
+        .cls-3,
+        .cls-6 {
+            stroke: #020202;
+        }
+        .cls-4 {
+            fill: #e6b8d5;
+        }
+        .cls-5 {
+            fill: #996884;
+        }
+        .cls-15,
+        .cls-6 {
+            fill: #fff;
+        }
+        .cls-7 {
+            fill: #ece3e6;
+        }
+        .cls-11,
+        .cls-9 {
+            fill: none;
+        }
+        .cls-9 {
+            stroke: #000;
+            stroke-linecap: round;
+        }
+        .cls-10 {
+            clip-path: url(#clip-path);
+        }
+        .cls-12 {
+            fill: #b27aa3;
+        }
+        .cls-13 {
+            fill: #daaac9;
+        }
+        .cls-14,
+        .cls-15 {
+            stroke: #030304;
+        }
+        .cls-16 {
+            fill: #885b49;
+        }
+        .cls-17 {
+            clip-path: url(#clip-path-2);
+        }
+        .cls-18 {
+            fill: #cc1976;
+        }
+        .cls-19 {
+            fill: #cd78ac;
+            stroke: #5f256b;
+            stroke-width: 0.11px;
         }
     }
     //^^CLIENTS LOGO COLORS--OVER
@@ -1800,7 +1804,7 @@ BUTTON {
     width: 1.25rem;
     height: 1.25rem;
     background: var(--secondColor);
-    border-radius: var(--borderRadius);
+    border-radius: 50%;
     transition: var(--transitionUF);
     cursor: pointer;
 
@@ -2172,46 +2176,6 @@ BUTTON {
                     }
                 }
             }
-            #contact_card_container {
-                @include flex(center, center);
-                width: var(--widthClamp);
-                height: fit-content;
-                margin: 2rem 0;
-                .contact_card {
-                    @include flexDirection(column, flex-start, center);
-                    width: fit-content;
-                    height: fit-content;
-                    background: var(--navbarColor);
-                    border-radius: var(--borderRadius);
-                    .title_contact_card {
-                        @include flex(center, center);
-                        color: var(--secondColor);
-                        font-size: var(--fontSizeSClamp);
-                        padding: 1rem 1.5rem 0.5rem;
-                        text-align: center;
-                        height: fit-content;
-                    }
-                    .btns_contact_card {
-                        @include flexDirection(row, center, center);
-                        color: var(--textColor);
-                        height: fit-content;
-                        padding: 0 1.5rem 1rem;
-                        .contact_card_btn {
-                            height: 3rem;
-                            width: 3rem;
-                            padding: 0.5rem;
-                            .social_icon_svg {
-                                transition: var(--transitionUF);
-                            }
-                            &:hover {
-                                .social_icon_svg {
-                                    transform: scale(1.2);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 }
@@ -2312,13 +2276,13 @@ BUTTON {
             }
         }
         #made_container {
-            @include flex(center, center);
+            @include flexDirection(row, space-between, center);
             width: 100%;
             height: fit-content;
             background: var(--secondColor);
             padding: 1rem 0;
             #made_content {
-                @include flexDirection(column, center, center);
+                @include flexDirection(column, center, flex-start);
 
                 color: var(--textColor);
                 row-gap: 0.5rem;
@@ -2327,11 +2291,38 @@ BUTTON {
                 font-weight: var(--fontWeightN);
                 font-size: var(--fontSizeNClamp);
                 width: var(--widthClamp);
+                padding: 1rem 1.5rem;
+                padding-left: 6rem;
                 .heart_icon {
                     color: var(--firstColor);
                 }
                 .link_text {
                     color: var(--firstColor);
+                }
+                .copyright_text {
+                    margin-top: -0.5rem;
+                    @include flexDirection(row, flex-start, center);
+                    color: var(--lightGrey);
+                    font-size: var(--fontSizeXs);
+                }
+            }
+            #social_btns_footer {
+                @include flexDirection(row, center, center);
+                color: var(--textColor);
+                height: fit-content;
+                padding: 1rem 1.5rem;
+                .contact_card_btn {
+                    height: 3rem;
+                    width: 3rem;
+                    padding: 0.5rem;
+                    .social_icon_svg {
+                        transition: var(--transitionUF);
+                    }
+                    &:hover {
+                        .social_icon_svg {
+                            transform: scale(1.2);
+                        }
+                    }
                 }
             }
         }

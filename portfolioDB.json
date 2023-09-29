@@ -10,10 +10,10 @@
             "reach": ["Tarjeta de presentacion", "Promocionales", "Edicion de imagen", "Redes Sociales"],
             "technologies": ["Illustrator", "Photoshop"],
             "images": {
-                "avatar": "assets/img/hermed/avatar.png",
+                "avatar": "",
                 "hero": {
-                    "small": "assets/img/hermed/hero.png",
-                    "big": "assets/img/hermed/hero.png"
+                    "small": "assets/img/hermed.png",
+                    "big": ""
                 },
                 "1": {
                     "small": "",
@@ -44,10 +44,10 @@
             "reach": ["Logotipo", "Firma Electronica", "Tarjeta de presentacion", "Promocionales"],
             "technologies": ["Illustrator", "Photoshop"],
             "images": {
-                "avatar": "assets/img/leiru/avatar.png",
+                "avatar": "",
                 "hero": {
-                    "small": "assets/img/leiru/leiru_mockup_full.png",
-                    "big": "assets/img/leiru/leiru_mockup_full.png"
+                    "small": "assets/img/leiru.jpg",
+                    "big": ""
                 },
                 "1": {
                     "small": "",
@@ -62,7 +62,7 @@
                     "big": ""
                 }
             },
-            "project_link": null
+            "project_link": "https://www.behance.net/gallery/181117109/Leiru"
         },
         "votes": 2
     },
@@ -77,9 +77,9 @@
             "reach": ["Desarrollo WEB"],
             "technologies": ["HTML", "CSS", "SASS", "JavaScript"],
             "images": {
-                "avatar": "assets/img/web/pokedex.png",
+                "avatar": "",
                 "hero": {
-                    "small": "assets/img/web/pokedex.png",
+                    "small": "assets/img/pokedex.png",
                     "big": ""
                 },
                 "1": {
@@ -100,6 +100,39 @@
         "votes": 5
     },
     {
+        "client_name": "Afroduck",
+        "db_name": "afroduck",
+        "client_logo": "",
+        "projects": {
+            "type": ["Identidad Corporativa"],
+            "type_data": ["identidad_corporativa"],
+            "description": "",
+            "reach": ["Logotipo", "Firma Electronica", "Tarjeta de presentacion", "Promocionales"],
+            "technologies": ["Illustrator"],
+            "images": {
+                "avatar": "",
+                "hero": {
+                    "small": "assets/img/afroduck.jpg",
+                    "big": ""
+                },
+                "1": {
+                    "small": "",
+                    "big": ""
+                },
+                "2": {
+                    "small": "",
+                    "big": ""
+                },
+                "3": {
+                    "small": "",
+                    "big": ""
+                }
+            },
+            "project_link": "https://www.behance.net/gallery/181117581/Afroduck"
+        },
+        "votes": 5
+    },
+    {
         "client_name": "Tribute To Kobe",
         "db_name": "tribute",
         "client_logo": "",
@@ -110,9 +143,9 @@
             "reach": ["Desarrollo WEB"],
             "technologies": ["HTML", "CSS", "SASS", "JavaScript"],
             "images": {
-                "avatar": "assets/img/web/tributo.png",
+                "avatar": "",
                 "hero": {
-                    "small": "assets/img/web/tributo.png",
+                    "small": "assets/img/tributo.png",
                     "big": ""
                 },
                 "1": {

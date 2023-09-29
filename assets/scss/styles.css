@@ -55,6 +55,7 @@
 :root {
   --midGray: hsl(0, 0%, 65%);
   --darkGray: hsl(0, 0%, 30%);
+  --lightGrey: hsl(0, 0%, 20%);
   --black: hsl(0, 0%, 0%);
   --white: hsl(100, 100%, 100%);
   --blackOff: hsl(0, 0%, 15%);
@@ -67,6 +68,7 @@
   --zIndexTooltip: 20;
   --zIndexFull: 25;
   --zIndexAlert: 100;
+  --fontSizeXs: 0.8rem;
   --fontSizeS: 1.2rem;
   --fontSizeM: 1.5rem;
   --fontSizeX: 1.8rem;
@@ -201,75 +203,6 @@ body {
   background: var(--bgColor);
   scroll-behavior: smooth;
 }
-body #computer_icon_svg .st1 {
-  fill: var(--midGray);
-}
-body #computer_icon_svg .st2 {
-  fill: var(--textColor);
-}
-body #computer_icon_svg .st3 {
-  fill: var(--textContrastColor);
-}
-body #computer_icon_svg .st4 {
-  fill: var(--textContrastColor);
-}
-body #computer_icon_svg .st5 {
-  fill: var(--bgColor);
-}
-body #computer_icon_svg .st6 {
-  fill: var(--navbarColor);
-}
-body #computer_icon_svg .st7 {
-  fill: var(--secondColor);
-}
-body #computer_icon_svg .st8 {
-  fill: var(--bgOff);
-}
-body #computer_icon_svg .st9 {
-  fill: var(--bgOff);
-}
-body #computer_icon_svg .st10 {
-  fill: var(--textColor);
-}
-body #computer_icon_svg .st11 {
-  fill: var(--firstColor);
-}
-body #computer_icon_svg .st12 {
-  opacity: 0.1;
-}
-body #computer_icon_svg .st13 {
-  fill: red;
-}
-body #computer_icon_svg .st14 {
-  fill: var(--navbarColor);
-}
-body #show_card_slider_1 .cls-1 {
-  fill: #3f3d56;
-}
-body #show_card_slider_1 .cls-2 {
-  fill: #ffb6b6;
-}
-body #show_card_slider_1 .cls-3 {
-  fill: #2f2e41;
-}
-body #show_card_slider_1 .cls-4 {
-  fill: #a0616a;
-}
-body #show_card_slider_1 .cls-5 {
-  fill: var(--midGray);
-}
-body #show_card_slider_1 .cls-6 {
-  fill: var(--secondColor);
-}
-body #show_card_slider_1 .cls-7 {
-  fill: green;
-}
-body #show_card_slider_1 .cls-8 {
-  fill: var(--firstColor);
-}
-body #show_card_slider_1 .cls-24 {
-  fill: var(--white);
-}
 body .close_icon_svg .cls-1,
 body .theme_icon_svg .cls-1 {
   fill: var(--firstColor);
@@ -372,6 +305,94 @@ body .leiru_icon_svg #polygon {
 }
 body .leiru_icon_svg #text .cls-2 {
   fill: #fff;
+}
+body .hermed_icon_svg .cls-1,
+body .hermed_icon_svg .cls-8 {
+  fill: #f1c4dc;
+}
+body .hermed_icon_svg .cls-1,
+body .hermed_icon_svg .cls-11 {
+  stroke: #996884;
+}
+body .hermed_icon_svg .cls-1,
+body .hermed_icon_svg .cls-11,
+body .hermed_icon_svg .cls-14,
+body .hermed_icon_svg .cls-15,
+body .hermed_icon_svg .cls-19,
+body .hermed_icon_svg .cls-3,
+body .hermed_icon_svg .cls-6,
+body .hermed_icon_svg .cls-9 {
+  stroke-miterlimit: 10;
+}
+body .hermed_icon_svg .cls-1,
+body .hermed_icon_svg .cls-11,
+body .hermed_icon_svg .cls-14,
+body .hermed_icon_svg .cls-15,
+body .hermed_icon_svg .cls-3,
+body .hermed_icon_svg .cls-6,
+body .hermed_icon_svg .cls-9 {
+  stroke-width: 0.05px;
+}
+body .hermed_icon_svg .cls-2 {
+  fill: #e6cd00;
+}
+body .hermed_icon_svg .cls-14,
+body .hermed_icon_svg .cls-3 {
+  fill: #eeeded;
+}
+body .hermed_icon_svg .cls-3,
+body .hermed_icon_svg .cls-6 {
+  stroke: #020202;
+}
+body .hermed_icon_svg .cls-4 {
+  fill: #e6b8d5;
+}
+body .hermed_icon_svg .cls-5 {
+  fill: #996884;
+}
+body .hermed_icon_svg .cls-15,
+body .hermed_icon_svg .cls-6 {
+  fill: #fff;
+}
+body .hermed_icon_svg .cls-7 {
+  fill: #ece3e6;
+}
+body .hermed_icon_svg .cls-11,
+body .hermed_icon_svg .cls-9 {
+  fill: none;
+}
+body .hermed_icon_svg .cls-9 {
+  stroke: #000;
+  stroke-linecap: round;
+}
+body .hermed_icon_svg .cls-10 {
+  -webkit-clip-path: url(#clip-path);
+          clip-path: url(#clip-path);
+}
+body .hermed_icon_svg .cls-12 {
+  fill: #b27aa3;
+}
+body .hermed_icon_svg .cls-13 {
+  fill: #daaac9;
+}
+body .hermed_icon_svg .cls-14,
+body .hermed_icon_svg .cls-15 {
+  stroke: #030304;
+}
+body .hermed_icon_svg .cls-16 {
+  fill: #885b49;
+}
+body .hermed_icon_svg .cls-17 {
+  -webkit-clip-path: url(#clip-path-2);
+          clip-path: url(#clip-path-2);
+}
+body .hermed_icon_svg .cls-18 {
+  fill: #cc1976;
+}
+body .hermed_icon_svg .cls-19 {
+  fill: #cd78ac;
+  stroke: #5f256b;
+  stroke-width: 0.11px;
 }
 body .illustrator_icon_svg .cls-1 {
   fill: #2c0d0e;
@@ -1661,7 +1682,7 @@ BUTTON {
   width: 1.25rem;
   height: 1.25rem;
   background: var(--secondColor);
-  border-radius: var(--borderRadius);
+  border-radius: 50%;
   transition: var(--transitionUF);
   cursor: pointer;
   z-index: var(--zIndexMenu);
@@ -2082,59 +2103,6 @@ BUTTON {
 #contact_section #contact_content #header_section_contact .form_container .contact_form BUTTON {
   width: 100%;
 }
-#contact_section #contact_content #header_section_contact #contact_card_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: var(--widthClamp);
-  height: -moz-fit-content;
-  height: fit-content;
-  margin: 2rem 0;
-}
-#contact_section #contact_content #header_section_contact #contact_card_container .contact_card {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  background: var(--navbarColor);
-  border-radius: var(--borderRadius);
-}
-#contact_section #contact_content #header_section_contact #contact_card_container .contact_card .title_contact_card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--secondColor);
-  font-size: var(--fontSizeSClamp);
-  padding: 1rem 1.5rem 0.5rem;
-  text-align: center;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-#contact_section #contact_content #header_section_contact #contact_card_container .contact_card .btns_contact_card {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  color: var(--textColor);
-  height: -moz-fit-content;
-  height: fit-content;
-  padding: 0 1.5rem 1rem;
-}
-#contact_section #contact_content #header_section_contact #contact_card_container .contact_card .btns_contact_card .contact_card_btn {
-  height: 3rem;
-  width: 3rem;
-  padding: 0.5rem;
-}
-#contact_section #contact_content #header_section_contact #contact_card_container .contact_card .btns_contact_card .contact_card_btn .social_icon_svg {
-  transition: var(--transitionUF);
-}
-#contact_section #contact_content #header_section_contact #contact_card_container .contact_card .btns_contact_card .contact_card_btn:hover .social_icon_svg {
-  transform: scale(1.2);
-}
 
 #legals_section {
   position: relative;
@@ -2250,7 +2218,8 @@ BUTTON {
 }
 #legals_section #menu_legals_container #made_container {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: -moz-fit-content;
@@ -2262,7 +2231,7 @@ BUTTON {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   color: var(--textColor);
   row-gap: 0.5rem;
   -moz-column-gap: 0.5rem;
@@ -2271,12 +2240,44 @@ BUTTON {
   font-weight: var(--fontWeightN);
   font-size: var(--fontSizeNClamp);
   width: var(--widthClamp);
+  padding: 1rem 1.5rem;
+  padding-left: 6rem;
 }
 #legals_section #menu_legals_container #made_container #made_content .heart_icon {
   color: var(--firstColor);
 }
 #legals_section #menu_legals_container #made_container #made_content .link_text {
   color: var(--firstColor);
+}
+#legals_section #menu_legals_container #made_container #made_content .copyright_text {
+  margin-top: -0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--lightGrey);
+  font-size: var(--fontSizeXs);
+}
+#legals_section #menu_legals_container #made_container #social_btns_footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: var(--textColor);
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 1rem 1.5rem;
+}
+#legals_section #menu_legals_container #made_container #social_btns_footer .contact_card_btn {
+  height: 3rem;
+  width: 3rem;
+  padding: 0.5rem;
+}
+#legals_section #menu_legals_container #made_container #social_btns_footer .contact_card_btn .social_icon_svg {
+  transition: var(--transitionUF);
+}
+#legals_section #menu_legals_container #made_container #social_btns_footer .contact_card_btn:hover .social_icon_svg {
+  transform: scale(1.2);
 }
 
 .animation_up,
