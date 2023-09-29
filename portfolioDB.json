@@ -164,5 +164,38 @@
             "project_link": "https://johnmckrazy.github.io/Tribute-Page-In-Memory-Of-Kobe-Bryan/"
         },
         "votes": 5
+    },
+    {
+        "client_name": "Verona",
+        "db_name": "verona",
+        "client_logo": "",
+        "projects": {
+            "type": ["Identidad Corporativa"],
+            "type_data": ["identidad_corporativa"],
+            "description": "",
+            "reach": ["Logotipo", "Portavasos", "Tarjeta de presentacion", "Packaging", "Papeleria de Marca"],
+            "technologies": ["Illustrator"],
+            "images": {
+                "avatar": "",
+                "hero": {
+                    "small": "assets/img/verona.jpg",
+                    "big": ""
+                },
+                "1": {
+                    "small": "",
+                    "big": ""
+                },
+                "2": {
+                    "small": "",
+                    "big": ""
+                },
+                "3": {
+                    "small": "",
+                    "big": ""
+                }
+            },
+            "project_link": "https://www.behance.net/gallery/181175109/Verona"
+        },
+        "votes": 5
     }
 ]
