@@ -843,7 +843,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, "1", "translateY(0)");
                     });
-                } else {
+                } /*  else {
                     animationLeftContainers.forEach((container) => {
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, "0", "translateX(-50%)");
@@ -856,7 +856,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, "0", "translateY(50%)");
                     });
-                }
+                } */
             };
             const optionsIO_skills = {
                 threshold: "1",
@@ -884,7 +884,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, "1", "translateY(0)");
                     });
-                } else {
+                } /* else {
                     animationLeftContainers.forEach((container) => {
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, "0", "translateX(-50%)");
@@ -897,7 +897,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         const currentItem = document.querySelector(`#${container.id}`);
                         animateItem(currentItem, "0", "translateY(50%)");
                     });
-                }
+                } */
             };
             const optionsIO_skills = {
                 threshold: ".4",
@@ -1140,11 +1140,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     //~~CREATE PROJECT RANDOM CARDS--OVER
     //~~ ************************************************************************* *//
-    //&CHANGE LANG BY CLICK--START
-    const changeLang = (lang) => {
-        document.documentElement.setAttribute("lang", lang);
-    };
-    //&CHANGE LANG BY CLICK --OVER
+
     //& ***********************************************************************************  *//
     //&CREATE SLIDER MARKERS AND CHECK POSITION SLIDER
 
