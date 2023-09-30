@@ -1573,7 +1573,7 @@ BUTTON {
   right: 0;
 }
 
-#slider_container_services_1 .img_container IMG {
+.slider_container_services .img_container IMG {
   width: auto;
   height: 100%;
 }

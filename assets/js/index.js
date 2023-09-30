@@ -562,7 +562,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //~~SET CARD CHANGES--OVER
         //~~ ************************************************************************************************** *//
         const firstBreak = 1100;
-        const secondBreak = 899;
+        const secondBreak = 839;
         if (widConf > firstBreak) {
             lebelBtnMain.innerHTML = '<h3 class="btn_lebel">Inicio</h3>';
             lebelBtnAbout.innerHTML = '<h3 class="btn_lebel">Acerca de</h3>';
@@ -942,8 +942,6 @@ document.addEventListener("DOMContentLoaded", () => {
         cardTitle.textContent = clientName;
 
         if (item["projects"]["project_link"] !== null && item["projects"]["project_link"] !== "") {
-            console.log(item["projects"]["project_link"]);
-            console.log(moreBtn);
             moreBtn.setAttribute("href", `${item["projects"]["project_link"]}`);
         } else {
             moreBtn.setAttribute("href", "");
@@ -961,12 +959,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await rawData.json();
             let newID;
             console.log(data);
-            class ProjectTypeData {
-                constructor(value, id) {
-                    this.value = value;
-                    this.id = id;
-                }
-            }
             data.forEach((item) => {
                 const projectTypes = item["projects"]["type"];
 
@@ -976,11 +968,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
             });
-            console.log(typesOfProjects);
             typesOfProjects.sort().forEach((type) => {
                 const createID = type.toLowerCase().split(" ").join("_");
                 newID = createID;
-                let newProjectTypeData = new ProjectTypeData(type, newID);
+                let newProjectTypeData = { value: type };
                 newProjectsListData.push(newProjectTypeData);
             });
             console.log(newProjectsListData);
@@ -991,14 +982,12 @@ document.addEventListener("DOMContentLoaded", () => {
             newList.id = `selection_list_type_of_projects`;
             newProjectsListData.forEach((option) => {
                 const optionValue = option["value"];
-                const optionId = option["id"];
-                console.log(optionValue, optionId);
+                /* console.log(optionValue); */
 
                 const optionListTemplateClone = optionListTemplate.cloneNode(true);
                 const newOptionBtn = optionListTemplateClone.querySelector(".option_list_btn");
 
                 const newOptionText = optionListTemplateClone.querySelector(".option_list_text");
-                newOptionBtn.id = `option_list_btn_${optionId}`;
                 newOptionBtn.setAttribute("name", optionValue);
                 newOptionText.textContent = optionValue;
                 newList.appendChild(newOptionBtn);
@@ -1008,7 +997,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const typesOfProjectOptionList = document.querySelectorAll(".option_list_btn");
             /* console.log(typesOfProjectOptionList); */
             typesOfProjectOptionList.forEach((optionType) => {
-                console.log(optionType);
+                /* console.log(optionType); */
                 const createSearchedCards = (e) => {
                     deleteChildElements(porfolioSearchCardsContainer);
                     const currentNameData = e.target.getAttribute("name");
