@@ -566,7 +566,7 @@ h4 {
 
 p {
   font-size: var(--fontSizeS);
-  font-weight: var(--fontWeightL);
+  font-weight: var(--fontWeightN);
 }
 
 h1 {
@@ -2115,7 +2115,6 @@ BUTTON {
   min-height: fit-content;
   background: var(--firstColor);
   color: var(--textContrastColor);
-  text-align: center;
   padding: 4rem 0 0;
 }
 #legals_section .title_footer {
@@ -2230,7 +2229,7 @@ BUTTON {
 #legals_section #menu_legals_container #made_container #made_content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   color: var(--textColor);
   row-gap: 0.5rem;
@@ -2241,7 +2240,7 @@ BUTTON {
   font-size: var(--fontSizeNClamp);
   width: var(--widthClamp);
   padding: 1rem 1.5rem;
-  padding-left: 6rem;
+  margin-left: 5rem;
 }
 #legals_section #menu_legals_container #made_container #made_content .heart_icon {
   color: var(--firstColor);

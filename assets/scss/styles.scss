@@ -731,7 +731,7 @@ h4 {
 p {
     font-size: var(--fontSizeS);
 
-    font-weight: var(--fontWeightL);
+    font-weight: var(--fontWeightN);
 }
 h1 {
     color: var(--firstColor);
@@ -2189,7 +2189,7 @@ BUTTON {
     min-height: fit-content;
     background: var(--firstColor);
     color: var(--textContrastColor);
-    text-align: center;
+
     padding: 4rem 0 0;
     .title_footer {
         height: auto;
@@ -2282,7 +2282,7 @@ BUTTON {
             background: var(--secondColor);
             padding: 1rem 0;
             #made_content {
-                @include flexDirection(column, center, flex-start);
+                @include flexDirection(column, flex-start, flex-start);
 
                 color: var(--textColor);
                 row-gap: 0.5rem;
@@ -2292,7 +2292,7 @@ BUTTON {
                 font-size: var(--fontSizeNClamp);
                 width: var(--widthClamp);
                 padding: 1rem 1.5rem;
-                padding-left: 6rem;
+                margin-left: 5rem;
                 .heart_icon {
                     color: var(--firstColor);
                 }

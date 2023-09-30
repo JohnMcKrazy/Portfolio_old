@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    //!TEMPLATE CONSTANTS
-    //^^ *********************************************************************************************************** *//
-    //^^PROJECT CARD TEMPLATE CONSTANTS
+    //! TEMPLATE CONSTANTS
+    //^ PROJECT CARD TEMPLATE CONSTANTS
     const fragmentHotProjects = document.createDocumentFragment();
     const fragmentSearchProjects = document.createDocumentFragment();
     const fragmentSliderMarkersServices = document.createDocumentFragment();
@@ -9,21 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const cardProjectTemplate = document.querySelector("#card_project_template").content;
     const btnProjectTemplate = document.querySelector("#btn_project_template").content;
     const markersTemplate = document.querySelector("#marker_slider_template").content;
-    //^^PROJECT CARD TEMPLATE CONSTANTS
-    //^^ *********************************************************************************************************** *//
-    //^^TOOLTIP TEMPLATE CONSTANT
-    const tooltipTemplate = document.querySelector("#tooltip_template").content;
-    //^^TOOLTIP TEMPLATE CONSTANT
-    //^^ *********************************************************************************************************** *//
-    //^^SELECTION LIST TEMPLATE CONSTANTS
+    //^ SELECTION LIST TEMPLATE CONSTANTS
     const fragmentListProjects = document.createDocumentFragment();
     const selectionListTemplate = document.querySelector("#selection_list_template").content;
     const optionListTemplate = document.querySelector("#option_list_btn_template").content;
-    //^^SELECTION LIST TEMPLATE CONSTANTS
-    //^^ *********************************************************************************************************** *//
-    //!TEMPLATE CONSTANTS
-    //! *********************************************************************************************************** *//
-    //!GENERAL CONSTANTS --START
+    //! GENERAL ELEMENTS
     const htmlLebel = document.documentElement;
     const body = document.querySelector("BODY");
     const btnsHero = document.querySelectorAll(".btn_hero");
@@ -33,62 +22,51 @@ document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".section");
     const legalBtns = document.querySelectorAll(".btn_link_legal");
     const dataBtns = document.querySelectorAll(".btn_link_data");
-    //* ******************************************************************************************************* *//
-    //*CONTAINERS WITH ANIMATION FUNCTIONS--START
+
+    //^ CONTAINERS WITH ANIMATION FUNCTIONS
     const swipeAnimationContainersFull = document.querySelectorAll(".swipe_animation_container_full");
     const swipeAnimationContainersHalf = document.querySelectorAll(".swipe_animation_container_half");
-    //*CONTAINERS WITH ANIMATION FUNCTIONS--OVER
-    //* ******************************************************************************************************* *//
-    //^^MODALS--START
-    //&CONTACT MODAL--START
+
+    //^ MODALS
+    //& CONTACT MODAL
     const sendBtnFormModal = document.querySelector("#contact_form_send_btn");
     const contactModal = document.querySelector("#contact_modal");
     const closeBtnModalContactForm = document.querySelector("#modal_form_close_btn");
     const closeBtnLegalModal = document.querySelector("#modal_legal_close_btn");
-    //&CONTACT MODAL--OVER
-    //& ******************************************************************************************************* *//
-    //&LEGAL MODAL--START
+    //& LEGAL MODAL
     const modalInfoLegal = document.querySelector("#modal_info_legal");
     const legalModal = document.querySelector("#legal_modal");
     const legalAccept = document.querySelector("#legal_modal_accept_btn");
-    //&LEGAL MODAL--OVER
-    //& ******************************************************************************************************* *//
-    //^^MODALS--OVER
-    //^^ ******************************************************************************************************* *//
-    //^^ALERT MODAL--START
-    //&STORAGE MODAL--START
+
+    //^ ALERT MODAL
+    //& STORAGE MODAL
     const storageAlertModal = document.querySelector("#storage_alert_modal");
     const acceptBtnStorageWarningBtn = document.querySelector("#storage_alert_modal_accept_btn");
     const closeBtnAlertModal = document.querySelector("#alert_modal_storage_close_btn");
-    //&STORAGE MODAL--OVER
-    //& ******************************************************************************************************* *//
-    //^^ALERT MODAL--OVER
-    //^^ ****************************************************************************************************** *//
-    //^^MENU CONTENT--START
+
+    //^ MENU CONTENT
     const menuContainer = document.querySelector("#menu_container");
     const btnsMenu = document.querySelectorAll(".btn_menu");
     const btnThemeMenu = document.querySelector("#change_theme_btn_menu");
     const closeMenuBtn = document.querySelector("#menu_container_close_btn");
     const openMenuSound = document.querySelector("#menu_open_sound");
-    //^^MENU CONTENT--OVER
-    //^^ ****************************************************************************************************************** *//
-    //^^MENU SOCIAL--START
+
+    //^ MENU SOCIAL
     const menuSocialContainer = document.querySelector("#menu_social_container");
     const menuSocialBtn = document.querySelector("#menu_social_btn");
     const menuSocialBtnsContainer = document.querySelector(".menu_social_btns_container");
     const btnsMenuSocial = document.querySelectorAll(".social_btn");
-    //^^MENU SOCIAL--OVER
-    //^^ ****************************************************************************************************************** *//
-    //^^NAV--START
+
+    //^ NAV
     const nav = document.querySelector(".nav");
     const btnMenuContainer = document.querySelector("#btn_menu_slider");
     const btnsNavContainer = document.querySelector("#nav_sections_btns_container");
     const btnsNav = document.querySelectorAll(".btn_nav");
-    //&BTN LOGO
+    //& BTN LOGO
     const btnLogo = document.querySelector("#logo_nav_btn");
-    //&TBN THEME
+    //& TBN THEME
     const btnThemeNav = document.querySelector("#change_theme_btn_nav");
-    //&BTN LEBELS
+    //& BTN LEBELS
     const lebelBtnMain = document.querySelector("#main_btn_nav");
     const lebelBtnAbout = document.querySelector("#about_btn_nav");
     const lebelBtnSkills = document.querySelector("#skills_btn_nav");
@@ -96,14 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const lebelBtnPortfolio = document.querySelector("#portfolio_btn_nav");
     const lebelBtnClients = document.querySelector("#clients_btn_nav");
     const lebelBtnContact = document.querySelector("#contact_btn_nav");
-    //^^NAV OVER
-    //^^ ****************************************************************************************************************** *//
 
-    //^^HERO
-
+    //^ HERO
     const btnHeroDown = document.querySelector("#hero_btn_down");
-    //^^SERVICES
 
+    //^ SERVICES
+    //& SERVICES SLIDERS
     const sliderWindowContainerServices = document.querySelector("#slider_window_container_services");
     const sliderContainersServices = document.querySelectorAll(".slider_container_services");
     const sliderPageMarkersContainerServices = document.querySelector("#slider_page_markers_container_services");
@@ -112,61 +88,59 @@ document.addEventListener("DOMContentLoaded", () => {
     const slidersContentServices = document.querySelectorAll(".slider_content_services");
     const sliderImgContainersServices = document.querySelectorAll(".img_container_services");
     const sliderInfoContainersServices = document.querySelectorAll(".info_container_services");
-
+    //& SERVICES CONTAINERS
     const servicesContainer = document.querySelector("#services_container");
     const serviceContainers = document.querySelectorAll(".service_container");
     const serviceCards = document.querySelectorAll(".service_card");
     const serviceCardsLeft = document.querySelectorAll(".service_card_left");
     const serviceCardsRight = document.querySelectorAll(".service_card_right");
-    //^^SKILLS
+
+    //^ SKILLS
     const skillsContainer = document.querySelector(".skills_containers");
     const skillsIconsContainers = document.querySelectorAll(".skills_icon_container");
-    //^^PORTFOLIO
+
+    //^ PORTFOLIO
     const titleSubsectionCardsSearch = document.querySelector("#title_subsection_search_type");
-    //* ******************************************************************************************************* *//
-    //*CONTAINERS WHERE TEMPLATES APPEND--START
+    //& CONTAINERS WHERE TEMPLATES APPEND
     const portfolioHotCardsContainer = document.querySelector("#cards_hot_container");
     const searchBtnsContainer = document.querySelector("#search_project_btns_container");
     const porfolioSearchCardsContainer = document.querySelector("#cards_search_container");
-    //*CONTAINERS WHERE TEMPLATES APPEND--OVER
-    //* ******************************************************************************************************* *//
+    //& CONTAINERS LOADER
     const loadersContainers = document.querySelectorAll(".loader_container");
     const loaderSearchCardsContainer = document.querySelector("#loader_cards_hot_container");
     const spinnerHotCardsContainer = document.querySelector("#spinner_container_cards_hot");
     const loaderHotCardsContainer = document.querySelector("#loader_cards_search_container");
     const spinnerSearchCardContainer = document.querySelector("#spinner_container_cards_search");
-    //* ******************************************************************************************************* *//
-    const flagBtns = document.querySelectorAll(".flag_project_btn");
-    //* ******************************************************************************************************* *//
-    //^^CLIENTS--START
+
+    //^ CLIENTS
     const logoClientsContainers = document.querySelectorAll(".client_logo_container");
-    //^^CLIENTS--OVER
-    //^^ ******************************************************************************************************* */
-    //^^LEGALS--START
+
+    //^LEGALS
+    const copyrightText = document.querySelector("#made_content");
     const btnLegalFooter = document.querySelector("#btn_legal_legals");
     const btnDataFooter = document.querySelector("#btn_data_legals");
-    //^^LEGALS OVER
-    //^^ ******************************************************************************************************* *//
 
-    //^FETCH JASON COMPANYS DATA-- START
+    //^FETCH JASON COMPANYS DATA
     const portfolioData = "./portfolioDB.json";
-    //^FETCH JSON COMPANYS DATA-- OVER
-    //^ ***********************************************************************************************//
-    //!GENERAL CONSTANTS --OVER
-    //! ***********************************************************************************************//
+
+    //!GENERAL VARIANTS--START
+    //^ LANG
     const es = "Español";
     const eng = "English";
     let pageLang = es;
+
+    //^ THEME ICONS
+    const sunIcon =
+        '<svg class="theme_icon_svg" id="sun_icon_svg"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Tema día</title><path class="cls-1" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>';
+    const moonIcon =
+        '<svg class="theme_icon_svg" id="moon_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Tema noche</title><path class="cls-1" d="M11.38 2.019a7.5 7.5 0 1 0 10.6 10.6C21.662 17.854 17.316 22 12.001 22 6.477 22 2 17.523 2 12c0-5.315 4.146-9.661 9.38-9.981z"/></svg>';
+
+    //^ STATUS
     const close = "close";
     const open = "open";
     const accepted = "accepted";
     const decline = "decline";
 
-    //!GENERAL VARIANTS--START
-    const sunIcon =
-        '<svg class="theme_icon_svg" id="sun_icon_svg"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Tema día</title><path class="cls-1" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>';
-    const moonIcon =
-        '<svg class="theme_icon_svg" id="moon_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Tema noche</title><path class="cls-1" d="M11.38 2.019a7.5 7.5 0 1 0 10.6 10.6C21.662 17.854 17.316 22 12.001 22 6.477 22 2 17.523 2 12c0-5.315 4.146-9.661 9.38-9.981z"/></svg>';
     let menuStatus = close;
     let menuSocialStatus = close;
     let contactModalStatus = close;
@@ -177,17 +151,15 @@ document.addEventListener("DOMContentLoaded", () => {
     let servicecardsCount = 0;
     let sliderFullCountServices = 0;
 
-    //! ************************************************************************************************************ *//
-    //! SEARCH LOCAL STORAGE--START
+    //^ LOCAL STORAGE
     const localStorageName = "JohnK_page_storage";
     let storageForJohnKPage = {
         page_view_count: 1,
         page_alert_status: open,
         page_legal_content: accepted,
     };
-    //! SEARCH LOCAL STORAGE--OVER
-    //! ************************************************************************************************************ *//
-    //!OBJECTS--START
+
+    //^ SOFTWARE DATA
     const infoSoftware = [
         {
             tech_name: "Illustrator",
@@ -273,10 +245,9 @@ document.addEventListener("DOMContentLoaded", () => {
             tech_info: 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
         },
     ];
-    //!GENERAL VARIANTS--OVER
-    //! ***********************************************************************************************//
-    //!GENERAL START FUNCTIONS-- START
-    //^CHANGE THEME BY HOUR-- START
+
+    //!GENERAL START FUNCTIONS
+    //^CHANGE THEME BY HOUR
     let todayHour = new Date().getHours();
     //*let todayHour = 9;
     if (todayHour <= 7 || todayHour >= 19) {
@@ -293,18 +264,40 @@ document.addEventListener("DOMContentLoaded", () => {
         btnThemeMenu.innerHTML = moonIcon;
         btnThemeNav.innerHTML = moonIcon;
     }
-    //^CHANGE THEME BY HOUR-- OVER
-    //^ ***********************************************************************************************//
 
-    //^^GENERATE RANDOM ITEM--START
+    //^STORAGE FIRST CHECK
+    const checkAlertStorageAnswer = () => {
+        let storageContent = JSON.parse(localStorage.getItem(localStorageName));
+        if (!storageContent) {
+            localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
+            console.log("local storage item is created");
+            setTimeout(() => {
+                animateItem(storageAlertModal, "1", "translateY(0)");
+            }, 2000);
+        } else if (storageContent && storageContent["page_alert_status"] === open) {
+            storageForJohnKPage["page_view_count"] = storageContent["page_view_count"] + 1;
+            localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
+            console.log(`local storage item answer= ${storageContent["page_alert_status"]}, page views= ${storageContent["page_view_count"]}`);
+            setTimeout(() => {
+                animateItem(storageAlertModal, "1", "translateY(0)");
+            }, 2000);
+        } else if (storageContent && storageContent["page_alert_status"] === close) {
+            storageForJohnKPage["page_alert_status"] = close;
+            storageForJohnKPage["page_view_count"] = storageContent["page_view_count"] + 1;
+            localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
+            storageAlertModal.style.display = "none";
+            console.log(`local storage item answer= ${storageContent["page_alert_status"]}, page views= ${storageContent["page_view_count"]}`);
+        }
+    };
+    checkAlertStorageAnswer();
+
+    //^ GENERATE RANDOM ITEM
     const randomDataSelector = (arr) => {
         const arrayLenght = arr.length;
         const randomItem = Math.floor(Math.random() * arrayLenght);
         return arr[randomItem];
     };
-    //^^GENERATE RANDOM ITEM--OVER
-    //^^ ************************************************************************** *//
-    //^^DELATE CHILDREN--START
+    //^ DELATE CHILDREN
     const deleteChildElements = (parentElement) => {
         let child = parentElement.lastElementChild;
         while (child) {
@@ -312,18 +305,16 @@ document.addEventListener("DOMContentLoaded", () => {
             child = parentElement.lastElementChild;
         }
     };
-    //^^DELATE CHILDREN--OVER
-    //^^ ************************************************************************** *//
-    //^^INSERT FLEX--START
+
+    //^ INSERT FLEX
     const insertFlex = (cont, dir, jc, ai) => {
         cont.style.display = "flex";
         cont.style.flexDirection = dir;
         cont.style.justifyContent = jc;
         cont.style.alignItems = ai;
     };
-    //^^INSERT FLEX--OVER
-    //^^ ************************************************************************** *//
-    //^^BASIC FUNCTION ANIMATION-- START
+
+    //^ BASIC FUNCTION ANIMATION
     const animateItem = (container, opacity, transform) => {
         container.style.opacity = opacity;
         container.style.transform = transform;
@@ -333,10 +324,8 @@ document.addEventListener("DOMContentLoaded", () => {
         container.style.transform = transform;
         container.style.translate = `all ${time} ${as}`;
     };
-    //^^BASIC FUNCTION ANIMATION-- OVER
-    //^ ************************************************************************* *//
 
-    //^^SPINNERS LOADER OBSERVER--START
+    //^ SPINNERS LOADER OBSERVER
     loadersContainers.forEach((loader) => {
         const watchCardsContainers = ([entry]) => {
             const dataNameContainer = entry.target.attributes["data-name"].value;
@@ -367,18 +356,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const loadersObserver = new IntersectionObserver(watchCardsContainers, optionsIO_loaders);
         loadersObserver.observe(loader);
     });
-    //^^SPINNERS LOADER OBSERVER--OVER
-    //^ ************************************************************************* *//
 
-    //^ CLOSE MENU SOCIAL-- START
+    //^ CLOSE MENU SOCIAL
     const closeMenuSocial = () => {
         menuSocialBtnsContainer.style.opacity = 0;
         menuSocialBtnsContainer.style.height = 0;
         menuSocialStatus = close;
     };
-    //^ CLOSE MENU SOCIAL-- OVER
-    //^ ***************************************************************************** *//
-    //^ ACTIONS BTN MENU SOCIAL--START
+
+    //^ ACTIONS BTN MENU SOCIAL
     const socialMenuBtnActions = () => {
         if (menuSocialStatus === close) {
             menuSocialStatus = open;
@@ -390,9 +376,8 @@ document.addEventListener("DOMContentLoaded", () => {
             closeMenuSocial();
         }
     };
-    //^ ACTIONS BTN MENU SOCIAL--OVER
-    //^ ***************************************************************************** *//
-    //^SOCIAL MENU CLOSE EN BODY CLICK--START
+
+    //^ SOCIAL MENU CLOSE EN BODY CLICK
     const closeByBodyClick = (e) => {
         if (menuSocialStatus === open && e.target.id !== "menu_social_btn") {
             closeMenuSocial();
@@ -400,9 +385,8 @@ document.addEventListener("DOMContentLoaded", () => {
             closeSelectList();
         }
     };
-    //^SOCIAL MENU CLOSE EN BODY CLICK--OVER
-    //^^ ******************************************************************************* *//
-    //^ OPEN MENU-- START
+
+    //^ OPEN MENU
     const btnNavMenu = () => {
         if (menuStatus === close) {
             menuStatus = open;
@@ -413,9 +397,8 @@ document.addEventListener("DOMContentLoaded", () => {
             closeMenu();
         }
     };
-    //^ OPEN MENU-- OVER
-    //^  **************************************************************/
-    //^ CLOSE MENU--START
+
+    //^ CLOSE MENU
     const closeMenu = () => {
         let menuTop = menuContainer.style.top;
 
@@ -429,9 +412,8 @@ document.addEventListener("DOMContentLoaded", () => {
             menuContainer.style.opacity = "0";
         }
     };
-    //^ CLOSE MENU--OVER
-    //^  **************************************************************/
-    //~GENERAL MODAL ACTIONS--START
+
+    //^GENERAL MODAL ACTIONS
     const openModal = (cont) => {
         cont.style.display = "flex";
         setTimeout(() => {
@@ -444,72 +426,48 @@ document.addEventListener("DOMContentLoaded", () => {
             cont.style.display = "none";
         }, 1200);
     };
-    //~GENERAL MODAL ACTIONS--OVER
-    //~ ******************************************************************************* *//
-    //^ OPEN CONTACT MODAL-- START
+
+    //^ CONTACT MODAL OPEN
     const openContactModal = () => {
         if (contactModalStatus === close) {
             openModal(contactModal);
             contactModalStatus = open;
         }
     };
-    //^ OPEN CONTACT MODAL-- OVER
-    //^ ******************************************************************** *//
-    //^ CLOSE MODAL CONTACT FORM-- START
+
+    //^ CONTACT MODAL CLOSE
     const closeContactModal = () => {
         if (contactModalStatus === open) {
             closeModal(contactModal);
             contactModalStatus = close;
         }
     };
-    //^ CLOSE MODAL CONTACT FORM-- OVER
-    //^ ************************************************************************ *//
-    //^^STORAGE WARNING CLOSE--START
-    const checkAlertStorageAnswer = () => {
-        let storageContent = JSON.parse(localStorage.getItem(localStorageName));
-        if (!storageContent) {
-            localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
-            console.log("local storage item is created");
-            setTimeout(() => {
-                animateItem(storageAlertModal, "1", "translateY(0)");
-            }, 2000);
-        } else if (storageContent && storageContent["page_alert_status"] === open) {
-            storageForJohnKPage["page_view_count"] = storageContent["page_view_count"] + 1;
-            localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
-            console.log(`local storage item answer= ${storageContent["page_alert_status"]}, page views= ${storageContent["page_view_count"]}`);
-            setTimeout(() => {
-                animateItem(storageAlertModal, "1", "translateY(0)");
-            }, 2000);
-        } else if (storageContent && storageContent["page_alert_status"] === close) {
-            storageForJohnKPage["page_alert_status"] = close;
-            storageForJohnKPage["page_view_count"] = storageContent["page_view_count"] + 1;
-            localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
-            storageAlertModal.style.display = "none";
-            console.log(`local storage item answer= ${storageContent["page_alert_status"]}, page views= ${storageContent["page_view_count"]}`);
-        }
-    };
-    checkAlertStorageAnswer();
-    const closeAlert = (cont) => {
-        animateItem(cont, "0", "translateY(-50%)");
-        setTimeout(() => {
-            cont.style.display = "none";
-        }, 1100);
-    };
+
+    //^ ALERT MODAL OPEN
     const openAlert = (cont) => {
         cont.style.display = "block";
         setTimeout(() => {
             animateItem(cont, "1", "translateY(0)");
         }, 100);
     };
+
+    //^ ALERT MODAL CLOSE
+    const closeAlert = (cont) => {
+        animateItem(cont, "0", "translateY(-50%)");
+        setTimeout(() => {
+            cont.style.display = "none";
+        }, 1100);
+    };
+
+    //^ ALERT STORAGE MODAL CLOSE
     const closeAlertStorageModal = () => {
         storageForJohnKPage["page_alert_status"] = close;
         closeAlert(storageAlertModal);
         localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
         console.log(localStorage.getItem(localStorageName));
     };
-    //^^STORAGE WARNING CLOSE--OVER
-    //^^ *********************************************************************************** *//
-    //^^LEGAL MODAL CLOSE--START
+
+    //^ LEGAL MODAL CLOSE
     const closeLegalModal = () => {
         const currentPosition = modalInfoLegal.getBoundingClientRect().top;
         legalModalStatus = close;
@@ -522,16 +480,14 @@ document.addEventListener("DOMContentLoaded", () => {
             closeModal(legalModal);
         }
     };
-    //^^LEGAL MODAL CLOSE--OVER
-    //^^ *********************************************************************************** *//
-    //^TO THE TOP-- START && **/RETURN THE PAGE TO THE PAGE TOP
+
+    //^ RETURN THE PAGE TO THE PAGE TOP
     const toTheTop = () => {
         const currentPosition = body.getBoundingClientRect().top;
         window.scrollTo(currentPosition, 0);
     };
-    //^ TO THE TOP-- OVER
-    //^ ************************************************************************* *//
-    //^SCROLL T0-- START
+
+    //^SCROLL T0
     const scrollToSection = (btn) => {
         const section = document.querySelector(`#${btn.name}`);
         const windowTop = window.top;
@@ -548,10 +504,8 @@ document.addEventListener("DOMContentLoaded", () => {
             window.scrollBy(windowTop, fixTop);
         }
     };
-    //^SCROLL T0-- OVER
-    //^ ************************************************************************** *//
 
-    //^ CHECK MENU POSITION WINDOW-- START && **/SCALE THE NAVBAR AND CHANGE THE MENU POSITION BY THE PAGE POSITION
+    //^ CHECK MENU POSITION WINDOW  && **/SCALE THE NAVBAR AND CHANGE THE MENU POSITION BY THE PAGE POSITION
     //&CONFIGURATION SIZE SCREEN--START ->//THIS FUNCTION BRING ALL THE CONTAINERS CARACTERISTICTS BY THE SIZE OF THE WINDOW
     const configSize = (widConf) => {
         //~~SET CARD CHANGES--START -> // CHANGE FLEX DIRECTIION AND HEIGHT OF CARD
@@ -613,6 +567,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             closeMenu();
         } else if (widConf > secondBreak || (widConf < firstBreak && widConf > secondBreak)) {
+            copyrightText.style.marginLeft = "5rem";
             btnLegalFooter.innerHTML = '<h3 class="btn_lebel">Legales</h3>';
             btnDataFooter.innerHTML = '<h3 class="btn_lebel">Uso de datos</h3>';
             lebelBtnMain.innerHTML =
@@ -677,6 +632,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             closeMenu();
         } else if (widConf <= secondBreak) {
+            copyrightText.style.marginLeft = "0";
             btnLegalFooter.innerHTML =
                 '<svg class="footer_menu_icon_svg" id="legals_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Legales</title><path class="cls-1" d="M19 22H5a3 3 0 0 1-3-3V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v12h4v4a3 3 0 0 1-3 3zm-1-5v2a1 1 0 0 0 2 0v-2h-2zm-2 3V4H4v15a1 1 0 0 0 1 1h11zM6 7h8v2H6V7zm0 4h8v2H6v-2zm0 4h5v2H6v-2z"/></svg>';
             btnDataFooter.innerHTML =
@@ -725,13 +681,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    //&CONFIGURATION SIZE SCREEN--OVER
-    //& ********** *********************************************************************************************//
     const checkWindowWidth = () => {
         const windowWidth = window.innerWidth;
         configSize(windowWidth);
     };
     checkWindowWidth();
+
     const checkWindowHeight = () => {
         const rem = 20;
         const navTop = nav.getBoundingClientRect().top;
@@ -779,28 +734,24 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 500);
         }
     };
+
     checkWindowHeight();
-    //^ CHECK MENU POSITION WINDOW-- OVER
-    //^ *********************************************************************** *//
-    //^ SCROLL NAV-- START && --/USE SCROLL FUNCTION TO CHECK THE POSITION OF THE PAGE
+
+    //^ SCROLL NAV  && --/USE SCROLL FUNCTION TO CHECK THE POSITION OF THE PAGE
     const scrollBody = () => {
         checkWindowHeight();
     };
-    //^ SCROLL NAV-- OVER
-    //^  *******************************************************************/
-    //^SCROLL HEIGHT --START && --/SCROLL TO FIRST PART OF PAGE (NO HERO)
+
+    //^SCROLL HEIGHT  && --/SCROLL TO FIRST PART OF PAGE (NO HERO)
     const scrollOneHeight = () => {
         const windowHeight = window.innerHeight;
         const navHeight = nav.getBoundingClientRect().height;
         const fixHeight = windowHeight - navHeight;
         window.scrollTo(0, fixHeight);
     };
-    //^SCROLL HEIGHT --OVER
-    //^ ***************************************************************************** *//
-    //!GENERAL START FUNCTIONS-- OVER
-    //! ***********************************************************************************************//
-    //!FUNCTIONS --START
-    //^CHECK MENU SECTION POSITION-- START && **/HIGHLIGHT IN THE MENU THE SECTION TARGET
+
+    //! SIZE FUNCTIONS
+    //^CHECK MENU SECTION POSITION && **/HIGHLIGHT IN THE MENU THE SECTION TARGET
     sections.forEach((section) => {
         const watchPage = ([entry]) => {
             if (entry.isIntersecting) {
@@ -821,9 +772,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const pageObserver = new IntersectionObserver(watchPage, optionsIO_sections);
         pageObserver.observe(section);
     });
-    //^CHECK MENU SECTION POSITION-- OVER
-    //^ ************************************************************************* *//
-    //^^ANIMATION ITEM SWIPE--START
+
+    //^ANIMATION ITEM SWIPE
     const swipingAnimation = () => {
         swipeAnimationContainersFull.forEach((container) => {
             const watchSwipeAnimationContainer = ([entry]) => {
@@ -908,9 +858,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
     swipingAnimation();
-    //^^ANIMATION ITEM SWIPE--OVER
-    //^^ *************************************************************************** *//
-    //^ NAV RESIZE OBSERVER PARA MENU RESPONSIVE-- START --/CHANGE MENU NAV BY SCREEN SIZE
+
+    //^ NAV RESIZE OBSERVER PARA MENU RESPONSIVE --/CHANGE MENU NAV BY SCREEN SIZE
     const watchNavResize = ([entry]) => {
         const navWidth = entry.contentRect.width;
 
@@ -918,9 +867,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     const navResizeObserve = new ResizeObserver(watchNavResize);
     navResizeObserve.observe(nav);
-    //^ NAV RESIZE OBSERVER PARA MENU RESPONSIVE-- OVER
-    //^ ***********************************************************************************  *//
-    //^ CREATE TEMPLATE CARD --START
+
+    //^ CREATE TEMPLATE CARD
     const createCard = (item, frac) => {
         const cloneProjectCard = cardProjectTemplate.cloneNode(true);
         const projectCard = cloneProjectCard.querySelector(".project_card");
@@ -948,9 +896,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         frac.appendChild(projectCard);
     };
-    //^ CREATE TEMPLATE CARD --OVER
-    //^ ************************************************************************* *//
-    //^^FETCH SEARCH SELECTION DATA--START //-fetch selection option data for search projects
+
+    //^ FETCH SEARCH SELECTION DATA //-fetch selection option data for search projects
     let typesOfProjects = [];
     let newProjectsListData = [];
     const createSelectionTypeBtns = async () => {
@@ -1001,7 +948,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const createSearchedCards = (e) => {
                     deleteChildElements(porfolioSearchCardsContainer);
                     const currentNameData = e.target.getAttribute("name");
-                    console.log(currentNameData);
+                    /* console.log(currentNameData); */
 
                     data.forEach((item) => {
                         const dataIncludedResponse = item["projects"]["type"].includes(currentNameData);
@@ -1031,10 +978,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
     createSelectionTypeBtns();
-    //^^FETCH SEARCH SELECTION DATA--OVER
-    //^ ************************************************************************* *//
-    //^^SELECT LIST ACTIONS--START
-    //&OPEN SELECT LIST--START
+
+    //^ SELECT LIST ACTIONS
+    //& OPEN SELECT LIST
     const openSelectList = () => {
         const selectionTypesList = document.querySelector("#selection_list_type_of_projects");
         const arrowSvg = document.querySelector("#arrow_btn_select_list_svg");
@@ -1042,9 +988,8 @@ document.addEventListener("DOMContentLoaded", () => {
         selectionTypesList.style.height = "fit-content";
         selectListStatus = open;
     };
-    //&OPEN SELECT LIST--OVER
-    //& ***************************************************************************** *//
-    //&CLOSE SELECT LIST--START
+
+    //& CLOSE SELECT LIST
     const closeSelectList = () => {
         const selectionTypesList = document.querySelector("#selection_list_type_of_projects");
         const arrowSvg = document.querySelector("#arrow_btn_select_list_svg");
@@ -1052,9 +997,8 @@ document.addEventListener("DOMContentLoaded", () => {
         selectionTypesList.style.height = "3rem";
         selectListStatus = close;
     };
-    //&CLOSE SELECT LIST--OVER
-    //& ***************************************************************************** *//
-    //&&BTNS LIST ACTIVATION--START
+
+    //&& BTNS LIST ACTIVATION
     const btnsListObserve = new MutationObserver(([entry]) => {
         //*console.log(entry);
         const searchListBtn = document.querySelector("#selection_list_search_btn");
@@ -1069,12 +1013,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     btnsListObserve.observe(searchBtnsContainer, { childList: true });
 
-    //&&BTNS LIST ACTIVATION--OVER
-    //&& ************************************************************************ *//
-
-    //^^SELECT LIST ACTIONS--OVER
-    //^^ ************************************************************************ *//
-    //~~CREATE PROJECT HOT CARDS--START
+    //^ CREATE PROJECT HOT CARDS
     const createProjectCardHot = async () => {
         try {
             const rawData = await fetch(portfolioData);
@@ -1093,10 +1032,8 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(error);
         }
     };
-    //~~CREATE PROJECT HOT CARDS--OVER
-    //~~ ************************************************************************* *//
 
-    //~~CREATE PROJECT RANDOM CARDS--START
+    //^CREATE PROJECT RANDOM CARDS
     const createProjectCardRandom = async () => {
         let randomTypeSelection = randomDataSelector(typesOfProjects);
         try {
@@ -1127,12 +1064,8 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(error);
         }
     };
-    //~~CREATE PROJECT RANDOM CARDS--OVER
-    //~~ ************************************************************************* *//
 
-    //& ***********************************************************************************  *//
-    //&CREATE SLIDER MARKERS AND CHECK POSITION SLIDER
-
+    //^CREATE SLIDER MARKERS AND CHECK POSITION SLIDER
     sliderContainersServices.forEach((slider) => {
         slidersServicesCount++;
         const cloneMarker = markersTemplate.cloneNode(true);
@@ -1171,10 +1104,10 @@ document.addEventListener("DOMContentLoaded", () => {
     sliderWindowContainerServices.style.width = `${dinamicSliderWidth}%`;
     sliderPageMarkersContainerServices.appendChild(fragmentSliderMarkersServices);
 
-    //!SLIDER BTNS CONSTANT--NOT MOVE
-
+    //^ SLIDER BTNS CONSTANT
+    //& MARKERS CONTANT
     const sliderMarkersServices = document.querySelectorAll(".marker_slider_services_btn");
-    //^^SLIDER MARKERS BTNS--START
+    //& CREATE SLIDER MARKERS BTNS
     sliderMarkersServices.forEach((marker) => {
         const checkSlider = () => {
             const sliderId = marker.name;
@@ -1197,16 +1130,6 @@ document.addEventListener("DOMContentLoaded", () => {
         marker.addEventListener("click", checkSlider);
     });
 
-    //^^SLIDER MARKERS BTNS--OVER
-    //^^ **********************************************************************************************************************************************  *//
-    //!SLIDER BTNS CONSTANT--NOT MOVE
-
-    //^ ***********************************************************************************************//
-    //&CREATE SLIDER MARKERS AND CHECK POSITION SLIDER
-    //& ***********************************************************************************  *//
-
-    //!FUNCTIONS --OVER
-    //! ******************************************************************************//
     //! ADD EVENT LISTENERS
     window.addEventListener("scroll", scrollBody);
     body.addEventListener("click", closeByBodyClick);
@@ -1220,14 +1143,12 @@ document.addEventListener("DOMContentLoaded", () => {
     menuSocialBtn.addEventListener("click", socialMenuBtnActions);
     closeBtnLegalModal.addEventListener("click", closeLegalModal);
 
-    //^CLOSE BTN ALERT--START
+    //^CLOSE BTN ALERT
     closeBtnAlertModal.addEventListener("click", () => {
         closeAlert(storageAlertModal);
     });
-    //^CLOSE BTN ALERT--OVER
-    //^^ **********************************************************************************************************************************************  *//
 
-    //^BTN LEFT SLIDER--START
+    //^BTN LEFT SLIDER
     sliderBtnLeftServices.addEventListener("click", () => {
         const sliderWidth = sliderWindowContainerServices.getBoundingClientRect().width;
         //*console.log(slidersServicesCount);
@@ -1240,10 +1161,8 @@ document.addEventListener("DOMContentLoaded", () => {
             sliderWindowContainerServices.style.transform = `translateX(-${sliderFullCountServices}px)`;
         }
     });
-    //^BTN LEFT SLIDER--OVER
-    //^^ **********************************************************************************************************************************************  *//
 
-    //^BTN RIGHT SLIDER--START
+    //^BTN RIGHT SLIDER
     sliderBtnRightServices.addEventListener("click", () => {
         const sliderWidth = sliderWindowContainerServices.getBoundingClientRect().width;
         //*console.log(slidersServicesCount);
@@ -1256,9 +1175,8 @@ document.addEventListener("DOMContentLoaded", () => {
             sliderWindowContainerServices.style.transform = `translateX(-${sliderFullCountServices}px)`;
         }
     });
-    //^BTN RIGHT SLIDER--OVER
-    //^^ **********************************************************************************************************************************************  *//
-    //^ CHANGE THEME BTN-- START && --/CHANGE THE THEME PAGE BY THE MENU BTN
+
+    //^ CHANGE THEME BTN && --/CHANGE THE THEME PAGE BY THE MENU BTN
     btnsTheme.forEach((btn) => {
         const changeThemeBtn = () => {
             if (body.className === "light_theme") {
@@ -1273,20 +1191,17 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         btn.addEventListener("click", changeThemeBtn);
     });
-    //^ CHANGE THEME BTN-- OVER
-    //^^ **********************************************************************************************************************************************  *//
+    //^ SOCIAL BTNS
     btnsMenuSocial.forEach((btn) => {
         btn.addEventListener("click", closeMenuSocial);
     });
-    //^ ********************************************************************/
-    //^ CLOSE MENU BY BTN-- START && --/EVERYTIME A MENU BTN CLICK MENU CLOSE
+
+    //^ CLOSE MENU BY BTN && --/EVERYTIME A MENU BTN CLICK MENU CLOSE
     btnsMenu.forEach((btn) => {
         btn.addEventListener("click", closeMenu);
     });
-    //^ CLOSE MENU BY BTNS-- OVER
-    //^ *****************************************************************************//
-    //^ BTNS SCROLLS TO SECTION--START
 
+    //^ BTNS SCROLLS TO SECTION
     btnsHero.forEach((btn) => {
         btn.addEventListener("click", () => {
             scrollToSection(btn);
@@ -1297,23 +1212,18 @@ document.addEventListener("DOMContentLoaded", () => {
             scrollToSection(btn);
         });
     });
-    //^ BTNS SCROLLS TO SECTION--OVER
-    //^ *****************************************************************************//
 
-    //^^ CONTACT BTNS OPEN MODAL-- START
+    //^ CONTACT BTNS OPEN MODAL
     btnsContact.forEach((btn) => {
         btn.addEventListener("click", openContactModal);
     });
-    //^^ CONTACT BTNS OPEN MODAL-- OVER
-    //^^ ***************************************************************************** *//
-    //! *************************************************************************/
-    //^ SEND FORM-- START
+
+    //^ SEND FORM
     sendBtnFormModal.addEventListener("click", (e) => {
         e.preventDefault();
     });
-    //^ SEND FORM-- OVER
-    //^ ************************************************************************* *//
-    //^^LEGAL BTNS--START
+
+    //^LEGAL BTNS
     legalBtns.forEach((btn) => {
         const openLegalModal = () => {
             if (alertStorageModalStatus === open) {
@@ -1329,8 +1239,6 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         btn.addEventListener("click", openLegalModal);
     });
-    //^^LEGAL BTNS--OVER
-    //^^ ************************************************************************** *//
 
     /* const checkMark = () => {
         const checkBtn = document.querySelector('.complete-button');
