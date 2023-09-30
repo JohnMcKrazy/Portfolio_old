@@ -1,10 +1,12 @@
+//! GENERALS
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-//! ANIMATIONS START
+//^ ANIMATIONS
 @keyframes blink {
     0% {
         opacity: 1;
@@ -53,9 +55,8 @@
         transform: rotate(360deg);
     }
 }
-//! ANIMATIONS OVER
-//! ******************************************************************************************************************************/
-//! MIXINS START
+
+//^ MIXINS
 @mixin flex($jc, $ai) {
     display: flex;
     justify-content: $jc;
@@ -67,9 +68,8 @@
     justify-content: $jc;
     align-items: $ai;
 }
-//!MIXINS OVER
-//! ******************************************************************************************************************************/
 
+//^ ROOT
 :root {
     //!GENERAL COLORS START
     --midGray: hsl(0, 0%, 65%);
@@ -154,11 +154,11 @@
     //!GENERAL OVER
     //! ******************************************************************************************************************************/
 }
-//! ******************************************************************************************************************************/
-//!THEMES START
-//^^ LIGHT THEME START
+
+//^ THEMES
+//& LIGHT THEME
 .light_theme {
-    //!THEME COLORS START
+    //~ THEME COLORS
     --firstColor: hsl(260, 85%, 25%);
     --firstColorHover: hsl(260, 85%, 15%);
     --secondColor: hsl(195, 85%, 60%);
@@ -175,13 +175,11 @@
     --bgOff: hsl(0, 0%, 80%);
     --bgModal: hsla(0, 0%, 90%, 0.75);
     --vueIconText: hsl(0, 0%, 20%);
-    //&GENERALS
 
+    //~ GENERALS
     color: var(--textColor);
-    //&GENERALS
-    //!THEME COLORS OVER
-    //! ************************************************************************************************************************ *//
-    //!SECTION BACKGROUNDS--START
+
+    //~ SECTION BACKGROUNDS--START
     --backgroundHero: linear-gradient(transparent, var(--bgColor) 75%), url("../img/backgrounds/day.jpg") center no-repeat fixed;
     --bgHeaderSectionAbout: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%), url("../img/backgrounds/fondoBasket.png") center no-repeat fixed;
     --bgHeaderSectionServices: linear-gradient(var(--bgColor), transparent, var(--bgColor) 85%), url("../img/backgrounds/office-932926_1920.jpg") center no-repeat fixed;
@@ -189,13 +187,7 @@
     --bgHeaderSectionSkills: linear-gradient(var(--bgColor), hsla(0, 0%, 100%, 0.5), var(--bgColor)), url("../img/backgrounds/pexels-julia-m-cameron-4144097.jpg") center no-repeat fixed;
     --bgHeaderSectionContact: linear-gradient(var(--bgColor), hsla(0, 0%, 100%, 0.5), var(--bgColor)), url("../img/backgrounds/pexels-alex-andrews-821754.jpg") center no-repeat fixed;
 
-    //!SECTION BACKGROUNDS--OVER
-    //! ************************************************************************************************************************ *//
-
-    //! ************************************************************************************************************************ *//
-
-    //!LOGOS SPECIFIC COLOR START
-
+    //~ LOGOS SPECIFIC COLOR
     .charly_y_sebas_icon_svg {
         .cls-1 {
             fill: #363760;
@@ -228,15 +220,11 @@
             fill: var(--textColor);
         }
     }
-    //!LOGOS SPECIFIC COLOR OVER
-    //! ************************************************************************************************************************ *//
 }
-//^^ LIGHT THEME OVER
-//^^ *****************************************************************************************************************************/
 
-//^^ DARK THEME START
+//& DARK THEME
 .dark_theme {
-    //!THEME COLORS START
+    //~THEME COLORS START
     --firstColor: hsl(190, 100%, 40%);
     --firstColorHover: hsl(190, 100%, 30%);
     --secondColor: hsl(240, 55%, 60%);
@@ -253,12 +241,10 @@
     --bgOff: hsl(0, 0%, 20%);
     --bgModal: hsla(0, 0%, 10%, 0.75);
     --vueIconText: hsl(0, 0%, 80%);
-    //&GENERALS
+    //~GENERALS
     color: var(--textColor);
-    //&GENERALS
-    //!THEME COLORS OVER
-    //! ************************************************************************************************************************ *//
-    //!SECTION BACKGROUNDS--START
+
+    //~SECTION BACKGROUNDS
     --backgroundHero: linear-gradient(transparent, var(--bgColor) 90%), url("../img/backgrounds/night.jpg") center no-repeat fixed;
     --bgHeaderSectionAbout: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%), url("../img/backgrounds/graffiti-background-1554703550MY5.jpg") center no-repeat fixed;
     --bgHeaderSectionServices: linear-gradient(var(--bgColor) 10%, transparent, var(--bgColor) 90%), url("../img/backgrounds/pexels-ovan-57690.jpg") center no-repeat fixed;
@@ -266,9 +252,8 @@
     --bgHeaderSectionSkills: linear-gradient(var(--bgColor) 10%, hsla(0, 0%, 0%, 0.5), var(--bgColor) 90%), url("../img/backgrounds/tools-1083796_1920.jpg") center no-repeat fixed;
 
     --bgHeaderSectionContact: linear-gradient(var(--bgColor) 10%, hsla(0, 0%, 0%, 0.5), var(--bgColor) 90%), url("../img/backgrounds/post-letter-2828146_1920.jpg") center no-repeat fixed;
-    //!SECTION BACKGROUNDS--OVER
-    //! ************************************************************************************************************************ *//
-    //!LOGOS SPECIFIC COLOR START
+
+    //~LOGOS SPECIFIC COLOR
     .charly_y_sebas_icon_svg {
         .cls-1 {
             fill: #363760;
@@ -297,20 +282,15 @@
             }
         }
     }
-
-    //!LOGOS SPECIFIC COLOR OVER
-    //! ************************************************************************************************************************ *//
 }
-//^^DARK THEME OVER
-//^^ *****************************************************************************************************************************/
-//!THEMES OVER
-//! ******************************************************************************************************************************/
+
+//^ BODY
 body {
     position: relative;
     background: var(--bgColor);
     scroll-behavior: smooth;
 
-    //^^GENERAL ICONS COLORS--START
+    //^ GENERAL ICONS COLORS
     .close_icon_svg,
     .theme_icon_svg {
         .cls-1 {
@@ -351,8 +331,8 @@ body {
             fill: var(--textColor);
         }
     }
-    //^^GENERAL ICONS COLORS--OVER
-    //^^CLIENTS LOGO COLORS--START
+
+    //^ CLIENTS LOGO COLORS
     .impulso_icon_svg {
         .cls-1 {
             fill: #c01918;
@@ -526,8 +506,8 @@ body {
             stroke-width: 0.11px;
         }
     }
-    //^^CLIENTS LOGO COLORS--OVER
-    //^^DESIGN ICONS COLORS-- START
+
+    //^^DESIGN ICONS COLORS
     .illustrator_icon_svg {
         .cls-1 {
             fill: #2c0d0e;
@@ -692,7 +672,9 @@ body {
     }
     //^^SOCIAL ICONS COLORS-- OVER
 }
-//!SCROLL STYLE START
+//! ************** !//
+//!  SCROLL STYLE  !//
+//! ************** !//
 //^
 scrollbar-button,
 ::-webkit-scrollbar-button {
@@ -714,10 +696,7 @@ scrollbar-button,
 ::-webkit-scrollbar-thumb:hover {
     filter: grayscale(1);
 }
-//!SCROLL STYLE OVER
-//! ***************************************************************************************************/
 
-//!GENERALS START
 img {
     width: 100%;
 }
@@ -863,10 +842,9 @@ BUTTON {
     background: none;
     border: none;
 }
-//!GENERALS OVER
-//! ***************************************************************************************************/
-//! BUTONS START
-//^^BASIC BUTTON START
+
+//! BUTTONS
+
 .btn {
     color: var(--textColor);
     padding: 1rem 0.5rem;
@@ -907,8 +885,7 @@ BUTTON {
     font-size: var(--fontSizeS);
     font-weight: var(--fontWeightN);
 }
-//^^ BASIC BUTTON OVER
-//^^CLOSE BTN OVER
+
 .btn_theme,
 .close_btn {
     @include flex(center, center);
@@ -920,8 +897,7 @@ BUTTON {
 .close_btn {
     cursor: pointer;
 }
-//^^CLOSE BTN OVER
-//^^BTNS SECTION ACTIVE--START
+
 .btn_section_active {
     background: var(--firstColor);
     color: var(--textContrastColor);
@@ -934,9 +910,7 @@ BUTTON {
         }
     }
 }
-//^^BTNS SECTION ACTIVE-- OVER
-//^ *************************************************************************************************** *//
-//^^BTN LINK--START
+
 .btn_link {
     width: fit-content;
     font-size: var(--fontSizeS);
@@ -951,11 +925,8 @@ BUTTON {
         }
     }
 }
-//^^BTN LINK--OVER
-//^^ *************************************************************************************************** *//
-//!BUTTONS OVER
-//! ***************************************************************************************************/
-//!MODAL START
+
+//!MODALS
 .modal {
     @include flexDirection(column, flex-start, flex-start);
     position: fixed;
@@ -1019,7 +990,7 @@ BUTTON {
         }
     }
 }
-//^^ LEGAL MODAL--START
+
 #legal_modal {
     max-height: 90vh;
     display: none;
@@ -1039,17 +1010,11 @@ BUTTON {
         }
     }
 }
-//^^ LEGAL MODAL--OVER
-//^^ ************************************************************************************************ *//
-//^^CONTACT MODAL--START
+
 #contact_modal {
     display: none;
 }
-//^^CONTACT MODAL--OVER
-//^^ ************************************************************************************************ *//
-//! MODAL OVER
-//! *********************************************************************************************** *//
-//!ALERT MODAL--START
+
 .alert_modal {
     position: fixed;
     top: 0;
@@ -1078,7 +1043,7 @@ BUTTON {
         }
     }
 }
-//^^ALERT STORAGE MODAL--START
+
 #storage_alert_modal {
     @include flexDirection(column, flex-start, center);
     .modal_info {
@@ -1103,11 +1068,8 @@ BUTTON {
         margin: 1rem 0;
     }
 }
-//^^ALERT STORAGE MODAL--OVER
-//^^ ************************************************************************************************ *//
-//!ALERT MODAL--OVER
-//! *********************************************************************************************** *//
-//! MENU SOCIAL--START
+
+//! MENUS
 #menu_social_container {
     position: fixed;
     @include flexDirection(column, flex-start, center);
@@ -1186,9 +1148,7 @@ BUTTON {
         }
     }
 }
-//! MENU SOCIAL--OVER
-//! ***************************************************************************** *//
-//!MENU-- START
+
 #menu_container {
     position: fixed;
     @include flexDirection(column, center, center);
@@ -1296,9 +1256,8 @@ BUTTON {
     //!! GENERAL CONTAINER CONFIGURATION--OVER
     //!!  *************************************************************** *//
 }
-//!MENU-- OVER
-//! ****************************************************************************** *//
-//!NAV-- START
+
+//!NAV
 .nav {
     position: sticky;
     @include flex(center, center);
@@ -1444,11 +1403,8 @@ BUTTON {
         }
     }
 }
-//! NAV-- OVER
-//! ****************************************************************************************** *//
-//! HERO SECTION-- START
-//! HERO SECTION-- START
 
+//! SECTIONS
 #hero_section {
     @include flex(center, center);
     position: relative;
@@ -1537,9 +1493,7 @@ BUTTON {
         }
     }
 }
-//! HERO SECTION-- OVER
-//! *******************************************************************************************/
-//!ABOUT SECTION-- START
+
 #about_section {
     @include flexDirection(column, flex-start, center);
     #about_content {
@@ -1548,8 +1502,6 @@ BUTTON {
         }
     }
 }
-//!ABOUT SECTION-- OVER
-//! ******************************************************************** *//
 
 .sliders_container {
     position: relative;
@@ -1797,9 +1749,6 @@ BUTTON {
         }
     }
 }
-//!SERVICES SECTION-- OVER
-//! ******************************************************************** *//
-//&TEMPLATE MARKER SLIDER
 .marker_slider_btn {
     width: 1.25rem;
     height: 1.25rem;
@@ -1810,12 +1759,7 @@ BUTTON {
 
     z-index: var(--zIndexMenu);
 }
-//&TEMPLATE MARKER SLIDER
-//& ****************************************************************************************** *//
 
-//!SERVICES SECTION-- OVER
-//! ******************************************************************** *//
-//!SKILLS SECTION-- START
 #skills_section {
     @include flexDirection(column, flex-start, center);
     height: fit-content;
@@ -1876,10 +1820,7 @@ BUTTON {
         flex-basis: 100%;
     }
 }
-//!ABOUT SECTION-- OVER
-//! ******************************************************************** *//
-//!SERVICES SECTION-- START
-//!PORTFOLIO SECTION-- START
+
 #portfolio_section {
     @include flexDirection(column, flex-start, center);
     #portfolio_content {
@@ -1896,7 +1837,6 @@ BUTTON {
         width: var(--widthClamp);
     }
 }
-//&TEMPLATE STYLE--START
 .project_card {
     width: var(--cardProjectWidth);
     height: 30rem;
@@ -1967,7 +1907,6 @@ BUTTON {
     width: clamp(6rem, 2vw, 12rem);
     border-radius: 0.5rem;
 }
-//!PROJECTS CONTAINER--START
 .projects_container {
     @include flexDirection(column, flex-start, center);
     gap: 1rem;
@@ -1985,8 +1924,7 @@ BUTTON {
         height: 3rem;
     }
 }
-//!PROJECTS CONTAINER--OVER
-//! ******************************************************************************************** *//
+
 .selection_list {
     position: relative;
     @include flexDirection(column, flex-start, center);
@@ -2075,11 +2013,7 @@ BUTTON {
         }
     }
 }
-//&TEMPLATE STYLE--OVER
-//& ******************************************************************************************** *//
-//!PORTFOLIO SECTION-- OVER
-//! ******************************************************************** *//
-//!CLIENTS SECTION-- START
+
 #clients_section {
     position: relative;
     @include flexDirection(column, flex-start, center);
@@ -2115,9 +2049,7 @@ BUTTON {
         }
     }
 }
-//!CLIENTS SECTION-- OVER
-//! ******************************************************************** *//
-//!CONTACT SECTION--START
+
 #contact_section {
     #contact_content {
         @include flexDirection(column, flex-start, center);
@@ -2179,9 +2111,7 @@ BUTTON {
         }
     }
 }
-//!CONTACT SECTION--OVER
-//! ******************************************************************** *//
-//!FOOTER-- START
+
 #legals_section {
     position: relative;
     @include flexDirection(column, flex-start, center);
@@ -2328,9 +2258,8 @@ BUTTON {
         }
     }
 }
-//!FOOTER-- OVER
-//! ******************************************************************** *//
-//*SWIPER UP CONTAINER--START
+
+//^ SWIPER UP CONTAINER
 .animation_up,
 .card_up,
 .title_footer,
@@ -2339,42 +2268,33 @@ BUTTON {
     transform: translateY(4rem);
     transition: all 1000ms ease;
 }
-//*SWIPER UP CONTAINER--OVER
-//* ************************************************************************** *//
-//*SWIPER LEFT CONTAINER--START
+
+//^ SWIPER LEFT CONTAINER
 .animation_left {
     opacity: 0;
     transform: translateX(-50%);
     transition: all 1000ms ease;
 }
-//*SWIPER LEFT CONTAINER--OVER
-//* ************************************************************************** *//
-//*SWIPER RIGHT CONTAINER--START
+
+//^ SWIPER RIGHT CONTAINER
 .animation_right {
     opacity: 0;
     transform: translateX(50%);
     transition: all 1000ms ease;
 }
-//*SWIPER RIGHT CONTAINER--OVER
-//* ************************************************************************** *//
-//^^SWIPER DOWN CONTAINER--START
-//*STORAGE ALERT--START
+
+//^ SWIPER DOWN CONTAINER
+//*STORAGE ALERT
 #storage_alert_modal {
     transform: translateY(-50%);
     opacity: 0;
     transition: all 1000ms ease;
 }
-//*STORAGE ALERT--OVER
-//* ************************************************************************** *//
-//*LEGAL AND CONTACT--START
+
+//*LEGAL AND CONTACT
 #legal_modal,
 #contact_modal {
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: all 1000ms ease;
 }
-//*LEGAL AND CONTACT--OVER
-//* ************************************************************************** *//
-
-//^^SWIPER DOWN CONTAINER--OVER
-//^^ ************************************************************************** *//
