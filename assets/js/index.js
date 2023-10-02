@@ -148,7 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let legalModalStatus = close;
     let selectListStatus = close;
     let slidersServicesCount = 0;
-    let servicecardsCount = 0;
     let sliderFullCountServices = 0;
 
     //^ LOCAL STORAGE
@@ -245,7 +244,8 @@ document.addEventListener("DOMContentLoaded", () => {
             tech_info: 'Adobe Photoshop es un editor de fotografías desarrollado por Adobe Systems Incorporated. Usado principalmente para el retoque de fotografías y gráficos, su nombre en español significa "taller de fotos".',
         },
     ];
-
+    //^ HOT CARDS SELECTION
+    const hotCardsSelection = ["pokedex", "tribute", "choroplet_map", "creaciones_hermed", "verona", "krazy_sports"];
     //!GENERAL START FUNCTIONS
     //^CHANGE THEME BY HOUR
     let todayHour = new Date().getHours();
@@ -1018,7 +1018,16 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const rawData = await fetch(portfolioData);
             const data = await rawData.json();
-            data.forEach((item) => {
+            let hotData = [];
+            hotCardsSelection.forEach((proyectHot) => {
+                data.forEach((proyect) => {
+                    if (proyect.db_name === proyectHot) {
+                        hotData.push(proyect);
+                    }
+                });
+            });
+            console.log(hotData);
+            hotData.forEach((item) => {
                 createCard(item, fragmentHotProjects);
             });
             portfolioHotCardsContainer.appendChild(fragmentHotProjects);

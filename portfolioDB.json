@@ -328,5 +328,38 @@
             "project_link": "https://www.behance.net/gallery/107080483/Creaciones-Hermed"
         },
         "votes": 2
+    },
+    {
+        "client_name": "Krazy Sports",
+        "db_name": "krazy_sports",
+        "client_logo": "",
+        "projects": {
+            "type": ["Imagen Deportiva", "Logotipo"],
+            "type_data": ["papeleria"],
+            "description": "",
+            "reach": ["Uniformes", "Logotipo", "Imagen Deportiva"],
+            "technologies": ["Photoshop", "Illustrator"],
+            "images": {
+                "avatar": "",
+                "hero": {
+                    "small": "assets/img/krazySports.jpg",
+                    "big": ""
+                },
+                "1": {
+                    "small": "",
+                    "big": ""
+                },
+                "2": {
+                    "small": "",
+                    "big": ""
+                },
+                "3": {
+                    "small": "",
+                    "big": ""
+                }
+            },
+            "project_link": "https://www.behance.net/gallery/181289397/Krazy-Sports"
+        },
+        "votes": 2
     }
 ]
