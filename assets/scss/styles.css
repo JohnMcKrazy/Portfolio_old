@@ -52,6 +52,24 @@
     transform: rotate(360deg);
   }
 }
+@keyframes textAnimation {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.up_animation {
+  animation: textAnimation 3800ms ease-in-out forwards;
+}
+
 :root {
   --midGray: hsl(0, 0%, 65%);
   --darkGray: hsl(0, 0%, 30%);
@@ -725,6 +743,7 @@ BUTTON {
   padding: 0;
   background: none;
   border: none;
+  cursor: pointer;
 }
 
 .btn {
@@ -733,7 +752,6 @@ BUTTON {
   border: var(--border)var(--firstColor);
   border-radius: var(--borderBtnRadius);
   text-align: center;
-  cursor: pointer;
   transition: var(--transitionUF);
 }
 .btn h3 {
@@ -758,10 +776,9 @@ BUTTON {
   font-weight: var(--fontWeightB);
   font-size: var(--fontSizeS);
 }
-
 .more_btn:hover,
-.more_btn:focus,
-.more_btn:active {
+.more_btn :focus,
+.more_btn :active {
   background: var(--firstColor);
   color: var(--textContrastColor);
 }
@@ -782,10 +799,6 @@ BUTTON {
   transition: var(--transitionUF);
 }
 
-.close_btn {
-  cursor: pointer;
-}
-
 .btn_section_active {
   background: var(--firstColor);
   color: var(--textContrastColor);
@@ -803,7 +816,6 @@ BUTTON {
   font-size: var(--fontSizeS);
   font-weight: var(--fontWeightN);
   text-align: center;
-  cursor: pointer;
 }
 .btn_link .footer_menu_icon_svg {
   width: 1.75rem;
@@ -835,13 +847,13 @@ BUTTON {
   padding: 0.5rem;
 }
 .modal .close_btn:hover,
-.modal .close_btn:focus,
-.modal .close_btn:active {
+.modal .close_btn :focus,
+.modal .close_btn :active {
   background: var(--firstColor);
 }
 .modal .close_btn:hover .close_icon_svg .cls-1,
-.modal .close_btn:focus .close_icon_svg .cls-1,
-.modal .close_btn:active .close_icon_svg .cls-1 {
+.modal .close_btn :focus .close_icon_svg .cls-1,
+.modal .close_btn :active .close_icon_svg .cls-1 {
   fill: var(--textContrastColor);
 }
 .modal .modal_info {
@@ -931,13 +943,13 @@ BUTTON {
   padding: 0.5rem;
 }
 .alert_modal .close_btn:hover,
-.alert_modal .close_btn:focus,
-.alert_modal .close_btn:active {
+.alert_modal .close_btn :focus,
+.alert_modal .close_btn :active {
   background: var(--firstColor);
 }
 .alert_modal .close_btn:hover .close_icon_svg .cls-1,
-.alert_modal .close_btn:focus .close_icon_svg .cls-1,
-.alert_modal .close_btn:active .close_icon_svg .cls-1 {
+.alert_modal .close_btn :focus .close_icon_svg .cls-1,
+.alert_modal .close_btn :active .close_icon_svg .cls-1 {
   fill: var(--textContrastColor);
 }
 
@@ -990,14 +1002,13 @@ BUTTON {
   padding: 0.75rem;
   width: 100%;
   height: auto;
-  cursor: pointer;
 }
 #menu_social_container #menu_social_btn .social_icon_svg {
   pointer-events: none;
   transition: var(--transitionUF);
 }
 #menu_social_container #menu_social_btn:hover .social_icon_svg,
-#menu_social_container #menu_social_btn:focus .social_icon_svg {
+#menu_social_container #menu_social_btn :focus .social_icon_svg {
   transform: scale(1.2);
 }
 #menu_social_container #menu_social_btn:active {
@@ -1027,7 +1038,6 @@ BUTTON {
   height: auto;
   width: 100%;
   padding: 0.75rem;
-  cursor: pointer;
   transition: var(--transitionUF);
 }
 #menu_social_container .btn_menu_social .social_icon_svg {
@@ -1035,7 +1045,7 @@ BUTTON {
   width: 100%;
 }
 #menu_social_container .btn_menu_social:hover,
-#menu_social_container .btn_menu_social:focus {
+#menu_social_container .btn_menu_social :focus {
   transform: scale(1.2);
 }
 #menu_social_container .btn_menu_social:active {
@@ -1069,7 +1079,6 @@ BUTTON {
   height: auto;
   transition: var(--transitionUF);
   color: var(--textColor);
-  cursor: pointer;
 }
 #menu_container #extra_btns_container,
 #menu_container #social_btns_container {
@@ -1094,7 +1103,7 @@ BUTTON {
   transition: var(--transitionUF);
 }
 #menu_container #social_btns_container .btn_menu_social:hover,
-#menu_container #social_btns_container .btn_menu_social:focus {
+#menu_container #social_btns_container .btn_menu_social :focus {
   transform: scale(1.3);
 }
 #menu_container #social_btns_container .btn_menu_social:active {
@@ -1122,7 +1131,7 @@ BUTTON {
   border-bottom: solid 0.25rem transparent;
 }
 #menu_container #sections_btns_container .btn_menu_section:hover,
-#menu_container #sections_btns_container .btn_menu_section:focus {
+#menu_container #sections_btns_container .btn_menu_section :focus {
   border-color: var(--firstColor);
 }
 #menu_container #extra_btns_container {
@@ -1133,7 +1142,6 @@ BUTTON {
   justify-content: center;
   align-items: center;
   transition: var(--transitionUF);
-  cursor: pointer;
 }
 #menu_container #extra_btns_container .extra_btn_menu:hover,
 #menu_container #extra_btns_container .extra_btn_menu:focus,
@@ -1176,13 +1184,11 @@ BUTTON {
   align-items: center;
   height: 100%;
   padding: 0 0.5rem;
-  cursor: pointer;
   transition: var(--transitionMid);
 }
 .nav .nav_content #logo_nav_btn #johnK_icon_svg {
   width: auto;
   height: 100%;
-  cursor: pointer;
 }
 .nav .nav_content #logo_nav_btn #johnK_icon_svg .cls-1 {
   fill: var(--secondColor);
@@ -1194,8 +1200,8 @@ BUTTON {
   fill: var(--midGray);
 }
 .nav .nav_content #logo_nav_btn:hover,
-.nav .nav_content #logo_nav_btn:focus,
-.nav .nav_content #logo_nav_btn:active {
+.nav .nav_content #logo_nav_btn :focus,
+.nav .nav_content #logo_nav_btn :active {
   animation: zoom 1s ease;
 }
 .nav .nav_content #btn_menu_slider {
@@ -1207,7 +1213,6 @@ BUTTON {
   width: 7rem;
   height: 100%;
   color: var(--textColor);
-  cursor: pointer;
 }
 .nav .nav_content #btn_menu_slider .btn_menu_text {
   font-size: var(--fontSizeS);
@@ -1235,20 +1240,20 @@ BUTTON {
   width: 4rem;
 }
 .nav .nav_content #btn_menu_slider:hover #menu_btn,
-.nav .nav_content #btn_menu_slider:focus #menu_btn,
-.nav .nav_content #btn_menu_slider:active #menu_btn {
+.nav .nav_content #btn_menu_slider :focus #menu_btn,
+.nav .nav_content #btn_menu_slider :active #menu_btn {
   transition: var(--transitionUF);
   transform: scale(0.9);
 }
 .nav .nav_content #btn_menu_slider:hover #menu_btn #top_bar_btn,
 .nav .nav_content #btn_menu_slider:hover #menu_btn #center_bar_btn,
 .nav .nav_content #btn_menu_slider:hover #menu_btn #bottom_bar_btn,
-.nav .nav_content #btn_menu_slider:focus #menu_btn #top_bar_btn,
-.nav .nav_content #btn_menu_slider:focus #menu_btn #center_bar_btn,
-.nav .nav_content #btn_menu_slider:focus #menu_btn #bottom_bar_btn,
-.nav .nav_content #btn_menu_slider:active #menu_btn #top_bar_btn,
-.nav .nav_content #btn_menu_slider:active #menu_btn #center_bar_btn,
-.nav .nav_content #btn_menu_slider:active #menu_btn #bottom_bar_btn {
+.nav .nav_content #btn_menu_slider :focus #menu_btn #top_bar_btn,
+.nav .nav_content #btn_menu_slider :focus #menu_btn #center_bar_btn,
+.nav .nav_content #btn_menu_slider :focus #menu_btn #bottom_bar_btn,
+.nav .nav_content #btn_menu_slider :active #menu_btn #top_bar_btn,
+.nav .nav_content #btn_menu_slider :active #menu_btn #center_bar_btn,
+.nav .nav_content #btn_menu_slider :active #menu_btn #bottom_bar_btn {
   width: 2rem;
 }
 .nav .nav_content #nav_sections_btns_container {
@@ -1269,53 +1274,52 @@ BUTTON {
   padding: 0 1.5rem;
   border-top: solid 5px transparent;
   color: var(--textColor);
-  cursor: pointer;
 }
 .nav .nav_content #nav_sections_btns_container .btn_nav .nav_menu_icon_svg {
   width: 3rem;
   padding: 0 0.5rem;
 }
-.nav .nav_content #nav_sections_btns_container .contact_btn,
-.nav .nav_content #nav_sections_btns_container .btn_theme {
-  width: 3rem;
-  padding: 0 0.5rem;
-}
 .nav .nav_content #nav_sections_btns_container .btn_nav:hover,
-.nav .nav_content #nav_sections_btns_container .btn_nav:focus,
-.nav .nav_content #nav_sections_btns_container .btn_nav:active {
+.nav .nav_content #nav_sections_btns_container .btn_nav :focus,
+.nav .nav_content #nav_sections_btns_container .btn_nav :active {
   border-color: var(--firstColor);
   background: var(--firstColorHover);
 }
 .nav .nav_content #nav_sections_btns_container .btn_nav:hover .contact_icon_svg .cls-1,
 .nav .nav_content #nav_sections_btns_container .btn_nav:hover .theme_icon_svg .cls-1,
-.nav .nav_content #nav_sections_btns_container .btn_nav:focus .contact_icon_svg .cls-1,
-.nav .nav_content #nav_sections_btns_container .btn_nav:focus .theme_icon_svg .cls-1,
-.nav .nav_content #nav_sections_btns_container .btn_nav:active .contact_icon_svg .cls-1,
-.nav .nav_content #nav_sections_btns_container .btn_nav:active .theme_icon_svg .cls-1 {
+.nav .nav_content #nav_sections_btns_container .btn_nav :focus .contact_icon_svg .cls-1,
+.nav .nav_content #nav_sections_btns_container .btn_nav :focus .theme_icon_svg .cls-1,
+.nav .nav_content #nav_sections_btns_container .btn_nav :active .contact_icon_svg .cls-1,
+.nav .nav_content #nav_sections_btns_container .btn_nav :active .theme_icon_svg .cls-1 {
   fill: var(--textContrastColor);
 }
 .nav .nav_content #nav_sections_btns_container .btn_nav:hover .contact_icon_svg .cls-2,
 .nav .nav_content #nav_sections_btns_container .btn_nav:hover .theme_icon_svg .cls-2,
-.nav .nav_content #nav_sections_btns_container .btn_nav:focus .contact_icon_svg .cls-2,
-.nav .nav_content #nav_sections_btns_container .btn_nav:focus .theme_icon_svg .cls-2,
-.nav .nav_content #nav_sections_btns_container .btn_nav:active .contact_icon_svg .cls-2,
-.nav .nav_content #nav_sections_btns_container .btn_nav:active .theme_icon_svg .cls-2 {
+.nav .nav_content #nav_sections_btns_container .btn_nav :focus .contact_icon_svg .cls-2,
+.nav .nav_content #nav_sections_btns_container .btn_nav :focus .theme_icon_svg .cls-2,
+.nav .nav_content #nav_sections_btns_container .btn_nav :active .contact_icon_svg .cls-2,
+.nav .nav_content #nav_sections_btns_container .btn_nav :active .theme_icon_svg .cls-2 {
   fill: var(--textContrastColor);
 }
 .nav .nav_content #nav_sections_btns_container .btn_nav:hover .nav_menu_icon_svg .cls-1,
-.nav .nav_content #nav_sections_btns_container .btn_nav:focus .nav_menu_icon_svg .cls-1,
-.nav .nav_content #nav_sections_btns_container .btn_nav:active .nav_menu_icon_svg .cls-1 {
+.nav .nav_content #nav_sections_btns_container .btn_nav :focus .nav_menu_icon_svg .cls-1,
+.nav .nav_content #nav_sections_btns_container .btn_nav :active .nav_menu_icon_svg .cls-1 {
   fill: var(--textContrastColor);
 }
 .nav .nav_content #nav_sections_btns_container .btn_nav:hover .nav_menu_icon_svg .cls-2,
-.nav .nav_content #nav_sections_btns_container .btn_nav:focus .nav_menu_icon_svg .cls-2,
-.nav .nav_content #nav_sections_btns_container .btn_nav:active .nav_menu_icon_svg .cls-2 {
+.nav .nav_content #nav_sections_btns_container .btn_nav :focus .nav_menu_icon_svg .cls-2,
+.nav .nav_content #nav_sections_btns_container .btn_nav :active .nav_menu_icon_svg .cls-2 {
   fill: var(--textContrastColor);
 }
 .nav .nav_content #nav_sections_btns_container .btn_nav:hover .btn_lebel,
-.nav .nav_content #nav_sections_btns_container .btn_nav:focus .btn_lebel,
-.nav .nav_content #nav_sections_btns_container .btn_nav:active .btn_lebel {
+.nav .nav_content #nav_sections_btns_container .btn_nav :focus .btn_lebel,
+.nav .nav_content #nav_sections_btns_container .btn_nav :active .btn_lebel {
   color: var(--textContrastColor);
+}
+.nav .nav_content #nav_sections_btns_container .contact_btn,
+.nav .nav_content #nav_sections_btns_container .btn_theme {
+  width: 3rem;
+  padding: 0 0.5rem;
 }
 
 #hero_section {
@@ -1409,11 +1413,9 @@ BUTTON {
   width: 100%;
 }
 #hero_section #hero_content .btn_down:hover,
-#hero_section #hero_content .btn_down:focus,
-#hero_section #hero_content .btn_down:active {
+#hero_section #hero_content .btn_down :focus,
+#hero_section #hero_content .btn_down :active {
   opacity: 1;
-  /*   box-shadow: none;
-  filter: drop-shadow(0 0 0.5rem var(--backgroundContrast)); */
 }
 
 #about_section {
@@ -1732,7 +1734,6 @@ BUTTON {
   align-items: center;
   width: 5rem;
   height: 5rem;
-  cursor: pointer;
   transform: all 200ms ease;
 }
 #skills_section .skills_containers .skills_container .skills_icon_container .html_icon_svg .cls-5 {
@@ -1748,8 +1749,8 @@ BUTTON {
   fill: var(--textColor);
 }
 #skills_section .skills_containers .skills_container .skills_icon_container:hover,
-#skills_section .skills_containers .skills_container .skills_icon_container:active,
-#skills_section .skills_containers .skills_container .skills_icon_container:focus {
+#skills_section .skills_containers .skills_container .skills_icon_container :active,
+#skills_section .skills_containers .skills_container .skills_icon_container :focus {
   animation: zoom 1000ms ease-out;
 }
 #skills_section .skills_containers .skills_container #node_icon_container {
@@ -1851,8 +1852,12 @@ BUTTON {
   position: relative;
   color: var(--textColor);
   font-weight: var(--fontWeightB);
-  width: clamp(6rem, 2vw, 12rem);
+  min-width: 6rem;
+  max-width: 12rem;
   border-radius: 0.5rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .projects_container {
@@ -2019,8 +2024,8 @@ BUTTON {
   height: auto;
 }
 #clients_section .clients_container .client_logo_container:hover,
-#clients_section .clients_container .client_logo_container:focus,
-#clients_section .clients_container .client_logo_container:active {
+#clients_section .clients_container .client_logo_container :focus,
+#clients_section .clients_container .client_logo_container :active {
   position: relative;
   filter: grayscale(0);
   animation: zoom 1000ms ease-out;
@@ -2138,10 +2143,14 @@ BUTTON {
   align-items: center;
   width: 8rem;
   height: auto;
-  cursor: pointer;
 }
 #legals_section .logos_container .tech_logo_container .coffee_mug_icon_svg {
   transform: scale(0.8);
+}
+#legals_section .logos_container .tech_logo_container:hover,
+#legals_section .logos_container .tech_logo_container :focus,
+#legals_section .logos_container .tech_logo_container :active {
+  animation: zoom 1000ms ease-out;
 }
 #legals_section .logos_container .plus_sign {
   display: flex;
@@ -2150,11 +2159,6 @@ BUTTON {
   font-size: 3rem;
   text-align: center;
   color: var(--textContrastColor);
-}
-#legals_section .logos_container .tech_logo_container:hover,
-#legals_section .logos_container .tech_logo_container:focus,
-#legals_section .logos_container .tech_logo_container:active {
-  animation: zoom 1000ms ease-out;
 }
 #legals_section #menu_legals_container {
   display: flex;
@@ -2194,26 +2198,18 @@ BUTTON {
   transition: color 200ms ease;
   padding: 1rem;
 }
+#legals_section #menu_legals_container #menu_legals_btns_container .btn_link:hover,
+#legals_section #menu_legals_container #menu_legals_btns_container .btn_link :active,
+#legals_section #menu_legals_container #menu_legals_btns_container .btn_link :focus {
+  color: var(--textColor);
+  fill: var(--textColor);
+}
 #legals_section #menu_legals_container #menu_legals_btns_container .btn_link:hover {
   background: var(--secondColorHover);
 }
-#legals_section #menu_legals_container #menu_legals_btns_container .btn_link:hover .btn_lebel {
-  color: var(--textContrastColor);
-}
-#legals_section #menu_legals_container #menu_legals_btns_container .btn_link:hover .footer_menu_icon_svg .cls-1 {
-  fill: var(--textContrastColor);
-}
 #legals_section #menu_legals_container #menu_legals_btns_container .btn_link:active,
-#legals_section #menu_legals_container #menu_legals_btns_container .btn_link:focus {
+#legals_section #menu_legals_container #menu_legals_btns_container .btn_link :focus {
   background: var(--secondColor);
-}
-#legals_section #menu_legals_container #menu_legals_btns_container .btn_link:active .btn_lebel,
-#legals_section #menu_legals_container #menu_legals_btns_container .btn_link:focus .btn_lebel {
-  color: var(--textContrastColor);
-}
-#legals_section #menu_legals_container #menu_legals_btns_container .btn_link:active .footer_menu_icon_svg .cls-1,
-#legals_section #menu_legals_container #menu_legals_btns_container .btn_link:focus .footer_menu_icon_svg .cls-1 {
-  fill: var(--textContrastColor);
 }
 #legals_section #menu_legals_container #made_container {
   display: flex;
@@ -2227,14 +2223,7 @@ BUTTON {
   padding: 1rem 0;
 }
 #legals_section #menu_legals_container #made_container #made_content {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
   color: var(--textColor);
-  row-gap: 0.5rem;
-  -moz-column-gap: 0.5rem;
-       column-gap: 0.5rem;
   flex-wrap: wrap;
   font-weight: var(--fontWeightN);
   font-size: var(--fontSizeNClamp);
@@ -2242,18 +2231,10 @@ BUTTON {
   padding: 1rem 1.5rem;
   margin-left: 5rem;
 }
-#legals_section #menu_legals_container #made_container #made_content .heart_icon {
-  color: var(--firstColor);
-}
 #legals_section #menu_legals_container #made_container #made_content .link_text {
   color: var(--firstColor);
 }
 #legals_section #menu_legals_container #made_container #made_content .copyright_text {
-  margin-top: -0.5rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
   color: var(--lightGrey);
   font-size: var(--fontSizeXs);
 }

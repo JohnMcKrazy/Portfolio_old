@@ -4,11 +4,11 @@
         "db_name": "pokedex",
         "client_logo": "",
         "projects": {
-            "type": ["Desarrollo Web"],
+            "type": ["Desarrollo Web", "API Rest"],
             "type_data": ["desarrollo_web"],
             "description": "",
             "reach": ["Desarrollo Web"],
-            "technologies": ["HTML", "CSS", "JavaScript"],
+            "technologies": ["HTML", "CSS", "JavaScript", "API Rest"],
             "images": {
                 "avatar": "",
                 "hero": {
@@ -66,11 +66,44 @@
         "votes": 5
     },
     {
+        "client_name": "JS Documentation",
+        "db_name": "js_documentation",
+        "client_logo": "",
+        "projects": {
+            "type": ["Desarrollo Web"],
+            "type_data": ["desarrollo_web"],
+            "description": "",
+            "reach": ["Desarrollo Web"],
+            "technologies": ["HTML", "CSS", "JavaScript"],
+            "images": {
+                "avatar": "",
+                "hero": {
+                    "small": "assets/img/jsDocumentation.jpg",
+                    "big": ""
+                },
+                "1": {
+                    "small": "",
+                    "big": ""
+                },
+                "2": {
+                    "small": "",
+                    "big": ""
+                },
+                "3": {
+                    "small": "",
+                    "big": ""
+                }
+            },
+            "project_link": "https://johnmckrazy.github.io/Tecnical-Documentation-Basic-Javascript/"
+        },
+        "votes": 2
+    },
+    {
         "client_name": "Bar Chart Data Visualization",
         "db_name": "bar_map",
         "client_logo": "",
         "projects": {
-            "type": ["Desarrollo Web", "Visualización de Datos"],
+            "type": ["Desarrollo Web", "Visualización de Datos", "API Rest"],
             "type_data": ["desarrollo_web"],
             "description": "",
             "reach": ["Desarrollo Web"],
@@ -103,7 +136,7 @@
         "db_name": "scatterplo_map",
         "client_logo": "",
         "projects": {
-            "type": ["Desarrollo Web", "Visualización de Datos"],
+            "type": ["Desarrollo Web", "Visualización de Datos", "API Rest"],
             "type_data": ["desarrollo_web"],
             "description": "",
             "reach": ["Desarrollo Web"],
@@ -136,7 +169,7 @@
         "db_name": "tree_map",
         "client_logo": "",
         "projects": {
-            "type": ["Desarrollo Web", "Visualización de Datos"],
+            "type": ["Desarrollo Web", "Visualización de Datos", "API Rest"],
             "type_data": ["desarrollo_web"],
             "description": "",
             "reach": ["Desarrollo Web"],
@@ -169,7 +202,7 @@
         "db_name": "choroplet_map",
         "client_logo": "",
         "projects": {
-            "type": ["Desarrollo Web", "Visualización de Datos"],
+            "type": ["Desarrollo Web", "Visualización de Datos", "API Rest"],
             "type_data": ["desarrollo_web"],
             "description": "",
             "reach": ["Desarrollo Web"],

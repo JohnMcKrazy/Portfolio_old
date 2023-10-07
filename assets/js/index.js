@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //^ CONTAINERS WITH ANIMATION FUNCTIONS
     const swipeAnimationContainersFull = document.querySelectorAll(".swipe_animation_container_full");
     const swipeAnimationContainersHalf = document.querySelectorAll(".swipe_animation_container_half");
-
+    const animationContainerText = document.querySelectorAll(".text_animation_container");
     //^ MODALS
     //& CONTACT MODAL
     const sendBtnFormModal = document.querySelector("#contact_form_send_btn");
@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //^ HERO
     const btnHeroDown = document.querySelector("#hero_btn_down");
+    //^ ABOUT
 
     //^ SERVICES
     //& SERVICES SLIDERS
@@ -123,11 +124,27 @@ document.addEventListener("DOMContentLoaded", () => {
     //^FETCH JASON COMPANYS DATA
     const portfolioData = "./portfolioDB.json";
 
+    //^ ABOUT TEXT ANIMATION
+    const aboutLegends = ["Diseñador", "Ilustrador", "Desarrollador Front-End", "Deportista"];
+    const aboutTextAnimationContainer = document.querySelector(".about_text_animation_container");
+    const setAnimationText = (text) => {
+        return `<h2 class="up_animation">${text}</h2>`;
+    };
+    aboutTextAnimationContainer.innerHTML = setAnimationText(aboutLegends[0]);
+
+    const textAnimationAction = () => {
+        let objectCount = 0;
+        setInterval(() => {
+            objectCount += 1;
+            if (objectCount === aboutLegends.length) {
+                objectCount = 0;
+            }
+            aboutTextAnimationContainer.innerHTML = setAnimationText(aboutLegends[objectCount]);
+        }, 4000);
+    };
+    textAnimationAction();
+
     //!GENERAL VARIANTS--START
-    //^ LANG
-    const es = "Español";
-    const eng = "English";
-    let pageLang = es;
 
     //^ THEME ICONS
     const sunIcon =
@@ -507,6 +524,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //^ CHECK MENU POSITION WINDOW  && **/SCALE THE NAVBAR AND CHANGE THE MENU POSITION BY THE PAGE POSITION
     //&CONFIGURATION SIZE SCREEN--START ->//THIS FUNCTION BRING ALL THE CONTAINERS CARACTERISTICTS BY THE SIZE OF THE WINDOW
+    const setBtnLabel = (label) => {
+        return `<h3 class="btn_lebel">${label}</h3>`;
+    };
     const configSize = (widConf) => {
         //~~SET CARD CHANGES--START -> // CHANGE FLEX DIRECTIION AND HEIGHT OF CARD
         const changeCardStyle = (container, fd, he) => {
@@ -518,13 +538,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const firstBreak = 1100;
         const secondBreak = 839;
         if (widConf > firstBreak) {
-            lebelBtnMain.innerHTML = '<h3 class="btn_lebel">Inicio</h3>';
-            lebelBtnAbout.innerHTML = '<h3 class="btn_lebel">Acerca de</h3>';
-            lebelBtnSkills.innerHTML = '<h3 class="btn_lebel">Conocimientos</h3>';
-            lebelBtnServices.innerHTML = '<h3 class="btn_lebel">Servicios</h3>';
-            lebelBtnPortfolio.innerHTML = '<h3 class="btn_lebel">Portafolio</h3>';
-            lebelBtnClients.innerHTML = '<h3 class="btn_lebel">Clientes</h3>';
-            lebelBtnContact.innerHTML = '<h3 class="btn_lebel">Contactame</h3>';
+            lebelBtnMain.innerHTML = setBtnLabel("Inicio");
+            lebelBtnAbout.innerHTML = setBtnLabel("Acerca de");
+            lebelBtnSkills.innerHTML = setBtnLabel("Conocimientos");
+            lebelBtnServices.innerHTML = setBtnLabel("Servicios");
+            lebelBtnPortfolio.innerHTML = setBtnLabel("Portafolio");
+            lebelBtnClients.innerHTML = setBtnLabel("Clientes");
+            lebelBtnContact.innerHTML = setBtnLabel("Contacto");
             btnMenuContainer.style.display = "none";
             btnsNavContainer.style.display = "flex";
             menuSocialContainer.style.display = "flex";
@@ -568,28 +588,26 @@ document.addEventListener("DOMContentLoaded", () => {
             closeMenu();
         } else if (widConf > secondBreak || (widConf < firstBreak && widConf > secondBreak)) {
             copyrightText.style.marginLeft = "5rem";
-            btnLegalFooter.innerHTML = '<h3 class="btn_lebel">Legales</h3>';
-            btnDataFooter.innerHTML = '<h3 class="btn_lebel">Uso de datos</h3>';
+            btnLegalFooter.innerHTML = setBtnLabel("Legales");
+            btnDataFooter.innerHTML = setBtnLabel("Uso de Datos");
             lebelBtnMain.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="home_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Inicio</title><path class="cls-1" d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"></path></svg>';
-            /* '<svg class="nav_menu_icon_svg" id="home_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Inicio</title><path class="cls-1" d="M19 21H5a1 1 0 0 1-1-1v-9H1l10.327-9.388a1 1 0 0 1 1.346 0L23 11h-3v9a1 1 0 0 1-1 1zM6 19h12V9.157l-6-5.454-6 5.454V19z"/></svg>'; */
             lebelBtnAbout.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="about_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Acerca de</title><circle class="cls-1" cx="12" cy="4" r="2"></circle><path class="cls-1"  d="M15 22V9h5V7H4v2h5v13h2v-7h2v7z"></path></svg>';
-            /*   '<svg class="nav_menu_icon_svg" id="about_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Acerca de</title><path class="cls-1" d="M20 22h-2v-2a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v2H4v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2zm-8-9a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>'; */
             lebelBtnSkills.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="skills_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Conocimientos</title><path class="cls-1" d="M9.973 18H11v-5h2v5h1.027c.132-1.202.745-2.194 1.74-3.277.113-.122.832-.867.917-.973a6 6 0 1 0-9.37-.002c.086.107.807.853.918.974.996 1.084 1.609 2.076 1.741 3.278zM10 20v1h4v-1h-4zm-4.246-5a8 8 0 1 1 12.49.002C17.624 15.774 16 17 16 18.5V21a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.5C8 17 6.375 15.774 5.754 15z"/></svg>';
             lebelBtnServices.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="services_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Servicios</title><path class="cls-1" d="M21 8a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-1.062A8.001 8.001 0 0 1 12 23v-2a6 6 0 0 0 6-6V9A6 6 0 1 0 6 9v7H3a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1.062a8.001 8.001 0 0 1 15.876 0H21zM7.76 15.785l1.06-1.696A5.972 5.972 0 0 0 12 15a5.972 5.972 0 0 0 3.18-.911l1.06 1.696A7.963 7.963 0 0 1 12 17a7.963 7.963 0 0 1-4.24-1.215z"/></svg>';
-            //*'<svg class="nav_menu_icon_svg" id="services_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Servicios</title><path class="cls-1" d="M12 .5l4.226 6.183 7.187 2.109-4.575 5.93.215 7.486L12 19.69l-7.053 2.518.215-7.486-4.575-5.93 7.187-2.109L12 .5zm0 3.544L9.022 8.402 3.957 9.887l3.225 4.178-.153 5.275L12 17.566l4.97 1.774-.152-5.275 3.224-4.178-5.064-1.485L12 4.044zM10 12a2 2 0 1 0 4 0h2a4 4 0 1 1-8 0h2z"/></svg>';
             lebelBtnPortfolio.innerHTML =
-                '<svg class="nav_menu_icon_svg" id="portfolio_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Portafolio</title><path class="cls-1" d="M17.409 19c-.776-2.399-2.277-3.885-4.266-5.602A10.954 10.954 0 0 1 20 11V3h1.008c.548 0 .992.445.992.993v16.014a1 1 0 0 1-.992.993H2.992A.993.993 0 0 1 2 20.007V3.993A1 1 0 0 1 2.992 3H6V1h2v4H4v7c5.22 0 9.662 2.462 11.313 7h2.096zM18 1v4h-8V3h6V1h2zm-1.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>';
+                //*'<svg class="nav_menu_icon_svg" id="portfolio_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Portafolio</title><path class="cls-1" d="M17.409 19c-.776-2.399-2.277-3.885-4.266-5.602A10.954 10.954 0 0 1 20 11V3h1.008c.548 0 .992.445.992.993v16.014a1 1 0 0 1-.992.993H2.992A.993.993 0 0 1 2 20.007V3.993A1 1 0 0 1 2.992 3H6V1h2v4H4v7c5.22 0 9.662 2.462 11.313 7h2.096zM18 1v4h-8V3h6V1h2zm-1.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>';
+                //*'<svg class="nav_menu_icon_svg" id="portfolio_icon_svg" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Portafolio</title><path class="cls-1" d="m2 19v-14c0-.552.447-1 1-1 .542 0 4.418 2.028 9 2.028 4.593 0 8.456-2.028 9-2.028.55 0 1 .447 1 1v14c0 .553-.45 1-1 1-.544 0-4.407-2.028-9-2.028-4.582 0-8.458 2.028-9 2.028-.553 0-1-.448-1-1zm1.5-.791 6.449-7.691c.289-.344.879-.338 1.16.012 0 0 1.954 2.434 1.954 2.434l1.704-1.283c.319-.24.816-.168 1.054.154l4.679 6.335v-12.44c-1.58.58-4.819 1.798-8.5 1.798-3.672 0-6.918-1.218-8.5-1.799zm2.657-.834c1.623-.471 3.657-.903 5.843-.903 2.309 0 4.444.479 6.105.98l-3.041-4.117-1.065.802.275.344c.259.323.206.796-.117 1.054-.323.259-.795.207-1.054-.117l-2.591-3.236zm.698-9.534c-1.051 0-1.905.854-1.905 1.905s.854 1.904 1.905 1.904 1.904-.853 1.904-1.904-.853-1.905-1.904-1.905zm0 1.3c.333 0 .604.271.604.605 0 .333-.271.604-.604.604-.334 0-.605-.271-.605-.604 0-.334.271-.605.605-.605z" fill-rule="nonzero"/></svg>';
+                '<svg class="nav_menu_icon_svg" id="portfolio_icon_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Portafolio</title><path class="cls-1" d="M19 3H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM5 19V5h14l.002 14H5z"></path><path class="cls-1" d="m10 14-1-1-3 4h12l-5-7z"></path></svg>';
             lebelBtnClients.innerHTML =
-                '<svg class="nav_menu_icon_svg" id="clients_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Clientes</title><path class="cls-1" d="M12 8.5l2.116 5.088 5.492.44-4.184 3.584 1.278 5.36L12 20.1l-4.702 2.872 1.278-5.36-4.184-3.584 5.492-.44L12 8.5zM8 2v9H6V2h2zm10 0v9h-2V2h2zm-5 0v5h-2V2h2z"/></svg>';
-            //* '<svg class="nav_menu_icon_svg" id="clients_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Clientes</title><path class="cls-1" d="M12 8.5l2.116 5.088 5.492.44-4.184 3.584 1.278 5.36L12 20.1l-4.702 2.872 1.278-5.36-4.184-3.584 5.492-.44L12 8.5zm0 5.207l-.739 1.777-1.916.153 1.46 1.251-.447 1.871L12 17.756l1.641 1.003-.446-1.87 1.459-1.252-1.915-.153L12 13.707zM8 2v9H6V2h2zm10 0v9h-2V2h2zm-5 0v5h-2V2h2z"/></svg>';
-            //* '<svg class="nav_menu_icon_svg" id="clients_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Clientes</title><path class="cls-1" d="M2 19h20v2H2v-2zm9-11h2v8h-2V8zM7.965 8h2.125l-2.986 7.964h-2L2.118 8h2.125l1.861 5.113L7.965 8zM17 14v2h-2V8h4a3 3 0 0 1 0 6h-2zm0-4v2h2a1 1 0 0 0 0-2h-2zM2 3h20v2H2V3z"/></svg>';
-            //*'<svg class="nav_menu_icon_svg" id="clients_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Clientes</title><path class="cls-1" d="M12 1l8.217 1.826c.457.102.783.507.783.976v9.987c0 2.006-1.003 3.88-2.672 4.992L12 23l-6.328-4.219C4.002 17.668 3 15.795 3 13.79V3.802c0-.469.326-.874.783-.976L12 1zm0 2.049L5 4.604v9.185c0 1.337.668 2.586 1.781 3.328L12 20.597l5.219-3.48C18.332 16.375 19 15.127 19 13.79V4.604L12 3.05zm4.452 5.173l1.415 1.414L11.503 16 7.26 11.757l1.414-1.414 2.828 2.828 4.95-4.95z"/></svg>';
+                //*'<svg class="nav_menu_icon_svg" id="clients_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Clientes</title><path class="cls-1" d="M12 8.5l2.116 5.088 5.492.44-4.184 3.584 1.278 5.36L12 20.1l-4.702 2.872 1.278-5.36-4.184-3.584 5.492-.44L12 8.5zM8 2v9H6V2h2zm10 0v9h-2V2h2zm-5 0v5h-2V2h2z"/></svg>';
+                //*'<svg class="nav_menu_icon_svg" id="clients_icon_svg" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path class="cls-1" d="M3.5 16.343l1.07 2.207 2.43.335-1.769 1.7.432 2.415-2.163-1.157-2.163 1.157.432-2.415-1.769-1.7 2.43-.335 1.07-2.207zm8.5 0l1.07 2.207 2.43.335-1.769 1.7.432 2.415-2.163-1.157-2.163 1.157.432-2.415-1.769-1.7 2.43-.335 1.07-2.207zm8.5 0l1.07 2.207 2.43.335-1.769 1.7.432 2.415-2.163-1.157-2.163 1.157.432-2.415-1.769-1.7 2.43-.335 1.07-2.207zm-.993-3.343h-.01c.022-4.906-2.246-2.772-2.246-6.676 0-1.507.983-2.324 2.248-2.324 1.869 0 3.169 1.787 1.399 5.129-.581 1.099.62 1.359 1.91 1.657 1.118.258 1.192.805 1.192 1.751v2.463h-4.493v-2zm-19.507 2v-2.463c0-.946.074-1.493 1.192-1.751 1.29-.298 2.491-.558 1.91-1.657-1.77-3.342-.47-5.129 1.399-5.129 1.265 0 2.248.817 2.248 2.324 0 3.904-2.268 1.77-2.246 6.676h.005v2h-4.508zm6 0v-2.623c0-1.258.1-1.985 1.588-2.329 1.684-.389 3.344-.736 2.545-2.209-2.366-4.364-.674-6.839 1.866-6.839 2.491 0 4.226 2.383 1.866 6.839-.775 1.464.826 1.812 2.545 2.209 1.49.344 1.589 1.072 1.589 2.333l.001 2.619h-12z"/></svg>';
+                '<svg class="nav_menu_icon_svg" id="clients_icon_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Clientes</title><path class="cls-1" d="M21.947 9.179a1.001 1.001 0 0 0-.868-.676l-5.701-.453-2.467-5.461a.998.998 0 0 0-1.822-.001L8.622 8.05l-5.701.453a1 1 0 0 0-.619 1.713l4.213 4.107-1.49 6.452a1 1 0 0 0 1.53 1.057L12 18.202l5.445 3.63a1.001 1.001 0 0 0 1.517-1.106l-1.829-6.4 4.536-4.082c.297-.268.406-.686.278-1.065z"></path></svg>';
             lebelBtnContact.innerHTML =
-                '<svg class="nav_menu_icon_svg" id="contact_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Contactame</title><path class="cls-1" d="M6.455 19L2 22.5V4a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H6.455zm-.692-2H20V5H4v13.385L5.763 17zM11 10h2v2h-2v-2zm-4 0h2v2H7v-2zm8 0h2v2h-2v-2z"/></svg>';
+                '<svg class="nav_menu_icon_svg" id="contact_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Contacto</title><path class="cls-1" d="M6.455 19L2 22.5V4a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H6.455zm-.692-2H20V5H4v13.385L5.763 17zM11 10h2v2h-2v-2zm-4 0h2v2H7v-2zm8 0h2v2h-2v-2z"/></svg>';
             btnMenuContainer.style.display = "none";
             btnsNavContainer.style.display = "flex";
             menuSocialContainer.style.display = "flex";
@@ -632,7 +650,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             closeMenu();
         } else if (widConf <= secondBreak) {
-            copyrightText.style.marginLeft = "0";
+            copyrightText.style.marginLeft = "1rem";
             btnLegalFooter.innerHTML =
                 '<svg class="footer_menu_icon_svg" id="legals_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Legales</title><path class="cls-1" d="M19 22H5a3 3 0 0 1-3-3V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v12h4v4a3 3 0 0 1-3 3zm-1-5v2a1 1 0 0 0 2 0v-2h-2zm-2 3V4H4v15a1 1 0 0 0 1 1h11zM6 7h8v2H6V7zm0 4h8v2H6v-2zm0 4h5v2H6v-2z"/></svg>';
             btnDataFooter.innerHTML =
@@ -749,7 +767,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const fixHeight = windowHeight - navHeight;
         window.scrollTo(0, fixHeight);
     };
-
     //! SIZE FUNCTIONS
     //^CHECK MENU SECTION POSITION && **/HIGHLIGHT IN THE MENU THE SECTION TARGET
     sections.forEach((section) => {
@@ -970,7 +987,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     });
                 };
-
+                optionType.addEventListener("enter", createSearchedCards);
                 optionType.addEventListener("click", createSearchedCards);
             });
         } catch (error) {
@@ -984,7 +1001,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const openSelectList = () => {
         const selectionTypesList = document.querySelector("#selection_list_type_of_projects");
         const arrowSvg = document.querySelector("#arrow_btn_select_list_svg");
-        arrowSvg.style.transform = "rotate(-180deg)";
+        arrowSvg.style.transform = "rotate(540deg)";
         selectionTypesList.style.height = "fit-content";
         selectListStatus = open;
     };
@@ -1009,6 +1026,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 closeSelectList();
             }
         };
+
+        searchListBtn.addEventListener("enter", selectListActions);
         searchListBtn.addEventListener("click", selectListActions);
     });
     btnsListObserve.observe(searchBtnsContainer, { childList: true });
@@ -1136,6 +1155,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 //*console.log(sliderFullCountServices, sliderSearched, sliderWidth, 'by equal than 0');
             }
         };
+        marker.addEventListener("enter", checkSlider);
         marker.addEventListener("click", checkSlider);
     });
 
