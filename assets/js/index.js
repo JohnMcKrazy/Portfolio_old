@@ -161,9 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let menuStatus = close;
     let menuSocialStatus = close;
-    let contactModalStatus = close;
-    let alertStorageModalStatus = open;
-    let legalModalStatus = close;
     let selectListStatus = close;
     let slidersServicesCount = 0;
     let sliderFullCountServices = 0;
@@ -473,19 +470,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1200);
     };
 
-    //^ CONTACT MODAL OPEN
-    const openContactModal = () => {
-        if (contactModalStatus === close) {
-            openModal(contactModal);
-            contactModalStatus = open;
-        }
-    };
-
     //^ ALERT STORAGE MODAL CLOSE
     const acceptStorage = () => {
         storageForJohnKPage["page_alert_status"] = close;
         closeModal(storageAlertModal);
-        alertStorageModalStatus = close;
         localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
         console.log(localStorage.getItem(localStorageName));
     };
@@ -1172,12 +1160,10 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", () => {
             switch (dataName) {
                 case "storage":
-                    alertStorageModalStatus = close;
                     closeModal(storageAlertModal);
                     break;
                 case "legal":
                     const currentPosition = modalInfoLegal.getBoundingClientRect().top;
-                    legalModalStatus = close;
                     if (currentPosition !== 0) {
                         modalInfoLegal.scrollTo(currentPosition, 0);
                         setTimeout(() => {
@@ -1188,7 +1174,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                     break;
                 case "contact":
-                    contactModalStatus = close;
                     closeModal(contactModal);
                     break;
             }
@@ -1202,16 +1187,28 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", () => {
             switch (dataName) {
                 case "legal":
-                    legalModalStatus = open;
                     openModal(legalModal);
                     break;
                 case "data":
-                    alertStorageModalStatus = open;
                     openModal(storageAlertModal);
+                    break;
+                case "inter":
+                    storageAlertModal.style.opacity = "0";
+                    storageAlertModal.style.transform = "translate(-50%,-50%)";
+                    setTimeout(() => {
+                        storageAlertModal.style.display = none;
+                        legalModal.style.display = flx;
+                        setTimeout(() => {
+                            legalModal.style.transform = "translate(-50%, 0)";
+                            legalModal.style.opacity = "1";
+                        }, 200);
+                    }, 1200);
                     break;
             }
         });
     });
+
+    menuSocialBtn.addEventListener("click", socialMenuBtnActions);
     //^BTN LEFT SLIDER
     sliderBtnLeftServices.addEventListener("click", () => {
         const sliderWidth = sliderWindowContainerServices.getBoundingClientRect().width;
@@ -1279,7 +1276,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //^ CONTACT BTNS OPEN MODAL
     btnsContact.forEach((btn) => {
-        btn.addEventListener("click", openContactModal);
+        btn.addEventListener("click", () => openModal(contactModal));
     });
 
     //^ SEND FORM
