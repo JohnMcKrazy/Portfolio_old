@@ -19,19 +19,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnsContact = document.querySelectorAll(".contact_btn");
     const btnsTheme = document.querySelectorAll(".btn_theme");
     const sections = document.querySelectorAll(".section");
-    const legalBtns = document.querySelectorAll(".btn_link_legal");
-    const dataBtns = document.querySelectorAll(".btn_link_data");
 
+    const btnsLinks = document.querySelectorAll(".btn_link");
     //^ CONTAINERS WITH ANIMATION FUNCTIONS
     const swipeAnimationContainersFull = document.querySelectorAll(".swipe_animation_container_full");
     const swipeAnimationContainersHalf = document.querySelectorAll(".swipe_animation_container_half");
     const animationContainerText = document.querySelectorAll(".text_animation_container");
     //^ MODALS
+    const modalContainer = document.querySelector(".modals_container");
+    const closeModalBtn = document.querySelectorAll(".close_modal_btn");
     //& CONTACT MODAL
     const sendBtnFormModal = document.querySelector("#contact_form_send_btn");
     const contactModal = document.querySelector("#contact_modal");
-    const closeBtnModalContactForm = document.querySelector("#modal_form_close_btn");
-    const closeBtnLegalModal = document.querySelector("#modal_legal_close_btn");
     //& LEGAL MODAL
     const modalInfoLegal = document.querySelector("#modal_info_legal");
     const legalModal = document.querySelector("#legal_modal");
@@ -41,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
     //& STORAGE MODAL
     const storageAlertModal = document.querySelector("#storage_alert_modal");
     const acceptBtnStorageWarningBtn = document.querySelector("#storage_alert_modal_accept_btn");
-    const closeBtnAlertModal = document.querySelector("#alert_modal_storage_close_btn");
 
     //^ MENU CONTENT
     const menuContainer = document.querySelector("#menu_container");
@@ -151,6 +149,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const moonIcon =
         '<svg class="theme_icon_svg" id="moon_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Tema noche</title><path class="cls-1" d="M11.38 2.019a7.5 7.5 0 1 0 10.6 10.6C21.662 17.854 17.316 22 12.001 22 6.477 22 2 17.523 2 12c0-5.315 4.146-9.661 9.38-9.981z"/></svg>';
 
+    //^ DISPLAY NAMES
+    const flx = "flex";
+    const blk = "block";
+    const none = "none";
     //^ STATUS
     const close = "close";
     const open = "open";
@@ -309,20 +311,19 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
             console.log("local storage item is created");
             setTimeout(() => {
-                animateItem(storageAlertModal, "1", "translateY(0)");
+                openModal(storageAlertModal, "1", "translateY(0)");
             }, 2000);
         } else if (storageContent && storageContent["page_alert_status"] === open) {
             storageForJohnKPage["page_view_count"] = storageContent["page_view_count"] + 1;
             localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
             console.log(`local storage item answer= ${storageContent["page_alert_status"]}, page views= ${storageContent["page_view_count"]}`);
             setTimeout(() => {
-                animateItem(storageAlertModal, "1", "translateY(0)");
+                openModal(storageAlertModal, "1", "translateY(0)");
             }, 2000);
         } else if (storageContent && storageContent["page_alert_status"] === close) {
             storageForJohnKPage["page_alert_status"] = close;
             storageForJohnKPage["page_view_count"] = storageContent["page_view_count"] + 1;
             localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
-            storageAlertModal.style.display = "none";
             console.log(`local storage item answer= ${storageContent["page_alert_status"]}, page views= ${storageContent["page_view_count"]}`);
         }
     };
@@ -345,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //^ INSERT FLEX
     const insertFlex = (cont, dir, jc, ai) => {
-        cont.style.display = "flex";
+        cont.style.display = flx;
         cont.style.flexDirection = dir;
         cont.style.justifyContent = jc;
         cont.style.alignItems = ai;
@@ -369,7 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (entry.isIntersecting && dataNameContainer === "loader_cards_hot_container") {
                 animateItem(spinnerHotCardsContainer, "0", "translateY(-4rem)");
                 setTimeout(() => {
-                    loaderSearchCardsContainer.style.display = "none";
+                    loaderSearchCardsContainer.style.display = none;
                     createProjectCardHot();
                     setTimeout(() => {
                         loadersObserver.unobserve(spinnerHotCardsContainer);
@@ -378,7 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if (entry.isIntersecting && dataNameContainer === "loader_cards_search_container") {
                 animateItem(spinnerSearchCardContainer, "0", "translateY(-4rem)");
                 setTimeout(() => {
-                    loaderHotCardsContainer.style.display = "none";
+                    loaderHotCardsContainer.style.display = none;
 
                     createProjectCardRandom();
                     setTimeout(() => {
@@ -452,15 +453,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //^GENERAL MODAL ACTIONS
     const openModal = (cont) => {
-        cont.style.display = "flex";
+        modalContainer.style.display = blk;
         setTimeout(() => {
-            animateItem(cont, "1", "translate(-50%, 0)");
+            modalContainer.style.opacity = "1";
+            cont.style.display = flx;
+            setTimeout(() => {
+                animateItem(cont, "1", "translate(-50%, 0)");
+            }, 1200);
         }, 500);
     };
     const closeModal = (cont) => {
         animateItem(cont, "0", "translate(-50%, -50%)");
         setTimeout(() => {
-            cont.style.display = "none";
+            modalContainer.style.opacity = "0";
+            setTimeout(() => {
+                cont.style.display = none;
+                modalContainer.style.display = none;
+            }, 1200);
         }, 1200);
     };
 
@@ -472,50 +481,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    //^ CONTACT MODAL CLOSE
-    const closeContactModal = () => {
-        if (contactModalStatus === open) {
-            closeModal(contactModal);
-            contactModalStatus = close;
-        }
-    };
-
-    //^ ALERT MODAL OPEN
-    const openAlert = (cont) => {
-        cont.style.display = "block";
-        setTimeout(() => {
-            animateItem(cont, "1", "translateY(0)");
-        }, 100);
-    };
-
-    //^ ALERT MODAL CLOSE
-    const closeAlert = (cont) => {
-        animateItem(cont, "0", "translateY(-50%)");
-        setTimeout(() => {
-            cont.style.display = "none";
-        }, 1100);
-    };
-
     //^ ALERT STORAGE MODAL CLOSE
-    const closeAlertStorageModal = () => {
+    const acceptStorage = () => {
         storageForJohnKPage["page_alert_status"] = close;
-        closeAlert(storageAlertModal);
+        closeModal(storageAlertModal);
+        alertStorageModalStatus = close;
         localStorage.setItem(localStorageName, JSON.stringify(storageForJohnKPage));
         console.log(localStorage.getItem(localStorageName));
-    };
-
-    //^ LEGAL MODAL CLOSE
-    const closeLegalModal = () => {
-        const currentPosition = modalInfoLegal.getBoundingClientRect().top;
-        legalModalStatus = close;
-        if (currentPosition !== 0) {
-            modalInfoLegal.scrollTo(currentPosition, 0);
-            setTimeout(() => {
-                closeModal(legalModal);
-            }, 500);
-        } else {
-            closeModal(legalModal);
-        }
     };
 
     //^ RETURN THE PAGE TO THE PAGE TOP
@@ -565,9 +537,9 @@ document.addEventListener("DOMContentLoaded", () => {
             lebelBtnPortfolio.innerHTML = setBtnLabel("Portafolio");
             lebelBtnClients.innerHTML = setBtnLabel("Clientes");
             lebelBtnContact.innerHTML = setBtnLabel("Contacto");
-            btnMenuContainer.style.display = "none";
-            btnsNavContainer.style.display = "flex";
-            menuSocialContainer.style.display = "flex";
+            btnMenuContainer.style.display = none;
+            btnsNavContainer.style.display = flx;
+            menuSocialContainer.style.display = flx;
             servicesContainer.classList.add("services_container_one_column");
             servicesContainer.classList.remove("services_container_two_columns");
 
@@ -628,9 +600,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 '<svg class="nav_menu_icon_svg" id="clients_icon_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Clientes</title><path class="cls-1" d="M21.947 9.179a1.001 1.001 0 0 0-.868-.676l-5.701-.453-2.467-5.461a.998.998 0 0 0-1.822-.001L8.622 8.05l-5.701.453a1 1 0 0 0-.619 1.713l4.213 4.107-1.49 6.452a1 1 0 0 0 1.53 1.057L12 18.202l5.445 3.63a1.001 1.001 0 0 0 1.517-1.106l-1.829-6.4 4.536-4.082c.297-.268.406-.686.278-1.065z"></path></svg>';
             lebelBtnContact.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="contact_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Contacto</title><path class="cls-1" d="M6.455 19L2 22.5V4a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H6.455zm-.692-2H20V5H4v13.385L5.763 17zM11 10h2v2h-2v-2zm-4 0h2v2H7v-2zm8 0h2v2h-2v-2z"/></svg>';
-            btnMenuContainer.style.display = "none";
-            btnsNavContainer.style.display = "flex";
-            menuSocialContainer.style.display = "flex";
+            btnMenuContainer.style.display = none;
+            btnsNavContainer.style.display = flx;
+            menuSocialContainer.style.display = flx;
             servicesContainer.classList.add("services_container_one_column");
             servicesContainer.classList.remove("services_container_more_columns");
             insertFlex(skillsContainer, "row", "center", "flex-start");
@@ -676,9 +648,9 @@ document.addEventListener("DOMContentLoaded", () => {
             btnDataFooter.innerHTML =
                 '<svg class="footer_menu_icon_svg" id="data_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Uso de datos</title><path class="cls-1" d="M5 12.5c0 .313.461.858 1.53 1.393C7.914 14.585 9.877 15 12 15c2.123 0 4.086-.415 5.47-1.107 1.069-.535 1.53-1.08 1.53-1.393v-2.171C17.35 11.349 14.827 12 12 12s-5.35-.652-7-1.671V12.5zm14 2.829C17.35 16.349 14.827 17 12 17s-5.35-.652-7-1.671V17.5c0 .313.461.858 1.53 1.393C7.914 19.585 9.877 20 12 20c2.123 0 4.086-.415 5.47-1.107 1.069-.535 1.53-1.08 1.53-1.393v-2.171zM3 17.5v-10C3 5.015 7.03 3 12 3s9 2.015 9 4.5v10c0 2.485-4.03 4.5-9 4.5s-9-2.015-9-4.5zm9-7.5c2.123 0 4.086-.415 5.47-1.107C18.539 8.358 19 7.813 19 7.5c0-.313-.461-.858-1.53-1.393C16.086 5.415 14.123 5 12 5c-2.123 0-4.086.415-5.47 1.107C5.461 6.642 5 7.187 5 7.5c0 .313.461.858 1.53 1.393C7.914 9.585 9.877 10 12 10z"/></svg>';
 
-            btnsNavContainer.style.display = "none";
-            btnMenuContainer.style.display = "flex";
-            menuSocialContainer.style.display = "none";
+            btnsNavContainer.style.display = none;
+            btnMenuContainer.style.display = flx;
+            menuSocialContainer.style.display = none;
 
             insertFlex(skillsContainer, "column", "flex-start", "center");
             servicesContainer.classList.add("services_container_more_columns");
@@ -910,7 +882,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let iconsRow = "";
         const cloneProjectCard = cardProjectTemplate.cloneNode(true);
         const projectCard = cloneProjectCard.querySelector(".project_card");
-        const fieldsetCard = cloneProjectCard.querySelector(".btns_flag_project_container");
+        const projectCardIconsContainer = cloneProjectCard.querySelector(".icons_project_container");
         const cardTitle = cloneProjectCard.querySelector(".title");
         const moreBtn = cloneProjectCard.querySelector(".more_btn");
         //* ******************************************************************************** *//
@@ -922,13 +894,13 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(tech);
             infoSoftware.forEach((technology) => {
                 if (technology.tech_name === tech) {
-                    /* fieldsetCard.innerHTML += technology.icon; */
+                    /* projectCardIconsContainer.innerHTML += technology.icon; */
                     console.log(technology.icon);
                     iconsRow += technology.icon;
                 }
             });
         });
-        fieldsetCard.innerHTML = iconsRow;
+        projectCardIconsContainer.innerHTML = iconsRow;
         cardTitle.textContent = clientName;
 
         if (item["projects"]["project_link"] !== null && item["projects"]["project_link"] !== "") {
@@ -1190,18 +1162,56 @@ document.addEventListener("DOMContentLoaded", () => {
     btnLogo.addEventListener("click", toTheTop);
     btnMenuContainer.addEventListener("click", btnNavMenu);
     closeMenuBtn.addEventListener("click", closeMenu);
-    closeBtnModalContactForm.addEventListener("click", closeContactModal);
     btnHeroDown.addEventListener("click", scrollOneHeight);
-    acceptBtnStorageWarningBtn.addEventListener("click", closeAlertStorageModal);
-    legalAccept.addEventListener("click", closeLegalModal);
-    menuSocialBtn.addEventListener("click", socialMenuBtnActions);
-    closeBtnLegalModal.addEventListener("click", closeLegalModal);
+    acceptBtnStorageWarningBtn.addEventListener("click", acceptStorage);
 
-    //^CLOSE BTN ALERT
-    closeBtnAlertModal.addEventListener("click", () => {
-        closeAlert(storageAlertModal);
+    //^ CLOSE MODAL BTN
+    closeModalBtn.forEach((btn) => {
+        const dataName = btn.getAttribute("data-name");
+        console.log(dataName);
+        btn.addEventListener("click", () => {
+            switch (dataName) {
+                case "storage":
+                    alertStorageModalStatus = close;
+                    closeModal(storageAlertModal);
+                    break;
+                case "legal":
+                    const currentPosition = modalInfoLegal.getBoundingClientRect().top;
+                    legalModalStatus = close;
+                    if (currentPosition !== 0) {
+                        modalInfoLegal.scrollTo(currentPosition, 0);
+                        setTimeout(() => {
+                            closeModal(legalModal);
+                        }, 500);
+                    } else {
+                        closeModal(legalModal);
+                    }
+                    break;
+                case "contact":
+                    contactModalStatus = close;
+                    closeModal(contactModal);
+                    break;
+            }
+        });
     });
+    //^OPEN LEGALS
 
+    btnsLinks.forEach((btn) => {
+        const dataName = btn.getAttribute("data-name");
+        console.log(dataName);
+        btn.addEventListener("click", () => {
+            switch (dataName) {
+                case "legal":
+                    legalModalStatus = open;
+                    openModal(legalModal);
+                    break;
+                case "data":
+                    alertStorageModalStatus = open;
+                    openModal(storageAlertModal);
+                    break;
+            }
+        });
+    });
     //^BTN LEFT SLIDER
     sliderBtnLeftServices.addEventListener("click", () => {
         const sliderWidth = sliderWindowContainerServices.getBoundingClientRect().width;
@@ -1275,23 +1285,6 @@ document.addEventListener("DOMContentLoaded", () => {
     //^ SEND FORM
     sendBtnFormModal.addEventListener("click", (e) => {
         e.preventDefault();
-    });
-
-    //^LEGAL BTNS
-    legalBtns.forEach((btn) => {
-        const openLegalModal = () => {
-            if (alertStorageModalStatus === open) {
-                openModal(legalModal);
-                closeAlert(storageAlertModal);
-                alertStorageModalStatus = close;
-                legalModalStatus = open;
-            } else if (alertStorageModalStatus === close) {
-                openModal(legalModal);
-                closeAlert(storageAlertModal);
-                legalModalStatus = open;
-            }
-        };
-        btn.addEventListener("click", openLegalModal);
     });
 
     /* const checkMark = () => {

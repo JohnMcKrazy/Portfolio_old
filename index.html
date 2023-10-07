@@ -51,82 +51,95 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <!--!MODALS-->
-        <!--^^FIRST MESSAGE MODAL -->
-        <div class="alert_modal" id="storage_alert_modal">
-            <button class="close_btn close_modal_btn" id="alert_modal_storage_close_btn">
-                <svg class="close_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 25 25">
-                    <title>Cerrar</title>
-                    <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(12.5 -5.18) rotate(45)" />
-                    <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(30.18 12.5) rotate(135)" />
-                </svg>
-            </button>
-            <div class="modal_info">
-                <h1 class="title_modal">Aviso de uso de datos</h1>
-                <p class="description_modal">Esta pagina no utiliza cookies ni ninguno de sus datos</p>
-                <div class="btn_container">
-                    <button type="button" class="btn_link btn_link_legal">Avisos legales</button>
+        <div class="modals_container">
+            <!--!MODALS-->
+            <!--^^FIRST MESSAGE MODAL -->
+            <div class="modal alert_modal" id="storage_alert_modal">
+                <button class="close_btn close_modal_btn" id="alert_modal_storage_close_btn" data-name="storage">
+                    <svg class="close_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 25 25">
+                        <title>Cerrar</title>
+                        <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(12.5 -5.18) rotate(45)" />
+                        <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(30.18 12.5) rotate(135)" />
+                    </svg>
+                </button>
+                <div class="modal_info">
+                    <h1 class="title_modal">Aviso de uso de datos</h1>
+                    <p class="description_modal">Esta pagina no utiliza cookies ni ninguno de sus datos</p>
+                    <div class="btn_container">
+                        <button type="button" class="btn_link btn_link_legal">Avisos legales</button>
+                    </div>
+                </div>
+                <button type="button" class="btn more_btn" id="storage_alert_modal_accept_btn">Aceptar</button>
+            </div>
+            <!--^^LEGAL MODAL-->
+            <div class="modal" id="legal_modal">
+                <button class="close_btn close_modal_btn" id="modal_legal_close_btn" data-name="legal">
+                    <svg class="close_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 25 25">
+                        <title>Cerrar</title>
+                        <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(12.5 -5.18) rotate(45)" />
+                        <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(30.18 12.5) rotate(135)" />
+                    </svg>
+                </button>
+                <div class="modal_header">
+                    <h1 class="title_modal">Aviso Legal</h1>
+                    <h2>Avisos legales y articulos que mas aderlante incluire:</h2>
+                </div>
+                <div class="modal_info" id="modal_info_legal">
+                    <p class="description_modal">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sequi, magnam corrupti sed delectus odit tempore saepe nam asperiores enim, porro quod placeat qui sunt omnis deserunt nemo cupiditate. Soluta! Omnis illum voluptatibus veniam officiis commodi quisquam odio
+                        dolorum similique eum incidunt? Dolores vel perspiciatis veritatis, similique quis soluta, tempora ab maxime sit dolore minus ullam sunt aliquam, voluptatum numquam? Iure velit saepe perspiciatis incidunt optio facere quasi, repudiandae aspernatur? Quibusdam dolore tenetur
+                        distinctio ullam dicta dolores provident inventore cum repudiandae cupiditate, rerum rem magni alias assumenda corrupti, odit molestiae. Ab quis dicta delectus, natus voluptatum illum ex itaque assumenda animi officia dolorem quisquam sapiente molestias ipsa minima cumque,
+                        culpa molestiae magnam consequuntur possimus. Magnam illo nisi reprehenderit id voluptas! Ratione aliquid quo odio, dignissimos alias consequatur consequuntur neque ullam amet! Ad asperiores dolorem nostrum vitae dolore autem laudantium iusto unde totam voluptatem ipsam
+                        repellendus, perspiciatis, sequi obcaecati quia aperiam. Neque, qui atque nesciunt voluptas ad tempore velit asperiores harum temporibus repellat enim doloremque, fugiat similique inventore exercitationem minima consequuntur numquam culpa voluptatem ut eius? Sequi quo
+                        doloribus dolores cum. Quis sequi laborum cupiditate fugiat, repudiandae veniam maxime debitis, repellat repellendus praesentium similique corrupti modi. Ea ipsam tempora consequatur odit! Blanditiis autem et odio in excepturi officiis, cum inventore perspiciatis! Eligendi
+                        rem vero suscipit, dignissimos ullam consequuntur, laborum et non aspernatur doloribus voluptatum hic obcaecati. Eum magnam a soluta doloribus nam quae voluptate, velit quisquam doloremque odit rerum, ad totam? Sequi quidem doloremque quia voluptate adipisci eaque pariatur
+                        minus, eligendi, facere similique, provident ad soluta fugiat. Voluptatem hic pariatur, delectus enim distinctio eos! Fuga quos facilis recusandae fugit reprehenderit delectus. Animi eos eveniet atque libero quo quisquam officia, ducimus neque suscipit similique aliquid velit
+                        enim, recusandae voluptatibus laborum obcaecati. Maiores aut quae architecto molestiae quisquam nemo odio est soluta ut!
+                    </p>
+                    <div class="btn_container">
+                        <button type="button" class="btn more_btn" id="legal_modal_accept_btn">Aceptar</button>
+                    </div>
                 </div>
             </div>
-            <button type="button" class="btn more_btn" id="storage_alert_modal_accept_btn">Aceptar</button>
-        </div>
-        <!--^^LEGAL MODAL-->
-        <div class="modal" id="legal_modal">
-            <button class="close_btn close_modal_btn" id="modal_legal_close_btn">
-                <svg class="close_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 25 25">
-                    <title>Cerrar</title>
-                    <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(12.5 -5.18) rotate(45)" />
-                    <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(30.18 12.5) rotate(135)" />
-                </svg>
-            </button>
-            <div class="modal_header">
-                <h1 class="title_modal">Aviso Legal</h1>
-                <h2>Avisos legales y articulos que mas aderlante incluire:</h2>
-            </div>
-            <div class="modal_info" id="modal_info_legal">
-                <p class="description_modal">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sequi, magnam corrupti sed delectus odit tempore saepe nam asperiores enim, porro quod placeat qui sunt omnis deserunt nemo cupiditate. Soluta! Omnis illum voluptatibus veniam officiis commodi quisquam odio dolorum
-                    similique eum incidunt? Dolores vel perspiciatis veritatis, similique quis soluta, tempora ab maxime sit dolore minus ullam sunt aliquam, voluptatum numquam? Iure velit saepe perspiciatis incidunt optio facere quasi, repudiandae aspernatur? Quibusdam dolore tenetur distinctio
-                    ullam dicta dolores provident inventore cum repudiandae cupiditate, rerum rem magni alias assumenda corrupti, odit molestiae. Ab quis dicta delectus, natus voluptatum illum ex itaque assumenda animi officia dolorem quisquam sapiente molestias ipsa minima cumque, culpa molestiae
-                    magnam consequuntur possimus. Magnam illo nisi reprehenderit id voluptas! Ratione aliquid quo odio, dignissimos alias consequatur consequuntur neque ullam amet! Ad asperiores dolorem nostrum vitae dolore autem laudantium iusto unde totam voluptatem ipsam repellendus,
-                    perspiciatis, sequi obcaecati quia aperiam. Neque, qui atque nesciunt voluptas ad tempore velit asperiores harum temporibus repellat enim doloremque, fugiat similique inventore exercitationem minima consequuntur numquam culpa voluptatem ut eius? Sequi quo doloribus dolores cum.
-                    Quis sequi laborum cupiditate fugiat, repudiandae veniam maxime debitis, repellat repellendus praesentium similique corrupti modi. Ea ipsam tempora consequatur odit! Blanditiis autem et odio in excepturi officiis, cum inventore perspiciatis! Eligendi rem vero suscipit,
-                    dignissimos ullam consequuntur, laborum et non aspernatur doloribus voluptatum hic obcaecati. Eum magnam a soluta doloribus nam quae voluptate, velit quisquam doloremque odit rerum, ad totam? Sequi quidem doloremque quia voluptate adipisci eaque pariatur minus, eligendi, facere
-                    similique, provident ad soluta fugiat. Voluptatem hic pariatur, delectus enim distinctio eos! Fuga quos facilis recusandae fugit reprehenderit delectus. Animi eos eveniet atque libero quo quisquam officia, ducimus neque suscipit similique aliquid velit enim, recusandae
-                    voluptatibus laborum obcaecati. Maiores aut quae architecto molestiae quisquam nemo odio est soluta ut!
-                </p>
-                <div class="btn_container">
-                    <button type="button" class="btn more_btn" id="legal_modal_accept_btn">Aceptar</button>
+            <!--^^CONTACT MODAL-->
+            <div class="modal" id="contact_modal">
+                <button class="close_btn close_modal_btn" id="modal_form_close_btn" data-name="contact">
+                    <svg class="close_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 25 25">
+                        <title>Cerrar</title>
+                        <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(12.5 -5.18) rotate(45)" />
+                        <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(30.18 12.5) rotate(135)" />
+                    </svg>
+                </button>
+                <h1 class="title_modal">¿Quieres contactarme?</h1>
+                <div class="modal_info" id="modal_info_contact_form">
+                    <p class="description_modal">
+                        Dame la oportunidad de realizar tu pagina soñada, contactame para que plasmemos tu idea y la hagamos realidad<br /><br />Puedes contactarte conmigo para hablar sobre alguna idea para trabajar juntos, con el siguiente formulario puedes mandarme tu propuesta
+                    </p>
                 </div>
+                <form class="modal_form" id="modal_contact_form">
+                    <div class="input_container">
+                        <label for="input_name">Nombre/s</label>
+                        <input type="text" placeholder="Escribe tu/s Nombre/s" id="input_name" name="name" />
+                    </div>
+
+                    <div class="input_container">
+                        <label for="input_last_name">Apellidos</label>
+                        <input type="text" placeholder="Escribe tu Apellido" id="input_last_name" name="last_name" />
+                    </div>
+
+                    <div class="input_container">
+                        <label for="input_email">Email</label>
+                        <input type="email" placeholder="Escribe tu Email" id="input_email" name="email" />
+                    </div>
+
+                    <div class="input_container last">
+                        <label for="input_textarea">Descripción</label>
+                        <textarea id="input_textarea" name="description" placeholder="Comparte me un resumen de tu idea"></textarea>
+                    </div>
+                    <button type="submit" class="btn send_btn" id="contact_form_send_btn">Enviar</button>
+                </form>
             </div>
         </div>
-        <!--^^CONTACT MODAL-->
-        <div class="modal" id="contact_modal">
-            <button class="close_btn close_modal_btn" id="modal_form_close_btn">
-                <svg class="close_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 25 25">
-                    <title>Cerrar</title>
-                    <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(12.5 -5.18) rotate(45)" />
-                    <rect class="cls-1" x="-1.92" y="11.32" width="28.83" height="2.36" transform="translate(30.18 12.5) rotate(135)" />
-                </svg>
-            </button>
-            <h1 class="title_modal">¿Quieres contactarme?</h1>
-            <div class="modal_info" id="modal_info_contact_form">
-                <p class="description_modal">Si quisieras contactarte conmigo para hablar sobre alguna idea para trabajar juntos, con el siguiente formulario puedes mandarme tu propuesta</p>
-            </div>
-            <form class="modal_form" id="modal_contact_form">
-                <label for="name_input">Nombre </label>
-                <input type="text" placeholder="Coloca tu nombre" name="name_input" required />
-
-                <label for="issue_input">Asunto </label>
-                <input type="text" placeholder="Coloca el asunto" name="issue_input" required />
-
-                <label for="email_input">Correo </label>
-                <input type="email" placeholder="Coloca tu Correo" name="email_input" required />
-
-                <button type="submit" class="btn send_btn" id="contact_form_send_btn">Enviar</button>
-            </form>
-        </div>
-
         <!--!MENUS STATIC STICKY -->
         <!--^^SOCIAL MENU CONTAINER-->
         <div id="menu_social_container">
@@ -1447,25 +1460,37 @@
                     <div class="swipe_animation_container_full">
                         <h1 class="title_section animation_up" id="title_contact">Contacto</h1>
                     </div>
+
                     <div class="form_info">
                         <h2 class="subtitle_section">¿Quieres contactarme?</h2>
-                        <p class="description_contact_section">Si quisieras contactarte conmigo para hablar sobre alguna idea para trabajar juntos, con el siguiente formulario puedes mandarme tu propuesta</p>
+                        <p class="description_contact_section">
+                            Dame la oportunidad de realizar tu pagina soñada, contactame para que plasmemos tu idea y la hagamos realidad<br /><br />Puedes contactarte conmigo para hablar sobre alguna idea para trabajar juntos, con el siguiente formulario puedes mandarme tu propuesta
+                        </p>
                     </div>
                     <div class="form_container">
                         <form class="contact_form" id="contact_form_contact_section">
-                            <label for="name_input">Nombre </label>
-                            <input type="text" placeholder="Coloca tu nombre" name="name_input" />
+                            <div class="input_container">
+                                <label for="input_name">Nombre/s</label>
+                                <input type="text" placeholder="Escribe tu/s Nombre/s" id="input_name" name="name" />
+                            </div>
 
-                            <label for="issue_input">Asunto </label>
-                            <input type="text" placeholder="Coloca el asunto" name="issue_input" required />
+                            <div class="input_container">
+                                <label for="input_last_name">Apellidos</label>
+                                <input type="text" placeholder="Escribe tu Apellido" id="input_last_name" name="last_name" />
+                            </div>
 
-                            <label for="email_input">Correo </label>
-                            <input type="email" placeholder="Coloca tu Correo" name="email_input" required />
+                            <div class="input_container">
+                                <label for="input_email">Email</label>
+                                <input type="email" placeholder="Escribe tu Email" id="input_email" name="email" />
+                            </div>
 
+                            <div class="input_container last">
+                                <label for="input_textarea">Descripción</label>
+                                <textarea id="input_textarea" name="description" placeholder="Comparte me un resumen de tu idea"></textarea>
+                            </div>
                             <button type="submit" class="btn send_btn" id="contact_form_contact_section_send_btn">Enviar</button>
                         </form>
                     </div>
-                    <div id="contact_card_container"></div>
                 </div>
             </div>
         </section>
@@ -1555,8 +1580,8 @@
             <div id="menu_legals_container">
                 <h2 class="subtitle_footer">Avisos</h2>
                 <div id="menu_legals_btns_container">
-                    <button type="button" class="btn_link btn_link_legal" id="btn_legal_legals">Legales</button>
-                    <button type="button" class="btn_link btn_link_data" id="btn_data_legals">Uso de datos</button>
+                    <button type="button" class="btn_link" id="btn_legal_legals" data-name="legal">Legales</button>
+                    <button type="button" class="btn_link" id="btn_data_legals" data-name="data">Uso de datos</button>
                 </div>
                 <div id="made_container">
                     <div id="made_content">
@@ -1617,8 +1642,8 @@
             </div>
         </footer>
 
-        <!--!EXTRAS>
-        <!--^^SOUDS>
+        <!--!EXTRAS-->
+        <!--^^SOUDS-->
         <!-- <audio id="menu_open_sound">
             <source src="/assets/media/Tech-13.wav" type="audio/wav" />
         </audio> -->
@@ -1632,13 +1657,11 @@
         <!--&CARD TEMPLATE-->
         <template id="card_project_template">
             <div class="project_card card_up" id="" tabindex="0">
-                <div class="project_info">
-                    <div class="info_project_container">
-                        <h2 class="title"></h2>
-
-                        <div class="btns_flag_project_container margin_bottom"></div>
-                        <a href="" class="more_btn btn" tabindex="-1" data-link="" target="_blank">Ir a proyecto</a>
-                    </div>
+                <div class="info_project_container">
+                    <h2 class="title"></h2>
+                    <h3 class="subtitle">Realizado con:</h3>
+                    <div class="icons_project_container margin_bottom"></div>
+                    <a href="" class="more_btn btn" tabindex="-1" data-link="" target="_blank">Ir a proyecto</a>
                 </div>
             </div>
         </template>

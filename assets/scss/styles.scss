@@ -69,9 +69,6 @@
         opacity: 0;
     }
 }
-.up_animation {
-    animation: textAnimation 3800ms ease-in-out forwards;
-}
 //^ MIXINS
 @mixin flex($jc, $ai) {
     display: flex;
@@ -169,6 +166,8 @@
     scroll-behavior: smooth;
     //!GENERAL OVER
     //! ******************************************************************************************************************************/
+    height: 100%;
+    width: 100%;
 }
 
 //^ THEMES
@@ -301,7 +300,7 @@
 }
 
 //^ BODY
-body {
+BODY {
     position: relative;
     background: var(--bgColor);
     scroll-behavior: smooth;
@@ -725,42 +724,61 @@ scrollbar-button,
     filter: grayscale(1);
 }
 
-img {
+IMG {
     width: 100%;
 }
-h1,
-h2,
-h3,
-h4 {
+H1,
+H2,
+H3,
+H4 {
     padding: 0;
     margin: 0;
 }
-p {
+P {
     font-size: var(--fontSizeS);
 
     font-weight: var(--fontWeightN);
 }
-h1 {
+H1 {
     color: var(--firstColor);
     font-size: var(--fontSizeX);
 }
-h2 {
+H2 {
     font-size: var(--fontSizeM);
 }
-h3 {
+H3 {
     font-size: var(--fontSizeS);
 }
-a {
+A {
     background-color: transparent;
     text-decoration: none;
+    &:visited,
+    :focus,
+    :active {
+        color: unset;
+    }
 }
-a:visited,
-a:focus,
-a:active {
-    color: unset;
-}
-ul {
+
+UL {
     list-style: none;
+}
+INPUT[type="text"],
+INPUT[type="email"],
+TEXTAREA,
+LABEL {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+INPUT[type="text"],
+INPUT[type="email"],
+TEXTAREA {
+    border: none;
+    background: var(--bgColor);
+    color: var(--textColor);
+    font-size: var(--fontSizeS);
+    font-family: var(--poppinsFont);
+    padding: 1rem 0.5rem;
 }
 .tooltip {
     position: absolute;
@@ -871,7 +889,16 @@ BUTTON {
     border: none;
     cursor: pointer;
 }
-
+//! ANIMATIONS
+.up_animation {
+    animation: textAnimation 3800ms ease-in-out forwards;
+}
+//! FORM
+.input_container {
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 1rem;
+}
 //! BUTTONS
 
 .btn {
@@ -952,74 +979,88 @@ BUTTON {
 }
 
 //!MODALS
-.modal {
-    @include flexDirection(column, flex-start, flex-start);
+.modals_container {
+    opacity: 0;
+    display: none;
     position: fixed;
-    top: 2rem;
-    left: 50%;
-    height: fit-content;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bgModal);
+    transition: opacity 1000ms ease;
     z-index: var(--zIndexFull);
-    background: var(--navbarColor);
-    width: clamp(300px, 800px, 90%);
-    padding: 1rem 1.5rem 2rem;
-    .close_btn {
-        position: absolute;
-        right: 0;
-        top: 0;
-        padding: 0.5rem;
-        &:hover,
-        :focus,
-        :active {
-            background: var(--firstColor);
+    .modal {
+        @include flexDirection(column, flex-start, flex-start);
+        position: fixed;
+        display: none;
+        top: 2rem;
+        left: 50%;
+        height: fit-content;
+        background: var(--navbarColor);
+        width: clamp(300px, 800px, 90%);
+        padding: 1rem 1.5rem 2rem;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: all 1000ms ease;
+        .close_btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 0.5rem;
+            &:hover,
+            :focus,
+            :active {
+                background: var(--firstColor);
 
-            .close_icon_svg {
-                .cls-1 {
-                    fill: var(--textContrastColor);
+                .close_icon_svg {
+                    .cls-1 {
+                        fill: var(--textContrastColor);
+                    }
                 }
             }
         }
-    }
 
-    .modal_info {
-        width: 100%;
-        height: fit-content;
-        margin-bottom: 1rem;
-    }
-    .modal_form {
-        width: 100%;
-        height: auto;
-        LABEL {
-            @include flex(flex-start, center);
-            display: block;
+        .modal_info {
             width: 100%;
-            padding: 0.5rem 0;
-            font-weight: var(--fontWeightB);
-            font-size: var(--fontSizeS);
-        }
-        INPUT {
-            display: block;
-            width: 100%;
-            border: none;
-            padding: 0.5rem 1rem;
+            height: fit-content;
             margin-bottom: 1rem;
-            background: var(--bgColor);
         }
-        INPUT:focus {
-            outline: none;
-            background: var(--bgOff);
-        }
-        INPUT::placeholder {
-            color: var(--textColor);
-        }
-        BUTTON {
+        .modal_form {
             width: 100%;
+            height: auto;
+            LABEL {
+                @include flex(flex-start, center);
+                display: block;
+                width: 100%;
+                padding: 0.5rem 0;
+                font-weight: var(--fontWeightB);
+                font-size: var(--fontSizeS);
+            }
+            INPUT {
+                display: block;
+                width: 100%;
+                border: none;
+                padding: 0.5rem 1rem;
+                margin-bottom: 1rem;
+                background: var(--bgColor);
+            }
+            INPUT:focus {
+                outline: none;
+                background: var(--bgOff);
+            }
+            INPUT::placeholder {
+                color: var(--textColor);
+            }
+            BUTTON {
+                width: 100%;
+            }
         }
     }
 }
 
 #legal_modal {
     max-height: 90vh;
-    display: none;
     .modal_header {
         padding: 2rem 0;
     }
@@ -1037,20 +1078,14 @@ BUTTON {
     }
 }
 
-#contact_modal {
-    display: none;
-}
-
 .alert_modal {
     position: fixed;
     top: 0;
     left: 0;
     height: fit-content;
-    z-index: var(--zIndexAlert);
     background: var(--whiteOff);
     width: 100%;
     height: fit-content;
-    box-shadow: 2px 2px 0.5rem var(--midGray);
     .close_btn {
         position: absolute;
         right: 0;
@@ -1857,6 +1892,7 @@ BUTTON {
     }
 }
 .project_card {
+    position: relative;
     width: var(--cardProjectWidth);
     height: 30rem;
     background: var(--firstColor);
@@ -1865,53 +1901,60 @@ BUTTON {
     background-size: cover;
     transition: var(--transitionUF);
     z-index: var(--zIndexStart);
-    .project_info {
-        @include flexDirection(column, center, center);
+    .info_project_container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        height: 90%;
+        padding: 1rem;
+        scale: 0;
         opacity: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--navbarColor) 70%;
-        padding: 2rem 2.5rem;
-        transition: var(--transitionMid);
-
-        .info_project_container {
+        transition: var(--transitionFast);
+        background: var(--bgModal);
+        .title {
             width: 100%;
-            .title {
-                width: 100%;
-                text-align: center;
-                padding-bottom: 1rem;
-            }
-
-            .btns_flag_project_container {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                text-align: flex-start;
-                column-gap: 0.3rem;
-                row-gap: 0.5rem;
-                width: 100%;
-                text-align: center;
-                .tech_icon_card {
-                    width: auto;
-                    height: 4rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .subtitle {
+            margin-bottom: 0.5rem;
+        }
+        .icons_project_container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: flex-start;
+            column-gap: 0.3rem;
+            row-gap: 0.5rem;
+            width: 100%;
+            text-align: center;
+            .tech_icon_card {
+                width: auto;
+                height: 4rem;
+                .cls-5 {
+                    fill: var(--textColor);
                 }
             }
-            .margin_bottom {
-                margin-bottom: 1rem;
-            }
         }
-    }
-    &:hover,
-    :focus,
-    :active {
-        z-index: var(--zIndexHover);
-        .project_info {
-            opacity: 0.9;
+        .margin_bottom {
+            margin-bottom: 1rem;
         }
     }
 }
-
+.project_card:hover .info_project_container,
+.project_card:focus .info_project_container,
+.project_card:active .info_project_container {
+    z-index: var(--zIndexHover);
+    opacity: 0.9;
+    scale: 1;
+}
 .projects_container {
     @include flexDirection(column, flex-start, center);
     gap: 1rem;
@@ -2272,17 +2315,3 @@ BUTTON {
 }
 
 //^ SWIPER DOWN CONTAINER
-//*STORAGE ALERT
-#storage_alert_modal {
-    transform: translateY(-50%);
-    opacity: 0;
-    transition: all 1000ms ease;
-}
-
-//*LEGAL AND CONTACT
-#legal_modal,
-#contact_modal {
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: all 1000ms ease;
-}
