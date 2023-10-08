@@ -116,6 +116,7 @@
     --fontSizeSClamp: clamp(1.2rem, calc(1.2rem + 0.5vw), 1.8rem);
     --fontSizeMClamp: clamp(2rem, calc(1.5rem + 0.5vw), 2.2rem);
     --fontSizeXClamp: clamp(2.5rem, calc(1.5rem + 1.5vw), 4rem);
+    --fontSizeXLClamp: clamp(8rem, calc(1.5rem + 2vw), 10rem);
     //! FONT SIZES--OVER
     //! *********************************************************************************************************************** *//
     //! FONT WEIGHT--START
@@ -225,13 +226,13 @@
     }
 
     .leiru_icon_svg {
-        #brand,
-        #brand-append {
+        .brand,
+        .brand-append {
             .cls-1 {
                 fill: hsl(134, 74%, 36%);
             }
         }
-        #text {
+        .text {
             fill: var(--textColor);
         }
     }
@@ -290,8 +291,8 @@
         }
     }
     .leiru_icon_svg {
-        #brand,
-        #brand-append {
+        .brand,
+        .brand-append {
             .cls-1 {
                 fill: var(--textColor);
             }
@@ -424,10 +425,10 @@ BODY {
         }
     }
     .leiru_icon_svg {
-        #polygon {
+        .polygon {
             fill: hsl(134, 74%, 36%);
         }
-        #text {
+        .text {
             .cls-2 {
                 fill: #fff;
             }
@@ -869,7 +870,7 @@ SECTION {
     width: 100%;
     height: fit-content;
     width: 100%;
-    margin: 2rem 0 1rem;
+    margin-bottom: 1rem;
     color: var(--firstColor);
     font-weight: var(--fontWeightN);
     font-size: var(--fontSizeMClamp);
@@ -1059,7 +1060,7 @@ BUTTON {
     }
 }
 
-#legal_modal {
+.legal_modal {
     max-height: 90vh;
     .modal_header {
         padding: 2rem 0;
@@ -1103,13 +1104,11 @@ BUTTON {
             }
         }
     }
-}
-
-#storage_alert_modal {
     @include flexDirection(column, flex-start, center);
     .modal_info {
         padding: 1rem 1rem 0;
-        color: var(--blackOff);
+        color: var(--textColor);
+        text-align: center;
         .title_modal {
             text-align: center;
             margin-bottom: 1rem;
@@ -1120,18 +1119,19 @@ BUTTON {
         width: 100%;
         height: auto;
         .btn_link {
-            padding: 0.5rem;
             text-decoration: underline;
+            color: var(--secondColor);
+            margin-top: 0.5rem;
         }
-    }
-    .more_btn {
-        width: var(--widthClamp);
-        margin: 1rem 0;
+        .more_btn {
+            width: var(--widthClamp);
+            margin: 1rem 0;
+        }
     }
 }
 
 //! MENUS
-#menu_social_container {
+.menu_social_container {
     position: fixed;
     @include flexDirection(column, flex-start, center);
     gap: 1rem;
@@ -1141,7 +1141,7 @@ BUTTON {
     width: 3rem;
     z-index: var(--zIndexMenu);
 
-    #menu_social_btn {
+    .menu_social_btn {
         background: var(--navbarColor);
         border-radius: var(--borderRadius);
         padding: 0.75rem;
@@ -1210,7 +1210,7 @@ BUTTON {
     }
 }
 
-#menu_container {
+.menu_container {
     position: fixed;
     @include flexDirection(column, center, center);
     top: 0;
@@ -1461,47 +1461,23 @@ BUTTON {
 }
 
 //! SECTIONS
-#hero_section {
+.hero_section {
     @include flex(center, center);
     position: relative;
-
     min-height: calc(100vh - var(--navbarHeight));
     background: var(--backgroundHero);
     background-size: cover;
-    #hero_content {
+    .hero_title_container {
         @include flexDirection(column, center, center);
         user-select: none;
         width: var(--widthClamp);
-        #hero_title {
-            display: flex;
-            flex-direction: column;
-            .title_salute {
-                font-size: clamp(2rem, calc(1.5rem + 3vw), 4rem);
-                color: var(--secondColor);
-                margin: 0;
-            }
-            .title_word {
-                font-size: clamp(2rem, calc(1.5rem + 3vw), 4rem);
-                margin: 0;
-                //*line-height: calc(var(--fontSize) + (var(--fontSize) * 3));
-                text-align: center;
-                color: var(--firstColor);
-            }
-            #title_effect {
-                animation: blink 500ms 0s infinite alternate;
-                color: var(--secondColor);
-            }
-        }
-        #hero_subtitle {
+        h1 {
             color: var(--textColor);
-            font-size: clamp(1rem, calc(1rem + 0.5vw), 3rem);
-            //*text-align: center;
-            .accent_text {
-                color: var(--secondColor);
-            }
+            font-size: 8rem;
+            line-height: 7rem;
+            text-align: right;
         }
-
-        #hero_btns_container {
+        .hero_btns_container {
             @include flexDirection(row, center, center);
             gap: 2.5rem;
             margin-top: 2rem;
@@ -1511,7 +1487,7 @@ BUTTON {
                 width: 100%;
             }
         }
-        #hero_btns_container > * {
+        .hero_btns_container > * {
             flex-basis: 100%;
         }
         .btn_down {
@@ -1527,7 +1503,7 @@ BUTTON {
             color: var(--textColor);
             cursor: pointer;
             transition: var(--transitionMid);
-            #arrow_down_svg {
+            .arrow_down_svg {
                 margin-top: 0.5rem;
                 width: 2rem;
                 .cls-1 {
@@ -1548,11 +1524,44 @@ BUTTON {
     }
 }
 
-#about_section {
+.about_section {
     @include flexDirection(column, flex-start, center);
-    #about_content {
-        #header_section_about {
+    .about_content {
+        .header_section_about {
             background: var(--bgHeaderSectionAbout);
+        }
+        .about_salute {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 4rem;
+            width: var(--widthClamp);
+
+            .title_salute {
+                font-size: var(--fontSizeXLClamp);
+                color: var(--secondColor);
+                margin: 0;
+            }
+            .title_name {
+                font-size: var(--fontSizeXLClamp);
+                margin-top: -1rem;
+                line-height: calc(var(--fontSize) + (var(--fontSize) * 6));
+                color: var(--firstColor);
+            }
+            .title_effect {
+                animation: blink 500ms 0s infinite alternate;
+                color: var(--secondColor);
+            }
+        }
+        .about_text_animation_container {
+            color: var(--textColor);
+            margin-top: 1rem;
+            H2 {
+                font-size: var(--fontSizeXClamp);
+            }
+        }
+        .accent_text {
+            color: var(--firstColor);
         }
     }
 }
@@ -1706,7 +1715,7 @@ BUTTON {
         }
     }
 }
-#services_section {
+.services_section {
     @include flexDirection(column, flex-start, center);
 
     .services_container {
@@ -1814,11 +1823,11 @@ BUTTON {
     z-index: var(--zIndexMenu);
 }
 
-#skills_section {
+.skills_section {
     @include flexDirection(column, flex-start, center);
     height: fit-content;
-    #skills_content {
-        #header_section_skills {
+    .skills_content {
+        .header_section {
             background: var(--bgHeaderSectionSkills);
             @include flexDirection(column, flex-start, center);
         }
@@ -1865,7 +1874,7 @@ BUTTON {
                     animation: zoom 1000ms ease-out;
                 }
             }
-            #node_icon_container {
+            .node_icon_container {
                 width: 8rem;
             }
         }
@@ -1875,10 +1884,10 @@ BUTTON {
     }
 }
 
-#portfolio_section {
+.portfolio_section {
     @include flexDirection(column, flex-start, center);
-    #portfolio_content {
-        #header_section_portfolio {
+    .portfolio_content {
+        .header_section {
             background: var(--bgHeaderSectionPortfolio);
         }
     }
@@ -1921,6 +1930,7 @@ BUTTON {
             width: 100%;
             text-align: center;
             margin-bottom: 1rem;
+            font-size: var(--fontSizeX);
         }
         .subtitle {
             margin-bottom: 0.5rem;
@@ -1960,6 +1970,25 @@ BUTTON {
     gap: 1rem;
     width: fit-content;
     height: fit-content;
+    height: 3rem;
+    width: 100%;
+    .project_btns_container {
+        position: relative;
+        z-index: var(--zIndexHover);
+        width: var(--widthClamp);
+        height: 3rem;
+        .selection_list {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border: solid 1px var(--firstColor);
+            #selection_list_search_btn {
+                height: 3rem;
+                border-bottom: 2px solid var(--firstColor);
+            }
+        }
+    }
     .title_project_search {
         color: var(--secondColor);
         font-size: var(--fontSizeM);
@@ -2040,29 +2069,7 @@ BUTTON {
         pointer-events: none;
     }
 }
-#search_projects_container {
-    height: 3rem;
-    width: 100%;
-    #search_project_btns_container {
-        position: relative;
-        z-index: var(--zIndexHover);
-        width: var(--widthClamp);
-        height: 3rem;
-        #selection_list_type_of_projects {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border: solid 1px var(--firstColor);
-            #selection_list_search_btn {
-                height: 3rem;
-                border-bottom: 2px solid var(--firstColor);
-            }
-        }
-    }
-}
-
-#clients_section {
+.clients_section {
     position: relative;
     @include flexDirection(column, flex-start, center);
 
@@ -2099,10 +2106,10 @@ BUTTON {
     }
 }
 
-#contact_section {
-    #contact_content {
+.contact_section {
+    .section_content{
         @include flexDirection(column, flex-start, center);
-        #header_section_contact {
+        .header_section {
             position: relative;
             background: var(--bgHeaderSectionContact);
             @include flexDirection(column, flex-start, center);
@@ -2161,7 +2168,7 @@ BUTTON {
     }
 }
 
-#legals_section {
+.legals_section {
     position: relative;
     @include flexDirection(column, flex-start, center);
     width: 100%;
@@ -2205,7 +2212,7 @@ BUTTON {
         }
     }
 
-    #menu_legals_container {
+    .menu_legals_container {
         @include flexDirection(column, flex-start, center);
         width: 100%;
         height: fit-content;
@@ -2218,7 +2225,7 @@ BUTTON {
             font-weight: var(--fontWeightN);
             font-size: var(--fontSizeSClamp);
         }
-        #menu_legals_btns_container {
+        .menu_legals_btns_container {
             @include flexDirection(row, center, center);
             border-radius: 1rem 1rem 0 0;
             background: var(--bgColor);
@@ -2244,13 +2251,13 @@ BUTTON {
                 }
             }
         }
-        #made_container {
+        .made_container {
             @include flexDirection(row, space-between, center);
             width: 100%;
             height: fit-content;
             background: var(--secondColor);
             padding: 1rem 0;
-            #made_content {
+            .made_content {
                 color: var(--textColor);
                 flex-wrap: wrap;
                 font-weight: var(--fontWeightN);
@@ -2267,7 +2274,7 @@ BUTTON {
                     font-size: var(--fontSizeXs);
                 }
             }
-            #social_btns_footer {
+            .social_btns_footer {
                 @include flexDirection(row, center, center);
                 color: var(--textColor);
                 height: fit-content;

@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const logoClientsContainers = document.querySelectorAll(".client_logo_container");
 
     //^LEGALS
-    const copyrightText = document.querySelector("#made_content");
+    const copyrightText = document.querySelector(".made_content");
     const btnLegalFooter = document.querySelector("#btn_legal_legals");
     const btnDataFooter = document.querySelector("#btn_data_legals");
 
@@ -879,11 +879,9 @@ document.addEventListener("DOMContentLoaded", () => {
         projectCard.style.backgroundImage = `url("${cardImg}")`;
         const clientTechnologiesInProjects = item["projects"]["technologies"];
         clientTechnologiesInProjects.forEach((tech) => {
-            console.log(tech);
+            /* console.log(tech); */
             infoSoftware.forEach((technology) => {
                 if (technology.tech_name === tech) {
-                    /* projectCardIconsContainer.innerHTML += technology.icon; */
-                    console.log(technology.icon);
                     iconsRow += technology.icon;
                 }
             });
@@ -907,7 +905,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const rawData = await fetch(portfolioData);
             const data = await rawData.json();
             let newID;
-            console.log(data);
+            /* console.log(data); */
             data.forEach((item) => {
                 const projectTypes = item["projects"]["type"];
 
@@ -923,7 +921,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let newProjectTypeData = { value: type };
                 newProjectsListData.push(newProjectTypeData);
             });
-            console.log(newProjectsListData);
+            /* console.log(newProjectsListData); */
 
             const selectionListTemplateClone = selectionListTemplate.cloneNode(true);
             const newList = selectionListTemplateClone.querySelector(".selection_list");
@@ -1030,7 +1028,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
             });
-            console.log(hotData);
+            /* console.log(hotData); */
             hotData.forEach((item) => {
                 createCard(item, fragmentHotProjects);
             });
@@ -1156,7 +1154,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //^ CLOSE MODAL BTN
     closeModalBtn.forEach((btn) => {
         const dataName = btn.getAttribute("data-name");
-        console.log(dataName);
+        /* console.log(dataName); */
         btn.addEventListener("click", () => {
             switch (dataName) {
                 case "storage":
@@ -1183,7 +1181,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btnsLinks.forEach((btn) => {
         const dataName = btn.getAttribute("data-name");
-        console.log(dataName);
+        /* console.log(dataName); */
         btn.addEventListener("click", () => {
             switch (dataName) {
                 case "legal":

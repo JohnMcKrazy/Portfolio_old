@@ -69,10 +69,12 @@
                         <button type="button" class="btn_link btn_link_legal" data-name="inter">Avisos legales</button>
                     </div>
                 </div>
-                <button type="button" class="btn more_btn" id="storage_alert_modal_accept_btn">Aceptar</button>
+                <div class="btn_container">
+                    <button type="button" class="btn more_btn" id="storage_alert_modal_accept_btn">Aceptar</button>
+                </div>
             </div>
             <!--^^LEGAL MODAL-->
-            <div class="modal" id="legal_modal">
+            <div class="modal legal_modal" id="legal_modal">
                 <button class="close_btn close_modal_btn" id="modal_legal_close_btn" data-name="legal">
                     <svg class="close_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 25 25">
                         <title>Cerrar</title>
@@ -142,8 +144,8 @@
         </div>
         <!--!MENUS STATIC STICKY -->
         <!--^^SOCIAL MENU CONTAINER-->
-        <div id="menu_social_container">
-            <button id="menu_social_btn">
+        <div class="menu_social_container" id="menu_social_container">
+            <button class="menu_social_btn" id="menu_social_btn">
                 <svg class="social_icon_svg conection_icon_svg" data-name="social_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 18 18">
                     <title>Enlace</title>
                     <circle class="cls-1" cx="4.19" cy="9.3" r="4.19" />
@@ -214,7 +216,7 @@
         </div>
 
         <!--^^MENU LINKS CONTAINER-->
-        <div id="menu_container">
+        <div class="menu_container" id="menu_container">
             <!--~SOCIAL BTNS CONTAINER-->
             <div id="social_btns_container">
                 <a href="https://www.facebook.com/JG.Krazy.Design/" target="_blank">
@@ -314,25 +316,17 @@
         </div>
 
         <!--^^HERO SECTION-->
-        <header class="section" id="hero_section">
+        <header class="section hero_section" id="hero_section">
             <!--~SECTION CONTENT-->
-            <div class="header_content" id="hero_content">
-                <div id="hero_title">
-                    <h1 class="title_salute">Hola, soy</h1>
-                    <h1 class="title_word">Jonathan Grajeda<span id="title_effect">_</span></h1>
-                </div>
-                <div id="hero_subtitle">
-                    <h2>Ilustrador<span class="accent_text">/</span></h2>
-                    <h2>Diseñador Gráfico<span class="accent_text">/</span></h2>
-                    <h2>Desarrollador Front-end<span class="accent_text">.</span></h2>
-                </div>
-                <div id="hero_btns_container">
+            <div class="hero_title_container">
+                <h1>Haciendo<br />ideas<br />realidad</h1>
+                <div class="hero_btns_container">
                     <button class="btn btn_hero" id="hero_btn_about" name="about_section"><h3 class="btn_text">Acerca de mi</h3></button>
                     <button class="btn btn_hero" id="hero_btn_portfolio" name="portfolio_section"><h3 class="btn_text">Portafolio</h3></button>
                 </div>
                 <button class="btn_down btn_menu" id="hero_btn_down" name="about_section">
                     <h3>Ver mas</h3>
-                    <svg id="arrow_down_svg" data-name="arrow_down_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 18 9">
+                    <svg class="arrow_down_svg" data-name="arrow_down_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 18 9">
                         <title>arrow down</title>
                         <path class="cls-1" d="M17.94,0H15.12l0,0L9,6A.06.06,0,0,1,9,6l-6-6,0,0H.06C0,0,0,.09,0,.13L9,9A0,0,0,0,0,9,9L18,.13S18,0,17.94,0Z" />
                     </svg>
@@ -392,21 +386,19 @@
 
         <!--^^ABOUT SECTION-->
         <!--~SECTION ABOUT CONTENT-->
-        <section class="section" id="about_section">
-            <div class="section_content" id="about_content">
-                <div class="header_section" id="header_section_about">
-                    <!--  <div class="swipe_animation_container_full">
-                        <h1 class="title_section animation_up" id="title_about">Acerca de</h1>
-                    </div> -->
-
-                    <h1 class="title">Mi nombre Jonathan Grajeda</h1>
-                    <div class="about_text_animation_container"></div>
-                    <p class="about_text"></p>
+        <section class="section about_section" id="about_section">
+            <div class="section_content about_content" id="about_content">
+                <div class="header_section header_section_about" id="header_section_about">
+                    <div class="about_salute swipe_animation_container_full">
+                        <h2 class="title_salute animation_up" id="title_salute">Hola, soy</h2>
+                        <h3 class="title_name animation_up" id="title_name">Jonathan Grajeda<span class="title_effect">_</span></h3>
+                        <div class="about_text_animation_container"></div>
+                    </div>
                 </div>
             </div>
         </section>
         <!--^^SERVICES SECTION-->
-        <section class="section" id="services_section">
+        <section class="section services_section" id="services_section">
             <!--~~TITLE SECTION-->
             <div class="swipe_animation_container_full">
                 <h1 class="title_section animation_up" id="title_services">Servicios</h1>
@@ -504,8 +496,8 @@
         </section>
 
         <!--^^PORTFOLIO SECTION-->
-        <section class="section" id="portfolio_section">
-            <div class="section_content" id="portfolio_content">
+        <section class="section portfolio_section" id="portfolio_section">
+            <div class="section_content portfolio_content" id="portfolio_content">
                 <div class="header_section" id="header_section_portfolio">
                     <div class="swipe_animation_container_full">
                         <h1 class="title_section animation_up" id="title_portfolio">Portafolio</h1>
@@ -546,8 +538,8 @@
         </section>
 
         <!--^^ SKILLS SECTION-->
-        <section class="section" id="skills_section">
-            <div class="section_content" id="skills_content">
+        <section class="section skills_section" id="skills_section">
+            <div class="section_content skills_content">
                 <div class="header_section" id="header_section_skills">
                     <div class="swipe_animation_container_full">
                         <h1 class="title_section animation_up" id="title_skills">Conocimientos</h1>
@@ -731,7 +723,7 @@
                                             <path class="cls-3" d="M50.56,0 L128,133.12 L204.8,0 L157.44,0 L128,51.2 L97.92,0 L50.56,0 Z" />
                                         </svg>
                                     </button>
-                                    <button type="button" class="skills_icon_container" id="node_icon_container" data-info="Node.js">
+                                    <button type="button" class="skills_icon_container node_icon_container" id="node_icon_container" data-info="Node.js">
                                         <svg class="node_icon_svg" data-name="node_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 442.37 270.929">
                                             <defs>
                                                 <clipPath id="a">
@@ -828,7 +820,7 @@
         </section>
 
         <!--^^CLIENTS SECTION-->
-        <section class="section" id="clients_section">
+        <section class="section clients_section" id="clients_section">
             <div class="section_content" id="contact_clients">
                 <!--&CLIENT SECTION CONTENT-->
                 <div class="swipe_animation_container_full">
@@ -935,8 +927,8 @@
                     <div class="client_logo_container" id="leiru_logo_container">
                         <svg class="client_icon_svg leiru_icon_svg" data-name="leiru_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 100">
                             <title>Leiru</title>
-                            <polygon id="polygon" class="cls-1" points="283.69 95.41 0 95.41 4.76 72.68 300 72.68 283.69 95.41" />
-                            <g id="text">
+                            <polygon class="polygon" class="cls-1" points="283.69 95.41 0 95.41 4.76 72.68 300 72.68 283.69 95.41" />
+                            <g class="text">
                                 <path class="cls-2" d="M16.18,80.7H13.27l-1.76,8.19H10.15l1.76-8.19H9l.25-1.18h7.19Z" />
                                 <path
                                     class="cls-2"
@@ -1045,7 +1037,7 @@
                                     d="M279.16,88.78a8.57,8.57,0,0,1-1,.21,6.63,6.63,0,0,1-1,.08,3.57,3.57,0,0,1-2.29-.7A2.93,2.93,0,0,1,274,86a4.38,4.38,0,0,1,1-2.82,3.33,3.33,0,0,1,2.72-1.26,2.51,2.51,0,0,1,1.91.7,2.64,2.64,0,0,1,.67,1.92c0,.27,0,.47,0,.59s0,.34-.1.67h-4.82l0,.42a1.68,1.68,0,0,0,.55,1.44,2.51,2.51,0,0,0,1.55.42,4.49,4.49,0,0,0,1-.11,5.54,5.54,0,0,0,1-.31Zm-.16-4,0-.53a1.38,1.38,0,0,0-.38-1,1.46,1.46,0,0,0-1.07-.38,1.79,1.79,0,0,0-1.31.57,3,3,0,0,0-.79,1.36Z"
                                 />
                             </g>
-                            <g id="brand-append">
+                            <g class="brand-append">
                                 <path
                                     class="cls-1"
                                     d="M233.2,6.87a3.94,3.94,0,0,0-.93-.39,4,4,0,0,0-1.1-.15,2.92,2.92,0,0,0-1.58.4A1.49,1.49,0,0,0,229,8.07a1.78,1.78,0,0,0,.94,1.41l1.87,1.27a2.82,2.82,0,0,1,1,2.15,3.6,3.6,0,0,1-1,2.5,3.66,3.66,0,0,1-2.87,1.09,7.76,7.76,0,0,1-1.41-.11,8.78,8.78,0,0,1-1.72-.53l.52-1.49a4.62,4.62,0,0,0,1.12.53,4,4,0,0,0,1.23.19,2.43,2.43,0,0,0,1.8-.6,1.8,1.8,0,0,0-.33-3l-1.87-1.26a2.72,2.72,0,0,1-1-2.16,2.82,2.82,0,0,1,1.1-2.33,4.07,4.07,0,0,1,2.6-.86,7,7,0,0,1,2.69.52Z"
@@ -1157,7 +1149,7 @@
                                 <path class="cls-1" d="M291.6,65.53h-1.92l-1.81-11.18h1.61l1.4,9.58,5.67-9.57h1.76Z" />
                                 <path class="cls-1" d="M297.73,63.74h1.8l-.37,1.79h-1.8Z" />
                             </g>
-                            <g id="brand">
+                            <g class="brand">
                                 <path class="cls-1" d="M19.09,4.61H31.32L20.4,56H44.34l-2.1,9.62H6.16Z" />
                                 <path class="cls-1" d="M59,4.61H94.93l-1.84,9.61H69.24l-3.15,15H87.41l-1.92,9.61H64.09L60.5,56H84.62l-2.1,9.62H46.17Z" />
                                 <path class="cls-1" d="M102,4.61h12.75l-12.84,61H89.16Z" />
@@ -1454,7 +1446,7 @@
         </section>
 
         <!--^^CONTACT SECTION-->
-        <section class="section" id="contact_section">
+        <section class="section contact_section" id="contact_section">
             <div class="section_content" id="contact_content">
                 <div class="header_section" id="header_section_contact">
                     <div class="swipe_animation_container_full">
@@ -1496,7 +1488,7 @@
         </section>
 
         <!--^^FOOTER-->
-        <footer id="legals_section">
+        <footer class="legals_section">
             <div class="swipe_animation_container_full">
                 <h1 class="title_footer animation_up" id="title_footer_id">Página realizada con:</h1>
             </div>
@@ -1577,18 +1569,18 @@
                     </svg>
                 </div>
             </div>
-            <div id="menu_legals_container">
+            <div class="menu_legals_container">
                 <h2 class="subtitle_footer">Avisos</h2>
-                <div id="menu_legals_btns_container">
+                <div class="menu_legals_btns_container">
                     <button type="button" class="btn_link" id="btn_legal_legals" data-name="legal">Legales</button>
                     <button type="button" class="btn_link" id="btn_data_legals" data-name="data">Uso de datos</button>
                 </div>
-                <div id="made_container">
-                    <div id="made_content">
+                <div class="made_container">
+                    <div class="made_content">
                         <p class="link_text">@JohnKrazy</p>
                         <p class="copyright_text">© 2023 JohnKrazy. All rights reserved</p>
                     </div>
-                    <div id="social_btns_footer">
+                    <div class="social_btns_footer">
                         <a href="https://www.facebook.com/JG.Krazy.Design/" target="_blank">
                             <div class="contact_card_btn" id="fb_btn_contact_card">
                                 <svg class="social_icon_svg fb_icon_svg" data-name="fb_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 25 25">
@@ -1669,7 +1661,7 @@
         <!--~~LIST SELECTOR TEMPLATE-->
         <template id="selection_list_template">
             <div class="selection_list" name="" id="">
-                <button type="button" class="option_list_btn_search option_list_text" name="option_list" data="search" id="selection_list_search_btn">
+                <button type="button" class="option_list_btn_search option_list_text selection_list_search_btn" name="option_list" data="search" id="selection_list_search_btn">
                     Categorias:
                     <div class="open_list_btn" id="open_select_list_btn">
                         <svg class="arrow_btn_svg" id="arrow_btn_select_list_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
