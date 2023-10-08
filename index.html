@@ -50,7 +50,10 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
+        <!-- ! ACCESIBILITE BUTTONS - START -->
+        <button type="button" class="accessibility_btn" aria-label="Skip to main content - Salta a contenido principal" name="services_section">Saltar A Contenido Principal</button>
+        <button type="button" class="accessibility_btn" aria-label="Skip to footer - Salta al pie de pagina" name="legal_section">Saltar al pie de pagina</button>
+        <!-- ! MODAL CONTAINER -->
         <div class="modals_container">
             <!--!MODALS-->
             <!--^^FIRST MESSAGE MODAL -->
@@ -400,61 +403,47 @@
         <!--^^SERVICES SECTION-->
         <section class="section services_section" id="services_section">
             <!--~~TITLE SECTION-->
-            <div class="swipe_animation_container_full">
-                <h1 class="title_section animation_up" id="title_services">Servicios</h1>
-            </div>
-
-            <!--~~SLIDER SERVICES-->
-            <div class="sliders_container" id="sliders_container_services">
-                <!--&SLIDER WINDOW CONTAINER-->
-                <div class="slider_window_container" id="slider_window_container_services">
-                    <div class="slider_container slider_container_services" id="slider_container_services_1">
-                        <div class="slider_content" id="slider_1_content">
-                            <div class="img_container">
-                                <img src="./assets/svg/hero/iconfinder-connectedglobe-4417105_116615.svg" class="web_planet_img" />
-                            </div>
-                            <div class="info_container">
-                                <div class="slider_card_info">
-                                    <div class="swipe_animation_container_full">
-                                        <h1 class="title_section animation_right" id="title_slider_1">Globalizate</h1>
-                                    </div>
-                                    <p></p>
-                                </div>
-                            </div>
-                        </div>
+            <div class="section_content services_content" id="services_content">
+                <div class="header_section header_section_services" id="header_section_services">
+                    <div class="swipe_animation_container_full">
+                        <h1 class="title_section animation_up" id="title_services">Servicios</h1>
                     </div>
 
-                    <div class="slider_container slider_container_services" id="slider_container_services_2">
-                        <div class="slider_content" id="slider_1_content">
-                            <div class="img_container"></div>
-                            <div class="info_container"></div>
-                        </div>
+                    <!-- ! -->
+                    <div class="cards_service_container">
+                        <article class="card service_card" id="graphic_design_service_card">
+                            <div class="bg_card graphic_design_service_bg"></div>
+                            <div class="info_card info_service_card">
+                                <h2 class="project-tile">Diseño Gráfico</h2>
+                                <p class="info">Es necesaria la comunicación gráfica para muchas aréas de negocios/empresas, desde papeleria basica hasta promocionales digitales e impresos, cada necesidad se majeda desde angulos diferentes como originalidad en cada paso de la creación.</p>
+                            </div>
+                        </article>
+                        <article class="card service_card" id="web_service_card">
+                            <div class="bg_card web_service_bg"></div>
+                            <div class="info_card info_service_card">
+                                <h2 class="project-tile">Front-End</h2>
+                                <p class="info">Dentro del desarrollo de programación, darle estilo y formato a las ideas es algo que me apaciona.</p>
+                            </div>
+                        </article>
+                        <article class="card service_card" id="e-commers_service_card">
+                            <div class="bg_card e-commers_service_bg"></div>
+                            <div class="info_card info_service_card">
+                                <h2 class="project-tile">E-Commers</h2>
+                                <p class="info">Si tu negocio tiene venta de productos, una gran herramienta seria una tienda en linea, puedo realizarte una tienda diseñada a tu gusto usando las mejores tecnologias.</p>
+                            </div>
+                        </article>
+                        <article class="card service_card" id="UX-UI_service_card">
+                            <div class="bg_card UX-UI_service_bg"></div>
+                            <div class="info_card info_service_card">
+                                <h2 class="project-tile">UX/UI</h2>
+                                <p class="info">La creación de pagina web es importante, asi como es importante darle al usuario una buena experiencia, facilidad de uso, y que tu contenido sea mejor visto por tus clientes.</p>
+                            </div>
+                        </article>
                     </div>
-                </div>
 
-                <!--!BTNS ABSOLUTE SLIDER-->
-                <!--&SLIDER MARKERS CONTAINER-->
-                <div class="slider_page_markers_container" id="slider_page_markers_container_services"></div>
-                <!--&SLIDER BTN LEFT-->
-                <div class="btn_swipe_container btn_swipe_container_left" id="btn_swipe_container_left_slider_services">
-                    <button type="button" class="btn_swipe" id="btn_swipe_left_slider_services">
-                        <svg class="arrow_icon_svg" id="arrow_left_icon_svg" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 18">
-                            <title>Izquierda</title>
-                            <path class="cls-1" d="M9,17.94V15.12l0,0L3,9A.06.06,0,0,1,3,9l6-6a.08.08,0,0,0,0,0V.06C9,0,8.91,0,8.87,0L0,9A0,0,0,0,0,0,9L8.87,18S9,18,9,17.94Z" />
-                        </svg>
-                    </button>
-                </div>
-                <!--&SLIDER BTN RIGHT-->
-                <div class="btn_swipe_container btn_swipe_container_right" id="btn_swipe_container_right_slider_services">
-                    <button type="button" class="btn_swipe" id="btn_swipe_right_slider_services">
-                        <svg class="arrow_icon_svg" id="arrow_right_icon_svg" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 18">
-                            <title>Derecha</title>
-                            <path class="cls-1" d="M0,.06V2.88a.08.08,0,0,0,0,0L6,9A.06.06,0,0,1,6,9l-6,6,0,0v2.82c0,.06.09.08.13,0L9,9A0,0,0,0,0,9,9L.13,0S0,0,0,.06Z" />
-                        </svg>
-                    </button>
+                    <!-- ! -->
                 </div>
             </div>
-
             <!--~~SUBTITLE SECTION-->
             <div class="swipe_animation_container_full">
                 <h2 class="subtitle_section animation_up" id="subtitle_services">¿Por qué deberias contratarme?</h2>
@@ -500,12 +489,63 @@
             <div class="section_content portfolio_content" id="portfolio_content">
                 <div class="header_section" id="header_section_portfolio">
                     <div class="swipe_animation_container_full">
-                        <h1 class="title_section animation_up" id="title_portfolio">Portafolio</h1>
+                        <h2 class="title_section animation_up" id="title_section_projects">Proyectos</h2>
+                    </div>
+                    <!--~~SLIDER SERVICES-->
+                    <div class="sliders_container" id="sliders_container_projects">
+                        <!--&SLIDER WINDOW CONTAINER-->
+                        <div class="slider_window_container" id="slider_window_container_projects">
+                            <div class="slider_container slider_container_project" id="slider_container_project_1">
+                                <div class="slider_content slider_content_normal">
+                                    <div class="img_container"></div>
+                                    <div class="info_container">
+                                        <div class="slider_card_info">
+                                            <h1 class="title_slider_project_card title_slider">Globalizate</h1>
+                                            <p>Unete a la gran variedad de sitios que tenemos disponibles</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slider_container slider_container_project" id="slider_container_portfolio_2">
+                                <div class="slider_content slider_content_reverse">
+                                    <div class="img_container"></div>
+                                    <div class="info_container">
+                                        <div class="slider_card_info">
+                                            <h1 class="title_service_card" class="title_slider">Globalizate</h1>
+                                            <p>Unete a la gran variedad de sitios que tenemos disponibles</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--!BTNS ABSOLUTE SLIDER-->
+                        <!--&SLIDER MARKERS CONTAINER-->
+                        <div class="slider_page_markers_container" id="slider_page_markers_container_services"></div>
+                        <!--&SLIDER BTN LEFT-->
+                        <div class="btn_swipe_container btn_swipe_container_left" id="btn_swipe_container_left_slider_services">
+                            <button type="button" class="btn_swipe" id="btn_swipe_left_slider_services">
+                                <svg class="arrow_icon_svg" id="arrow_left_icon_svg" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 18">
+                                    <title>Izquierda</title>
+                                    <path class="cls-1" d="M9,17.94V15.12l0,0L3,9A.06.06,0,0,1,3,9l6-6a.08.08,0,0,0,0,0V.06C9,0,8.91,0,8.87,0L0,9A0,0,0,0,0,0,9L8.87,18S9,18,9,17.94Z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <!--&SLIDER BTN RIGHT-->
+                        <div class="btn_swipe_container btn_swipe_container_right" id="btn_swipe_container_right_slider_services">
+                            <button type="button" class="btn_swipe" id="btn_swipe_right_slider_services">
+                                <svg class="arrow_icon_svg" id="arrow_right_icon_svg" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 18">
+                                    <title>Derecha</title>
+                                    <path class="cls-1" d="M0,.06V2.88a.08.08,0,0,0,0,0L6,9A.06.06,0,0,1,6,9l-6,6,0,0v2.82c0,.06.09.08.13,0L9,9A0,0,0,0,0,9,9L.13,0S0,0,0,.06Z" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
 
                     <!--& PORTFOLIO SECTION CONTENT-->
                     <div class="swipe_animation_container_full">
-                        <h2 class="subtitle_section animation_up" id="subtitle_section_hot">Proyectos destacados</h2>
+                        <h2 class="subtitle_section animation_up" id="subtitle_section_hot">Destacados</h2>
                     </div>
                     <div class="cards_container" id="cards_hot_container">
                         <div class="loader_container" data-name="loader_cards_hot_container" id="loader_cards_hot_container">
@@ -522,9 +562,9 @@
                     <div class="projects_container" id="search_projects_container">
                         <div class="project_btns_container" id="search_project_btns_container"></div>
                     </div>
-                    <div class="swipe_animation_container_full">
-                        <h2 class="title_subsection animation_up" id="title_subsection_search_type">Busqueda de proyecto</h2>
-                    </div>
+
+                    <h2 class="title_subsection" id="title_subsection_search_type">Busqueda de proyecto</h2>
+
                     <div class="cards_container" id="cards_search_container">
                         <div class="loader_container" data-name="loader_cards_search_container" id="loader_cards_search_container">
                             <div class="spinner_container" id="spinner_container_cards_search">
@@ -1488,7 +1528,7 @@
         </section>
 
         <!--^^FOOTER-->
-        <footer class="legals_section">
+        <footer class="legals_section" id="legal_section">
             <div class="swipe_animation_container_full">
                 <h1 class="title_footer animation_up" id="title_footer_id">Página realizada con:</h1>
             </div>

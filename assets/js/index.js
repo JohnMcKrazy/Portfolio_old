@@ -78,8 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //^ SERVICES
     //& SERVICES SLIDERS
-    const sliderWindowContainerServices = document.querySelector("#slider_window_container_services");
-    const sliderContainersServices = document.querySelectorAll(".slider_container_services");
+    const sliderWindowContainerProjects = document.querySelector("#slider_window_container_projects");
+    const sliderContainersProject = document.querySelectorAll(".slider_container_project");
     const sliderPageMarkersContainerServices = document.querySelector("#slider_page_markers_container_services");
     const sliderBtnLeftServices = document.querySelector("#btn_swipe_left_slider_services");
     const sliderBtnRightServices = document.querySelector("#btn_swipe_right_slider_services");
@@ -501,7 +501,10 @@ document.addEventListener("DOMContentLoaded", () => {
             window.scrollBy(windowTop, fixTop);
         }
     };
-
+    const accessibilityBtns = document.querySelectorAll(".accessibility_btn");
+    accessibilityBtns.forEach((btn) => {
+        btn.addEventListener("click", () => scrollToSection(btn));
+    });
     //^ CHECK MENU POSITION WINDOW  && **/SCALE THE NAVBAR AND CHANGE THE MENU POSITION BY THE PAGE POSITION
     //&CONFIGURATION SIZE SCREEN--START ->//THIS FUNCTION BRING ALL THE CONTAINERS CARACTERISTICTS BY THE SIZE OF THE WINDOW
     const setBtnLabel = (label) => {
@@ -1077,7 +1080,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     //^CREATE SLIDER MARKERS AND CHECK POSITION SLIDER
-    sliderContainersServices.forEach((slider) => {
+    sliderContainersProject.forEach((slider) => {
         slidersServicesCount++;
         const cloneMarker = markersTemplate.cloneNode(true);
         const newMarker = cloneMarker.querySelector(".marker_slider_btn");
@@ -1112,7 +1115,7 @@ document.addEventListener("DOMContentLoaded", () => {
         sliderObserver.observe(slider);
     });
     let dinamicSliderWidth = slidersServicesCount * 100;
-    sliderWindowContainerServices.style.width = `${dinamicSliderWidth}%`;
+    sliderWindowContainerProjects.style.width = `${dinamicSliderWidth}%`;
     sliderPageMarkersContainerServices.appendChild(fragmentSliderMarkersServices);
 
     //^ SLIDER BTNS CONSTANT
@@ -1123,16 +1126,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const checkSlider = () => {
             const sliderId = marker.name;
             const sliderSearched = document.querySelector(`#${sliderId}`).getBoundingClientRect().left;
-            const sliderWidth = sliderWindowContainerServices.getBoundingClientRect().width;
+            const sliderWidth = sliderWindowContainerProjects.getBoundingClientRect().width;
             //*console.log(sliderFullCountServices, sliderSearched, sliderWidth);
 
             if (sliderSearched > 0) {
                 sliderFullCountServices += sliderSearched;
-                sliderWindowContainerServices.style.transform = `translateX(-${sliderFullCountServices}px)`;
+                sliderWindowContainerProjects.style.transform = `translateX(-${sliderFullCountServices}px)`;
                 //*console.log(sliderFullCountServices, sliderSearched, sliderWidth, 'by higher than 0');
             } else if (sliderSearched < 0) {
                 sliderFullCountServices += sliderSearched;
-                sliderWindowContainerServices.style.transform = `translateX(-${sliderFullCountServices}px)`;
+                sliderWindowContainerProjects.style.transform = `translateX(-${sliderFullCountServices}px)`;
                 //*console.log(sliderFullCountServices, sliderSearched, sliderWidth, 'by lower than 0');
             } else if (sliderSearched === 0) {
                 //*console.log(sliderFullCountServices, sliderSearched, sliderWidth, 'by equal than 0');
@@ -1209,29 +1212,29 @@ document.addEventListener("DOMContentLoaded", () => {
     menuSocialBtn.addEventListener("click", socialMenuBtnActions);
     //^BTN LEFT SLIDER
     sliderBtnLeftServices.addEventListener("click", () => {
-        const sliderWidth = sliderWindowContainerServices.getBoundingClientRect().width;
+        const sliderWidth = sliderWindowContainerProjects.getBoundingClientRect().width;
         //*console.log(slidersServicesCount);
         const sliderWidthFull = sliderWidth / slidersServicesCount;
         if (sliderFullCountServices === 0) {
             sliderFullCountServices = sliderWidth - sliderWidthFull;
-            sliderWindowContainerServices.style.transform = `translateX(-${sliderFullCountServices}px)`;
+            sliderWindowContainerProjects.style.transform = `translateX(-${sliderFullCountServices}px)`;
         } else {
             sliderFullCountServices -= sliderWidthFull;
-            sliderWindowContainerServices.style.transform = `translateX(-${sliderFullCountServices}px)`;
+            sliderWindowContainerProjects.style.transform = `translateX(-${sliderFullCountServices}px)`;
         }
     });
 
     //^BTN RIGHT SLIDER
     sliderBtnRightServices.addEventListener("click", () => {
-        const sliderWidth = sliderWindowContainerServices.getBoundingClientRect().width;
+        const sliderWidth = sliderWindowContainerProjects.getBoundingClientRect().width;
         //*console.log(slidersServicesCount);
         const sliderWidthFull = sliderWidth / slidersServicesCount;
         sliderFullCountServices += sliderWidthFull;
         if (sliderFullCountServices === sliderWidth) {
-            sliderWindowContainerServices.style.transform = `translateX(0)`;
+            sliderWindowContainerProjects.style.transform = `translateX(0)`;
             sliderFullCountServices = 0;
         } else {
-            sliderWindowContainerServices.style.transform = `translateX(-${sliderFullCountServices}px)`;
+            sliderWindowContainerProjects.style.transform = `translateX(-${sliderFullCountServices}px)`;
         }
     });
 
