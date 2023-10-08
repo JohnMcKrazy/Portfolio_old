@@ -89,7 +89,7 @@
   --fontSizeSClamp: clamp(1.2rem, calc(1.2rem + 0.5vw), 1.8rem);
   --fontSizeMClamp: clamp(2rem, calc(1.5rem + 0.5vw), 2.2rem);
   --fontSizeXClamp: clamp(2.5rem, calc(1.5rem + 1.5vw), 4rem);
-  --fontSizeXLClamp: clamp(8rem, calc(1.5rem + 2vw), 10rem);
+  --fontSizeXLClamp: clamp(6rem, calc(1.5rem + 2vw), 8rem);
   --fontWeightN: 400;
   --fontWeightB: 600;
   --fontWeightBB: 700;
@@ -1389,8 +1389,8 @@ BUTTON {
 }
 .hero_section .hero_title_container h1 {
   color: var(--textColor);
-  font-size: 8rem;
-  line-height: 7rem;
+  font-size: var(--fontSizeXLClamp);
+  line-height: 6rem;
   text-align: right;
 }
 .hero_section .hero_title_container .hero_btns_container {

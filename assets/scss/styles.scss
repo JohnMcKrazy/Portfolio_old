@@ -116,7 +116,7 @@
     --fontSizeSClamp: clamp(1.2rem, calc(1.2rem + 0.5vw), 1.8rem);
     --fontSizeMClamp: clamp(2rem, calc(1.5rem + 0.5vw), 2.2rem);
     --fontSizeXClamp: clamp(2.5rem, calc(1.5rem + 1.5vw), 4rem);
-    --fontSizeXLClamp: clamp(8rem, calc(1.5rem + 2vw), 10rem);
+    --fontSizeXLClamp: clamp(6rem, calc(1.5rem + 2vw), 8rem);
     //! FONT SIZES--OVER
     //! *********************************************************************************************************************** *//
     //! FONT WEIGHT--START
@@ -1473,8 +1473,8 @@ BUTTON {
         width: var(--widthClamp);
         h1 {
             color: var(--textColor);
-            font-size: 8rem;
-            line-height: 7rem;
+            font-size: var(--fontSizeXLClamp);
+            line-height: 6rem;
             text-align: right;
         }
         .hero_btns_container {
@@ -2107,7 +2107,7 @@ BUTTON {
 }
 
 .contact_section {
-    .section_content{
+    .section_content {
         @include flexDirection(column, flex-start, center);
         .header_section {
             position: relative;
