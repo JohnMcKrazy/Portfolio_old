@@ -93,7 +93,7 @@
   --fontWeightN: 400;
   --fontWeightB: 600;
   --fontWeightBB: 700;
-  --border: solid 0.2rem;
+  --border: solid 1px;
   --borderMenu: solid 0.3rem;
   --borderRadius: 0.25rem;
   --borderBtnRadius: 3rem;
@@ -814,7 +814,7 @@ BUTTON {
   width: 100%;
   background: transparent;
   color: var(--textColor);
-  border: var(--firstColorHover) 0.25rem solid;
+  border: var(--border) var(--firstColorHover);
   font-weight: var(--fontWeightB);
   font-size: var(--fontSizeS);
 }
@@ -1527,25 +1527,21 @@ BUTTON {
 .sliders_container .slider_container .slider_content {
   height: 100%;
   width: var(--widthClamp);
+  /* .illustration_mine {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 100%;
+      } */
 }
 .sliders_container .slider_container .slider_content .info_container {
   padding: 0 2rem;
 }
-.sliders_container .slider_container .slider_content .img_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+.sliders_container .slider_container .slider_content IMG {
+  display: block;
   width: 100%;
-  z-index: -1;
-  background: url("../img/gorgona/poster_hero.jpg");
-}
-.sliders_container .slider_container .slider_content .img_container .illustration_mine {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
+  height: auto;
 }
 .sliders_container .slider_container .slider_content .info_container {
   display: flex;
@@ -1633,7 +1629,6 @@ BUTTON {
   left: 0;
   width: 100%;
   height: 30rem;
-  background-size: cover !important;
   transform: scale(1);
   transition: var(--transitionMid);
   z-index: -1;
@@ -1661,9 +1656,9 @@ BUTTON {
 .service_card {
   width: 100%;
   height: 30rem;
+  background: linear-gradient(var(--bgColor), transparent, var(--bgColor));
 }
-
-.info_service_card {
+.service_card .info_service_card {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1673,8 +1668,7 @@ BUTTON {
   width: 100%;
   height: 100%;
 }
-
-.info_service_card H2 {
+.service_card .info_service_card H2 {
   width: 100%;
   text-align: center;
   color: var(--textColor);
@@ -1684,30 +1678,33 @@ BUTTON {
   opacity: 0.9;
   transform: translateY(100%);
 }
-
-.info_service_card P {
+.service_card .info_service_card P {
   padding: 1rem 1.5rem;
   transition: var(--transitionMid);
   opacity: 0;
   transform: translateY(100%);
 }
-
-.graphic_design_service_bg {
-  background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT)), url(https://images.pexels.com/photos/1601773/pexels-photo-1601773.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1);
+.service_card IMG:not(.not) {
+  width: auto;
+  height: 100%;
+}
+.service_card .commers_service_bg IMG {
+  width: 100%;
+  height: auto;
 }
 
+/* .graphic_design_service_bg {
+    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT));
+}
 .web_service_bg {
-  background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT)), url(https://images.pexels.com/photos/285814/pexels-photo-285814.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1);
+    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT));
 }
-
 .e-commers_service_bg {
-  background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT)), url(https://images.pexels.com/photos/7620629/pexels-photo-7620629.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1);
+    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT));
 }
-
 .UX-UI_service_bg {
-  background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT)), url(https://images.pexels.com/photos/196645/pexels-photo-196645.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1);
-}
-
+    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT));
+} */
 .service_card:hover .bg_card {
   transform: scale(1.2);
 }
@@ -1743,9 +1740,9 @@ BUTTON {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem 1.5rem;
   background: var(--navbarColor);
   border-radius: var(--borderRadius);
-  padding: 1rem 0;
 }
 .services_section .services_container .service_container .service_card .service_card_info .service_card_title,
 .services_section .services_container .service_container .service_card .service_card_info .service_card_text {
@@ -2021,7 +2018,7 @@ BUTTON {
   padding: 0.5rem 1rem;
 }
 .search_list_btn .arrow_icon {
-  fill: var(--secondColor);
+  fill: var(--firstColor);
 }
 .search_list_btn:hover .arrow_icon {
   fill: var(--textContrastColor);
@@ -2198,98 +2195,39 @@ BUTTON {
   min-height: fit-content;
   background: var(--firstColor);
   color: var(--textContrastColor);
-  padding: 4rem 0 0;
 }
-.legals_section .title_footer {
-  height: auto;
-  width: auto;
-  margin-bottom: 2rem;
-  color: var(--textContrastColor);
-}
-.legals_section .logos_container {
+.legals_section .made_with_container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  width: var(--widthClamp);
-  height: auto;
-  padding: 1rem;
+  color: var(--textContrastColor);
+  padding: 1rem 0;
 }
-.legals_section .logos_container .tech_logo_container {
+.legals_section .made_with_container .tech_logo_container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 8rem;
+  width: 2rem;
   height: auto;
 }
-.legals_section .logos_container .tech_logo_container .coffee_mug_icon_svg {
+.legals_section .made_with_container .tech_logo_container .coffee_mug_icon_svg {
   transform: scale(0.8);
 }
-.legals_section .logos_container .tech_logo_container:hover,
-.legals_section .logos_container .tech_logo_container :focus,
-.legals_section .logos_container .tech_logo_container :active {
+.legals_section .made_with_container .tech_logo_container:hover,
+.legals_section .made_with_container .tech_logo_container :focus,
+.legals_section .made_with_container .tech_logo_container :active {
   animation: zoom 1000ms ease-out;
 }
-.legals_section .logos_container .plus_sign {
+.legals_section .made_with_container .plus_sign {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3rem;
+  font-size: 1rem;
   text-align: center;
   color: var(--textContrastColor);
 }
 .legals_section .menu_legals_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-.legals_section .menu_legals_container .subtitle_footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  margin: 2rem 0 0.5rem;
-  color: var(--textContrastColor);
-  font-weight: var(--fontWeightN);
-  font-size: var(--fontSizeSClamp);
-}
-.legals_section .menu_legals_container .menu_legals_btns_container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border-radius: 1rem 1rem 0 0;
-  background: var(--bgColor);
-  overflow: hidden;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-.legals_section .menu_legals_container .menu_legals_btns_container .btn_link {
-  color: var(--textColor);
-  transition: color 200ms ease;
-  padding: 1rem;
-}
-.legals_section .menu_legals_container .menu_legals_btns_container .btn_link:hover,
-.legals_section .menu_legals_container .menu_legals_btns_container .btn_link :active,
-.legals_section .menu_legals_container .menu_legals_btns_container .btn_link :focus {
-  color: var(--textColor);
-  fill: var(--textColor);
-}
-.legals_section .menu_legals_container .menu_legals_btns_container .btn_link:hover {
-  background: var(--secondColorHover);
-}
-.legals_section .menu_legals_container .menu_legals_btns_container .btn_link:active,
-.legals_section .menu_legals_container .menu_legals_btns_container .btn_link :focus {
-  background: var(--secondColor);
-}
-.legals_section .menu_legals_container .made_container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -2300,7 +2238,7 @@ BUTTON {
   background: var(--secondColor);
   padding: 1rem 0;
 }
-.legals_section .menu_legals_container .made_container .made_content {
+.legals_section .menu_legals_container .made_content {
   color: var(--textColor);
   flex-wrap: wrap;
   font-weight: var(--fontWeightN);
@@ -2309,14 +2247,22 @@ BUTTON {
   padding: 1rem 1.5rem;
   margin-left: 5rem;
 }
-.legals_section .menu_legals_container .made_container .made_content .link_text {
+.legals_section .menu_legals_container .made_content .btns_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+.legals_section .menu_legals_container .made_content .link_text {
   color: var(--firstColor);
 }
-.legals_section .menu_legals_container .made_container .made_content .copyright_text {
+.legals_section .menu_legals_container .made_content .btn_link,
+.legals_section .menu_legals_container .made_content .copyright_text {
   color: var(--lightGrey);
   font-size: var(--fontSizeXs);
 }
-.legals_section .menu_legals_container .made_container .social_btns_footer {
+.legals_section .menu_legals_container .social_btns_footer {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -2326,22 +2272,20 @@ BUTTON {
   height: fit-content;
   padding: 1rem 1.5rem;
 }
-.legals_section .menu_legals_container .made_container .social_btns_footer .contact_card_btn {
+.legals_section .menu_legals_container .social_btns_footer .contact_card_btn {
   height: 3rem;
   width: 3rem;
   padding: 0.5rem;
 }
-.legals_section .menu_legals_container .made_container .social_btns_footer .contact_card_btn .social_icon_svg {
+.legals_section .menu_legals_container .social_btns_footer .contact_card_btn .social_icon_svg {
   transition: var(--transitionUF);
 }
-.legals_section .menu_legals_container .made_container .social_btns_footer .contact_card_btn:hover .social_icon_svg {
+.legals_section .menu_legals_container .social_btns_footer .contact_card_btn:hover .social_icon_svg {
   transform: scale(1.2);
 }
 
 .animation_up,
-.card_up,
-.title_footer,
-.title_section {
+.card_up {
   opacity: 0;
   transform: translateY(4rem);
   transition: all 1000ms ease;

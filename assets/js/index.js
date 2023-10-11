@@ -271,8 +271,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //^LEGALS
     const copyrightText = selector(".made_content");
-    const btnLegalFooter = selector("#btn_legal_legals");
-    const btnDataFooter = selector("#btn_data_legals");
 
     //^FETCH JASON COMPANYS DATA
     const portfolioData = "./portfolioDB.json";
@@ -592,8 +590,6 @@ document.addEventListener("DOMContentLoaded", () => {
             closeMenu();
         } else if (widConf > secondBreak || (widConf < firstBreak && widConf > secondBreak)) {
             copyrightText.style.marginLeft = "5rem";
-            btnLegalFooter.innerHTML = setBtnLabel("Legales");
-            btnDataFooter.innerHTML = setBtnLabel("Uso de Datos");
             lebelBtnMain.innerHTML =
                 '<svg class="nav_menu_icon_svg" id="home_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Inicio</title><path class="cls-1" d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"></path></svg>';
             lebelBtnAbout.innerHTML =
@@ -655,11 +651,6 @@ document.addEventListener("DOMContentLoaded", () => {
             closeMenu();
         } else if (widConf <= secondBreak) {
             copyrightText.style.marginLeft = "1rem";
-            btnLegalFooter.innerHTML =
-                '<svg class="footer_menu_icon_svg" id="legals_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Legales</title><path class="cls-1" d="M19 22H5a3 3 0 0 1-3-3V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v12h4v4a3 3 0 0 1-3 3zm-1-5v2a1 1 0 0 0 2 0v-2h-2zm-2 3V4H4v15a1 1 0 0 0 1 1h11zM6 7h8v2H6V7zm0 4h8v2H6v-2zm0 4h5v2H6v-2z"/></svg>';
-            btnDataFooter.innerHTML =
-                '<svg class="footer_menu_icon_svg" id="data_icon_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Uso de datos</title><path class="cls-1" d="M5 12.5c0 .313.461.858 1.53 1.393C7.914 14.585 9.877 15 12 15c2.123 0 4.086-.415 5.47-1.107 1.069-.535 1.53-1.08 1.53-1.393v-2.171C17.35 11.349 14.827 12 12 12s-5.35-.652-7-1.671V12.5zm14 2.829C17.35 16.349 14.827 17 12 17s-5.35-.652-7-1.671V17.5c0 .313.461.858 1.53 1.393C7.914 19.585 9.877 20 12 20c2.123 0 4.086-.415 5.47-1.107 1.069-.535 1.53-1.08 1.53-1.393v-2.171zM3 17.5v-10C3 5.015 7.03 3 12 3s9 2.015 9 4.5v10c0 2.485-4.03 4.5-9 4.5s-9-2.015-9-4.5zm9-7.5c2.123 0 4.086-.415 5.47-1.107C18.539 8.358 19 7.813 19 7.5c0-.313-.461-.858-1.53-1.393C16.086 5.415 14.123 5 12 5c-2.123 0-4.086.415-5.47 1.107C5.461 6.642 5 7.187 5 7.5c0 .313.461.858 1.53 1.393C7.914 9.585 9.877 10 12 10z"/></svg>';
-
             btnsNavContainer.style.display = none;
             btnMenuContainer.style.display = flx;
             menuSocialContainer.style.display = none;

@@ -126,7 +126,7 @@
     //! FONT WEIGHT--OVER
     //! *********************************************************************************************************************** *//
     //!BORDER--START
-    --border: solid 0.2rem;
+    --border: solid 1px;
     --borderMenu: solid 0.3rem;
     --borderRadius: 0.25rem;
     --borderBtnRadius: 3rem;
@@ -923,7 +923,7 @@ BUTTON {
     width: 100%;
     background: transparent;
     color: var(--textColor);
-    border: var(--firstColorHover) 0.25rem solid;
+    border: var(--border) var(--firstColorHover);
     font-weight: var(--fontWeightB);
     font-size: var(--fontSizeS);
 
@@ -1589,20 +1589,18 @@ BUTTON {
             .info_container {
                 padding: 0 2rem;
             }
-            .img_container {
-                @include flex(center, center);
-                height: 100%;
+            IMG {
+                display: block;
                 width: 100%;
-                z-index: -1;
-                background: url("../img/gorgona/poster_hero.jpg");
-                .illustration_mine {
+                height: auto;
+            }
+            /* .illustration_mine {
                     position: absolute;
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
                     width: 100%;
-                }
-            }
+                } */
             .info_container {
                 @include flexDirection(column, flex-start, center);
                 height: auto;
@@ -1698,7 +1696,6 @@ BUTTON {
     left: 0;
     width: 100%;
     height: 30rem;
-    background-size: cover !important;
     transform: scale(1);
     transition: var(--transitionMid);
     z-index: -1;
@@ -1724,46 +1721,58 @@ BUTTON {
 .service_card {
     width: 100%;
     height: 30rem;
-}
-.info_service_card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    background: var(--bgColorUT);
-    transition: var(--transitionMid);
-    width: 100%;
-    height: 100%;
-}
-.info_service_card H2 {
-    width: 100%;
-    text-align: center;
-    color: var(--textColor);
-    font-size: var(--fontSizeX);
-    transition: var(--transitionMid);
-    text-shadow: 1px 1px 5px var(--textContrastColor);
-    opacity: 0.9;
-    transform: translateY(100%);
-}
-.info_service_card P {
-    padding: 1rem 1.5rem;
-    transition: var(--transitionMid);
-    opacity: 0;
-    transform: translateY(100%);
+    background: linear-gradient(var(--bgColor), transparent, var(--bgColor));
+
+    .info_service_card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        background: var(--bgColorUT);
+        transition: var(--transitionMid);
+        width: 100%;
+        height: 100%;
+        H2 {
+            width: 100%;
+            text-align: center;
+            color: var(--textColor);
+            font-size: var(--fontSizeX);
+            transition: var(--transitionMid);
+            text-shadow: 1px 1px 5px var(--textContrastColor);
+            opacity: 0.9;
+            transform: translateY(100%);
+        }
+        P {
+            padding: 1rem 1.5rem;
+            transition: var(--transitionMid);
+            opacity: 0;
+            transform: translateY(100%);
+        }
+    }
+
+    IMG:not(.not) {
+        width: auto;
+        height: 100%;
+    }
+    .commers_service_bg IMG {
+        width: 100%;
+        height: auto;
+    }
 }
 //* ^SERVICE CARDS BG - START */
-.graphic_design_service_bg {
-    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT)), url(https://images.pexels.com/photos/1601773/pexels-photo-1601773.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1);
+
+/* .graphic_design_service_bg {
+    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT));
 }
 .web_service_bg {
-    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT)), url(https://images.pexels.com/photos/285814/pexels-photo-285814.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1);
+    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT));
 }
 .e-commers_service_bg {
-    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT)), url(https://images.pexels.com/photos/7620629/pexels-photo-7620629.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1);
+    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT));
 }
 .UX-UI_service_bg {
-    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT)), url(https://images.pexels.com/photos/196645/pexels-photo-196645.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1);
-}
+    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT));
+} */
 //* ^SERVICE CARDS BG - OVER */
 .service_card:hover .bg_card {
     transform: scale(1.2);
@@ -1793,11 +1802,9 @@ BUTTON {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-
-                    //*padding: 1rem 1.5rem;
+                    padding: 1rem 1.5rem;
                     background: var(--navbarColor);
                     border-radius: var(--borderRadius);
-                    padding: 1rem 0;
                     .service_card_title,
                     .service_card_text {
                         height: fit-content;
@@ -2052,7 +2059,7 @@ BUTTON {
     @include flexDirection(row, center, center);
     padding: 0.5rem 1rem;
     .arrow_icon {
-        fill: var(--secondColor);
+        fill: var(--firstColor);
     }
     &:hover .arrow_icon {
         fill: var(--textContrastColor);
@@ -2200,22 +2207,13 @@ BUTTON {
     background: var(--firstColor);
     color: var(--textContrastColor);
 
-    padding: 4rem 0 0;
-    .title_footer {
-        height: auto;
-        width: auto;
-        margin-bottom: 2rem;
+    .made_with_container {
+        @include flexDirection(row, flex-start, center);
         color: var(--textContrastColor);
-    }
-    .logos_container {
-        @include flexDirection(row, center, center);
-
-        width: var(--widthClamp);
-        height: auto;
-        padding: 1rem;
+        padding: 1rem 0;
         .tech_logo_container {
             @include flex(center, center);
-            width: 8rem;
+            width: 2rem;
             height: auto;
 
             .coffee_mug_icon_svg {
@@ -2230,90 +2228,54 @@ BUTTON {
         }
         .plus_sign {
             @include flex(center, center);
-            font-size: 3rem;
+            font-size: 1rem;
             text-align: center;
             color: var(--textContrastColor);
         }
     }
 
     .menu_legals_container {
-        @include flexDirection(column, flex-start, center);
+        @include flexDirection(row, space-between, center);
         width: 100%;
         height: fit-content;
-        .subtitle_footer {
-            @include flex(center, center);
-            text-align: center;
-            width: 100%;
-            margin: 2rem 0 0.5rem;
-            color: var(--textContrastColor);
+        background: var(--secondColor);
+        padding: 1rem 0;
+        .made_content {
+            color: var(--textColor);
+            flex-wrap: wrap;
             font-weight: var(--fontWeightN);
-            font-size: var(--fontSizeSClamp);
+            font-size: var(--fontSizeNClamp);
+            width: var(--widthClamp);
+            padding: 1rem 1.5rem;
+            margin-left: 5rem;
+            .btns_container {
+                @include flexDirection(row, flex-start, center);
+                gap: 2rem;
+            }
+            .link_text {
+                color: var(--firstColor);
+            }
+            .btn_link,
+            .copyright_text {
+                color: var(--lightGrey);
+                font-size: var(--fontSizeXs);
+            }
         }
-        .menu_legals_btns_container {
+        .social_btns_footer {
             @include flexDirection(row, center, center);
-            border-radius: 1rem 1rem 0 0;
-            background: var(--bgColor);
-            overflow: hidden;
+            color: var(--textColor);
             height: fit-content;
-            width: fit-content;
-            .btn_link {
-                color: var(--textColor);
-                transition: color 200ms ease;
-                padding: 1rem;
-                &:hover,
-                :active,
-                :focus {
-                    color: var(--textColor);
-                    fill: var(--textColor);
+            padding: 1rem 1.5rem;
+            .contact_card_btn {
+                height: 3rem;
+                width: 3rem;
+                padding: 0.5rem;
+                .social_icon_svg {
+                    transition: var(--transitionUF);
                 }
                 &:hover {
-                    background: var(--secondColorHover);
-                }
-                &:active,
-                :focus {
-                    background: var(--secondColor);
-                }
-            }
-        }
-        .made_container {
-            @include flexDirection(row, space-between, center);
-            width: 100%;
-            height: fit-content;
-            background: var(--secondColor);
-            padding: 1rem 0;
-            .made_content {
-                color: var(--textColor);
-                flex-wrap: wrap;
-                font-weight: var(--fontWeightN);
-                font-size: var(--fontSizeNClamp);
-                width: var(--widthClamp);
-                padding: 1rem 1.5rem;
-                margin-left: 5rem;
-
-                .link_text {
-                    color: var(--firstColor);
-                }
-                .copyright_text {
-                    color: var(--lightGrey);
-                    font-size: var(--fontSizeXs);
-                }
-            }
-            .social_btns_footer {
-                @include flexDirection(row, center, center);
-                color: var(--textColor);
-                height: fit-content;
-                padding: 1rem 1.5rem;
-                .contact_card_btn {
-                    height: 3rem;
-                    width: 3rem;
-                    padding: 0.5rem;
                     .social_icon_svg {
-                        transition: var(--transitionUF);
-                    }
-                    &:hover {
-                        .social_icon_svg {
-                            transform: scale(1.2);
-                        }
+                        transform: scale(1.2);
                     }
                 }
             }
@@ -2323,9 +2285,7 @@ BUTTON {
 
 //^ SWIPER UP CONTAINER
 .animation_up,
-.card_up,
-.title_footer,
-.title_section {
+.card_up {
     opacity: 0;
     transform: translateY(4rem);
     transition: all 1000ms ease;
