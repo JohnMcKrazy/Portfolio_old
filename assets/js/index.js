@@ -239,21 +239,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const sliderImgContainersServices = selectorAll(".img_container_services");
     const sliderInfoContainersServices = selectorAll(".info_container_services");
     //& SERVICES CONTAINERS
-    const servicesContainer = selector("#services_container");
-    const serviceContainers = selectorAll(".service_container");
-    const serviceCards = selectorAll(".service_card");
-    const serviceCardsLeft = selectorAll(".service_card_left");
-    const serviceCardsRight = selectorAll(".service_card_right");
-
-    //^ SKILLS
-    const skillsContainer = selector(".skills_containers");
-    const skillsIconsContainers = selectorAll(".skills_icon_container");
 
     //^ PORTFOLIO
     const titleSubsectionCardsSearch = selector("#title_subsection_search_type");
     //& CONTAINERS WHERE TEMPLATES APPEND
-    const portfolioHotCardsContainer = selector("#cards_hot_container");
-    const searchBtnsContainer = selector("#search_project_btns_container");
+
     const porfolioSearchCardsContainer = selector("#cards_search_container");
     //& CONTAINERS LOADER
     const loadersContainers = selectorAll(".loader_container");
@@ -266,8 +256,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const listBtnsContainer = selector(".list_btns_container");
     const searchBtn = selector(".search_list_btn");
     const arrow = selector(".arrow_icon");
-    //^ CLIENTS
-    const logoClientsContainers = selectorAll(".client_logo_container");
 
     //^LEGALS
     const copyrightText = selector(".made_content");
@@ -550,8 +538,6 @@ document.addEventListener("DOMContentLoaded", () => {
             btnMenuContainer.style.display = none;
             btnsNavContainer.style.display = flx;
             menuSocialContainer.style.display = flx;
-            servicesContainer.classList.add("services_container_one_column");
-            servicesContainer.classList.remove("services_container_two_columns");
 
             slidersContentServices.forEach((slider) => {
                 const idSplit = slider.id.split("_");
@@ -568,24 +554,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 container.style.height = `${windowHeight}px`;
                 container.style.width = `${windowHalfWidth}px`;
                 insertFlex(container, "center", "center");
-            });
-            insertFlex(skillsContainer, "row", "center", "flex-start");
-            serviceContainers.forEach((container) => {
-                container.style.width = "100%";
-            });
-            serviceCardsLeft.forEach((card) => {
-                changeCardStyle(card, "row", "var(--cardServiceHeight)");
-            });
-            serviceCardsRight.forEach((card) => {
-                changeCardStyle(card, "row-reverse", "var(--cardServiceHeight)");
-            });
-            logoClientsContainers.forEach((container) => {
-                container.style.width = "12.5rem";
-                container.style.height = "8rem";
-            });
-            skillsIconsContainers.forEach((container) => {
-                container.style.width = "5rem";
-                container.style.height = "5rem";
             });
             closeMenu();
         } else if (widConf > secondBreak || (widConf < firstBreak && widConf > secondBreak)) {
@@ -611,9 +579,6 @@ document.addEventListener("DOMContentLoaded", () => {
             btnMenuContainer.style.display = none;
             btnsNavContainer.style.display = flx;
             menuSocialContainer.style.display = flx;
-            servicesContainer.classList.add("services_container_one_column");
-            servicesContainer.classList.remove("services_container_more_columns");
-            insertFlex(skillsContainer, "row", "center", "flex-start");
 
             slidersContentServices.forEach((slider) => {
                 const idSplit = slider.id.split("_");
@@ -631,33 +596,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 container.style.width = `${windowHalfWidth}px`;
                 insertFlex(container, "center", "center");
             });
-            serviceContainers.forEach((container) => {
-                container.style.width = "100%";
-            });
-            serviceCardsLeft.forEach((card) => {
-                changeCardStyle(card, "row", "var(--cardServiceHeight)");
-            });
-            serviceCardsRight.forEach((card) => {
-                changeCardStyle(card, "row-reverse", "var(--cardServiceHeight)");
-            });
-            logoClientsContainers.forEach((container) => {
-                container.style.width = "12.5rem";
-                container.style.height = "8rem";
-            });
-            skillsIconsContainers.forEach((container) => {
-                container.style.width = "5rem";
-                container.style.height = "5rem";
-            });
             closeMenu();
         } else if (widConf <= secondBreak) {
             copyrightText.style.marginLeft = "1rem";
             btnsNavContainer.style.display = none;
             btnMenuContainer.style.display = flx;
             menuSocialContainer.style.display = none;
-
-            insertFlex(skillsContainer, "column", "flex-start", "center");
-            servicesContainer.classList.add("services_container_more_columns");
-            servicesContainer.classList.remove("services_container_one_column");
 
             slidersContentServices.forEach((slider) => {
                 insertFlex(slider, "column", "flex-start", "center");
@@ -670,25 +614,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 container.style.height = `${windowHalfHeight}px`;
                 container.style.width = `${windowWidth}px`;
                 insertFlex(container, "center", "center");
-            });
-            serviceContainers.forEach((container) => {
-                container.style.width = "var(--cardServiceWidthMore)";
-                container.style.height = "var(--cardServiceHeight)";
-            });
-            serviceCardsLeft.forEach((card) => {
-                changeCardStyle(card, "column", "var(--cardServiceHeight)");
-            });
-            serviceCardsRight.forEach((card) => {
-                changeCardStyle(card, "column", "var(--cardServiceHeight)");
-            });
-
-            logoClientsContainers.forEach((container) => {
-                container.style.width = "10rem";
-                container.style.height = "6rem";
-            });
-            skillsIconsContainers.forEach((container) => {
-                container.style.width = "4rem";
-                container.style.height = "4rem";
             });
             closeMenuSocial();
         }
@@ -1068,7 +993,7 @@ document.addEventListener("DOMContentLoaded", () => {
             hotData.forEach((item) => {
                 createCard(item, fragmentHotProjects);
             });
-            portfolioHotCardsContainer.appendChild(fragmentHotProjects);
+            selector("#cards_hot_container").appendChild(fragmentHotProjects);
             const projectCards = selectorAll(".project_card");
             projectCards.forEach((card) => {
                 setTimeout(() => {

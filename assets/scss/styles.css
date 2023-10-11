@@ -101,10 +101,6 @@
   --navbarHeightFixed: 6rem;
   --navbarHeight: 10rem;
   --fullscreenFixedHeight: calc(100vh - var(--navbarHeightFixed));
-  --cardProjectWidth: clamp(220px, 30rem, 90%);
-  --cardServiceWidthOne: 100%;
-  --cardServiceWidthMore: 20rem;
-  --cardServiceHeight: 30rem;
   --transitionUF: all 250ms ease;
   --transitionFast: all 500ms ease;
   --transitionMid: all 750ms ease;
@@ -1619,10 +1615,11 @@ BUTTON {
 }
 
 .card {
+  width: 100%;
+  height: 30rem;
   position: relative;
   overflow: hidden;
 }
-
 .card .bg_card {
   position: absolute;
   top: 0;
@@ -1633,29 +1630,34 @@ BUTTON {
   transition: var(--transitionMid);
   z-index: -1;
 }
-
-.info_card {
+.card .info_card {
   color: var(--textColor);
   padding: 1rem 1.5rem 2rem;
 }
-
-.info_card P,
-.info_card H3,
-.info_card H4 {
+.card .info_card P,
+.card .info_card H3,
+.card .info_card H4 {
   margin: 0.5rem 0;
 }
 
-.cards_service_container {
-  display: grid;
-  grid-template-columns: 1fr;
+.cards_container {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  /* align-content: center; */
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 30rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.cards_service_container {
   margin-bottom: 5rem;
 }
 
 .service_card {
-  width: 100%;
-  height: 30rem;
   background: linear-gradient(var(--bgColor), transparent, var(--bgColor));
 }
 .service_card .info_service_card {
@@ -1692,29 +1694,13 @@ BUTTON {
   width: 100%;
   height: auto;
 }
-
-/* .graphic_design_service_bg {
-    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT));
-}
-.web_service_bg {
-    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT));
-}
-.e-commers_service_bg {
-    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT));
-}
-.UX-UI_service_bg {
-    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT));
-} */
 .service_card:hover .bg_card {
   transform: scale(1.2);
 }
-
 .service_card:hover .info_service_card {
   background: var(--bgColorT);
 }
-
-.service_card:hover .info_service_card P,
-.service_card:hover .info_service_card H2 {
+.service_card:hover .info_service_card P, .service_card:hover .info_service_card H2 {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1726,10 +1712,23 @@ BUTTON {
   align-items: center;
 }
 .services_section .services_container {
-  display: grid;
   height: -moz-fit-content;
   height: fit-content;
   width: 100%;
+  height: fit-content;
+}
+.services_section .services_container .service_card .service_card_img {
+  width: auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+.services_section .services_container .service_card .service_card_info {
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 .services_section .services_container .service_container .service_card {
   display: flex;
@@ -1741,6 +1740,8 @@ BUTTON {
   flex-direction: column;
   align-items: center;
   padding: 1rem 1.5rem;
+  width: 100%;
+  height: 100%;
   background: var(--navbarColor);
   border-radius: var(--borderRadius);
 }
@@ -1754,69 +1755,11 @@ BUTTON {
 .services_section .services_container .service_container .service_card .service_card_info .service_card_title {
   margin-bottom: 1rem;
 }
-.services_section .services_container .service_container .service_card > * {
-  flex-basis: 100%;
-}
 .services_section .services_container .service_container .service_card_left {
   flex-direction: row;
 }
 .services_section .services_container .service_container .service_card_right {
   flex-direction: row-reverse;
-}
-.services_section .services_container_one_column {
-  grid-template-columns: 100%;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-.services_section .services_container_one_column .service_card {
-  width: var(--cardServiceWidthOne);
-  height: var(--cardServiceHeight);
-}
-.services_section .services_container_one_column .service_card .service_card_img {
-  width: 100%;
-  height: var(--cardServiceHeight);
-}
-.services_section .services_container_one_column .service_card .service_card_img SVG,
-.services_section .services_container_one_column .service_card .service_card_img IMG {
-  width: 100%;
-  height: var(--cardServiceHeight);
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
-}
-.services_section .services_container_one_column .service_card .service_card_info {
-  justify-content: center;
-  width: 100%;
-  height: var(--cardServiceHeight);
-}
-.services_section .services_container_more_columns {
-  grid-template-columns: repeat(auto-fill, 20rem);
-  justify-content: center;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-.services_section .services_container_more_columns .service_card {
-  width: var(--cardServiceWidthMore);
-  height: var(--cardServiceHeight);
-}
-.services_section .services_container_more_columns .service_card .service_card_img {
-  width: var(--cardServiceWidthMore);
-  height: 12rem;
-}
-.services_section .services_container_more_columns .service_card .service_card_img SVG,
-.services_section .services_container_more_columns .service_card .service_card_img IMG {
-  width: var(--cardServiceWidthMore);
-  height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
-}
-.services_section .services_container_more_columns .service_card .service_card_info {
-  justify-content: flex-start;
-  height: 17rem;
-  width: var(--cardServiceWidthMore);
 }
 
 .marker_slider_btn {
@@ -1908,23 +1851,9 @@ BUTTON {
 .portfolio_section .portfolio_content .header_section {
   background: var(--bgHeaderSectionPortfolio);
 }
-.portfolio_section .cards_container {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  min-height: 30rem;
-  width: var(--widthClamp);
-  margin-bottom: 2rem;
-}
 
 .project_card {
   position: relative;
-  width: var(--cardProjectWidth);
-  height: 30rem;
   background: var(--firstColor);
   background-repeat: no-repeat;
   background-position: center;
@@ -1980,10 +1909,7 @@ BUTTON {
 .project_card .info_project_container .margin_bottom {
   margin-bottom: 1rem;
 }
-
-.project_card:hover .info_project_container,
-.project_card:focus .info_project_container,
-.project_card:active .info_project_container {
+.project_card:hover .info_project_container, .project_card:focus .info_project_container, .project_card:active .info_project_container {
   z-index: var(--zIndexHover);
   opacity: 0.9;
   scale: 1;
@@ -2303,13 +2229,39 @@ BUTTON {
   transition: all 1000ms ease;
 }
 
-@media screen and (min-width: 900px) {
-  .cards_service_container {
-    grid-template-columns: 1fr 1fr;
+@media screen and (min-width: 600px) {
+  .card {
+    width: 50%;
   }
-  /*     .sliders_container {
-      .slider_container {
-
-      }
-  } */
+  .made_content {
+    margin-left: 1rem;
+  }
+}
+@media screen and (min-width: 900px) {
+  .card {
+    width: 30%;
+  }
+  .client_logo_container {
+    height: 5rem;
+  }
+  .portfolio_section .project_card {
+    width: 33.33%;
+  }
+  .services_section .service_card {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .services_section .service_card_info {
+    align-items: left;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .skills_containers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
 }

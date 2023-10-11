@@ -140,16 +140,6 @@
     --navbarHeightFixed: 6rem;
     --navbarHeight: 10rem;
     --fullscreenFixedHeight: calc(100vh - var(--navbarHeightFixed));
-    //!NAVBAR HEIGHTS--OVER
-    //! *********************************************************************************************************************** *//
-    //!CARDS DIMENTIONS--START
-    --cardProjectWidth: clamp(220px, 30rem, 90%);
-    --cardServiceWidthOne: 100%;
-    --cardServiceWidthMore: 20rem;
-    --cardServiceHeight: 30rem;
-    //!CARDS DIMENTIONS--OVER
-    //! *********************************************************************************************************************** *//
-
     //!TRANSITIONS--START
     --transitionUF: all 250ms ease;
     --transitionFast: all 500ms ease;
@@ -1687,42 +1677,46 @@ BUTTON {
 
 //* &BASIC CARD - START */
 .card {
-    position: relative;
-    overflow: hidden;
-}
-.card .bg_card {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 30rem;
-    transform: scale(1);
-    transition: var(--transitionMid);
-    z-index: -1;
+    position: relative;
+    overflow: hidden;
+    .bg_card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 30rem;
+        transform: scale(1);
+        transition: var(--transitionMid);
+        z-index: -1;
+    }
+    .info_card {
+        color: var(--textColor);
+        padding: 1rem 1.5rem 2rem;
+        P,
+        H3,
+        H4 {
+            margin: 0.5rem 0;
+        }
+    }
 }
-.info_card {
-    color: var(--textColor);
-    padding: 1rem 1.5rem 2rem;
-}
-.info_card P,
-.info_card H3,
-.info_card H4 {
-    margin: 0.5rem 0;
+.cards_container {
+    position: relative;
+    overflow: hidden;
+    @include flexDirection(row, center, center);
+    flex-wrap: wrap;
+    min-height: 30rem;
+    width: 100%;
+    margin-bottom: 2rem;
 }
 //* &BASIC CARD - OVER */
 //* &SERVICE CARD - START */
 .cards_service_container {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-content: center;
-    /* align-content: center; */
     margin-bottom: 5rem;
 }
 .service_card {
-    width: 100%;
-    height: 30rem;
     background: linear-gradient(var(--bgColor), transparent, var(--bgColor));
-
     .info_service_card {
         display: flex;
         flex-direction: column;
@@ -1758,41 +1752,40 @@ BUTTON {
         width: 100%;
         height: auto;
     }
+    &:hover .bg_card {
+        transform: scale(1.2);
+    }
+    &:hover .info_service_card {
+        background: var(--bgColorT);
+    }
+    &:hover .info_service_card P,
+    &:hover .info_service_card H2 {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-//* ^SERVICE CARDS BG - START */
 
-/* .graphic_design_service_bg {
-    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT));
-}
-.web_service_bg {
-    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT));
-}
-.e-commers_service_bg {
-    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT));
-}
-.UX-UI_service_bg {
-    background: linear-gradient(var(--bgColorT), transparent, var(--bgColorT));
-} */
-//* ^SERVICE CARDS BG - OVER */
-.service_card:hover .bg_card {
-    transform: scale(1.2);
-}
-.service_card:hover .info_service_card {
-    background: var(--bgColorT);
-}
-.service_card:hover .info_service_card P,
-.service_card:hover .info_service_card H2 {
-    opacity: 1;
-    transform: translateY(0);
-}
 //* &SERVICE CARD - OVER */
 .services_section {
     @include flexDirection(column, flex-start, center);
-
     .services_container {
-        display: grid;
         height: fit-content;
         width: 100%;
+        height: fit-content;
+        .service_card {
+            .service_card_img {
+                width: auto;
+                height: 100%;
+
+                object-fit: cover;
+                object-position: center;
+            }
+            .service_card_info {
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+            }
+        }
         .service_container {
             .service_card {
                 display: flex;
@@ -1803,6 +1796,8 @@ BUTTON {
                     flex-direction: column;
                     align-items: center;
                     padding: 1rem 1.5rem;
+                    width: 100%;
+                    height: 100%;
                     background: var(--navbarColor);
                     border-radius: var(--borderRadius);
                     .service_card_title,
@@ -1817,66 +1812,11 @@ BUTTON {
                 }
             }
 
-            .service_card > * {
-                flex-basis: 100%;
-            }
             .service_card_left {
                 flex-direction: row;
             }
             .service_card_right {
                 flex-direction: row-reverse;
-            }
-        }
-    }
-    .services_container_one_column {
-        grid-template-columns: 100%;
-        height: fit-content;
-        .service_card {
-            width: var(--cardServiceWidthOne);
-            height: var(--cardServiceHeight);
-            .service_card_img {
-                width: 100%;
-                height: var(--cardServiceHeight);
-
-                SVG,
-                IMG {
-                    width: 100%;
-                    height: var(--cardServiceHeight);
-
-                    object-fit: cover;
-                    object-position: center;
-                }
-            }
-            .service_card_info {
-                justify-content: center;
-                width: 100%;
-                height: var(--cardServiceHeight);
-            }
-        }
-    }
-    .services_container_more_columns {
-        grid-template-columns: repeat(auto-fill, 20rem);
-        justify-content: center;
-        height: fit-content;
-        .service_card {
-            width: var(--cardServiceWidthMore);
-            height: var(--cardServiceHeight);
-            .service_card_img {
-                width: var(--cardServiceWidthMore);
-                height: 12rem;
-                SVG,
-                IMG {
-                    width: var(--cardServiceWidthMore);
-                    height: auto;
-
-                    object-fit: cover;
-                    object-position: center;
-                }
-            }
-            .service_card_info {
-                justify-content: flex-start;
-                height: 17rem;
-                width: var(--cardServiceWidthMore);
             }
         }
     }
@@ -1960,20 +1900,10 @@ BUTTON {
             background: var(--bgHeaderSectionPortfolio);
         }
     }
-    .cards_container {
-        position: relative;
-        overflow: hidden;
-        @include flexDirection(row, center, center);
-        flex-wrap: wrap;
-        min-height: 30rem;
-        width: var(--widthClamp);
-        margin-bottom: 2rem;
-    }
 }
+
 .project_card {
     position: relative;
-    width: var(--cardProjectWidth);
-    height: 30rem;
     background: var(--firstColor);
     background-repeat: no-repeat;
     background-position: center;
@@ -2027,13 +1957,13 @@ BUTTON {
             margin-bottom: 1rem;
         }
     }
-}
-.project_card:hover .info_project_container,
-.project_card:focus .info_project_container,
-.project_card:active .info_project_container {
-    z-index: var(--zIndexHover);
-    opacity: 0.9;
-    scale: 1;
+    &:hover .info_project_container,
+    &:focus .info_project_container,
+    &:active .info_project_container {
+        z-index: var(--zIndexHover);
+        opacity: 0.9;
+        scale: 1;
+    }
 }
 
 //!  *//
@@ -2306,14 +2236,42 @@ BUTTON {
 }
 
 //^ SWIPER DOWN CONTAINER
+
+@media screen and (min-width: 600px) {
+    .card {
+        width: 50%;
+    }
+    .made_content {
+        margin-left: 1rem;
+    }
+}
+
 @media screen and (min-width: 900px) {
-    .cards_service_container {
-        grid-template-columns: 1fr 1fr;
+    .card {
+        width: 30%;
     }
 
-    /*     .sliders_container {
-        .slider_container {
-           
+    .client_logo_container {
+        height: 5rem;
+    }
+
+    .portfolio_section {
+        .project_card {
+            width: 33.33%;
         }
-    } */
+    }
+    .services_section {
+        .service_card {
+            @include flexDirection(row, center, center);
+        }
+        .service_card_info {
+            align-items: left;
+        }
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .skills_containers {
+        @include flexDirection(row, center, flex-start);
+    }
 }

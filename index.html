@@ -410,7 +410,7 @@
                     </div>
 
                     <!-- ! -->
-                    <div class="cards_service_container">
+                    <div class="cards_container cards_service_container">
                         <article class="card service_card" id="graphic_design_service_card">
                             <div class="bg_card graphic_design_service_bg">
                                 <img src="https://images.pexels.com/photos/1601773/pexels-photo-1601773.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1" loading="lazy" />
@@ -420,7 +420,7 @@
                                 <p class="info">Es necesaria la comunicación gráfica para muchas aréas de negocios/empresas, desde papeleria basica hasta promocionales digitales e impresos, cada necesidad se majeda desde angulos diferentes como originalidad en cada paso de la creación.</p>
                             </div>
                         </article>
-                        <article class="card service_card" id="web_service_card">
+                        <article class="card card service_card" id="web_service_card">
                             <div class="bg_card web_service_bg">
                                 <img src="https://images.pexels.com/photos/285814/pexels-photo-285814.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1" loading="lazy" />
                             </div>
@@ -458,37 +458,35 @@
             </div>
 
             <!--~~SERVICES CONTAINER--SERVICES CARDS-->
-            <div class="services_container" id="services_container">
+            <div class="cards_container services_container">
                 <!--&SERVICE CARD WHY-->
-                <div class="service_container swipe_animation_container_half">
-                    <div class="service_card service_card_left animation_right" id="service_card_original">
-                        <div class="service_card_img"><img src="./assets/img/pagina/background-thinking-100.jpg" loading="lazy" /></div>
-                        <div class="service_card_info">
-                            <h2 class="service_card_title">Servicio personalizado</h2>
-                            <p class="service_card_text">Atencion constante para el correcto desarrollo de tu proyecto</p>
-                        </div>
+                <article class="card service_card">
+                    <div class="bg_card">
+                        <img src="./assets/img/pagina/background-thinking-100.jpg" loading="lazy" />
                     </div>
-                </div>
-                <!--&SERVICE CARD WHY-->
-                <div class="service_container swipe_animation_container_half">
-                    <div class="service_card service_card_right animation_left" id="service_card_personalizado">
-                        <div class="service_card_img"><img src="./assets/img/impulso/mockup_completo.jpg" loading="lazy" /></div>
-                        <div class="service_card_info">
-                            <h2 class="service_card_title">Perzonalizado</h2>
-                            <p class="service_card_text">Me atrevo a pensar diferente,me comprometo a ofrecerte desarrollos a medida, creacion de paginas unicas, diferentes y creativas.</p>
-                        </div>
+                    <div class="info_card info_service_card">
+                        <h2 class="project-tile">Servicio personalizado</h2>
+                        <p class="info">Atencion constante para el correcto desarrollo de tu proyecto</p>
                     </div>
-                </div>
-                <!--&SERVICE CARD WHY-->
-                <div class="service_container swipe_animation_container_half">
-                    <div class="service_card service_card_left animation_right" id="service_2_card_original">
-                        <div class="service_card_img"><img src="./assets/img/pagina/background-thinking-100.jpg" loading="lazy" /></div>
-                        <div class="service_card_info">
-                            <h2 class="service_card_title">Originalidad</h2>
-                            <p class="service_card_text">Me atrevo a pensar diferente,me comprometo a ofrecerte desarrollos a medida, creacion de paginas unicas, diferentes y creativas.</p>
-                        </div>
+                </article>
+                <article class="card service_card">
+                    <div class="bg_card">
+                        <img src="./assets/img/backgrounds/basketball-g9fd537503_1920.jpg" loading="lazy" />
                     </div>
-                </div>
+                    <div class="info_card info_service_card">
+                        <h2 class="project-tile">Servicio 2</h2>
+                        <p class="info">Atencion constante para el correcto desarrollo de tu proyecto</p>
+                    </div>
+                </article>
+                <article class="card service_card">
+                    <div class="bg_card">
+                        <img src="./assets/img/backgrounds/day.jpg" loading="lazy" />
+                    </div>
+                    <div class="info_card info_service_card">
+                        <h2 class="project-tile">Servicio 3</h2>
+                        <p class="info">Atencion constante para el correcto desarrollo de tu proyecto</p>
+                    </div>
+                </article>
             </div>
         </section>
 
@@ -1693,7 +1691,7 @@
 
         <!--&CARD TEMPLATE-->
         <template id="card_project_template">
-            <div class="project_card card_up" id="" tabindex="0">
+            <div class="card project_card card_up" id="" tabindex="0">
                 <div class="info_project_container">
                     <h2 class="title"></h2>
                     <h3 class="subtitle">Realizado con:</h3>
