@@ -1,147 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    //! TEMPLATE CONSTANTS
-    //^ PROJECT CARD TEMPLATE CONSTANTS
-    const fragmentHotProjects = document.createDocumentFragment();
-    const fragmentSearchProjects = document.createDocumentFragment();
-    const fragmentSliderMarkersServices = document.createDocumentFragment();
-
-    const cardProjectTemplate = document.querySelector("#card_project_template").content;
-    const markersTemplate = document.querySelector("#marker_slider_template").content;
-    //^ SELECTION LIST TEMPLATE CONSTANTS
-    const fragmentListProjects = document.createDocumentFragment();
-    const selectionListTemplate = document.querySelector("#selection_list_template").content;
-    const optionListTemplate = document.querySelector("#option_list_btn_template").content;
-    //! GENERAL ELEMENTS
-    const htmlLebel = document.documentElement;
-    const body = document.querySelector("BODY");
-    const btnsHero = document.querySelectorAll(".btn_hero");
-    const btnsSection = document.querySelectorAll(".btn_section");
-    const btnsContact = document.querySelectorAll(".contact_btn");
-    const btnsTheme = document.querySelectorAll(".btn_theme");
-    const sections = document.querySelectorAll(".section");
-
-    const btnsLinks = document.querySelectorAll(".btn_link");
-    //^ CONTAINERS WITH ANIMATION FUNCTIONS
-    const swipeAnimationContainersFull = document.querySelectorAll(".swipe_animation_container_full");
-    const swipeAnimationContainersHalf = document.querySelectorAll(".swipe_animation_container_half");
-    const animationContainerText = document.querySelectorAll(".text_animation_container");
-    //^ MODALS
-    const modalContainer = document.querySelector(".modals_container");
-    const closeModalBtn = document.querySelectorAll(".close_modal_btn");
-    //& CONTACT MODAL
-    const sendBtnFormModal = document.querySelector("#contact_form_send_btn");
-    const contactModal = document.querySelector("#contact_modal");
-    //& LEGAL MODAL
-    const modalInfoLegal = document.querySelector("#modal_info_legal");
-    const legalModal = document.querySelector("#legal_modal");
-    const legalAccept = document.querySelector("#legal_modal_accept_btn");
-
-    //^ ALERT MODAL
-    //& STORAGE MODAL
-    const storageAlertModal = document.querySelector("#storage_alert_modal");
-    const acceptBtnStorageWarningBtn = document.querySelector("#storage_alert_modal_accept_btn");
-
-    //^ MENU CONTENT
-    const menuContainer = document.querySelector("#menu_container");
-    const btnsMenu = document.querySelectorAll(".btn_menu");
-    const btnThemeMenu = document.querySelector("#change_theme_btn_menu");
-    const closeMenuBtn = document.querySelector("#menu_container_close_btn");
-    const openMenuSound = document.querySelector("#menu_open_sound");
-
-    //^ MENU SOCIAL
-    const menuSocialContainer = document.querySelector("#menu_social_container");
-    const menuSocialBtn = document.querySelector("#menu_social_btn");
-    const menuSocialBtnsContainer = document.querySelector(".menu_social_btns_container");
-    const btnsMenuSocial = document.querySelectorAll(".social_btn");
-
-    //^ NAV
-    const nav = document.querySelector(".nav");
-    const btnMenuContainer = document.querySelector("#btn_menu_slider");
-    const btnsNavContainer = document.querySelector("#nav_sections_btns_container");
-    const btnsNav = document.querySelectorAll(".btn_nav");
-    //& BTN LOGO
-    const btnLogo = document.querySelector("#logo_nav_btn");
-    //& TBN THEME
-    const btnThemeNav = document.querySelector("#change_theme_btn_nav");
-    //& BTN LEBELS
-    const lebelBtnMain = document.querySelector("#main_btn_nav");
-    const lebelBtnAbout = document.querySelector("#about_btn_nav");
-    const lebelBtnSkills = document.querySelector("#skills_btn_nav");
-    const lebelBtnServices = document.querySelector("#services_btn_nav");
-    const lebelBtnPortfolio = document.querySelector("#portfolio_btn_nav");
-    const lebelBtnClients = document.querySelector("#clients_btn_nav");
-    const lebelBtnContact = document.querySelector("#contact_btn_nav");
-
-    //^ HERO
-    const btnHeroDown = document.querySelector("#hero_btn_down");
-    //^ ABOUT
-
-    //^ SERVICES
-    //& SERVICES SLIDERS
-    const sliderWindowContainerProjects = document.querySelector("#slider_window_container_projects");
-    const sliderContainersProject = document.querySelectorAll(".slider_container_project");
-    const sliderPageMarkersContainerServices = document.querySelector("#slider_page_markers_container_services");
-    const sliderBtnLeftServices = document.querySelector("#btn_swipe_left_slider_services");
-    const sliderBtnRightServices = document.querySelector("#btn_swipe_right_slider_services");
-    const slidersContentServices = document.querySelectorAll(".slider_content_services");
-    const sliderImgContainersServices = document.querySelectorAll(".img_container_services");
-    const sliderInfoContainersServices = document.querySelectorAll(".info_container_services");
-    //& SERVICES CONTAINERS
-    const servicesContainer = document.querySelector("#services_container");
-    const serviceContainers = document.querySelectorAll(".service_container");
-    const serviceCards = document.querySelectorAll(".service_card");
-    const serviceCardsLeft = document.querySelectorAll(".service_card_left");
-    const serviceCardsRight = document.querySelectorAll(".service_card_right");
-
-    //^ SKILLS
-    const skillsContainer = document.querySelector(".skills_containers");
-    const skillsIconsContainers = document.querySelectorAll(".skills_icon_container");
-
-    //^ PORTFOLIO
-    const titleSubsectionCardsSearch = document.querySelector("#title_subsection_search_type");
-    //& CONTAINERS WHERE TEMPLATES APPEND
-    const portfolioHotCardsContainer = document.querySelector("#cards_hot_container");
-    const searchBtnsContainer = document.querySelector("#search_project_btns_container");
-    const porfolioSearchCardsContainer = document.querySelector("#cards_search_container");
-    //& CONTAINERS LOADER
-    const loadersContainers = document.querySelectorAll(".loader_container");
-    const loaderSearchCardsContainer = document.querySelector("#loader_cards_hot_container");
-    const spinnerHotCardsContainer = document.querySelector("#spinner_container_cards_hot");
-    const loaderHotCardsContainer = document.querySelector("#loader_cards_search_container");
-    const spinnerSearchCardContainer = document.querySelector("#spinner_container_cards_search");
-
-    //^ CLIENTS
-    const logoClientsContainers = document.querySelectorAll(".client_logo_container");
-
-    //^LEGALS
-    const copyrightText = document.querySelector(".made_content");
-    const btnLegalFooter = document.querySelector("#btn_legal_legals");
-    const btnDataFooter = document.querySelector("#btn_data_legals");
-
-    //^FETCH JASON COMPANYS DATA
-    const portfolioData = "./portfolioDB.json";
-
-    //^ ABOUT TEXT ANIMATION
-    const aboutLegends = ["Diseñador", "Ilustrador", "Desarrollador Front-End", "Deportista"];
-    const aboutTextAnimationContainer = document.querySelector(".about_text_animation_container");
-    const setAnimationText = (text) => {
-        return `<h2 class="up_animation">${text}</h2>`;
-    };
-    aboutTextAnimationContainer.innerHTML = setAnimationText(aboutLegends[0]);
-
-    const textAnimationAction = () => {
-        let objectCount = 0;
-        setInterval(() => {
-            objectCount += 1;
-            if (objectCount === aboutLegends.length) {
-                objectCount = 0;
-            }
-            aboutTextAnimationContainer.innerHTML = setAnimationText(aboutLegends[objectCount]);
-        }, 4000);
-    };
-    textAnimationAction();
-
-    //!GENERAL VARIANTS--START
+    const $d = document;
 
     //^ THEME ICONS
     const sunIcon =
@@ -161,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let menuStatus = close;
     let menuSocialStatus = close;
-    let selectListStatus = close;
+    let dropDownStatus = close;
     let slidersServicesCount = 0;
     let sliderFullCountServices = 0;
 
@@ -282,6 +140,165 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
     //^ HOT CARDS SELECTION
     const hotCardsSelection = ["pokedex", "tribute", "choroplet_map", "creaciones_hermed", "verona", "krazy_sports"];
+    const selector = (tag) => {
+        return $d.querySelector(`${tag}`);
+    };
+    const selectorAll = (tag) => {
+        return $d.querySelectorAll(`${tag}`);
+    };
+    const displayFlex = (item) => {
+        item.style.display = flx;
+    };
+    const displayNone = (item) => {
+        item.style.display = none;
+    };
+    //! TEMPLATE CONSTANTS
+    //^ PROJECT CARD TEMPLATE CONSTANTS
+    const fragmentHotProjects = $d.createDocumentFragment();
+    const fragmentSearchProjects = $d.createDocumentFragment();
+    const fragmentSliderMarkersServices = $d.createDocumentFragment();
+    const listBtnsFragment = $d.createDocumentFragment();
+    const btnListTemplate = selector("#list_btn_template").content;
+    const cardProjectTemplate = selector("#card_project_template").content;
+    const markersTemplate = selector("#marker_slider_template").content;
+    //^ SELECTION LIST TEMPLATE CONSTANTS
+    const fragmentListProjects = $d.createDocumentFragment();
+    //! GENERAL ELEMENTS
+    const htmlLebel = $d.documentElement;
+    const body = selector("BODY");
+    const btnsHero = selectorAll(".btn_hero");
+    const btnsSection = selectorAll(".btn_section");
+    const btnsContact = selectorAll(".contact_btn");
+    const btnsTheme = selectorAll(".btn_theme");
+    const sections = selectorAll(".section");
+
+    const btnsLinks = selectorAll(".btn_link");
+    //^ CONTAINERS WITH ANIMATION FUNCTIONS
+    const swipeAnimationContainersFull = selectorAll(".swipe_animation_container_full");
+    const swipeAnimationContainersHalf = selectorAll(".swipe_animation_container_half");
+    const animationContainerText = selectorAll(".text_animation_container");
+    //^ MODALS
+    const modalContainer = selector(".modals_container");
+    const closeModalBtn = selectorAll(".close_modal_btn");
+    //& CONTACT MODAL
+    const sendBtnFormModal = selector("#contact_form_send_btn");
+    const contactModal = selector("#contact_modal");
+    //& LEGAL MODAL
+    const modalInfoLegal = selector("#modal_info_legal");
+    const legalModal = selector("#legal_modal");
+    const legalAccept = selector("#legal_modal_accept_btn");
+
+    //^ ALERT MODAL
+    //& STORAGE MODAL
+    const storageAlertModal = selector("#storage_alert_modal");
+    const acceptBtnStorageWarningBtn = selector("#storage_alert_modal_accept_btn");
+
+    //^ MENU CONTENT
+    const menuContainer = selector("#menu_container");
+    const btnsMenu = selectorAll(".btn_menu");
+    const btnThemeMenu = selector("#change_theme_btn_menu");
+    const closeMenuBtn = selector("#menu_container_close_btn");
+    const openMenuSound = selector("#menu_open_sound");
+
+    //^ MENU SOCIAL
+    const menuSocialContainer = selector("#menu_social_container");
+    const menuSocialBtn = selector("#menu_social_btn");
+    const menuSocialBtnsContainer = selector(".menu_social_btns_container");
+    const btnsMenuSocial = selectorAll(".social_btn");
+
+    //^ NAV
+    const nav = selector(".nav");
+    const btnMenuContainer = selector("#btn_menu_slider");
+    const btnsNavContainer = selector("#nav_sections_btns_container");
+    const btnsNav = selectorAll(".btn_nav");
+    //& BTN LOGO
+    const btnLogo = selector("#logo_nav_btn");
+    //& TBN THEME
+    const btnThemeNav = selector("#change_theme_btn_nav");
+    //& BTN LEBELS
+    const lebelBtnMain = selector("#main_btn_nav");
+    const lebelBtnAbout = selector("#about_btn_nav");
+    const lebelBtnSkills = selector("#skills_btn_nav");
+    const lebelBtnServices = selector("#services_btn_nav");
+    const lebelBtnPortfolio = selector("#portfolio_btn_nav");
+    const lebelBtnClients = selector("#clients_btn_nav");
+    const lebelBtnContact = selector("#contact_btn_nav");
+
+    //^ HERO
+    const btnHeroDown = selector("#hero_btn_down");
+    //^ ABOUT
+
+    //^ SERVICES
+    //& SERVICES SLIDERS
+    const sliderWindowContainerProjects = selector("#slider_window_container_projects");
+    const sliderContainersProject = selectorAll(".slider_container_project");
+    const sliderPageMarkersContainerServices = selector("#slider_page_markers_container_services");
+    const sliderBtnLeftServices = selector("#btn_swipe_left_slider_services");
+    const sliderBtnRightServices = selector("#btn_swipe_right_slider_services");
+    const slidersContentServices = selectorAll(".slider_content_services");
+    const sliderImgContainersServices = selectorAll(".img_container_services");
+    const sliderInfoContainersServices = selectorAll(".info_container_services");
+    //& SERVICES CONTAINERS
+    const servicesContainer = selector("#services_container");
+    const serviceContainers = selectorAll(".service_container");
+    const serviceCards = selectorAll(".service_card");
+    const serviceCardsLeft = selectorAll(".service_card_left");
+    const serviceCardsRight = selectorAll(".service_card_right");
+
+    //^ SKILLS
+    const skillsContainer = selector(".skills_containers");
+    const skillsIconsContainers = selectorAll(".skills_icon_container");
+
+    //^ PORTFOLIO
+    const titleSubsectionCardsSearch = selector("#title_subsection_search_type");
+    //& CONTAINERS WHERE TEMPLATES APPEND
+    const portfolioHotCardsContainer = selector("#cards_hot_container");
+    const searchBtnsContainer = selector("#search_project_btns_container");
+    const porfolioSearchCardsContainer = selector("#cards_search_container");
+    //& CONTAINERS LOADER
+    const loadersContainers = selectorAll(".loader_container");
+    const loaderSearchCardsContainer = selector("#loader_cards_hot_container");
+    const spinnerHotCardsContainer = selector("#spinner_container_cards_hot");
+    const loaderHotCardsContainer = selector("#loader_cards_search_container");
+    const spinnerSearchCardContainer = selector("#spinner_container_cards_search");
+    //& OIPTION LIST
+
+    const listBtnsContainer = selector(".list_btns_container");
+    const searchBtn = selector(".search_list_btn");
+    const arrow = selector(".arrow_icon");
+    //^ CLIENTS
+    const logoClientsContainers = selectorAll(".client_logo_container");
+
+    //^LEGALS
+    const copyrightText = selector(".made_content");
+    const btnLegalFooter = selector("#btn_legal_legals");
+    const btnDataFooter = selector("#btn_data_legals");
+
+    //^FETCH JASON COMPANYS DATA
+    const portfolioData = "./portfolioDB.json";
+
+    //^ ABOUT TEXT ANIMATION
+    const aboutLegends = ["Diseñador", "Ilustrador", "Desarrollador Front-End", "Deportista"];
+    const aboutTextAnimationContainer = selector(".about_text_animation_container");
+    const setAnimationText = (text) => {
+        return `<h2 class="up_animation">${text}</h2>`;
+    };
+    aboutTextAnimationContainer.innerHTML = setAnimationText(aboutLegends[0]);
+
+    const textAnimationAction = () => {
+        let objectCount = 0;
+        setInterval(() => {
+            objectCount += 1;
+            if (objectCount === aboutLegends.length) {
+                objectCount = 0;
+            }
+            aboutTextAnimationContainer.innerHTML = setAnimationText(aboutLegends[objectCount]);
+        }, 4000);
+    };
+    textAnimationAction();
+
+    //!GENERAL VARIANTS--START
+
     //!GENERAL START FUNCTIONS
     //^CHANGE THEME BY HOUR
     let todayHour = new Date().getHours();
@@ -369,6 +386,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(() => {
                     loaderSearchCardsContainer.style.display = none;
                     createProjectCardHot();
+
                     setTimeout(() => {
                         loadersObserver.unobserve(spinnerHotCardsContainer);
                     }, 500);
@@ -391,6 +409,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const loadersObserver = new IntersectionObserver(watchCardsContainers, optionsIO_loaders);
         loadersObserver.observe(loader);
     });
+    //* CONSTANTS AND VARIANTS
 
     //^ CLOSE MENU SOCIAL
     const closeMenuSocial = () => {
@@ -413,11 +432,13 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     //^ SOCIAL MENU CLOSE EN BODY CLICK
+    //! *********************************************** !//
+    //!  agregar caracteristicas del nuevo option list  !//
+    //! *********************************************** !//
+
     const closeByBodyClick = (e) => {
         if (menuSocialStatus === open && e.target.id !== "menu_social_btn") {
             closeMenuSocial();
-        } else if (selectListStatus === open && e.target.id !== "selection_list_search_btn") {
-            closeSelectList();
         }
     };
 
@@ -486,7 +507,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //^SCROLL T0
     const scrollToSection = (btn) => {
-        const section = document.querySelector(`#${btn.name}`);
+        const section = selector(`#${btn.name}`);
         const windowTop = window.top;
         const windowHeight = window.innerHeight / 2;
         const sectionTop = section.getBoundingClientRect().top;
@@ -501,7 +522,7 @@ document.addEventListener("DOMContentLoaded", () => {
             window.scrollBy(windowTop, fixTop);
         }
     };
-    const accessibilityBtns = document.querySelectorAll(".accessibility_btn");
+    const accessibilityBtns = selectorAll(".accessibility_btn");
     accessibilityBtns.forEach((btn) => {
         btn.addEventListener("click", () => scrollToSection(btn));
     });
@@ -696,6 +717,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let borderRadius = "1rem";
         if (navTop >= windowHeight) {
             nav.style.height = "10rem";
+            nav.style.background = "var(--navbarColor)";
 
             menuSocialContainer.style.bottom = "inherit";
             menuSocialContainer.style.top = "2rem";
@@ -716,6 +738,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 500);
         } else if (navTop < windowHeight) {
             nav.style.height = "6rem";
+            nav.style.background = "var(--bgModal)";
             menuSocialContainer.style.top = "inherit";
             menuSocialContainer.style.bottom = "2rem";
             menuSocialContainer.style.flexDirection = "column-reverse";
@@ -782,28 +805,28 @@ document.addEventListener("DOMContentLoaded", () => {
                 const animationUpContainers = entry.target.querySelectorAll(".animation_up");
                 if (entry.isIntersecting) {
                     animationLeftContainers.forEach((container) => {
-                        const currentItem = document.querySelector(`#${container.id}`);
+                        const currentItem = selector(`#${container.id}`);
                         animateItem(currentItem, "1", "translateX(0)");
                     });
                     animationRightContainers.forEach((container) => {
-                        const currentItem = document.querySelector(`#${container.id}`);
+                        const currentItem = selector(`#${container.id}`);
                         animateItem(currentItem, "1", "translateX(0)");
                     });
                     animationUpContainers.forEach((container) => {
-                        const currentItem = document.querySelector(`#${container.id}`);
+                        const currentItem = selector(`#${container.id}`);
                         animateItem(currentItem, "1", "translateY(0)");
                     });
                 } /*  else {
                     animationLeftContainers.forEach((container) => {
-                        const currentItem = document.querySelector(`#${container.id}`);
+                        const currentItem = selector(`#${container.id}`);
                         animateItem(currentItem, "0", "translateX(-50%)");
                     });
                     animationRightContainers.forEach((container) => {
-                        const currentItem = document.querySelector(`#${container.id}`);
+                        const currentItem = selector(`#${container.id}`);
                         animateItem(currentItem, "0", "translateX(50%)");
                     });
                     animationUpContainers.forEach((container) => {
-                        const currentItem = document.querySelector(`#${container.id}`);
+                        const currentItem = selector(`#${container.id}`);
                         animateItem(currentItem, "0", "translateY(50%)");
                     });
                 } */
@@ -823,28 +846,28 @@ document.addEventListener("DOMContentLoaded", () => {
                 const animationUpContainers = entry.target.querySelectorAll(".animation_up");
                 if (entry.isIntersecting) {
                     animationLeftContainers.forEach((container) => {
-                        const currentItem = document.querySelector(`#${container.id}`);
+                        const currentItem = selector(`#${container.id}`);
                         animateItem(currentItem, "1", "translateX(0)");
                     });
                     animationRightContainers.forEach((container) => {
-                        const currentItem = document.querySelector(`#${container.id}`);
+                        const currentItem = selector(`#${container.id}`);
                         animateItem(currentItem, "1", "translateX(0)");
                     });
                     animationUpContainers.forEach((container) => {
-                        const currentItem = document.querySelector(`#${container.id}`);
+                        const currentItem = selector(`#${container.id}`);
                         animateItem(currentItem, "1", "translateY(0)");
                     });
                 } /* else {
                     animationLeftContainers.forEach((container) => {
-                        const currentItem = document.querySelector(`#${container.id}`);
+                        const currentItem = selector(`#${container.id}`);
                         animateItem(currentItem, "0", "translateX(-50%)");
                     });
                     animationRightContainers.forEach((container) => {
-                        const currentItem = document.querySelector(`#${container.id}`);
+                        const currentItem = selector(`#${container.id}`);
                         animateItem(currentItem, "0", "translateX(50%)");
                     });
                     animationUpContainers.forEach((container) => {
-                        const currentItem = document.querySelector(`#${container.id}`);
+                        const currentItem = selector(`#${container.id}`);
                         animateItem(currentItem, "0", "translateY(50%)");
                     });
                 } */
@@ -924,32 +947,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 let newProjectTypeData = { value: type };
                 newProjectsListData.push(newProjectTypeData);
             });
-            /* console.log(newProjectsListData); */
 
-            const selectionListTemplateClone = selectionListTemplate.cloneNode(true);
-            const newList = selectionListTemplateClone.querySelector(".selection_list");
-            newList.setAttribute("name", "types_of_projects");
-            newList.id = `selection_list_type_of_projects`;
-            newProjectsListData.forEach((option) => {
-                const optionValue = option["value"];
-                /* console.log(optionValue); */
+            newProjectsListData.forEach((item) => {
+                const optionValue = item["value"];
+                const template = btnListTemplate.cloneNode(true);
+                const newBtn = template.querySelector("BUTTON");
+                newBtn.setAttribute("name", optionValue);
+                newBtn.textContent = optionValue;
 
-                const optionListTemplateClone = optionListTemplate.cloneNode(true);
-                const newOptionBtn = optionListTemplateClone.querySelector(".option_list_btn");
-
-                const newOptionText = optionListTemplateClone.querySelector(".option_list_text");
-                newOptionBtn.setAttribute("name", optionValue);
-                newOptionText.textContent = optionValue;
-                newList.appendChild(newOptionBtn);
+                listBtnsFragment.append(newBtn);
             });
-            fragmentListProjects.appendChild(newList);
-            searchBtnsContainer.appendChild(fragmentListProjects);
-            const typesOfProjectOptionList = document.querySelectorAll(".option_list_btn");
-            /* console.log(typesOfProjectOptionList); */
-            typesOfProjectOptionList.forEach((optionType) => {
-                /* console.log(optionType); */
+            listBtnsContainer.append(listBtnsFragment);
+
+            //!
+            const selectionBtns = selectorAll(".list_btn");
+
+            selectionBtns.forEach((itemBtn) => {
                 const createSearchedCards = (e) => {
                     deleteChildElements(porfolioSearchCardsContainer);
+                    searchBtnActions(dropDownStatus);
                     const currentNameData = e.target.getAttribute("name");
                     /* console.log(currentNameData); */
 
@@ -958,7 +974,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         if (dataIncludedResponse) {
                             //todo CREAR TARJETAS ESPECIFICAS DE BUSQUEDA
                             //*console.log(item);
-                            closeSelectList();
+
                             createCard(item, fragmentSearchProjects);
                             titleSubsectionCardsSearch.textContent = currentNameData;
                             porfolioSearchCardsContainer.appendChild(fragmentSearchProjects);
@@ -973,50 +989,76 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     });
                 };
+                itemBtn.addEventListener("enter", createSearchedCards);
+                itemBtn.addEventListener("click", createSearchedCards);
+            });
+            //!
+
+            /* typesOfProjectOptionList.forEach((optionType) => {
+                //* console.log(optionType);
+                const createSearchedCards = (e) => {
+                    deleteChildElements(porfolioSearchCardsContainer);
+                    const currentNameData = e.target.getAttribute("name");
+                    //* console.log(currentNameData); 
+
+                    data.forEach((item) => {
+                        const dataIncludedResponse = item["projects"]["type"].includes(currentNameData);
+                        if (dataIncludedResponse) {
+                            //todo CREAR TARJETAS ESPECIFICAS DE BUSQUEDA
+                            //*console.log(item);
+                            closeSelectList();
+                            createCard(item, fragmentSearchProjects);
+                            titleSubsectionCardsSearch.textContent = currentNameData;
+                            porfolioSearchCardsContainer.appendChild(fragmentSearchProjects);
+                            const projectCards = selectorAll(".project_card");
+                            projectCards.forEach((card) => {
+                                setTimeout(() => {
+                                    animateItem(card, "1", "translateY(0)");
+                                }, 500);
+                            });
+                        } else if (!dataIncludedResponse) {
+                            //*console.log('este es el boton que abre la lista, deberia de');
+                        }
+                    });
+                };
                 optionType.addEventListener("enter", createSearchedCards);
                 optionType.addEventListener("click", createSearchedCards);
-            });
+            }); */
         } catch (error) {
             console.log(error);
         }
     };
     createSelectionTypeBtns();
 
+    const searchListBtn = document.querySelector(".search_list_btn");
+
+    const searchBtnActions = (action) => {
+        const searchBtnHeight = searchBtn.getBoundingClientRect().height;
+        //! console.log(searchBtnTop, searchBtnX);
+        //! console.log(action);
+        if (action === open) {
+            dropDownStatus = close;
+            arrow.style.transform = "rotate(0)";
+            listBtnsContainer.style.display = none;
+            searchBtn.focus();
+        } else if (action === close) {
+            dropDownStatus = open;
+            arrow.style.transform = "rotate(270deg)";
+            listBtnsContainer.style.top = `${searchBtnHeight + 10}px`;
+            listBtnsContainer.style.display = flx;
+            listBtnsContainer.childNodes[0].focus();
+        }
+    };
+
+    searchListBtn.addEventListener("enter", () => searchBtnActions(dropDownStatus));
+    searchListBtn.addEventListener("click", () => searchBtnActions(dropDownStatus));
+
     //^ SELECT LIST ACTIONS
     //& OPEN SELECT LIST
-    const openSelectList = () => {
-        const selectionTypesList = document.querySelector("#selection_list_type_of_projects");
-        const arrowSvg = document.querySelector("#arrow_btn_select_list_svg");
-        arrowSvg.style.transform = "rotate(540deg)";
-        selectionTypesList.style.height = "fit-content";
-        selectListStatus = open;
-    };
 
     //& CLOSE SELECT LIST
-    const closeSelectList = () => {
-        const selectionTypesList = document.querySelector("#selection_list_type_of_projects");
-        const arrowSvg = document.querySelector("#arrow_btn_select_list_svg");
-        arrowSvg.style.transform = "rotate(0)";
-        selectionTypesList.style.height = "3rem";
-        selectListStatus = close;
-    };
 
     //&& BTNS LIST ACTIVATION
-    const btnsListObserve = new MutationObserver(([entry]) => {
-        //*console.log(entry);
-        const searchListBtn = document.querySelector("#selection_list_search_btn");
-        const selectListActions = () => {
-            if (selectListStatus === close) {
-                openSelectList();
-            } else if (selectListStatus === open) {
-                closeSelectList();
-            }
-        };
-
-        searchListBtn.addEventListener("enter", selectListActions);
-        searchListBtn.addEventListener("click", selectListActions);
-    });
-    btnsListObserve.observe(searchBtnsContainer, { childList: true });
 
     //^ CREATE PROJECT HOT CARDS
     const createProjectCardHot = async () => {
@@ -1036,7 +1078,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 createCard(item, fragmentHotProjects);
             });
             portfolioHotCardsContainer.appendChild(fragmentHotProjects);
-            const projectCards = document.querySelectorAll(".project_card");
+            const projectCards = selectorAll(".project_card");
             projectCards.forEach((card) => {
                 setTimeout(() => {
                     animateItem(card, "1", "translateY(0)");
@@ -1067,7 +1109,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             porfolioSearchCardsContainer.appendChild(fragmentSearchProjects);
-            const projectCards = document.querySelectorAll(".project_card");
+            const projectCards = selectorAll(".project_card");
 
             projectCards.forEach((card) => {
                 setTimeout(() => {
@@ -1090,7 +1132,7 @@ document.addEventListener("DOMContentLoaded", () => {
         fragmentSliderMarkersServices.appendChild(newMarker);
 
         const watchSliders = ([entry]) => {
-            const sliderMarkers = document.querySelectorAll(".marker_slider_services_btn");
+            const sliderMarkers = selectorAll(".marker_slider_services_btn");
             if (entry.isIntersecting) {
                 const currentId = entry.target.id;
                 //*console.log(currentId);
@@ -1099,10 +1141,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     let currentMarkerName = marker.getAttribute("name");
                     //*console.log(currentMarker);
                     if (currentMarkerName === currentId) {
-                        const markerActive = document.querySelector(`#${currentMarker}`);
+                        const markerActive = selector(`#${currentMarker}`);
                         markerActive.style.background = "var(--secondColor)";
                     } else {
-                        const markerInactive = document.querySelector(`#${currentMarker}`);
+                        const markerInactive = selector(`#${currentMarker}`);
                         markerInactive.style.background = "var(--firstColor)";
                     }
                 });
@@ -1120,12 +1162,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //^ SLIDER BTNS CONSTANT
     //& MARKERS CONTANT
-    const sliderMarkersServices = document.querySelectorAll(".marker_slider_services_btn");
+    const sliderMarkersServices = selectorAll(".marker_slider_services_btn");
     //& CREATE SLIDER MARKERS BTNS
     sliderMarkersServices.forEach((marker) => {
         const checkSlider = () => {
             const sliderId = marker.name;
-            const sliderSearched = document.querySelector(`#${sliderId}`).getBoundingClientRect().left;
+            const sliderSearched = selector(`#${sliderId}`).getBoundingClientRect().left;
             const sliderWidth = sliderWindowContainerProjects.getBoundingClientRect().width;
             //*console.log(sliderFullCountServices, sliderSearched, sliderWidth);
 
@@ -1285,14 +1327,7 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
     });
 
-    /* const checkMark = () => {
-        const checkBtn = document.querySelector('.complete-button');
-
-        const lessonBtn = document.querySelector('.lesson-button-group__item');
-        checkBtn.click();
-        setTimeout(() => {
-            lessonBtn.click();
-        }, 2000);
-    };
-    checkMark(); */
+    //! ******** !//
+    //!  acoplar !//
+    //! ******** !//
 });

@@ -488,9 +488,6 @@
         <section class="section portfolio_section" id="portfolio_section">
             <div class="section_content portfolio_content" id="portfolio_content">
                 <div class="header_section" id="header_section_portfolio">
-                    <div class="swipe_animation_container_full">
-                        <h2 class="title_section animation_up" id="title_section_projects">Proyectos</h2>
-                    </div>
                     <!--~~SLIDER SERVICES-->
                     <div class="sliders_container" id="sliders_container_projects">
                         <!--&SLIDER WINDOW CONTAINER-->
@@ -559,10 +556,15 @@
                     <div class="swipe_animation_container_full">
                         <h1 class="subtitle_section animation_up" id="subtitle_section_search">Busqueda por tipo</h1>
                     </div>
-                    <div class="projects_container" id="search_projects_container">
-                        <div class="project_btns_container" id="search_project_btns_container"></div>
-                    </div>
-
+                    <nav class="drop_down_container">
+                        <button type="button" class="btn search_list_btn">
+                            <span class="btn_label"> Categorias: </span>
+                            <span class="icon_container arrow_icon_container">
+                                <svg class="icon_svg arrow_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path class="clr-1" d="M16 12L10 18V6L16 12Z"></path></svg>
+                            </span>
+                        </button>
+                        <div class="list_btns_container"></div>
+                    </nav>
                     <h2 class="title_subsection" id="title_subsection_search_type">Busqueda de proyecto</h2>
 
                     <div class="cards_container" id="cards_search_container">
@@ -1699,21 +1701,8 @@
         </template>
         <!--&TEMPLATE SELECTION LIST-->
         <!--~~LIST SELECTOR TEMPLATE-->
-        <template id="selection_list_template">
-            <div class="selection_list" name="" id="">
-                <button type="button" class="option_list_btn_search option_list_text selection_list_search_btn" name="option_list" data="search" id="selection_list_search_btn">
-                    Categorias:
-                    <div class="open_list_btn" id="open_select_list_btn">
-                        <svg class="arrow_btn_svg" id="arrow_btn_select_list_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path class="cls-1" d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
-                        </svg>
-                    </div>
-                </button>
-            </div>
-        </template>
-        <!--~~LIST OPTION TEMPLATE-->
-        <template id="option_list_btn_template">
-            <div class="option_list_btn option_list_text" name="option_list" data="" id=""></div>
+        <template id="list_btn_template">
+            <button type="button" class="btn list_btn" name=""></button>
         </template>
     </body>
 </html>
