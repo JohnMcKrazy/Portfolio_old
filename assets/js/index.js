@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const $d = document;
 
+    const themeD = "dark_theme";
+    const themeL = "light_theme";
+    let currentTheme = themeD;
     //^ THEME ICONS
     const sunIcon =
         '<svg class="theme_icon_svg" id="sun_icon_svg"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><title>Tema día</title><path class="cls-1" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>';
@@ -212,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnsNavContainer = selector("#nav_sections_btns_container");
     const btnsNav = selectorAll(".btn_nav");
     //& BTN LOGO
-    const btnLogo = selector("#logo_nav_btn");
+    const btnLogo = selector(".logo_nav_btn");
     //& TBN THEME
     const btnThemeNav = selector("#change_theme_btn_nav");
     //& BTN LEBELS
@@ -258,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const arrow = selector(".arrow_icon");
 
     //^LEGALS
-    const copyrightText = selector(".made_content");
+    const copyrightText = selector(".lebels_container");
 
     //^FETCH JASON COMPANYS DATA
     const portfolioData = "./portfolioDB.json";
@@ -285,25 +288,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //!GENERAL VARIANTS--START
 
-    //!GENERAL START FUNCTIONS
-    //^CHANGE THEME BY HOUR
-    let todayHour = new Date().getHours();
-    //*let todayHour = 9;
-    if (todayHour <= 7 || todayHour >= 19) {
-        body.classList.remove(`light_theme`);
-
-        body.classList.add(`dark_theme`);
-
-        btnThemeMenu.innerHTML = sunIcon;
-        btnThemeNav.innerHTML = sunIcon;
-    } else {
-        body.classList.remove(`dark_theme`);
-
-        body.classList.add(`light_theme`);
-        btnThemeMenu.innerHTML = moonIcon;
-        btnThemeNav.innerHTML = moonIcon;
-    }
-
     //^STORAGE FIRST CHECK
     const checkAlertStorageAnswer = () => {
         let storageContent = JSON.parse(localStorage.getItem(localStorageName));
@@ -329,12 +313,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     checkAlertStorageAnswer();
 
-    //^ GENERATE RANDOM ITEM
-    const randomDataSelector = (arr) => {
-        const arrayLenght = arr.length;
-        const randomItem = Math.floor(Math.random() * arrayLenght);
-        return arr[randomItem];
-    };
     //^ DELATE CHILDREN
     const deleteChildElements = (parentElement) => {
         let child = parentElement.lastElementChild;
@@ -409,7 +387,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (menuSocialStatus === close) {
             menuSocialStatus = open;
             menuSocialBtnsContainer.style.height = "100%";
-
             menuSocialBtnsContainer.style.opacity = 1;
             /*  */
         } else if (menuSocialStatus === open) {
@@ -429,13 +406,13 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     //^ OPEN MENU
-    const btnNavMenu = () => {
-        if (menuStatus === close) {
+    const btnNavMenu = (status) => {
+        if (status === close) {
             menuStatus = open;
-            menuContainer.style.opacity = "1";
+            menuContainer.style.opacity = 1;
             menuContainer.style.transform = "translateY(0)";
             //*openMenuSound.play();
-        } else if (menuStatus === open) {
+        } else if (status === open) {
             closeMenu();
         }
     };
@@ -446,25 +423,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (menuTop === "0px" || menuTop === 0 || menuTop === "") {
             menuStatus = close;
-            menuContainer.style.transform = "translateY(-100%)";
-            menuContainer.style.opacity = "0";
+            menuContainer.style.opacity = 0;
+            menuContainer.style.transform = "translateY(-100)";
         } else if (menuTop === "inherit") {
             menuStatus = close;
-            menuContainer.style.transform = "translateY(100%)";
-            menuContainer.style.opacity = "0";
+
+            menuContainer.style.opacity = 0;
+            menuContainer.style.transform = "translateY(100)";
         }
     };
 
+    const windowActions = (action, item) => {
+        if (action === "open") {
+            item.style.display = blk;
+            setTimeout(() => {
+                item.style.opacity = 1;
+            }, 1000);
+        } else if (action === "close") {
+            item.style.opacity = 1;
+            setTimeout(() => {
+                item.style.display = none;
+            }, 1000);
+        }
+    };
+
+    windowActions();
     //^GENERAL MODAL ACTIONS
+    const openWindowTranslate = (window) => {
+        animateItem(cont, "1", "translate(-50%, 0)");
+    };
+    selector(".alert_modal");
     const openModal = (cont) => {
         modalContainer.style.display = blk;
+
         setTimeout(() => {
-            modalContainer.style.opacity = "1";
+            modalContainer.style.opacity = 1;
             cont.style.display = flx;
             setTimeout(() => {
                 animateItem(cont, "1", "translate(-50%, 0)");
             }, 1200);
-        }, 500);
+        }, 1200);
     };
     const closeModal = (cont) => {
         animateItem(cont, "0", "translate(-50%, -50%)");
@@ -619,11 +617,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    const checkWindowWidth = () => {
-        const windowWidth = window.innerWidth;
-        configSize(windowWidth);
-    };
-    checkWindowWidth();
+    configSize(window.innerWidth);
 
     const checkWindowHeight = () => {
         const rem = 20;
@@ -631,10 +625,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const windowHeight = window.innerHeight / 2;
 
         let borderRadius = "1rem";
+
         if (navTop >= windowHeight) {
             nav.style.height = "10rem";
-            nav.style.background = "var(--navbarColor)";
-
+            if (currentTheme === themeD) {
+                nav.style.background = "hsl(0, 0%, 5%)";
+            } else if (currentTheme === themeL) {
+                nav.style.background = "hsl(0, 0%, 95%)";
+            }
             menuSocialContainer.style.bottom = "inherit";
             menuSocialContainer.style.top = "2rem";
             menuSocialContainer.style.flexDirection = "column";
@@ -654,7 +652,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 500);
         } else if (navTop < windowHeight) {
             nav.style.height = "6rem";
-            nav.style.background = "var(--bgModal)";
+            if (currentTheme === themeD) {
+                nav.style.background = "hsla(0, 0%, 5%, 0.75)";
+            } else if (currentTheme === themeL) {
+                nav.style.background = "hsla(0, 0%, 95%, 0.75)";
+            }
+
             menuSocialContainer.style.top = "inherit";
             menuSocialContainer.style.bottom = "2rem";
             menuSocialContainer.style.flexDirection = "column-reverse";
@@ -946,8 +949,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     createSelectionTypeBtns();
 
-    const searchListBtn = document.querySelector(".search_list_btn");
-
     const searchBtnActions = (action) => {
         const searchBtnHeight = searchBtn.getBoundingClientRect().height;
         //! console.log(searchBtnTop, searchBtnX);
@@ -966,8 +967,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    searchListBtn.addEventListener("enter", () => searchBtnActions(dropDownStatus));
-    searchListBtn.addEventListener("click", () => searchBtnActions(dropDownStatus));
+    searchBtn.addEventListener("enter", () => searchBtnActions(dropDownStatus));
+    searchBtn.addEventListener("click", () => searchBtnActions(dropDownStatus));
 
     //^ SELECT LIST ACTIONS
     //& OPEN SELECT LIST
@@ -1007,7 +1008,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //^CREATE PROJECT RANDOM CARDS
     const createProjectCardRandom = async () => {
-        let randomTypeSelection = randomDataSelector(typesOfProjects);
+        const arrayLenght = typesOfProjects.length;
+        const randomItem = Math.floor(Math.random() * arrayLenght);
+        let randomTypeSelection = typesOfProjects[randomItem];
+
         try {
             const rawData = await fetch(portfolioData);
             const data = await rawData.json();
@@ -1107,7 +1111,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", scrollBody);
     body.addEventListener("click", closeByBodyClick);
     btnLogo.addEventListener("click", toTheTop);
-    btnMenuContainer.addEventListener("click", btnNavMenu);
+    btnMenuContainer.addEventListener("click", () => btnNavMenu(menuStatus));
     closeMenuBtn.addEventListener("click", closeMenu);
     btnHeroDown.addEventListener("click", scrollOneHeight);
     acceptBtnStorageWarningBtn.addEventListener("click", acceptStorage);
@@ -1197,19 +1201,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     //^ CHANGE THEME BTN && --/CHANGE THE THEME PAGE BY THE MENU BTN
-    btnsTheme.forEach((btn) => {
-        const changeThemeBtn = () => {
-            if (body.className === "light_theme") {
-                body.className = "dark_theme";
-                btnThemeNav.innerHTML = sunIcon;
-                btnThemeMenu.innerHTML = sunIcon;
-            } else if (body.className === "dark_theme") {
-                body.className = "light_theme";
-                btnThemeNav.innerHTML = moonIcon;
-                btnThemeMenu.innerHTML = moonIcon;
+    const changeThemeBtn = (tm) => {
+        const navTop = nav.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight / 2;
+        if (tm === themeL) {
+            currentTheme = themeD;
+            btnThemeNav.innerHTML = sunIcon;
+            btnThemeMenu.innerHTML = sunIcon;
+
+            if (navTop >= windowHeight) {
+                nav.style.background = "hsl(0, 0%, 5%)";
+            } else if (navTop < windowHeight) {
+                nav.style.background = "hsla(0, 0%, 5%,75%)";
             }
-        };
-        btn.addEventListener("click", changeThemeBtn);
+        } else if (tm === themeD) {
+            currentTheme = themeL;
+            btnThemeNav.innerHTML = moonIcon;
+            btnThemeMenu.innerHTML = moonIcon;
+
+            if (navTop >= windowHeight) {
+                nav.style.background = "hsl(0, 0%, 95%)";
+            } else if (navTop < windowHeight) {
+                nav.style.background = "hsla(0, 0%, 95%,75%)";
+            }
+        }
+        body.className = currentTheme;
+    };
+    btnsTheme.forEach((btn) => {
+        btn.addEventListener("click", () => changeThemeBtn(currentTheme));
     });
     //^ SOCIAL BTNS
     btnsMenuSocial.forEach((btn) => {
