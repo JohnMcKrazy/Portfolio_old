@@ -140,7 +140,7 @@
     //!NAVBAR HEIGHTS--START
     --NVH-F: 6rem;
     --NVH: 10rem;
-    --FS-FH: calc(100lvh - var(--NVH-F));
+    --FS-FH: calc(100svh - var(--NVH-F));
     //!TRANSITIONS--START
     --T-F: all 500ms ease;
     --T-M: all 750ms ease;
@@ -827,7 +827,7 @@ SECTION {
 }
 .header_section {
     @include flexDirection(column, flex-start, center);
-    min-height: calc(100lvh - var(--NVH-F));
+    min-height: calc(100svh - var(--NVH-F));
     width: 100%;
     background-size: cover;
 }
@@ -1466,7 +1466,7 @@ SECTION {
 .hero_section {
     @include flex(center, center);
     position: relative;
-    min-height: calc(100lvh - var(--NVH));
+    min-height: calc(100svh - var(--NVH));
     background: var(--backgroundHero);
     background-size: cover;
     .hero_title_container {
@@ -1567,7 +1567,7 @@ SECTION {
 .sliders_container {
     position: relative;
     width: 100%;
-    height: calc(100lvh - var(--NVH-F) - 8rem);
+    height: calc(100svh - var(--NVH-F) - 8rem);
     overflow: hidden;
     margin: 3rem 0 6rem;
     .slider_window_container {
