@@ -101,7 +101,6 @@
   --widthClamp: clamp(300px, 1500px, 90%);
   --NVH-F: 6rem;
   --NVH: 10rem;
-  --FS-FH: calc(100svh - var(--NVH-F));
   --T-F: all 500ms ease;
   --T-M: all 750ms ease;
   --T-S: all 1000ms ease;
@@ -699,7 +698,8 @@ BUTTON {
 
 SECTION {
   width: 100%;
-  min-height: var(--FS-FH);
+  min-height: calc(100vh - var(--NVH-F));
+  min-height: calc(100svh - var(--NVH-F));
   margin-bottom: 2rem;
   overflow: hidden;
 }
@@ -709,6 +709,7 @@ SECTION {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  min-height: calc(100vh - var(--NVH-F));
   min-height: calc(100svh - var(--NVH-F));
   width: 100%;
   background-size: cover;
@@ -1393,6 +1394,7 @@ SECTION {
   justify-content: center;
   align-items: center;
   position: relative;
+  min-height: calc(100vh - var(--NVH));
   min-height: calc(100svh - var(--NVH));
   background: var(--backgroundHero);
   background-size: cover;
@@ -1507,6 +1509,7 @@ SECTION {
 .sliders_container {
   position: relative;
   width: 100%;
+  height: calc(100vh - var(--NVH-F) - 8rem);
   height: calc(100svh - var(--NVH-F) - 8rem);
   overflow: hidden;
   margin: 3rem 0 6rem;
